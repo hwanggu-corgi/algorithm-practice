@@ -5,10 +5,17 @@
 
 def solution(A):
     # write your code in Python 3.6
-    # brute force solution
-
+    MAXIMUM = 100000
     # order the element
+    A.sort()
+    N = len(A)
+
+    if N == 0:
+        return 1
 
     # traverse the elements in the array and find the one not in it
-
-    return
+    i = 1
+    for number in A:
+        if number != i:
+            return i
+        i += 1
