@@ -9,8 +9,11 @@ def solution(A, K):
     # find length
     N = len(A)
 
+    #
+
     # replace value
     A[(i+K) % N] = A[i]
+    temp = A[(i+K) % N]
 
 
     return A
