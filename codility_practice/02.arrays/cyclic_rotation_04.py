@@ -5,15 +5,22 @@
 
 def solution(A, K):
     # write your code in Python 3.6
+    # brute force solution
 
     # find length
     N = len(A)
+    # generate an array of identical size
+    B = [0] * N
 
-    #
 
     # replace value
-    A[(i+K) % N] = A[i]
-    temp = A[(i+K) % N]
+    i = 0
+    while (i < N):
+        B[(i+K) % N] = A[i]
+        i += 1
 
-
+    j = 0
+    while (j < N):
+        A[i] = B[i]
+        j += 1
     return A
