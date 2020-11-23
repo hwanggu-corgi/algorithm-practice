@@ -14,8 +14,9 @@ def solution(A, K):
     temp_2 = A[0]
 
     # replace value
+    count = 0
     i = 0
-    while (i < N):
+    while (count < N):
         if (i == 0):
             temp_1 = A[(i+K) % N]
             A[(i+K) % N] = A[i]
@@ -24,6 +25,7 @@ def solution(A, K):
             A[(i+K) % N] = temp_1
             temp_1 = temp_2
 
-        i += 1
+        i = (i+K) % N
+        count += 1
 
     return A
