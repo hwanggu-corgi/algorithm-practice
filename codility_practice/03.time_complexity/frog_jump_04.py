@@ -9,4 +9,5 @@
 
 def solution(X, Y, D):
     # write your code in Python 3.6
-    pass
+
+    return number_of_jumps
