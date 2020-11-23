@@ -14,8 +14,12 @@ def solution(A):
         return 1
 
     # traverse the elements in the array and find the one not in it
-    i = 1
-    for number in A:
-        if number != i:
-            return i
+    number = 1
+    i = 0
+    while i < N:
+        if A[i] != number:
+            return number
         i += 1
+        number += 1
+
+    return number
