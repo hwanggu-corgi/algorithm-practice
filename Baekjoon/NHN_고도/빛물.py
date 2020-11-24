@@ -11,11 +11,18 @@
 def main():
     # parse input
     world_dimensions = [int(x) for x in input().split()]
-    block_height = [int(x) for x in input().split()]
+    wall_heights = [int(x) for x in input().split()]
 
-    # For each block (가로)
+    W = world_dimensions[0]
+    H = world_dimensions[1]
+    left_wall = right_wall = -1
 
+    # For each wall_height (가로)
+    i = 0
+    while i < W:
+        wall_height = wall_heights[i]
         # Find left_wall. Store index in left_wall
+        if wall_height > 0:
 
         # If left_wall exists, and wall is found, store index in right_wall
 
