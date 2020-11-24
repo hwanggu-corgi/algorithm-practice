@@ -9,7 +9,7 @@ class BracketStack:
         self.left_brackets = []
 
     def push(self, left_bracket):
-        self.left_brackets.append(bracket)
+        self.left_brackets.append(left_bracket)
 
     def pop(self):
         if len(self.left_brackets) == 0:
@@ -23,11 +23,17 @@ def solution(S):
     # initialize Bracket
     left_brackets = BracketStack()
 
+    if len(S) == 0:
+        return 1
+
+    if len(S) == 1:
+        return 0
+
     # for each bracket in S
     for bracket in S:
         # if bracket is left bracket, then push to Bracket
         if bracket in ["(", "[", "{"]:
-            left_brackets.push(brack)
+            left_brackets.push(bracket)
         else:
             # if bracket is right bracket, then pop from the Bracket
             left_bracket = left_brackets.pop()
@@ -39,5 +45,8 @@ def solution(S):
                 return 0
         # if brackets match keep going
 
+    # if non empty return 0
+    if left_brackets.pop() != '':
+        return 0
     # if all is well, return 1
     return 1
