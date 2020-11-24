@@ -13,11 +13,15 @@ def main():
     world_dimensions = [int(x) for x in input().split()]
     block_height = [int(x) for x in input().split()]
 
-    # Find left block
+    # For each block (가로)
 
-    # If left block exists, find right block
+        # Find left_wall. Store index in left_wall
 
-    # If distance between left block and riht block is greater than 1, calculate blocks of water
+        # If left_wall exists, and wall is found, store index in right_wall
+
+        # If distance between left_wall and right_wall is greater than 1, calculate blocks of water
+
+        # Check if index of left_wall should be updated
 
 if __name__ == "__main__":
     main()
