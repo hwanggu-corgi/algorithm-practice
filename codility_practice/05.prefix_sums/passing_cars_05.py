@@ -7,6 +7,13 @@ def solution(A):
     # write your code in Python 3.6
     count = 0
     cars_to_west = sum(A)
+    N = len(A)
+
+    if cars_to_west == 0:
+        return 0
+
+    if cars_to_west == N:
+        return 0
 
     for car in A:
         # if i is car traveling west, deduct cars_to_west by 1
@@ -17,5 +24,8 @@ def solution(A):
             count += cars_to_west
 
     # return count
+
+    if count > 1000000000:
+        return -1
 
     return count
