@@ -10,24 +10,23 @@
 
 def main():
     # parse input
-    world_dimensions = [int(x) for x in input().split()]
+    dimensions = [int(x) for x in input().split()]
     wall_heights = [int(x) for x in input().split()]
 
-    W = world_dimensions[0]
-    H = world_dimensions[1]
-
+    WIDTH = dimensions[0]
+    HEIGHT = dimensions[1]
     total_water_blocks = 0
-    j = 0
 
     # Find left wall. Store it's index in left_wall_position
-    left_wall_position = find_left_wall(...)
+    left_wall_position = find_left_wall(wall_heights, WIDTH)
+    right_wall_position = left_wall_position
 
     # For each wall_height (가로)
-    while left_wall_position < W:
+    while left_wall_position < WIDTH:
         j = 0
-        while j < H:
+        while j < HEIGHT:
             # Find right wall at hight j. Store it's index in right_wall_position
-            right_wall_position = find_right_wall(..., j)
+            right_wall_position = find_right_wall(wall_heights, right_wall_position, j, WIDTH)
             if (right_wall_position < 0):
                 break
 
@@ -46,10 +45,16 @@ def main():
         # Check if index of left_wall should be updated. If so, move left wall to right position
         left_wall_position = right_wall_position
 
-def find_left_wall(...):
-    pass
+def find_left_wall(wall_heights, width):
+    i = 0
+    while i < width:
+        if wall_heights[i] > 0:
+            return i
+        i += 1
 
-def find_left_wall(...):
+    return -1
+
+def find_right_wall(wall_heights, right_wall_position, current_height, width):
     pass
 
 def water_can_be_filled_at_this_height(....):
