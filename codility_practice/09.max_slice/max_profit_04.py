@@ -12,16 +12,23 @@ def solution(A):
     max_sell_price = purchase_price = A[0]
     N = len(A)
 
+    if len(A) == 0:
+        return 0
+
+    if len(A) == 1:
+        return 0
+
     i = 1
     while i < N:
         # calculate profit after selling with price a
-        net_price = purchase_price - A[i]
+        net_price = A[i] - purchase_price
         profit_ending = max(0, profit_ending + net_price)
 
         # if the profit is positive
         if profit_ending > 0:
             # update the max profit
             max_profit = max(max_profit, profit_ending)
+            purchase_price = A[i]
         else:
             # if the profit is negative
             # reset the purchase price to current
