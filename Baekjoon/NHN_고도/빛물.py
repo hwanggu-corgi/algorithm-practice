@@ -17,6 +17,7 @@ def main():
     H = world_dimensions[1]
 
     total_water_blocks = 0
+    j = 0
 
     # Find left wall. Store it's index in left_wall_position
     left_wall_position = find_left_wall(...)
@@ -24,21 +25,26 @@ def main():
     # For each wall_height (가로)
     while left_wall_position < W:
         j = 0
-
-        # Find right wall at hight h. Store it's index in right_wall_position
-        right_wall_position = find_right_wall(..., j)
-
         while j < H:
+            # Find right wall at hight j. Store it's index in right_wall_position
+            right_wall_position = find_right_wall(..., j)
+            if (right_wall_position < 0):
+                break
+
+            if not water_can_be_filled_at_this_height(....):
+                break
+
             # Calculate blocks of water at height h betwen left_wall_position and right_wall_position
             water_blocks = calculate_water_blocks(...)
 
             # Add to total
             total_water_blocks += water_blocks
 
-            # Check if index of left_wall should be updated. If so, move left wall to right position
-            if (left_wall_should_be_updated(...)):
-                left_wall_position = right_wall_position
+            # Update height
+            j += 1
 
+        # Check if index of left_wall should be updated. If so, move left wall to right position
+        left_wall_position = right_wall_position
 
 if __name__ == "__main__":
     main()
