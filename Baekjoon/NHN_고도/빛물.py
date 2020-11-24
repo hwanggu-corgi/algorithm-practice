@@ -18,16 +18,16 @@ def main():
     total_water_blocks = 0
 
     # Find left wall. Store it's index in left_wall_position
-    left_wall_position = find_left_wall(wall_heights, WIDTH)
-    right_wall_position = left_wall_position
+    i_left_wall = find_left_wall(wall_heights, WIDTH)
+    i_right_wall = i_left_wall
 
     # For each wall_height (가로)
-    while left_wall_position < WIDTH:
+    while i_left_wall < WIDTH:
         j = 0
         while j < HEIGHT:
             # Find right wall at hight j. Store it's index in right_wall_position
-            right_wall_position = find_right_wall(wall_heights, right_wall_position, j, WIDTH)
-            if (right_wall_position < 0):
+            right_wall_position = find_right_wall(wall_heights, i_right_wall, j, WIDTH)
+            if (i_right_wall < 0):
                 break
 
             if not water_can_be_filled_at_this_height(....):
@@ -55,10 +55,19 @@ def find_left_wall(wall_heights, width):
     return -1
 
 def find_right_wall(wall_heights, right_wall_position, current_height, width):
-    pass
+    i = right_wall_position
+    j = current_height
+    while i < width:
+        if j < wall_heights[i]:
+            return i
+        i += 1
 
-def water_can_be_filled_at_this_height(....):
-    pass
+    return -1
+
+def water_can_be_filled_at_this_height(current_height, left_wall_position, right_wall_position):
+    if ((current_height - left_wall_position))
+
+    return False
 
 def calculate_water_blocks(...):
     pass
