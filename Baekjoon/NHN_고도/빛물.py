@@ -15,13 +15,16 @@ def main():
 
     W = world_dimensions[0]
     H = world_dimensions[1]
-    left_wall = right_wall = -1
+    left_wall_position = right_wall_position = -1
+
+    # Find left_wall. Store index in left_wall_position
+    left_wall_position = find_left_wall()
 
     # For each wall_height (가로)
-    i = 0
-    while i < W:
+    while left_wall_position < W:
+         # Find right wall at hight h. Store index in right_wall_position
         wall_height = wall_heights[i]
-        # Find left_wall. Store index in left_wall
+
         if wall_height > 0:
 
         # If left_wall exists, and wall is found, store index in right_wall
