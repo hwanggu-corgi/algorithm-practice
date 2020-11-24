@@ -15,23 +15,27 @@ def main():
 
     W = world_dimensions[0]
     H = world_dimensions[1]
-    left_wall_position = right_wall_position = -1
 
-    # Find left_wall. Store index in left_wall_position
-    left_wall_position = find_left_wall()
+    total_water_blocks = 0
+
+    # Find left wall. Store it's index in left_wall_position
+    left_wall_position = find_left_wall(...)
 
     # For each wall_height (가로)
     while left_wall_position < W:
-         # Find right wall at hight h. Store index in right_wall_position
-        wall_height = wall_heights[i]
+        # Find right wall at hight h. Store it's index in right_wall_position
+        right_wall_position = find_right_wall(..., h)
 
-        if wall_height > 0:
+        # Calculate blocks of water at height h betwen left_wall_position and right_wall_position
+        water_blocks = calculate_water_blocks(...)
 
-        # If left_wall exists, and wall is found, store index in right_wall
+        # Add to total
+        total_water_blocks += water_blocks
 
-        # If distance between left_wall and right_wall is greater than 1, calculate blocks of water
+        # Check if index of left_wall should be updated. If so, move left wall to right position
+        if (left_wall_should_be_updated(...)):
+            left_wall_position = right_wall_position
 
-        # Check if index of left_wall should be updated
 
 if __name__ == "__main__":
     main()
