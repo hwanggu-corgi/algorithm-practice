@@ -30,7 +30,7 @@ def main():
             if (i_right_wall < 0):
                 break
 
-            if not water_can_be_filled_at_this_height(....):
+            if not water_can_be_filled_at_this_height(j, i_left_wall, i_right_wall, wall_heights):
                 break
 
             # Calculate blocks of water at height h betwen left_wall_position and right_wall_position
@@ -42,8 +42,8 @@ def main():
             # Update height
             j += 1
 
-        # Check if index of left_wall should be updated. If so, move left wall to right position
-        left_wall_position = right_wall_position
+        # Update index
+        i_left_wall = i_right_wall
 
 def find_left_wall(wall_heights, width):
     i = 0
@@ -64,13 +64,19 @@ def find_right_wall(wall_heights, right_wall_position, current_height, width):
 
     return -1
 
-def water_can_be_filled_at_this_height(current_height, left_wall_position, right_wall_position):
-    if ((current_height - left_wall_position))
+def water_can_be_filled_at_this_height(current_height, index_left_wall, index_right_wall, wall_heights):
+    left_wall_height = wall_heights[index_left_wall]
+    right_wall_height = wall_heights[index_right_wall]
+
+    if ((current_height <= left_wall_height) and
+        (current_height <= right_wall_height)):
+
+        return True
 
     return False
 
-def calculate_water_blocks(...):
-    pass
+def calculate_water_blocks(index_left_wall, index_right_wall):
+    return index_right_wall - index_left_wall - 1
 
 
 if __name__ == "__main__":
