@@ -8,11 +8,22 @@
 def solution(A):
     # write your code in Python 3.6
 
+    max_profit = profit_ending =  0
+    max_sell_price = sell_price = purchase_price = A[0]
+
     for a in A:
-        # calculate the net benefit after selling with price A
+        # calculate profit after selling with price a
+        sell_price = a
+        net_price = purchase_price - sell_price
 
-        # if the net price is positive
-        # keep updating the max slice
+        profit_ending = profit(0, profit_ending + net_price)
 
-        # if the net price is negative
+        # if the profit is positive
+        if profit_ending > 0:
+            # update the max profit
+            max_profit = max(max_profit, profit_ending)
+            max_sell_price = sell_price
+        else:
+            # if the profit is negative
+            # reset the purchase price to current
     pass
