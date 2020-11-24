@@ -7,4 +7,12 @@
 
 def solution(A):
     # write your code in Python 3.6
+
+    for a in A:
+        # calculate the net benefit after selling with price A
+
+        # if the net price is positive
+        # keep updating the max slice
+
+        # if the net price is negative
     pass
