@@ -46,5 +46,18 @@ def main():
         # Check if index of left_wall should be updated. If so, move left wall to right position
         left_wall_position = right_wall_position
 
+def find_left_wall(...):
+    pass
+
+def find_left_wall(...):
+    pass
+
+def water_can_be_filled_at_this_height(....):
+    pass
+
+def calculate_water_blocks(...):
+    pass
+
+
 if __name__ == "__main__":
     main()
