@@ -25,7 +25,7 @@ def solution(A):
         integer = A[i]
         # if element doesn't exist in dictionary, then initialize to 0
         if integer not in count:
-            count[integer] = 0
+            count[integer] = 1
         else:
             # if element does exist, then incrememt count by 1
             count[integer] += 1
