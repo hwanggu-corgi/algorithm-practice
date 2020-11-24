@@ -8,6 +8,10 @@ def solution(A):
 
     maximum_sum = sum_ending = 0
 
-    # compute sum ending
+    for a in A:
+        # compute sum ending
+        sum_ending = max(0, sum_ending + a)
+        maximum_sum = max(maximum_sum, sum_ending)
 
+        # update su
     return maximum_sum
