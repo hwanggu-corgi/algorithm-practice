@@ -36,11 +36,14 @@ def main():
 
         j += 1
 
-def get_height(...):
-    pass
+def get_left_column(current_height, columns, N):
+    i = 0
+    while i < N:
+        if current_height <= columns[i][1]:
+            return i
 
-def get_left_column(...):
-    pass
+        i += 1
+
 
 def calculate_blocks_between_columns(...):
     pass
