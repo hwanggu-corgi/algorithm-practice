@@ -6,18 +6,29 @@
 
 def main():
     # get input
+    columns_list = []
+    N = int(input())
+
+    for i in range(N):
+        column = [int(x) for x in input().split()]
+        columns_list.add(column)
+
 
     # sort columns by position on x-axis
 
-    # starting at height h at position x, find the furthest located, valid colum
 
-    # while height is less than minimum of two
+    # starting at height h at position x, find the furthest located, valid column
+    # for each column in array
+    while i < N:
+        # while height is less than minimum of two
 
-        # evaluate number of blocks between two columns (including columns)
+            # evaluate number of blocks between two columns (including columns)
 
-        # add to area
+            # add to area
 
-        # move height by 1
+            # move height by 1
+
+
 
 
 if __name__ == "__main__":
