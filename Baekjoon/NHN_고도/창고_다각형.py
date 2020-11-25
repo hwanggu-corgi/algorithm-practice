@@ -45,6 +45,15 @@ def get_left_column(current_height, columns, N):
         i += 1
 
 
+def get_right_column(current_height, columns, N):
+    i = N - 1
+    while i >= 0:
+        if current_height <= columns[i][1]:
+            return i
+
+        i -= 1
+
+
 def calculate_blocks_between_columns(...):
     pass
 
