@@ -17,19 +17,33 @@ def main():
     # sort columns by position on x-axis
     columns.sort(key= lambda c: c[0])
 
+    # get height
+    HEIGHT = get_height(...)
+
     # starting at height h at position x, find the furthest located, valid column
     # for each column in array
+    j = 0
     while j < HEIGHT:
         # at height j, find the furthest located two columns
-        while ...:
-            # evaluate number of blocks between two columns (including columns)
+        index_left_column = get_left_column(...)
+        index_right_column = get_right_column(...)
 
-            # add to area
+        # calculate number of blocks between them
+        blocks = calculate_blocks_between_columns(...)
 
-            # move height by 1
-            height += 1
+        # add to total
+        total_blocks += blocks
 
+        j += 1
 
+def get_height(...):
+    pass
+
+def get_left_column(...):
+    pass
+
+def calculate_blocks_between_columns(...):
+    pass
 
 if __name__ == "__main__":
     print(main())
