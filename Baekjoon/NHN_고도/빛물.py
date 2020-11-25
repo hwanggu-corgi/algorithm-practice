@@ -23,14 +23,11 @@ def main():
     while j < HEIGHT:
         current_height = j + 1
         i_a = get_index_left_wall(wall_heights, current_height, WIDTH)
-        print("--------")
-        print("i_a {}".format(i_a))
         i_b = i_a + 1
 
         while i_a < WIDTH:
             if is_a_wall(i_b, wall_heights, current_height, WIDTH):
-                print("i_b {}".format(i_b))
-                water_blocks = calculate_water_blocks(i_a, i_b)
+                water_blocks = calculate_water_blocks(i_a, i_b, WIDTH)
                 total_water_blocks += water_blocks
                 i_a = i_b
             i_b += 1
@@ -58,7 +55,10 @@ def is_a_wall(index_width, wall_heights, current_height, width):
     return False
 
 
-def calculate_water_blocks(index_left, index_right):
+def calculate_water_blocks(index_left, index_right, width):
+    if index_right >= width:
+        return 0
+
     return index_right - index_left - 1
 
 
