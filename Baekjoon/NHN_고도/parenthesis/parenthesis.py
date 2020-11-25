@@ -33,7 +33,6 @@ def is_error_in_expression(expression):
     expression.replace("(", "")
     expression.replace(")", "")
 
-    expression = expression.split()
     N = len(expression)
 
     i = 1
@@ -70,12 +69,25 @@ def is_error_in_parenthesis(expression):
             left_brackets.append(character)
 
         if character == ")":
-            left_bracket = left_brackets.pop()
-            if left_bracket == "":
+            if len(left_bracket) == 0:
                 return True
+            left_brackets.pop()
 
 
     # if parenthesis is not surrounded by expression properly return error
+    i = 1
+    while i < N:
+        if ((not (expression[i-1] == "(" and expression[i] == "(")) and
+            (not (expression[i-1] == "(" and expression[i] == ")")) and
+            (not (expression[i-1] == "(" and expression[i].isalpha()))):
+
+            return True
+
+        if ((not (expression[i] == ")" and expression[i-1] == ")")) and
+            (not (expression[i] == ")" and expression[i-1] == "(")) and
+            (not (expression[i] == ")" and expression[i-1].isalpha()))):
+
+            return True
 
     return False
 
