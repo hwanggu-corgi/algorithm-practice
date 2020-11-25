@@ -19,15 +19,15 @@ def main():
 
     # starting at height h at position x, find the furthest located, valid column
     # for each column in array
-    while i < N:
-        # while height is less than minimum of two
-
+    while j < HEIGHT:
+        # at height j, find the furthest located two columns
+        while ...:
             # evaluate number of blocks between two columns (including columns)
 
             # add to area
 
             # move height by 1
-
+            height += 1
 
 
 
