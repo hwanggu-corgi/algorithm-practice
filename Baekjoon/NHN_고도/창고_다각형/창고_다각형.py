@@ -20,7 +20,7 @@ def main():
 
     # get height
     HEIGHT = max(columns_list, key= lambda e: e[1])[1]
-
+    print("Height {}".format(HEIGHT))
     # starting at height h at position x, find the furthest located, valid column
     # for each column in array
     j = 0
@@ -28,10 +28,12 @@ def main():
         # at height j, find the furthest located two columns
         index_left_column = get_left_column(j, columns_list, N)
         index_right_column = get_right_column(j, columns_list, N)
-
+        print("Index Left Column: {}".format(index_left_column))
+        print("Index Right Column: {}".format(index_right_column))
         # calculate number of blocks between them
         blocks = calculate_blocks_between_columns(index_left_column, index_right_column)
-
+        print("Blocks: {}".format(blocks))
+        print("==============")
         # add to total
         total_blocks += blocks
 
@@ -43,7 +45,7 @@ def get_left_column(current_height, columns_list, N):
     i = 0
     while i < N:
         if current_height <= columns_list[i][1]:
-            return i
+            return columns_list[i][0]
 
         i += 1
 
@@ -52,7 +54,7 @@ def get_right_column(current_height, columns_list, N):
     i = N - 1
     while i >= 0:
         if current_height <= columns_list[i][1]:
-            return i
+            return columns_list[i][0]
 
         i -= 1
 
