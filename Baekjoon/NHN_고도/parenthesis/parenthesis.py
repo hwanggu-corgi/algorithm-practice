@@ -63,8 +63,21 @@ def is_error_in_expression(expression):
 
 def is_error_in_parenthesis(expression):
     # if parenthesis is not balanced, return error
+    left_brackets = []
+
+    for character in expression:
+        if character == "(":
+            left_brackets.append(character)
+
+        if character == ")":
+            left_bracket = left_brackets.pop()
+            if left_bracket == "":
+                return True
+
 
     # if parenthesis is not surrounded by expression properly return error
+
+    return False
 
 def is_proper(expression):
     # if proper expression is contained in
