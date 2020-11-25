@@ -9,13 +9,13 @@ def main():
     columns_list = []
     N = int(input())
 
+
     for i in range(N):
         column = [int(x) for x in input().split()]
         columns_list.add(column)
 
-
     # sort columns by position on x-axis
-
+    columns.sort(key= lambda c: c[0])
 
     # starting at height h at position x, find the furthest located, valid column
     # for each column in array
