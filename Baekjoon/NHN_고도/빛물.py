@@ -24,19 +24,32 @@ def main():
         i_left_wall = i_right_wall = 0
 
         i_left_wall = get_left_wall(...)
-        i_right_wall = i_left_wall + 1
+        i = i_left_wall + 1
 
         while i_left_wall < WIDTH:
-            if is_a_wall(i_right_wall, wall_heights):
+            if is_a_wall(i, current_height, wall_heights, WIDTH):
                 water_blocks = calculate_water_blocks(...)
                 total_water_blocks += water_blocks
                 i_left_wall = i_right_wall
-            i_right_wall += 1
+            i += 1
 
         j += 1
 
+    return total_water_blocks
+
+def get_left_wall(wall_heights, current_height, width):
+    i = 0
+    while i < width:
+        if current_height <= wall_heights[i]:
+            break
+        i += 1
+
+    return i
+
 def is_a_wall(...):
-    pass
+
+
+def calculate_water_blocks(...):
 
 
 if __name__ == "__main__":
