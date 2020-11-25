@@ -15,16 +15,24 @@
 #           - print if not proper
 
 def main():
+    # get input
+    expression = input().split()
     # check for error
-    if ...:
+    if is_error(expression):
         return "error"
     # check for parenthesis
-    if ...:
+    if is_proper(expression):
         return "proper"
 
     return "improper"
 
+def is_error(expression):
+    # is error when first and last element are not variables
+    # is error when expression between variable is not an expression (+, -, *, /, and %)
+    pass
 
+def is_proper(expression):
+    pass
 
 if __name__ == "__main__":
     print(main())
