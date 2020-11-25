@@ -17,19 +17,26 @@ def main():
     WIDTH = dimensions[1]
     total_water_blocks = 0
 
-    i_left_wall = j = 0
-    i_right_wall = 1
+    j = 0
 
     # For each wall_height (가로)
     while j < HEIGHT:
+        i_left_wall = i_right_wall = 0
+
+        i_left_wall = get_left_wall(...)
+        i_right_wall = i_left_wall + 1
+
         while i_left_wall < WIDTH:
             if is_a_wall(i_right_wall, wall_heights):
+                water_blocks = calculate_water_blocks(...)
+                total_water_blocks += water_blocks
                 i_left_wall = i_right_wall
-                i_right_wall += 1
-            else:
-                i_right_wall += 1
+            i_right_wall += 1
 
         j += 1
+
+def is_a_wall(...):
+    pass
 
 
 if __name__ == "__main__":
