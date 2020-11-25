@@ -27,12 +27,24 @@ def main():
     return "improper"
 
 def is_error(expression):
+    # is error when number of characters in expression is less than 3
+    if len(expression) < 3:
+        return False
     # is error when first and last element are not variables
+    if not expression[0].isalpha() or not expression[-1].isalpha():
+        return False
     # is error when expression between variable is not an expression (+, -, *, /, and %)
-    pass
+    for character in expression:
+
+    # is error when element after ( is not ( or a variable
+    # is error when element before ) is not ) or a variable
+
+    return True
 
 def is_proper(expression):
-    pass
+    # if proper expression is contained in
+    # is not proper when
+    return True
 
 if __name__ == "__main__":
     print(main())
