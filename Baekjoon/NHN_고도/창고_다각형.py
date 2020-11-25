@@ -18,7 +18,7 @@ def main():
     columns.sort(key= lambda c: c[0])
 
     # get height
-    HEIGHT = get_height(...)
+    HEIGHT = max(columns, key= lambda e: e[1])
 
     # starting at height h at position x, find the furthest located, valid column
     # for each column in array
