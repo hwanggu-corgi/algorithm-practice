@@ -16,9 +16,11 @@
 
 def main():
     # get input
-    expression = input().split()
+    expression = input()
     # check for error
-    if is_error(expression):
+    if is_error_in_expression(expression):
+        return "error"
+    if is_error_in_parenthesis(expression):
         return "error"
     # check for parenthesis
     if is_proper(expression):
@@ -26,29 +28,40 @@ def main():
 
     return "improper"
 
-def is_error(expression):
+def is_error_in_expression(expression):
+    # strip out parenthesis
+    expression.replace("(", "")
+    expression.replace(")", "")
+
+    expression = expression.split()
     N = len(expression)
 
-    i =1
+    i = 1
     while i < N:
-        # is error when first and last element are not variables
-        if i == 1 or i == (N-1):
+        # is error when first and last element are not variables or parenthesis
+        if i == 1:
             if not expression[i-1].isalpha():
                 return False
 
-            if expression[i] not in ["+", "-", "*", "/", "%"]:
-                return False
-
-        if i != 0 and i != (N-1):
-            if
-        # is error when expression between variable is not an expression (+, -, *, /, and %)
-
         # is error when element after ( is not ( or a variable
         # is error when element before ) is not ) or a variable
+        elif i != 0 and i != (N-1):
+            if ((expression[i] is in ["+", "-", "*", "/"]) and
+                (not (expression[i-1].isalpha() and expression[i+1].isalpha()))):
+
+                return False
+
+        # is error when first and last element are not variables or parenthesis
+        # i == (N-1)
+        else:
+            if not expression[i-1].isalpha():
+                return False
 
         i += 1
 
     return True
+
+def is_error_in_expression(expression):
 
 def is_proper(expression):
     # if proper expression is contained in
