@@ -38,20 +38,20 @@ def is_error_in_expression(expression):
 
     i = 1
     while i < N:
-        # is error when first and last element are not variables or parenthesis
+        # is error when first element is not a variable
         if i == 1:
             if not expression[i-1].isalpha():
                 return False
 
-        # is error when element after ( is not ( or a variable
-        # is error when element before ) is not ) or a variable
+        # is error when element after "+", "-", "*", "/" is not a variable
+        # is error when element before "+", "-", "*", "/" is not a variable
         elif i != 0 and i != (N-1):
             if ((expression[i] is in ["+", "-", "*", "/"]) and
                 (not (expression[i-1].isalpha() and expression[i+1].isalpha()))):
 
                 return False
 
-        # is error when first and last element are not variables or parenthesis
+        # is error when last element is not a variable
         # i == (N-1)
         else:
             if not expression[i-1].isalpha():
@@ -61,7 +61,10 @@ def is_error_in_expression(expression):
 
     return True
 
-def is_error_in_expression(expression):
+def is_error_in_parenthesis(expression):
+    # if parenthesis is not balanced, return error
+
+    # if parenthesis is not surrounded by expression properly return error
 
 def is_proper(expression):
     # if proper expression is contained in
