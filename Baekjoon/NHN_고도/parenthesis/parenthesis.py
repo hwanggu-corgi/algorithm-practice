@@ -15,6 +15,15 @@
 #           - print if not proper
 
 def main():
+    # check for error
+    if ...:
+        return "error"
+    # check for parenthesis
+    if ...:
+        return "proper"
+
+    return "improper"
+
 
 
 if __name__ == "__main__":
