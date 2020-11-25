@@ -7,55 +7,58 @@
 def main():
     # get input
     columns_list = []
+    total_blocks = 0
     N = int(input())
 
 
     for i in range(N):
         column = [int(x) for x in input().split()]
-        columns_list.add(column)
+        columns_list.append(column)
 
     # sort columns by position on x-axis
-    columns.sort(key= lambda c: c[0])
+    columns_list.sort(key= lambda c: c[0])
 
     # get height
-    HEIGHT = max(columns, key= lambda e: e[1])
+    HEIGHT = max(columns_list, key= lambda e: e[1])[1]
 
     # starting at height h at position x, find the furthest located, valid column
     # for each column in array
     j = 0
     while j < HEIGHT:
         # at height j, find the furthest located two columns
-        index_left_column = get_left_column(...)
-        index_right_column = get_right_column(...)
+        index_left_column = get_left_column(j, columns_list, N)
+        index_right_column = get_right_column(j, columns_list, N)
 
         # calculate number of blocks between them
-        blocks = calculate_blocks_between_columns(...)
+        blocks = calculate_blocks_between_columns(index_left_column, index_right_column)
 
         # add to total
         total_blocks += blocks
 
         j += 1
 
-def get_left_column(current_height, columns, N):
+    return total_blocks
+
+def get_left_column(current_height, columns_list, N):
     i = 0
     while i < N:
-        if current_height <= columns[i][1]:
+        if current_height <= columns_list[i][1]:
             return i
 
         i += 1
 
 
-def get_right_column(current_height, columns, N):
+def get_right_column(current_height, columns_list, N):
     i = N - 1
     while i >= 0:
-        if current_height <= columns[i][1]:
+        if current_height <= columns_list[i][1]:
             return i
 
         i -= 1
 
 
-def calculate_blocks_between_columns(...):
-    pass
+def calculate_blocks_between_columns(index_left_column, index_right_column):
+    return (index_right_column - index_left_column) + 1
 
 if __name__ == "__main__":
     print(main())
