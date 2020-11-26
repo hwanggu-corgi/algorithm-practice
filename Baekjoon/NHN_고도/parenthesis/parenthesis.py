@@ -20,11 +20,10 @@ def main():
     expression = input()
     expression = expression.replace(" ", "")
     # check for error
-    print(expression)
     if is_error_in_expression(expression):
-        return "error expression"
+        return "error"
     if is_error_in_parenthesis(expression):
-        return "error parenthesis"
+        return "error"
     # check for parenthesis
     if is_proper(expression):
         return "proper"
@@ -38,10 +37,13 @@ def is_error_in_expression(expression):
 
     N = len(expression)
 
-    if N == 1 and expression[0].isalpha():
-        return False
+    if N == 0:
+        return True
 
-    if N < 3:
+    if N == 1 and not expression.isalpha():
+        return True
+
+    if N == 2:
         return True
 
     # is error when first or last element is not a variable
@@ -110,7 +112,10 @@ def _is_proper(expression):
     if expression == "a+a":
         return True
 
-    if N < 3:
+    if N == 1 and expression.isalpha():
+        return True
+
+    if N == 2:
         return False
 
     index_left_bracket = find_index_left_bracket(expression)
