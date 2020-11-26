@@ -101,9 +101,9 @@ def is_proper(expression):
     # until the index for left bracket and right bracket cross
     while len(expression) != 0:
         # find location of left brackets
-            # find location of right brackets
-        index_left_bracket = find_index_left_bracket(...)
-        index_right_bracket = find_index_right_bracket(...)
+        # find location of right brackets
+        index_left_bracket = re.search(r'^\(', expression).start()
+        index_right_bracket = re.search(r'\)$', expression).end()
 
         # set all expressions between left bracket and right bracket to b
         # check if expression is in form
@@ -113,6 +113,8 @@ def is_proper(expression):
         if len(expression) == 1:
             return False
     return True
+
+f
 
 if __name__ == "__main__":
     print(main())
