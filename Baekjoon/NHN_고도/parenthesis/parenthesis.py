@@ -18,6 +18,7 @@ import re
 def main():
     # get input
     expression = input()
+    expression = expression.replace(" ", "")
     # check for error
     if is_error_in_expression(expression):
         return "error expression"
@@ -31,9 +32,8 @@ def main():
 
 def is_error_in_expression(expression):
     # strip out parenthesis
-    expression.replace("(", "")
-    expression.replace(")", "")
-    expression.replace(" ", "")
+    expression = expression.replace("(", "")
+    expression = expression.replace(")", "")
 
     N = len(expression)
 
@@ -50,7 +50,6 @@ def is_error_in_expression(expression):
         if ((expression[i] in ["+", "-", "*", "/", "%"]) and
             (not (expression[i-1].isalpha() and expression[i+1].isalpha()))):
             return True
-
         i += 1
 
     return False
@@ -65,7 +64,7 @@ def is_error_in_parenthesis(expression):
             left_brackets.append(character)
 
         if character == ")":
-            if len(left_bracket) == 0:
+            if len(left_brackets) == 0:
                 return True
             left_brackets.pop()
 
@@ -90,17 +89,21 @@ def is_proper(expression):
     expression = re.sub(r'\w', 'a', expression)
     # set all expressions as +
     expression = re.sub(r'[\+\-\/\*\%]', '+', expression)
-    # remove all empty characters
-    expression = expression.replace(" ", "")
 
     return _is_proper(expression)
 
 def _is_proper(expression):
      # until the index for left bracket and right bracket cross
+    N = len(expression)
+
+    print(expression)
+
     if expression == "a+a":
+        print("1")
         return True
 
-    if len(expression) < 3:
+    if N < 3:
+        print("2")
         return False
 
     index_left_bracket = find_index_left_bracket(expression)
@@ -108,17 +111,22 @@ def _is_proper(expression):
 
     if ((index_left_bracket >= N and index_right_bracket < 0) and
         len(expression) != 0):
+        print("3")
         return False
 
     # set all expressions between left bracket and right bracket to b
-    test = expression[:index_left_bracket - 1] + "b" + expression[index_right_bracket + 1:]
-
+    test = expression[:index_left_bracket] + "b" + expression[index_right_bracket + 1:]
     # check if expression is in form
-    if test != "b+a":
+    if test != "b+a" or test != "a+b":
+        print("4")
         return False
 
     # take out all outer expressions including parenthesis at index_left_bracket and index_right_bracket
-    expression = expression[index_right_bracket + 1: index_right_bracket - 1]
+
+    print("index left bracket {}".format(index_left_bracket))
+    print("index right bracket {}".format(index_right_bracket))
+
+    expression = expression[index_left_bracket + 1: index_right_bracket]
 
     return _is_proper(expression)
 
@@ -137,7 +145,7 @@ def find_index_right_bracket(expression):
     i = N - 1
 
     while i >= 0:
-        if expression[i] == "(":
+        if expression[i] == ")":
             return i
         i -= 1
 
