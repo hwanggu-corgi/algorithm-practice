@@ -14,7 +14,7 @@ def solution(progresses, speeds):
         update_progress(progresses, speeds)
         # dequeue all progress over or equal 100 and increment count
         while True:
-            value = dequeue(progresses)
+            value = dequeue(progresses, speeds)
             if value is not None:
                 count += 1
             else:
@@ -32,17 +32,20 @@ def update_progress(progresses, speeds):
         progresses[i] += speeds[i]
         i += 1
 
-def dequeue(progresses):
+def dequeue(progresses, speeds):
     if  len(progresses) == 0:
         return None
 
     if progresses[0] < 100:
         return None
 
+    speeds.pop(0)
     return progresses.pop(0)
 
 if __name__ == "__main__":
+    print(solution([93, 30, 55], [0, 30, 5]))
     print(solution([93, 30, 55], [1, 30, 5]))
     print(solution([95, 90, 99, 99, 80, 99], [1, 1, 1, 1, 1, 1]))
     print(solution([], []))
     print(solution([1], [1]))
+    print(solution([1,1,1,1,0], [1,1,1,1,1]))
