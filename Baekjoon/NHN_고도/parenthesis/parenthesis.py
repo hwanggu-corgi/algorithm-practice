@@ -95,13 +95,23 @@ def is_proper(expression):
     # set all letters as a
     # set all expressions as +
 
+    if expression[0] == "(" and expression[-1] == ")":
+        return False
+
     # until the index for left bracket and right bracket cross
-    while index_left_bracket < index_right_bracket
+    while len(expression) != 0:
         # find location of left brackets
-        # find location of right brackets
+            # find location of right brackets
+        index_left_bracket = find_index_left_bracket(...)
+        index_right_bracket = find_index_right_bracket(...)
+
         # set all expressions between left bracket and right bracket to b
         # check if expression is in form
 
+        # take out all outer expressions including parenthesis at index_left_bracket and index_right_bracket
+        expression = expression[index_right_bracket + 1: index_right_bracket - 1]
+        if len(expression) == 1:
+            return False
     return True
 
 if __name__ == "__main__":
