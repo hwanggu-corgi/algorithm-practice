@@ -23,7 +23,7 @@ def solution(answers):
         if correct_answer == person_2_ans:
             correct_count[1][1] += 1
 
-        # get person 2's answer for ith question
+        # get person 3's answer for ith question
         person_3_ans = person_3_answers[i % 10]
         # if is correct, add to count
         if correct_answer == person_3_ans:
@@ -32,6 +32,14 @@ def solution(answers):
         i += 1
 
     # if all is correct, add number to array
-    correct_count.sort(key=lambda e: e[1])
+    correct_count = sorted(correct_count, key=lambda e: e[1])
+    highest = correct_count[2][1]
+
+    for (person, count) in correct_count:
+        if count == 0:
+            continue
+
+        if count == highest:
+            answer.append(person)
 
     return answer
