@@ -8,4 +8,26 @@
 
 def solution(progresses, speeds):
     answer = []
+    while len(progresses) > 0:
+        # on each turn, update progress by speed mentioned in speeds
+        count = 0
+        update_progress(progresses, speeds)
+        # dequeue all progress over or equal 100 and increment count
+        while True
+            value = dequeue(progresses)
+            if value is not None:
+                count += 1
+
+            answer.append(count)
+            break
+
     return answer
+
+def dequeue(progresses):
+    if  len(progresses) == 0:
+        return None
+
+    if progresses[0] < 100:
+        return None
+
+    return progresses.pop(0)
