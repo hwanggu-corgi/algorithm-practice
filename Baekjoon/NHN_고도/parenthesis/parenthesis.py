@@ -100,7 +100,7 @@ def is_proper(expression):
     expression = expression.replace(" ", "")
 
     # until the index for left bracket and right bracket cross
-    while len(expression) != 0:
+    while expression != "a+a":
         # find location of left brackets
         # find location of right brackets
         index_left_bracket = find_index_left_bracket(expression)
@@ -114,11 +114,12 @@ def is_proper(expression):
         test = [:index_left_bracket - 1] + "b" + [index_right_bracket + 1:]
 
         # check if expression is in form
-        if test
+        if test != "b+a":
+            return False
 
         # take out all outer expressions including parenthesis at index_left_bracket and index_right_bracket
         expression = expression[index_right_bracket + 1: index_right_bracket - 1]
-        if len(expression) == 1:
+        if len(expression) == 1 or len(expression) == 2 or:
             return False
     return True
 
