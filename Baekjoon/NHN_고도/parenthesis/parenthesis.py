@@ -20,10 +20,11 @@ def main():
     expression = input()
     expression = expression.replace(" ", "")
     # check for error
+    print(expression)
     if is_error_in_expression(expression):
-        return "error"
+        return "error expression"
     if is_error_in_parenthesis(expression):
-        return "error"
+        return "error parenthesis"
     # check for parenthesis
     if is_proper(expression):
         return "proper"
@@ -36,6 +37,9 @@ def is_error_in_expression(expression):
     expression = expression.replace(")", "")
 
     N = len(expression)
+
+    if N == 1 and expression[0].isalpha():
+        return False
 
     if N < 3:
         return True
