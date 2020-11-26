@@ -99,8 +99,13 @@ def is_proper(expression):
     # remove all empty characters
     expression = expression.replace(" ", "")
 
-    # until the index for left bracket and right bracket cross
-    while expression != "a+a":
+    res = _is_proper(expression)
+
+    return True
+
+def _is_proper(expression):
+     # until the index for left bracket and right bracket cross
+    while True:
         # find location of left brackets
         # find location of right brackets
         index_left_bracket = find_index_left_bracket(expression)
@@ -121,7 +126,6 @@ def is_proper(expression):
         expression = expression[index_right_bracket + 1: index_right_bracket - 1]
         if len(expression) == 1 or len(expression) == 2 or:
             return False
-    return True
 
 def find_index_left_bracket(expression):
     i = 0
