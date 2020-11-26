@@ -13,15 +13,16 @@
 #              of parentheses needed for ICPC
 #       - improper.
 #           - print if not proper
+import re
 
 def main():
     # get input
     expression = input()
     # check for error
     if is_error_in_expression(expression):
-        return "error"
+        return "error expression"
     if is_error_in_parenthesis(expression):
-        return "error"
+        return "error parenthesis"
     # check for parenthesis
     if is_proper(expression):
         return "proper"
@@ -32,32 +33,33 @@ def is_error_in_expression(expression):
     # strip out parenthesis
     expression.replace("(", "")
     expression.replace(")", "")
+    expression.replace(" ", "")
 
     N = len(expression)
 
-    i = 0
-    while i < N:
-        # is error when first or last element is not a variable
-        if i == 0 or i == (N-1):
-            if not expression[i].isalpha():
-                return False
+    if N < 3:
+        return True
 
-        # is error when element after "+", "-", "*", "/" is not a variable
-        # is error when element before "+", "-", "*", "/" is not a variable
-        elif i != 0 and i != (N-1):
-            if ((expression[i] in ["+", "-", "*", "/"]) and
-                (not (expression[i-1].isalpha() and expression[i+1].isalpha()))):
+    # is error when first or last element is not a variable
+    if not expression[0].isalpha() or not expression[-1].isalpha():
+        return True
 
-                return False
+    i = 1
+    while i < (N-1):
+        # is error when element before and after "+", "-", "*", "/", "%" is not a variable
+        if ((expression[i] in ["+", "-", "*", "/", "%"]) and
+            (not (expression[i-1].isalpha() and expression[i+1].isalpha()))):
+            return True
 
         i += 1
 
-    return True
+    return False
 
 def is_error_in_parenthesis(expression):
-    # if parenthesis is not balanced, return error
+    N = len(expression)
     left_brackets = []
 
+    # if parenthesis is not balanced, return error
     for character in expression:
         if character == "(":
             left_brackets.append(character)
@@ -71,13 +73,15 @@ def is_error_in_parenthesis(expression):
     # if parenthesis is not surrounded by expression properly return error
     i = 1
     while i < N:
-        if ((expression[i-1] == "(" and expression[i] not in ["(", ")"]) and
+        if ((expression[i-1] == "(" and expression[i] != "(") and
             (expression[i-1] == "(" and not expression[i].isalpha())):
             return True
 
-        if ((expression[i] == ")" and expression[i-1] not in ["(", ")"]) and
+        if ((expression[i] == ")" and expression[i-1] != ")") and
             (expression[i] == ")" and not expression[i-1].isalpha())):
             return True
+
+        i += 1
 
     return False
 
