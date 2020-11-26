@@ -7,9 +7,18 @@
 #   - 모든 음식의 스코빌 지수를 K 이상으로 만들 수 없는 경우에는 -1을 return 합니다.
 
 def solution(scoville, K):
+    N = scoville
     answer = 0
 
+    i = 1
     # for each scoville in food
-    # check if its below threshold
+    while i < N:
+        # if food at i is below threshold, mix food
+        if scoville[i-1] < K:
+            # update list with new mixed food (take out 2, add new mixed one)
+            # add mixed count
+
+        # update index or break
+        i += 1
 
     return answer
