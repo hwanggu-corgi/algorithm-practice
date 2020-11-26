@@ -35,25 +35,19 @@ def is_error_in_expression(expression):
 
     N = len(expression)
 
-    i = 1
+    i = 0
     while i < N:
-        # is error when first element is not a variable
-        if i == 1:
-            if not expression[i-1].isalpha():
+        # is error when first or last element is not a variable
+        if i == 0 or i == (N-1):
+            if not expression[i].isalpha():
                 return False
 
         # is error when element after "+", "-", "*", "/" is not a variable
         # is error when element before "+", "-", "*", "/" is not a variable
         elif i != 0 and i != (N-1):
-            if ((expression[i] is in ["+", "-", "*", "/"]) and
+            if ((expression[i] in ["+", "-", "*", "/"]) and
                 (not (expression[i-1].isalpha() and expression[i+1].isalpha()))):
 
-                return False
-
-        # is error when last element is not a variable
-        # i == (N-1)
-        else:
-            if not expression[i-1].isalpha():
                 return False
 
         i += 1
@@ -77,16 +71,12 @@ def is_error_in_parenthesis(expression):
     # if parenthesis is not surrounded by expression properly return error
     i = 1
     while i < N:
-        if ((not (expression[i-1] == "(" and expression[i] == "(")) and
-            (not (expression[i-1] == "(" and expression[i] == ")")) and
-            (not (expression[i-1] == "(" and expression[i].isalpha()))):
-
+        if ((expression[i-1] == "(" and expression[i] not in ["(", ")"]) and
+            (expression[i-1] == "(" and not expression[i].isalpha())):
             return True
 
-        if ((not (expression[i] == ")" and expression[i-1] == ")")) and
-            (not (expression[i] == ")" and expression[i-1] == "(")) and
-            (not (expression[i] == ")" and expression[i-1].isalpha()))):
-
+        if ((expression[i] == ")" and expression[i-1] not in ["(", ")"]) and
+            (expression[i] == ")" and not expression[i-1].isalpha())):
             return True
 
     return False
@@ -99,33 +89,34 @@ def is_proper(expression):
     # remove all empty characters
     expression = expression.replace(" ", "")
 
-    res = _is_proper(expression)
-
-    return True
+    return _is_proper(expression)
 
 def _is_proper(expression):
      # until the index for left bracket and right bracket cross
-    while True:
-        # find location of left brackets
-        # find location of right brackets
-        index_left_bracket = find_index_left_bracket(expression)
-        index_right_bracket = find_index_right_bracket(expression)
+    if expression == "a+a":
+        return True
 
-        if ((index_left_bracket >= N and index_right_bracket < 0) and
-            len(expression) != 0):
-            return False
+    if len(expression) < 3:
+        return False
 
-        # set all expressions between left bracket and right bracket to b
-        test = [:index_left_bracket - 1] + "b" + [index_right_bracket + 1:]
+    index_left_bracket = find_index_left_bracket(expression)
+    index_right_bracket = find_index_right_bracket(expression)
 
-        # check if expression is in form
-        if test != "b+a":
-            return False
+    if ((index_left_bracket >= N and index_right_bracket < 0) and
+        len(expression) != 0):
+        return False
 
-        # take out all outer expressions including parenthesis at index_left_bracket and index_right_bracket
-        expression = expression[index_right_bracket + 1: index_right_bracket - 1]
-        if len(expression) == 1 or len(expression) == 2 or:
-            return False
+    # set all expressions between left bracket and right bracket to b
+    test = expression[:index_left_bracket - 1] + "b" + expression[index_right_bracket + 1:]
+
+    # check if expression is in form
+    if test != "b+a":
+        return False
+
+    # take out all outer expressions including parenthesis at index_left_bracket and index_right_bracket
+    expression = expression[index_right_bracket + 1: index_right_bracket - 1]
+
+    return _is_proper(expression)
 
 def find_index_left_bracket(expression):
     i = 0
@@ -147,7 +138,6 @@ def find_index_right_bracket(expression):
         i -= 1
 
     return i
-
 
 if __name__ == "__main__":
     print(main())
