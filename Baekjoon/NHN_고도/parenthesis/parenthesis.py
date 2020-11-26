@@ -102,8 +102,8 @@ def is_proper(expression):
     while len(expression) != 0:
         # find location of left brackets
         # find location of right brackets
-        index_left_bracket = re.search(r'^\(', expression).start()
-        index_right_bracket = re.search(r'\)$', expression).end()
+        index_left_bracket = find_index_left_bracket(expression)
+        index_right_bracket = find_index_right_bracket(expression)
 
         # set all expressions between left bracket and right bracket to b
         # check if expression is in form
@@ -114,7 +114,27 @@ def is_proper(expression):
             return False
     return True
 
-f
+def find_index_left_bracket(expression):
+    i = 0
+    N = len(expression)
+    while i < N:
+        if expression[i] == "(":
+            return i
+        i += 1
+
+    return i
+
+def find_index_right_bracket(...):
+    N = len(expression)
+    i = N - 1
+
+    while i >= 0:
+        if expression[i] == "(":
+            return i
+        i -= 1
+
+    return i
+
 
 if __name__ == "__main__":
     print(main())
