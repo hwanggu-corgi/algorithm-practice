@@ -9,7 +9,9 @@ def solution(phone_book):
     while i < N:
         j = i +1
         while j < N:
-            if len(phone_book[i]) < len(phone_book[j]) and (phone_book[i] in phone_book[j]):
+            smaller_number = min(phone_book[i], phone_book[j])
+            larger_number = max(phone_book[i], phone_book[j])
+            if smaller_number in larger_number:
                 return False
 
             j += 1
@@ -17,3 +19,10 @@ def solution(phone_book):
 
     answer = True
     return answer
+
+if __name__ == "__main__":
+    print(solution(["111", "2222", "333", "44444"]))
+    print(solution(["111"]))
+    print(solution(["111", "222"]))
+    print(solution(["111", "111222"]))
+    print(solution(["111222", "111"]))
