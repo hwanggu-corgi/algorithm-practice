@@ -21,9 +21,9 @@ def main():
     expression = expression.replace(" ", "")
     # check for error
     if is_error_in_expression(expression):
-        return "error expression"
+        return "error"
     if is_error_in_parenthesis(expression):
-        return "error parenthesis"
+        return "error"
     # check for parenthesis
     if is_proper(expression):
         return "proper"
@@ -50,6 +50,11 @@ def is_error_in_expression(expression):
         if ((expression[i] in ["+", "-", "*", "/", "%"]) and
             (not (expression[i-1].isalpha() and expression[i+1].isalpha()))):
             return True
+
+        if ((expression[i].isalpha() and
+            (not (expression[i-1] in ["+", "-", "*", "/", "%"]) and
+                 (expression[i+1] in ["+", "-", "*", "/", "%"])))):
+            return True
         i += 1
 
     return False
@@ -68,6 +73,8 @@ def is_error_in_parenthesis(expression):
                 return True
             left_brackets.pop()
 
+    if len(left_brackets) != 0:
+        return True
 
     # if parenthesis is not surrounded by expression properly return error
     i = 1
@@ -96,14 +103,10 @@ def _is_proper(expression):
      # until the index for left bracket and right bracket cross
     N = len(expression)
 
-    print(expression)
-
     if expression == "a+a":
-        print("1")
         return True
 
     if N < 3:
-        print("2")
         return False
 
     index_left_bracket = find_index_left_bracket(expression)
@@ -111,20 +114,15 @@ def _is_proper(expression):
 
     if ((index_left_bracket >= N and index_right_bracket < 0) and
         len(expression) != 0):
-        print("3")
         return False
 
     # set all expressions between left bracket and right bracket to b
     test = expression[:index_left_bracket] + "b" + expression[index_right_bracket + 1:]
     # check if expression is in form
-    if test != "b+a" or test != "a+b":
-        print("4")
+    if not (test == "b+a" or test == "a+b"):
         return False
 
     # take out all outer expressions including parenthesis at index_left_bracket and index_right_bracket
-
-    print("index left bracket {}".format(index_left_bracket))
-    print("index right bracket {}".format(index_right_bracket))
 
     expression = expression[index_left_bracket + 1: index_right_bracket]
 
