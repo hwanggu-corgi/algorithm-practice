@@ -31,7 +31,6 @@ def solution(answers):
 
         i += 1
 
-    # if all is correct, add number to array
     correct_count = sorted(correct_count, key=lambda e: e[1])
     highest = correct_count[2][1]
 
