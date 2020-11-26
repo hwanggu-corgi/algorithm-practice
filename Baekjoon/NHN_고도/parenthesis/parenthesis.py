@@ -93,10 +93,11 @@ def is_error_in_parenthesis(expression):
 
 def is_proper(expression):
     # set all letters as a
+    expression = re.sub(r'\w', 'a', expression)
     # set all expressions as +
-
-    if expression[0] == "(" and expression[-1] == ")":
-        return False
+    expression = re.sub(r'[\+\-\/\*\%]', '+', expression)
+    # remove all empty characters
+    expression = expression.replace(" ", "")
 
     # until the index for left bracket and right bracket cross
     while len(expression) != 0:
@@ -105,8 +106,15 @@ def is_proper(expression):
         index_left_bracket = find_index_left_bracket(expression)
         index_right_bracket = find_index_right_bracket(expression)
 
+        if ((index_left_bracket >= N and index_right_bracket < 0) and
+            len(expression) != 0):
+            return False
+
         # set all expressions between left bracket and right bracket to b
+        test = [:index_left_bracket - 1] + "b" + [index_right_bracket + 1:]
+
         # check if expression is in form
+        if test
 
         # take out all outer expressions including parenthesis at index_left_bracket and index_right_bracket
         expression = expression[index_right_bracket + 1: index_right_bracket - 1]
@@ -124,7 +132,7 @@ def find_index_left_bracket(expression):
 
     return i
 
-def find_index_right_bracket(...):
+def find_index_right_bracket(expression):
     N = len(expression)
     i = N - 1
 
