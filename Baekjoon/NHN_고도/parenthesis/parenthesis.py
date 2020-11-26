@@ -92,8 +92,16 @@ def is_error_in_parenthesis(expression):
     return False
 
 def is_proper(expression):
-    # if proper expression is contained in
-    # is not proper when
+    # set all letters as a
+    # set all expressions as +
+
+    # until the index for left bracket and right bracket cross
+    while index_left_bracket < index_right_bracket
+        # find location of left brackets
+        # find location of right brackets
+        # set all expressions between left bracket and right bracket to b
+        # check if expression is in form
+
     return True
 
 if __name__ == "__main__":
