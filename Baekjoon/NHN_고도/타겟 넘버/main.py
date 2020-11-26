@@ -1,14 +1,22 @@
+
+# Goal:
+# - N:  >= 2 and <= 20
+# - numbers[i]: >= 1 and <= 50
+# - target: >= 1 and <= 1000
+
 def solution(numbers, target):
-    N = len(numbers)
-    answer = _solution(1, target, 1, N) + _solution(-1, target, 1, N)
+    answer = 0
+    answer += _solution(numbers[0], target, 1, numbers)
+    answer += _solution(-numbers[0], target, 1, numbers)
+
     return answer
 
-def _solution(value, target, depth, N):
-    if depth == N:
+def _solution(value, target, depth, numbers):
+    if depth == len(numbers) - 1:
         return 1 if value == target else 0
 
-    count_left = _solution(value + 1, target, depth + 1, N)
-    count_right = _solution(value - 1, target, depth + 1, N)
+    count_left = _solution(value + numbers[depth], target, depth + 1, numbers)
+    count_right = _solution(value - numbers[depth], target, depth + 1, numbers)
 
     return count_left + count_right
 
