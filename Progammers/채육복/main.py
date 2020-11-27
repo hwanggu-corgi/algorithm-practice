@@ -18,19 +18,20 @@ def solution(n, lost, reserve):
     lost.sort()
     reserve.sort()
 
-    # if len(lost) == 1 and len(reserve) == 1 return n - len(lost)
-    if N_lost == 1 and N_reserve == 1:
-        return n - 1
-
     i_lost = 0
     i_reserve = 0
+
+
     while i_lost < N_lost and i_reserve < N_reserve:
         if lost[i_lost] < (reserve[i_reserve] - 1):
             i_lost += 1
         elif lost[i_lost] > (reserve[i_reserve] + 1):
             i_reserve += 1
-        else:
+        elif lost[i_lost] == (reserve[i_reserve] - 1) or lost[i_lost] == (reserve[i_reserve] + 1):
             lent_count += 1
+            i_lost += 1
+            i_reserve += 1
+        else:
             i_lost += 1
             i_reserve += 1
 
@@ -41,6 +42,7 @@ def solution(n, lost, reserve):
     return answer
 
 if __name__ == "__main__":
+    print(solution(5, [2,3], [1, 2]))
     print(solution(5, [2,4], [1, 3, 5]))
     print(solution(5, [2,4], [3]))
     print(solution(3, [3], [1]))
