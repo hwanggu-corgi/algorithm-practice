@@ -6,19 +6,28 @@
 # Example
 #  [6, 10, 2]
 #   - {1: [10], 2:[2], 3:[], 4:[], 5:[], 6:[6], 7:[], 8:[], 9:[]}
-#   -
 
 # Place number
 
+from collections import deque
+
 def solution(numbers):
     # convert all to string
-
+    temp = {}
     # sort array
+    numbers.sort()
+    # convert all number to string
+    numbers = [str(x) for x in numbers]
 
     # place numbers in dictionary
-    # if starting digit starts with x, place in has with key x
+    for number in numbers:
+        if number[0] not in temp:
+            temp[number[0]] = deque([number])
+        else:
+            temp[number[0]].append(number)
 
-    # starting from 9 to 0
+    # form largest number in string
+    #   iterate from 9 to 0
 
     answer = ''
     return answer
