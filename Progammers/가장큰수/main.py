@@ -15,18 +15,15 @@ def solution(numbers):
     # convert all to string
     temp = {}
     # sort array
-    numbers.sort()
+
     # convert all number to string
     numbers = [str(x) for x in numbers]
 
     # place numbers in dictionary
 
     # form largest number in string
-    #   iterate from 9 to 0 in temp
-    #   for each list, determine total number of digits that can be formed
-    #   multiply all numbers by the digit
 
-    #
+    # return result
 
 
     answer = ''
