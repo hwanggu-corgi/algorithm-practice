@@ -3,28 +3,22 @@
 #   - numbers의 원소는 0 이상 1,000 이하입니다.
 #   - 정답이 너무 클 수 있으니 문자열로 바꾸어 return 합니다
 
-# Example
-#  [6, 10, 2]
-#   - {0:[], 1: [10], 2:[2], 3:[], 4:[], 5:[], 6:[6], 7:[], 8:[], 9:[]}
-
-# Place number
-
-from collections import deque
-
 def solution(numbers):
-    # convert all to string
-    temp = {}
-    # sort array
-
+    answer = ''
     # convert all number to string
     numbers = [str(x) for x in numbers]
-
-    # place numbers in dictionary
+    # sort array
+    numbers.sort(key=lambda e: e + ((3-len(e)) * e[0]))
 
     # form largest number in string
-
+    i  = len(numbers) - 1
+    while i >= 0:
+        answer += numbers[i]
+        i -= 1
     # return result
 
-
-    answer = ''
     return answer
+
+if __name__ == "__main__":
+    print(solution([6, 10, 2]))
+    print(solution([6]))
