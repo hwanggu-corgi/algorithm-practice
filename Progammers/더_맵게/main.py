@@ -6,32 +6,29 @@
 #   - scoville의 원소는 각각 0 이상 1,000,000 이하입니다.
 #   - 모든 음식의 스코빌 지수를 K 이상으로 만들 수 없는 경우에는 -1을 return 합니다.
 
+import heapq
 
 def solution(scoville, K):
     N = len(scoville)
     answer = 0
 
-    scoville.sort()
+    heapq.heapify(scoville)
 
     i = 1
     # for each scoville in food
     while i < N:
         # if food at i is below threshold, mix food
         if scoville[i-1] < K:
-            new_food_scoville = mix_food(i, scoville)
-            # update list with new mixed food (take out 2, add new mixed one)
-            # add mixed count
-            scoville.pop(0)
-            if new_food_scoville <= K:
-                scoville[0] = new_food_scoville
-            else:
-                scoville.pop(0)
-                scoville.append(new_food_scoville)
+            food_1 = heapq.heappop(scoville)
+            food_2 = heapq.heappop(scoville)
+
+            new_food_scoville = mix_food(food_1, food_2)
+
+            heapq.heappush(scoville, new_food_scoville)
 
             # update N
             N = len(scoville)
             answer += 1
-            scoville.sort()
 
         # update index or break
         if N == 1 and scoville[0] <= K:
@@ -42,9 +39,9 @@ def solution(scoville, K):
 
     return answer
 
-def mix_food(index, scoville):
-    lesser_spicy = min(scoville[index-1], scoville[index])
-    more_spicy = max(scoville[index-1], scoville[index])
+def mix_food(food_1, food_2):
+    lesser_spicy = min(food_1, food_2)
+    more_spicy = max(food_1, food_2)
 
     return lesser_spicy + (more_spicy * 2)
 
