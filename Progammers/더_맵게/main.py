@@ -15,22 +15,17 @@ def solution(scoville, K):
     heapq.heapify(scoville)
 
     i = 1
-    # for each scoville in food
     while i < N:
-        # if food at i is below threshold, mix food
         if scoville[i-1] < K:
             food_1 = heapq.heappop(scoville)
             food_2 = heapq.heappop(scoville)
 
             new_food_scoville = mix_food(food_1, food_2)
-
             heapq.heappush(scoville, new_food_scoville)
 
-            # update N
             N = len(scoville)
             answer += 1
 
-        # update index or break
         if N == 1 and scoville[0] <= K:
             return -1
 
