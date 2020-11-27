@@ -29,28 +29,43 @@
 # time max - 30 minutes (upper bound)
 # time min - 15 minutes (lower bound)
 
-# test: 28 ((30 + 15)/2 -> 27.5) minutes
-#   - 심사관 1: floor(28 / 7) -> 4
-#   - 심시관 2: floor(28 / 10) -> 2
-#   Exact number of people can be analyzed
+# test: 27 ((30 + 15)/2 -> 27) minutes
+#   - 심사관 1: floor(27 / 7) -> 3
+#   - 심시관 2: floor(27 / 10) -> 2
+#   Less number of people can be analyzed
 
 # time max - 28 minutes (upper bound)
-# time min - 15 minutes (lower bound)
+# time min - 27 minutes (lower bound)
 
 # ...
+import math
 
 def solution(n, times):
     answer = 0
-
     # find maximum amount of time required
+    upper_time= max(times) * n
+    lower_time = 0
 
     # while upper_bound and lower_bound are not crossing
+    while lower_time < upper_time:
         # calculate the middle
-        # check if middle satisfies the solution
-        # if middle satisfies the solution, then return result
-        # if less people can be analyzed, then increase lower bound
-        # if more people can be analyzed, then deacrease upper bound
+        number_of_people_analyzed = 0
+        middle = math.ceil((upper_time + lower_time) / 2)
 
+        print(upper_time)
+        print(lower_time)
+
+        for time in times:
+            number_of_people_analyzed += math.floor(middle / time)
+
+        # if less people can be analyzed, then set lower bound to middle
+        if number_of_people_analyzed < n:
+            lower_time = middle + 1
+        else:
+            # if more people can be analyzed, then deacrease upper bound
+            upper_time = middle
+
+    answer = upper_bound
     return answer
 
 if __name__ == "__main__":
