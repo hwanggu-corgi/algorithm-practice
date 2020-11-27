@@ -11,4 +11,7 @@
 
 def solution(n, lost, reserve):
     answer = 0
+
+    # subtract people without gym shirts from total
+    answer = n - len(...)
     return answer
