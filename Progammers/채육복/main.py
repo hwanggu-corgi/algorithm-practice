@@ -20,8 +20,9 @@ def solution(n, lost, reserve):
         return n - 1
 
     # greedy choice: lend ith gym shirt in reserve to ith individual with lost gym shirt
-    i = 0
-    while i < min(N_lost, N_reserve):
+    i_lost = 0
+    i_reserve = 0
+    while i_lost < N_lost and i_reserve < N_reserve:
         lent_count += 1
         i += 1
 
