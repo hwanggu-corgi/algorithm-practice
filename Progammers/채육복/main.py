@@ -12,30 +12,22 @@
 def solution(n, lost, reserve):
     answer = 0
 
-    set_lost = set(lost)
-    set_reserve = set(reserve)
-
+    set_lost = set(lost)-set(reserve)
+    set_reserve = set(reserve)-set(lost)
 
     N_lost = len(lost)
-    N_reserve = len(reserve)
     lent_count = 0
 
-    lost.sort()
-    reserve.sort()
-
-    i_lost = 0
-    i_reserve = 0
-
-
-    while i_lost < N_lost and i_reserve < N_reserve:
-        if lost[i_lost] < (reserve[i_reserve] - 1):
-            i_lost += 1
-        elif lost[i_lost] > (reserve[i_reserve] + 1):
-            i_reserve += 1
-        else
+    i = 0
+    for student_number in set_lost:
+        if (student_number - 1) in set_reserve:
+            set_reserve.remove(student_number - 1)
+            set_lost.remove(student_number)
             lent_count += 1
-            i_lost += 1
-            i_reserve += 1
+        elif (student_number + 1) in set_reserve:
+            set_reserve.remove(student_number + 1)
+            set_lost.remove(student_number)
+            lent_count += 1
 
     person_without_gym_shirts = N_lost - lent_count
 
