@@ -11,6 +11,11 @@
 
 def solution(n, lost, reserve):
     answer = 0
+
+    set_lost = set(lost)
+    set_reserve = set(reserve)
+
+
     N_lost = len(lost)
     N_reserve = len(reserve)
     lent_count = 0
@@ -27,22 +32,18 @@ def solution(n, lost, reserve):
             i_lost += 1
         elif lost[i_lost] > (reserve[i_reserve] + 1):
             i_reserve += 1
-        elif lost[i_lost] == (reserve[i_reserve] - 1) or lost[i_lost] == (reserve[i_reserve] + 1):
+        else
             lent_count += 1
-            i_lost += 1
-            i_reserve += 1
-        else:
             i_lost += 1
             i_reserve += 1
 
     person_without_gym_shirts = N_lost - lent_count
 
-    # subtract people without gym shirts from total to get total participants
     answer = n - person_without_gym_shirts
     return answer
 
 if __name__ == "__main__":
-    print(solution(5, [2,3], [1, 2]))
+    print(solution(5, [2,3], [2, 4]))
     print(solution(5, [2,4], [1, 3, 5]))
     print(solution(5, [2,4], [3]))
     print(solution(3, [3], [1]))
