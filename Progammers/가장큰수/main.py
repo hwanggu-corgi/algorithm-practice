@@ -8,7 +8,7 @@ def solution(numbers):
     # convert all number to string
     numbers = [str(x) for x in numbers]
     # sort array
-    numbers.sort(key=lambda e: e + ((5-len(e)) * e[0]))
+    numbers.sort(key=lambda e: e + ((4-len(e)) * e[0]))
 
     # form largest number in string
     i  = len(numbers) - 1
@@ -20,6 +20,10 @@ def solution(numbers):
     return str(int(answer))
 
 if __name__ == "__main__":
+    print(solution([40,403])) #10110
+    print(solution([10,101])) #10110
+    print(solution([1,11, 111, 1111])) #1111111111
+    print(solution([0,0, 0, 0])) #0
     print(solution([121, 12]))
     print(solution([0, 0, 1, 10, 1000]))
     print(solution([1, 10, 1000]))
