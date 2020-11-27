@@ -10,7 +10,7 @@ def solution(scoville, K):
     N = len(scoville)
     answer = 0
 
-    scoville = scoville.sort()
+    scoville.sort()
 
     i = 1
     # for each scoville in food
@@ -20,12 +20,14 @@ def solution(scoville, K):
             new_food_scoville = mix_food(i, scoville)
             # update list with new mixed food (take out 2, add new mixed one)
             # add mixed count
-            scoville.pop(i)
-            scoville.pop(i-1)
-            scoville.append(new_food_scoville)
+            scoville.pop(0)
+            scoville[0] = new_food_scoville
+
             # update N
             N = len(scoville)
-            count += 1
+            answer += 1
+            print(scoville)
+            scoville.sort()
 
         # update index or break
         if N == 1 and scoville[0] < K:
