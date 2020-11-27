@@ -5,28 +5,52 @@
 #   - 각 심사관이 한 명을 심사하는데 걸리는 시간은 1분 이상 1,000,000,000분 이하입니다.
 #   - 심사관은 1명 이상 100,000명 이하입니다.
 
-# time max - 60 minutes (upper bound)
-# time min - 0 minutes
+# test: 60 minutes
 #   - 심사관 1: floor(60 / 7) -> 8
 #   - 심시관 2: floor(60 / 10) -> 10
 # More people can be analyzed
 
-# time max - 30 minutes (upper bound)
-# time min - 0 minutes (lower bound)
+# time max - 60 minutes (upper bound)
+# time min - 0 minutes
+
+# test: 30 minutes
 #   - 심사관 1: floor(30 / 7) -> 4
 #   - 심사관 2: floor(30 / 10) -> 3
 #   More people can be analyzed
 
-# time max - 15 minutes (upper bound)
+# time max - 30 minutes (upper bound)
 # time min - 0 minutes (lower bound)
+
+# test: 15 minutes
 #   - 심사관 1: floor(15 / 7) -> 2
 #   - 심시관 2: floor(15 / 10) -> 1
+#   Less people can be analyzed
 
-# time max -
+# time max - 30 minutes (upper bound)
+# time min - 15 minutes (lower bound)
 
+# test: 28 ((30 + 15)/2 -> 27.5) minutes
+#   - 심사관 1: floor(28 / 7) -> 4
+#   - 심시관 2: floor(28 / 10) -> 2
+#   Exact number of people can be analyzed
+
+# time max - 28 minutes (upper bound)
+# time min - 15 minutes (lower bound)
+
+# ...
 
 def solution(n, times):
     answer = 0
+
+    # find maximum amount of time required
+
+    # while upper_bound and lower_bound are not crossing
+        # calculate the middle
+        # check if middle satisfies the solution
+        # if middle satisfies the solution, then return result
+        # if less people can be analyzed, then increase lower bound
+        # if more people can be analyzed, then deacrease upper bound
+
     return answer
 
 if __name__ == "__main__":
