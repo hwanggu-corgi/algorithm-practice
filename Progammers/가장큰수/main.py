@@ -5,7 +5,7 @@
 
 # Example
 #  [6, 10, 2]
-#   - {1: [10], 2:[2], 3:[], 4:[], 5:[], 6:[6], 7:[], 8:[], 9:[]}
+#   - {0:[], 1: [10], 2:[2], 3:[], 4:[], 5:[], 6:[6], 7:[], 8:[], 9:[]}
 
 # Place number
 
@@ -20,14 +20,14 @@ def solution(numbers):
     numbers = [str(x) for x in numbers]
 
     # place numbers in dictionary
-    for number in numbers:
-        if number[0] not in temp:
-            temp[number[0]] = deque([number])
-        else:
-            temp[number[0]].append(number)
 
     # form largest number in string
-    #   iterate from 9 to 0
+    #   iterate from 9 to 0 in temp
+    #   for each list, determine total number of digits that can be formed
+    #   multiply all numbers by the digit
+
+    #
+
 
     answer = ''
     return answer
