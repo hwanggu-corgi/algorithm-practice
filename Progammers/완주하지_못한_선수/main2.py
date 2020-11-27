@@ -10,7 +10,8 @@ def solution(participant, completion):
     for name in completion:
         participant_count[name] -= 1
 
-    for (name, count) in participant_count:
+    for name in participant_count:
+        count = participant_count[name]
         if count > 0:
             answer = name
             break
