@@ -15,10 +15,12 @@ def solution(n, lost, reserve):
     N_reserve = len(reserve)
     lent_count = 0
 
+    lost.sort()
+    reserve.sort()
+
     # if len(lost) == 1 and len(reserve) == 1 return n - len(lost)
     if N_lost == 1 and N_reserve == 1:
         return n - 1
-
 
     i_lost = 0
     i_reserve = 0
@@ -42,3 +44,5 @@ if __name__ == "__main__":
     print(solution(5, [2,4], [1, 3, 5]))
     print(solution(5, [2,4], [3]))
     print(solution(3, [3], [1]))
+    print(solution(5, [7,8,9], [1, 3, 5]))
+    print(solution(5, [7,5,3], [4, 6, 8]))
