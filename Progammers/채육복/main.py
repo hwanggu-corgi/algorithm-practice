@@ -15,23 +15,13 @@ def solution(n, lost, reserve):
     set_lost = set(lost)-set(reserve)
     set_reserve = set(reserve)-set(lost)
 
-    N_lost = len(lost)
-    lent_count = 0
+    for student_number in set_reserve:
+        if (student_number - 1) in set_lost:
+            set_lost.remove(student_number - 1)
+        elif (student_number + 1) in set_lost:
+            set_lost.remove(student_number + 1)
 
-    i = 0
-    for student_number in set_lost:
-        if (student_number - 1) in set_reserve:
-            set_reserve.remove(student_number - 1)
-            set_lost.remove(student_number)
-            lent_count += 1
-        elif (student_number + 1) in set_reserve:
-            set_reserve.remove(student_number + 1)
-            set_lost.remove(student_number)
-            lent_count += 1
-
-    person_without_gym_shirts = N_lost - lent_count
-
-    answer = n - person_without_gym_shirts
+    answer = n - len(set_lost)
     return answer
 
 if __name__ == "__main__":
