@@ -5,14 +5,9 @@
 
 def solution(numbers):
     answer = ''
-    # convert all number to string
     numbers = [str(x) for x in numbers]
-    # sort array
     numbers.sort(key=lambda e: e * 3, reverse=True)
-
-    # form largest number in string
     answer = ''.join(numbers)
-    # return result
 
     return str(int(answer))
 
