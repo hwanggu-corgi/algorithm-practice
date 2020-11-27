@@ -33,3 +33,5 @@ def solution(n, lost, reserve):
 
 if __name__ == "__main__":
     print(solution(5, [2,4], [1, 3, 5]))
+    print(solution(5, [2,4], [3]))
+    print(solution(3, [3], [1]))
