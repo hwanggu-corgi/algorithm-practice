@@ -5,9 +5,20 @@
 
 # Example
 #  [6, 10, 2]
+#   - {1: [10], 2:[2], 3:[], 4:[], 5:[], 6:[6], 7:[], 8:[], 9:[]}
+#   -
 
 # Place number
 
 def solution(numbers):
+    # convert all to string
+
+    # sort array
+
+    # place numbers in dictionary
+    # if starting digit starts with x, place in has with key x
+
+    # starting from 9 to 0
+
     answer = ''
     return answer
