@@ -19,12 +19,18 @@ def solution(n, lost, reserve):
     if N_lost == 1 and N_reserve == 1:
         return n - 1
 
-    # greedy choice: lend ith gym shirt in reserve to ith individual with lost gym shirt
+
     i_lost = 0
     i_reserve = 0
     while i_lost < N_lost and i_reserve < N_reserve:
-        lent_count += 1
-        i += 1
+        if lost[i_lost] < (reserve[i_reserve] - 1):
+            i_lost += 1
+        elif lost[i_lost] > (reserve[i_reserve] + 1):
+            i_reserve += 1
+        else:
+            lent_count += 1
+            i_lost += 1
+            i_reserve += 1
 
     person_without_gym_shirts = N_lost - lent_count
 
