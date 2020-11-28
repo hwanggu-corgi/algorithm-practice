@@ -6,15 +6,23 @@
 #   - 배열 arr의 원소의 크기 : 0보다 크거나 같고 9보다 작거나 같은 정수
 
 def solution(arr):
-    arr_set = set(arr)
+    N = len(arr)
     answer = []
 
-    for number in arr:
-        if arr in arr_set:
-            answer.append(number)
-            arr_set.remove(number)
+    if N == 1 or N == 0:
+        return arr
 
-    # [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
+    answer.append(arr[0])
+    current_number = arr[0]
+
+    i = 0
+    while i < N:
+        # [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
+        if arr[i] != current_number:
+            answer.append(arr[i])
+            current_number = arr[i]
+
+        i += 1
     return answer
 
 if __name__ == "__main__":
