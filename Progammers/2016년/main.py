@@ -7,9 +7,20 @@
 #   - 2016년 a월 b일은 실제로 있는 날입니다. (13월 26일이나 2월 45일같은 날짜는 주어지지 않습니다)
 
 def solution(a, b):
+    number_of_days = 0
     # write number of days per month
+    number_of_days_in_month = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
-    # for each month in a list add number of days
+    # find number of days from January up to month a
+    number_of_days += sum(number_of_days_in_month[:a+1])
+
+    # add b to number of days
+    number_of_days += b
+
+    # find closest friday
+    closest_friday = math.floor()
+
+    # find the day
 
     answer = ''
     return answer
