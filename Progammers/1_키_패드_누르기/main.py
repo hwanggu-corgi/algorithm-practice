@@ -15,6 +15,8 @@
 #   - "left"는 왼손잡이, "right"는 오른손잡이를 의미합니다.
 #   - 왼손 엄지손가락을 사용한 경우는 L, 오른손 엄지손가락을 사용한 경우는 R을 순서대로 이어붙여 문자열 형태로 return 해주세요.
 
+import math
+
 def solution(numbers, hand):
     answer = ''
 
@@ -53,8 +55,19 @@ def get_pressed_hand(left_hand, right_hand, number, hand):
         position_left_hand = button_positions[left_hand]
         position_right_hand = button_positions[right_hand]
 
-        distance_to_number_left_hand = get_distance(...)
-        distance_to_number_right_hand = get_distance(...)
+        distance_to_number_left_hand = get_distance(position_left_hand, position_number)
+        distance_to_number_right_hand = get_distance(position_right_hand, position_number)
 
         if distance_to_number_left_hand == distance_to_number_right_hand:
             return "L" if hand == "left" else "R"
+        else:
+            return "L" if distance_to_number_left_hand < distance_to_number_right_hand else "R"
+
+def get_distance(position_1, position_2):
+    return math.sqrt((position_1[0] - position_2[0])**2 + (position_1[1] - position_2[1])**2)
+
+if __name__ == "__main__":
+    assert(solution([5], "right") == "R")
+    assert(solution([1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5], "right") == "LRLLLRLLRRL")
+    assert(solution([7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2], "left") == "LRLLRRLLLRR")
+    assert(solution([1, 2, 3, 4, 5, 6, 7, 8, 9, 0], "right") == "LLRLLRLLRL")
