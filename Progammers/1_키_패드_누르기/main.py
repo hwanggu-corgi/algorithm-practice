@@ -17,16 +17,23 @@
 
 def solution(numbers, hand):
     answer = ''
+    button_positions = {"1":[0,0],"2":[0,1],"3":[0,2],
+                        "4":[1,0],"5":[1,1],"6":[1,2],
+                        "7":[2,0],"8":[2,1],"9":[2,2],
+                        "*":[3,0],"0":[3,1],"#":[3,2]}
+    left_hand_position = [3,0]
+    right_hand_position = [3,2]
 
     # for each number
     for number in numbers:
         # find which thumb is pressed for the number
-        hand_used = get_pressed_hand(left_position, right_position, number_position)
+        number_position = button_positions[number]
+        hand_used = get_pressed_hand(left_hand_position, right_hand_position, number_position)
         # update current hand position
         if hand_used == "L":
-            left_position = ...
+            left_hand_position = number_position
         else:
-            right_position = ...
+            right_hand_position = number_position
 
         # concat to answer
         answer += hand_used
