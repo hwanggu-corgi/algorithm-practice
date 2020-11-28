@@ -8,10 +8,26 @@
 
 def solution(numbers):
     answer = []
+    result_set = set()
+    # sort numbers
+    numbers.sort()
 
-    # for each number in numbers,
-    # for each differand starting from 0 to number,
-    # check if differand exists
-    # check if number - differrend exists
-    #   if both of the above are true, then
+    # for each number in numbers (number_1),
+    i = 0
+    while i < N:
+        number_1 = numbers[i]
+        # for each subsequent numbers (number_2),
+        j = i + 1
+        while j < N:
+            # add two numbers (number_1 + number_2)
+            number_2 = numbers[j]
+
+            # add to set
+            result_set.add(number_1 + number_2)
+            j += 1
+        i += 1
+
+    # convert to list
+    # return list
+    answer = list(result_set)
     return answer
