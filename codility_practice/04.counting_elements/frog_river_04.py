@@ -7,7 +7,7 @@
 
 def solution(X, A):
     # write your code in Python 3.6
-    checklist = set(range(1, X))
+    checklist = set(range(1, X+1))
     N = len(A)
 
     # iterate through the array

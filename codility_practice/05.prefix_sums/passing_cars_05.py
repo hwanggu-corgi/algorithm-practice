@@ -23,9 +23,9 @@ def solution(A):
         else:
             count += cars_to_west
 
-    # return count
-
+    # return −1 if the number of pairs of passing cars exceeds 1,000,000,000
     if count > 1000000000:
         return -1
 
+    # return count
     return count
