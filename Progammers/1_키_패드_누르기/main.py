@@ -17,4 +17,19 @@
 
 def solution(numbers, hand):
     answer = ''
+
+    # for each number
+    for number in numbers:
+        # find which thumb is pressed for the number
+        hand_used = get_pressed_hand(left_position, right_position, number_position)
+        # update current hand position
+        if hand_used == "L":
+            left_position = ...
+        else:
+            right_position = ...
+
+        # concat to answer
+        answer += hand_used
+
+    # return answer
     return answer
