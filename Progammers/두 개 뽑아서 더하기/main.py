@@ -7,8 +7,10 @@
 #   - numbers의 모든 수는 0 이상 100 이하입니다.
 
 def solution(numbers):
+    N = len(numbers)
     answer = []
     result_set = set()
+
     # sort numbers
     numbers.sort()
 
@@ -17,8 +19,12 @@ def solution(numbers):
     while i < N:
         number_1 = numbers[i]
         # for each subsequent numbers (number_2),
-        j = i + 1
+        j = 0
         while j < N:
+            if i == j:
+                j += 1
+                continue
+
             # add two numbers (number_1 + number_2)
             number_2 = numbers[j]
 
@@ -30,4 +36,11 @@ def solution(numbers):
     # convert to list
     # return list
     answer = list(result_set)
+    answer.sort()
     return answer
+
+if __name__ == "__main__":
+    print(solution([2,1]))
+    print(solution([2,1]))
+    print(solution([2,1,3,4,1]))
+    print(solution([5,0,2,7]))
