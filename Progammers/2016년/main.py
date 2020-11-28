@@ -8,28 +8,29 @@
 
 def solution(a, b):
     number_of_days = 0
-    # write number of days per month
-    day_label_by_distance_from_friday = {0: "FRI", 1: "SAT", 2: "SUN", 3: "MON", 4: "TUES",
+    day_label_by_distance_from_friday = {0: "FRI", 1: "SAT", 2: "SUN", 3: "MON", 4: "TUE",
                                          5: "WED", 6: "THU"}
     number_of_days_in_month = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
-    # find number of days from January up to month a
     index = a -1
     number_of_days += sum(number_of_days_in_month[:index])
 
-    print(number_of_days)
-
-    # add b to number of days
     number_of_days += b
 
-    # find distance from closest friday
-    distance_from_friday = number_of_days % 7
+    distance_from_friday = (number_of_days-1) % 7
 
-    # find the day name
     answer = day_label_by_distance_from_friday[distance_from_friday]
 
     return answer
 
 if __name__ == "__main__":
-    print(solution(1, 1))
+    print(solution(1, 1)) #FRI
+    print(solution(1, 2)) #SAT
+    print(solution(1, 3)) #SUN
+    print(solution(1, 4)) #MON
+    print(solution(1, 5)) #TUE
+    print(solution(1, 6)) #WED
+    print(solution(1, 7)) #THU
+    print(solution(1, 8)) #FRI
     print(solution(5, 24)) #TUES
+    print(solution(10, 4))
