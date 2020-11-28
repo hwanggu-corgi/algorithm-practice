@@ -17,26 +17,44 @@
 
 def solution(numbers, hand):
     answer = ''
-    button_positions = {"1":[0,0],"2":[0,1],"3":[0,2],
-                        "4":[1,0],"5":[1,1],"6":[1,2],
-                        "7":[2,0],"8":[2,1],"9":[2,2],
-                        "*":[3,0],"0":[3,1],"#":[3,2]}
-    left_hand_position = [3,0]
-    right_hand_position = [3,2]
+
+    left_hand = "*"
+    right_hand = "#"
 
     # for each number
     for number in numbers:
         # find which thumb is pressed for the number
-        number_position = button_positions[number]
-        hand_used = get_pressed_hand(left_hand_position, right_hand_position, number_position)
+        hand_used = get_pressed_hand(left_hand, right_hand, str(number), hand)
         # update current hand position
         if hand_used == "L":
-            left_hand_position = number_position
+            left_hand = str(number)
         else:
-            right_hand_position = number_position
+            right_hand = str(number)
 
         # concat to answer
         answer += hand_used
 
     # return answer
     return answer
+
+def get_pressed_hand(left_hand, right_hand, number, hand):
+
+    button_positions = {"1":[0,0],"2":[0,1],"3":[0,2],
+                        "4":[1,0],"5":[1,1],"6":[1,2],
+                        "7":[2,0],"8":[2,1],"9":[2,2],
+                        "*":[3,0],"0":[3,1],"#":[3,2]}
+
+    if number in ["1","4","7"]:
+        return "L"
+    elif number in ["3","6","9"]:
+        return "R"
+    else:
+        position_number = button_positions[number]
+        position_left_hand = button_positions[left_hand]
+        position_right_hand = button_positions[right_hand]
+
+        distance_to_number_left_hand = get_distance(...)
+        distance_to_number_right_hand = get_distance(...)
+
+        if distance_to_number_left_hand == distance_to_number_right_hand:
+            return "L" if hand == "left" else "R"
