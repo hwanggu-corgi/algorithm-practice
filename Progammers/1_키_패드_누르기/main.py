@@ -65,9 +65,10 @@ def get_pressed_hand(left_hand, right_hand, number, hand):
 
 def get_distance(position_1, position_2):
     distance_horizontal = abs(position_1[1] - position_2[1])
-    distance_vertical = abs()
-    # if position and position 2 not on the same axis go in more detail
+    distance_vertical = abs(position_1[0] - position_2[0])
+
     distance_total = distance_horizontal + distance_vertical
+
     return distance_total
 
 if __name__ == "__main__":
