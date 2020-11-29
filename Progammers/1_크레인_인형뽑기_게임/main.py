@@ -38,8 +38,6 @@ def solution(board, moves):
         except IndexError:
             doll_board = None
 
-        print("doll board {}".format(doll_board))
-
         # check if last element in basket is the same as the taken out element
         #   if match, then add count, and pop the last element from the basket
         try:
@@ -47,17 +45,14 @@ def solution(board, moves):
         except IndexError:
             doll_basket = None
 
-        print("doll basket {}".format(doll_board))
-
-        if doll_basket == None or doll_board == None:
+        if doll_board == None:
             continue
 
         if doll_board != doll_basket:
-            doll_basket.append(doll_board)
+            basket.append(doll_board)
         else:
             count += 1
             basket.pop()
-
     answer = count
     return answer
 
@@ -71,5 +66,5 @@ def get_column(index, board):
     return column
 
 if __name__ == "__main__":
-    print(solution([[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]], [1,5,3,5,1,2,1,4]))
-    assert(solution([[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]], [1,5,3,5,1,2,1,4]) == 4)
+    solution([[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]], [1,5,3,5,1,2,1,4])
+    # assert(solution([[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]], [1,5,3,5,1,2,1,4]) == 4)
