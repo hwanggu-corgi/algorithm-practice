@@ -20,7 +20,7 @@ def solution(board, moves):
     basket = []
     N = len(board)
     board_by_columns = {}
-    answer = 0
+    count = 0
 
     # extract columns and put each as queue in dictionary with column number as key
     i = 0
@@ -29,17 +29,16 @@ def solution(board, moves):
         board_by_columns[(i+1)] = deque(column)
         i += 1
 
-    print(board_by_columns)
-
     # for each move,
     for move in moves:
         # get dolls in target column
-        column_of_dolls = board_by_columns[move]
         # take out the uppermost element from the column
         try:
-            doll_board = column_of_dolls.popleft()
+            doll_board = board_by_columns[move].popleft()
         except IndexError:
             doll_board = None
+
+        print("doll board {}".format(doll_board))
 
         # check if last element in basket is the same as the taken out element
         #   if match, then add count, and pop the last element from the basket
@@ -48,16 +47,28 @@ def solution(board, moves):
         except IndexError:
             doll_basket = None
 
+        print("doll basket {}".format(doll_board))
+
         if doll_basket == None or doll_board == None:
             continue
 
-        if doll_board == doll_basket:
-            continue
+        if doll_board != doll_basket:
+            doll_basket.append(doll_board)
+        else:
+            count += 1
+            basket.pop()
 
-        answer += 1
-        basket.pop()
-
+    answer = count
     return answer
+
+def get_column(index, board):
+    column = []
+    for row in board:
+        if row[index] == 0:
+            continue
+        column.append(row[index])
+
+    return column
 
 if __name__ == "__main__":
     print(solution([[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]], [1,5,3,5,1,2,1,4]))
