@@ -14,7 +14,7 @@ def solution(n, arr1, arr2):
         combined_value = arr1[i] | arr2[i]
 
         # covert combined value to hash and spaces
-        map_piece = convert_binary_to_hash_and_spaces(combined_value)
+        map_piece = convert_decimal_to_hash_and_spaces(combined_value, n)
 
         # store inside the array answer
         answer.append(map_piece)
@@ -23,3 +23,15 @@ def solution(n, arr1, arr2):
 
     # return result
     return answer
+
+def convert_decimal_to_hash_and_spaces(decimal_number,n):
+    result = ''
+
+    i = 0
+    while i < n:
+        if ((decimal_number << i) & i) == 0:
+            result = ' ' + result
+        else:
+            result = '#' + result
+
+    return result
