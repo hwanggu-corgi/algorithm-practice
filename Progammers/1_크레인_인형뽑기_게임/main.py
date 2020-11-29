@@ -36,11 +36,15 @@ def solution(board, moves):
         try:
             doll_board = column_of_dolls.popleft()
         except IndexError:
-            pass
+            doll_board = None
 
         # check if last element in basket is the same as the taken out element
         #   if match, then add count, and pop the last element from the basket
-        doll_basket = ...
+        try:
+            doll_basket = basket[-1]
+        except IndexError:
+            doll_basket = None
+
 
         if doll_board == doll_basket:
             count += 1
