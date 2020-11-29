@@ -34,13 +34,16 @@ def solution(board, moves):
         column_of_dolls = board_by_columns[move]
         # take out the uppermost element from the column
         try:
-            doll = column_of_dolls.popleft()
+            doll_board = column_of_dolls.popleft()
         except IndexError:
             pass
 
         # check if last element in basket is the same as the taken out element
         #   if match, then add count, and pop the last element from the basket
-        last_doll_in_basket =
+        doll_basket = ...
+
+        if doll_board == doll_basket:
+            count += 1
 
     # return count
     answer = count
