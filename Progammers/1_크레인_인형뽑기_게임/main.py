@@ -25,8 +25,11 @@ def solution(board, moves):
     # extract columns and put each as queue in dictionary with column number as key
     i = 0
     while i < N:
-        board_by_columns[(i+1)] = deque([x[i] for x in board])
+        column = get_column(i, board)
+        board_by_columns[(i+1)] = deque(column)
         i += 1
+
+    print(board_by_columns)
 
     # for each move,
     for move in moves:
@@ -45,10 +48,17 @@ def solution(board, moves):
         except IndexError:
             doll_basket = None
 
+        if doll_basket == None or doll_board == None:
+            continue
 
         if doll_board == doll_basket:
-            count += 1
+            continue
 
-    # return count
-    answer = count
+        answer += 1
+        basket.pop()
+
     return answer
+
+if __name__ == "__main__":
+    print(solution([[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]], [1,5,3,5,1,2,1,4]))
+    assert(solution([[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]], [1,5,3,5,1,2,1,4]) == 4)
