@@ -9,6 +9,7 @@
 def solution(n, arr1, arr2):
     answer = []
 
+    i = 0
     while i < n:
         # perform bitwise or on arr1[i] and arr2[i], store in combined_value
         combined_value = arr1[i] | arr2[i]
@@ -25,13 +26,17 @@ def solution(n, arr1, arr2):
     return answer
 
 def convert_decimal_to_hash_and_spaces(decimal_number,n):
-    result = ''
+    result = ""
 
     i = 0
     while i < n:
-        if ((decimal_number << i) & i) == 0:
-            result = ' ' + result
+        if ((decimal_number >> i) & 1) == 0:
+            result = " " + result
         else:
-            result = '#' + result
-
+            result = "#" + result
+        i += 1
     return result
+
+if __name__ == "__main__":
+    print(solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28])) # ["#####","# # #", "### #", "# ##", "#####"]
+    print(solution(6, [46, 33, 33 ,22, 31, 50], [27 ,56, 19, 14, 14, 10])) #["######", "### #", "## ##", " #### ", " #####", "### # "]
