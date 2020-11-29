@@ -17,10 +17,16 @@
 from collections import deque
 
 def solution(board, moves):
+    basket = []
+    N = len(board)
+    board_by_columns = {}
     answer = 0
 
     # extract columns and put each as queue in dictionary with column number as key
-
+    i = 0
+    while i < N:
+        board_by_columns[(i+1)] = deque([x[i] for x in board])
+        i += 1
 
     # for each move,
     for move in moves:
@@ -33,9 +39,8 @@ def solution(board, moves):
             pass
 
         # check if last element in basket is the same as the taken out element
-
-
         #   if match, then add count, and pop the last element from the basket
+        last_doll_in_basket =
 
     # return count
     answer = count
