@@ -64,11 +64,11 @@ def get_pressed_hand(left_hand, right_hand, number, hand):
             return "L" if distance_to_number_left_hand < distance_to_number_right_hand else "R"
 
 def get_distance(position_1, position_2):
-    diagonal_distance = math.sqrt((position_1[0] - position_2[0])**2 + (position_1[1] - position_2[1])**2)
-
+    distance_horizontal = abs(position_1[1] - position_2[1])
+    distance_vertical = abs()
     # if position and position 2 not on the same axis go in more detail
-
-    return distance
+    distance_total = distance_horizontal + distance_vertical
+    return distance_total
 
 if __name__ == "__main__":
     assert(solution([5], "right") == "R")
