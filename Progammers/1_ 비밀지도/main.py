@@ -8,4 +8,18 @@
 
 def solution(n, arr1, arr2):
     answer = []
+
+    while i < n:
+        # perform bitwise or on arr1[i] and arr2[i], store in combined_value
+        combined_value = arr1[i] | arr2[i]
+
+        # covert combined value to hash and spaces
+        map_piece = convert_binary_to_hash_and_spaces(combined_value)
+
+        # store inside the array answer
+        answer.append(map_piece)
+
+        i += 1
+
+    # return result
     return answer
