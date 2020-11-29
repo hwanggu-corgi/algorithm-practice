@@ -14,11 +14,29 @@
 #   - moves 배열의 크기는 1 이상 1,000 이하입니다.
 #   - moves 배열 각 원소들의 값은 1 이상이며 board 배열의 가로 크기 이하인 자연수입니다.
 
+from collections import deque
+
 def solution(board, moves):
     answer = 0
 
+    # extract columns and put each as queue in dictionary with column number as key
+
+
     # for each move,
-    # get column
-    # take out the uppermost element
-    #
+    for move in moves:
+        # get dolls in target column
+        column_of_dolls = board_by_columns[move]
+        # take out the uppermost element from the column
+        try:
+            doll = column_of_dolls.popleft()
+        except IndexError:
+            pass
+
+        # check if last element in basket is the same as the taken out element
+
+
+        #   if match, then add count, and pop the last element from the basket
+
+    # return count
+    answer = count
     return answer
