@@ -51,7 +51,7 @@ def solution(board, moves):
         if doll_board != doll_basket:
             basket.append(doll_board)
         else:
-            count += 1
+            count += 2
             basket.pop()
     answer = count
     return answer
