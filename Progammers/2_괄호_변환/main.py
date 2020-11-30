@@ -16,7 +16,6 @@
 
 def solution(p):
     answer = ''
-
     # if p is empty, return empty
     if p == "":
         return p
