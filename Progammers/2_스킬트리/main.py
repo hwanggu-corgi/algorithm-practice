@@ -27,13 +27,27 @@ def solution(skill, skill_trees):
 
 def is_valid(skill, skill_tree):
     order = 1
+    N = len(skill_tree)
+    skill_order_by_name = {}
 
     for skill_name in skill:
         skill_order_by_name[skill_name] = 0
 
-    for skill in skill_tree:
-        if skill in skill_order_by_name:
-            skill_order_by_name[skill]
+    i = 0
+    while i < N:
+        skill_name = skill_tree[i]
+        if skill_name in skill_order_by_name:
+            skill_order_by_name[skill_name] = i
 
+        i+=1
+    print(skill_order_by_name)
+    current_order = -1
+    for skill_name in skill:
+        if current_order > skill_order_by_name[skill_name]:
+            return False
+
+        current_order = skill_order_by_name[skill_name]
     return True
 
+if __name__ == "__main__":
+    print(solution("CBD", ["BACDE", "CBADF", "AECB", "BDA"])) #2
