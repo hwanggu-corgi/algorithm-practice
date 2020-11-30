@@ -20,11 +20,11 @@ def convert_decimal_to_ternary(n):
     ternary = ''
     quotient = n
     # while quotient is not 0
-    while quotient != 0
+    while quotient != 0:
         # find modulo of number
         remainder = quotient % 3
         # add to variable ternary
-        ternary = str(reminder) + ternary
+        ternary = str(remainder) + ternary
         # update n with value integer division of n by 3
         quotient = quotient // 3
 
@@ -39,12 +39,14 @@ def convert_ternary_to_decimal(ternary):
     while i >= 0:
         # multiply each digit in ternary (starting from the left) by i
         # add to total
-        total += total + 3**(i)
+        total +=  (int(ternary[n - i]) * 3**(i))
         # decrement
         i -= 1
 
     return total
 
 if __name__ == "__main__":
+    print(solution(0))
+    print(solution(1))
     print(solution(45)) #7
     print(solution(125)) #229
