@@ -27,8 +27,6 @@ def solution(N, stages):
 
         # get number of people not passed the stage
         number_of_people_not_passed = count_not_passed(i, stages)
-        print(number_of_people_not_passed)
-
 
         # calculate failure rate
         failure_rate = number_of_people_not_passed / players
@@ -59,5 +57,7 @@ def count_not_passed(stage_number, stages):
     return count
 
 if __name__ == "__main__":
+    print(solution(4, [1,1,1,1,1])) #[1, 2, 3, 4]
+    print(solution(4, [2,2,2,2,2])) #[1, 2, 3, 4]
     print(solution(5, [2, 1, 2, 6, 2, 4, 3, 3])) #[3,4,2,1,5]
     print(solution(5, [4,4,4,4,4])) #[4,1,2,3,5]
