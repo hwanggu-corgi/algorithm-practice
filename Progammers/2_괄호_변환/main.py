@@ -48,12 +48,14 @@ def _solution(w):
     # ')'를 다시 붙입니다.
     result += ')'
     # u의 첫 번째와 마지막 문자를 제거하고, 나머지 문자열의 괄호 방향을 뒤집어서 뒤에 붙입니다.
-    result = u[1:-1:-1][::-1]
+    result += u[1:-1:-1][::-1]
 
     # 생성된 문자열을 반환합니다.
     return result
 
 def get_u_and_v(w):
+    u = ''
+    v = ''
     right_parenthesis = 0
     left_parenthesis = 0
     # get_u_and_v
@@ -107,5 +109,5 @@ class Stack:
 
 if __name__ == "__main__":
     print(solution(")(")) #()
-    # print(solution("(()())()")) #(()())()
+    print(solution("(()())()")) #(()())()
     # print(solution("()))((()")) #()(())()
