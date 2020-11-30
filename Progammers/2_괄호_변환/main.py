@@ -52,3 +52,18 @@ def _solution(w):
 
     # 생성된 문자열을 반환합니다.
     return result
+
+def get_u_and_v(w):
+    # get_u_and_v
+    #   u는 "균형잡힌 괄호 문자열"로 더 이상 분리할 수 없어야 하며, v는 빈 문자열이 될 수 있습니다.
+
+    i = 0
+    # at the moment it reaches 0, slice string to index and store in u
+    # store remainder in v
+
+    # return u and v
+
+if __name__ == "__main__":
+    print(solution(")(")) #()
+    # print(solution("(()())()")) #(()())()
+    # print(solution("()))((()")) #()(())()
