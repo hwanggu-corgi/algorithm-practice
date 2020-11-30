@@ -15,3 +15,32 @@ def solution(n):
 
     # return answer
     return answer
+
+def convert_decimal_to_ternary(n):
+    ternary = ''
+    quotient = n
+    # while quotient is not 0
+    while quotient != 0
+        # find modulo of number
+        remainder = quotient % 3
+        # add to variable ternary
+        ternary = str(reminder) + ternary
+        # update n with value integer division of n by 3
+        quotient = quotient // 3
+
+    return ternary
+
+
+def convert_ternary_to_decimal(ternary):
+    n = len(ternary) - 1
+    total = 0
+    i = n
+    # while n is greater than equal to 0
+    while i >= 0:
+        # multiply each digit in ternary (starting from the left) by i
+        # add to total
+        total += total + 3**(i)
+        # decrement
+        i -= 1
+
+    return total
