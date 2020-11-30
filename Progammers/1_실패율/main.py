@@ -33,10 +33,15 @@ def solution(N, stages):
         i += 1
 
     # sort temp by failure rate
-    temp.sort(key= lambda e: e[1], reverse=True)
+    temp = sorted(temp, key= lambda e: e[1], reverse=True)
 
     # place stage number to answer in order
     answer = [x[0] for x in temp]
 
     # return ansewr
     return answer
+
+
+if __name__ == "__main__":
+    print(solution(5, [2, 1, 2, 6, 2, 4, 3, 3])) #[3,4,2,1,5]
+    print(solution(4, [4,4,4,4,4])) #[3,4,2,1,5]
