@@ -14,5 +14,29 @@
 #   - 만약 실패율이 같은 스테이지가 있다면 작은 번호의 스테이지가 먼저 오도록 하면 된다.
 #   - 스테이지에 도달한 유저가 없는 경우 해당 스테이지의 실패율은 0 으로 정의한다.
 def solution(N, stages):
-    answer = []
+    temp = []
+    players = len(stages)
+
+    i = 1
+    # for each stage,
+    while i < (N+1):
+        # get number of people not passed the stage
+        number_of_people_not_passed = count_number_of_people_not_passed()
+
+        # calculate failure rate
+        failure_rate = number_of_people_not_passed / players
+        # store [stage_number, failure rate] to temp
+        temp.append([i, failure_rates])
+
+        # update number of players
+        players = players - number_of_people_not_passed
+        i += 1
+
+    # sort temp by failure rate
+    temp.sort(key= lambda e: e[1], reverse=True)
+
+    # place stage number to answer in order
+    answer = [x[0] for x in temp]
+
+    # return ansewr
     return answer
