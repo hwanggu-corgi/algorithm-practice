@@ -20,13 +20,20 @@ def solution(N, stages):
     i = 1
     # for each stage,
     while i < (N+1):
+        if players == 0:
+            temp.append([i, 0])
+            i += 1
+            continue
+
         # get number of people not passed the stage
-        number_of_people_not_passed = count_number_of_people_not_passed()
+        number_of_people_not_passed = count_not_passed(i, stages)
+        print(number_of_people_not_passed)
+
 
         # calculate failure rate
         failure_rate = number_of_people_not_passed / players
         # store [stage_number, failure rate] to temp
-        temp.append([i, failure_rates])
+        temp.append([i, failure_rate])
 
         # update number of players
         players = players - number_of_people_not_passed
@@ -38,10 +45,19 @@ def solution(N, stages):
     # place stage number to answer in order
     answer = [x[0] for x in temp]
 
-    # return ansewr
+    # return answer
     return answer
 
 
+def count_not_passed(stage_number, stages):
+    count = 0
+
+    for stage in stages:
+        if stage == stage_number:
+            count +=1
+
+    return count
+
 if __name__ == "__main__":
     print(solution(5, [2, 1, 2, 6, 2, 4, 3, 3])) #[3,4,2,1,5]
-    print(solution(4, [4,4,4,4,4])) #[3,4,2,1,5]
+    print(solution(5, [4,4,4,4,4])) #[4,1,2,3,5]
