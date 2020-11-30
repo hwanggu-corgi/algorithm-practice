@@ -26,12 +26,13 @@ def solution(p):
 
 def _solution(w):
     result = ""
-    print(w)
     if w == "":
         return ""
 
     # w를 두 "균형잡힌 괄호 문자열" u, v로 분리합니다
     u,v = get_u_and_v(w)
+    print("u {}".format(u))
+    print("v {}".format(v))
 
     # get closest 균형잡힌 괄호 문자열
     # if 문자열 u가 "올바른 괄호 문자열"
@@ -76,7 +77,7 @@ def get_u_and_v(w):
 
         i += 1
 
-    v = w[i:]
+    v = w[i+1:]
     # return u and v
     return u, v
 
