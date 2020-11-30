@@ -78,6 +78,33 @@ def get_u_and_v(w):
     # return u and v
     return u, v
 
+def correctly_parenthesized(w):
+    stack = Stack()
+
+    for parenthesis in w:
+        if parenthesis == "(":
+            stack.push(parenthesis)
+        else:
+            left_parenthesis = stack.pop()
+            if left_parenthesis == None:
+                return False
+
+    return True
+
+class Stack:
+    def __init__(self):
+        self.stack_list = []
+
+    def push(self, parenthesis):
+        self.stack_list.append(parenthesis)
+
+    def pop(self):
+
+        if len(self.stack_list) == 0:
+            return None
+
+        return self.stack_list.pop()
+
 if __name__ == "__main__":
     print(solution(")(")) #()
     # print(solution("(()())()")) #(()())()
