@@ -26,27 +26,7 @@ def solution(skill, skill_trees):
     return answer
 
 def is_valid(skill, skill_tree):
-    order = 1
-    N = len(skill_tree)
-    skill_order_by_name = {}
 
-    for skill_name in skill:
-        skill_order_by_name[skill_name] = 0
-
-    i = 0
-    while i < N:
-        skill_name = skill_tree[i]
-        if skill_name in skill_order_by_name:
-            skill_order_by_name[skill_name] = i
-
-        i+=1
-    print(skill_order_by_name)
-    current_order = -1
-    for skill_name in skill:
-        if current_order > skill_order_by_name[skill_name]:
-            return False
-
-        current_order = skill_order_by_name[skill_name]
     return True
 
 if __name__ == "__main__":
