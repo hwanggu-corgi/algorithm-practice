@@ -44,3 +44,7 @@ def convert_ternary_to_decimal(ternary):
         i -= 1
 
     return total
+
+if __name__ == "__main__":
+    print(solution(45)) #7
+    print(solution(125)) #229
