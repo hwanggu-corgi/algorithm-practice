@@ -2,5 +2,12 @@
 # solution 함수를 완성해주세요.
 
 def solution(a, b):
-    answer = 1234567890
+    N = len(a)
+    i = 0
+    answer = 0
+    while i < N:
+        answer += a[i] * b[i]
+        i += 1
+
     return answer
+
