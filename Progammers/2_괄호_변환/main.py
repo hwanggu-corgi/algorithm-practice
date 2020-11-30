@@ -26,7 +26,7 @@ def solution(p):
 
 def _solution(w):
     result = ""
-
+    print(w)
     if w == "":
         return ""
 
