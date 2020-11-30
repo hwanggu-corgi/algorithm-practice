@@ -45,5 +45,7 @@ def _solution(w):
         # ')'를 다시 붙입니다.
         result += ')'
         # u의 첫 번째와 마지막 문자를 제거하고, 나머지 문자열의 괄호 방향을 뒤집어서 뒤에 붙입니다.
+        result = result[1:-1]
+
         # 생성된 문자열을 반환합니다.
         return result
