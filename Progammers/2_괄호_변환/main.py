@@ -54,14 +54,29 @@ def _solution(w):
     return result
 
 def get_u_and_v(w):
+    right_parenthesis = 0
+    left_parenthesis = 0
     # get_u_and_v
     #   u는 "균형잡힌 괄호 문자열"로 더 이상 분리할 수 없어야 하며, v는 빈 문자열이 될 수 있습니다.
 
     i = 0
-    # at the moment it reaches 0, slice string to index and store in u
-    # store remainder in v
+    while i < len(w):
+        if w[i] == "(":
+            left_parenthesis += 1
+        else:
+            right_parenthesis += 1
 
+        # at the moment left_parenthesis == right_parenthesis, slice string to index and store in u
+        # store remainder in v
+        if left_parenthesis == right_parenthesis:
+            u = w[:i+1]
+            break
+
+        i += 1
+
+    v = w[i:]
     # return u and v
+    return u, v
 
 if __name__ == "__main__":
     print(solution(")(")) #()
