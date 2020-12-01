@@ -11,18 +11,15 @@ from collections import deque
 
 def solution(priorities, location):
     answer = 0
-    count = 0
+    queue_index = 1
 
     # map priorities to the form [(index, priority number), []]
     priorities = deque(enumerate(priorities))
-
-    print(priorities)
 
     # while true
     while True:
     #   pop first element from list
         priority = priorities.popleft()
-        print(priority)
         #   if there is element in list with higher priority, then put back in.
         if higher_priority_exists(priority, priorities):
             priorities.append(priority)
@@ -31,18 +28,22 @@ def solution(priorities, location):
             #   otherwise,
             #   check if location match. if so, return count
             if priority[0] == location:
-                return count
+                return queue_index
+            queue_index += 1
         #   increment count
-        count += 1
 
-    answer = count
+    answer = queue_index
     return answer
 
 def higher_priority_exists(priority, priorities):
+    if len(priorities) == 0:
+        return False
+
     has_higher_priority = priority[1] < max(priorities, key = lambda e: e[1])[1]
     if has_higher_priority:
         return True
     return False
 
 if __name__ == "__main__":
+    print(solution([1], 0)) #1
     print(solution([2, 1, 3, 2], 2)) #1
