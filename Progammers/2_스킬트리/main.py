@@ -46,7 +46,7 @@ def is_valid(skill, skill_tree):
 
     if N_skill == 1:
         skill_name = skill[0]
-        return True if skill_order_by_name[skill_name] < sys.maxsize else False
+        return True if skill_order_by_name[skill_name] <= sys.maxsize else False
 
     j = 1
     while j < N_skill:
