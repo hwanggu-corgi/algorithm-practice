@@ -9,4 +9,7 @@
 
 def solution(priorities, location):
     answer = 0
+
+    # map priorities to the form [[priority number, index], []]
+
     return answer
