@@ -60,7 +60,6 @@ def convert_from_decimal_to_ternary(n):
     while quotient != 0:
         remainder = quotient % 3
         quotient = quotient // 3
-
         ternary_number += str(remainder) + ternary_number
 
     return ternary_number
@@ -70,7 +69,11 @@ def convert_from_ternary_to_strange(ternary_number):
 
     i = 1
     while i < N:
+        trit = ternary_number_list[i]
 
+        if trit == 0
+            ternary_number_list[i] = 4
+            ternary_number_list[i-1] = int(ternary_number_list[i-1])
         i += 1
 
     return strange_number
