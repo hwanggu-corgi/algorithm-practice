@@ -10,6 +10,9 @@ def solution(s):
     N = len(s)
     minimum_length = sys.maxsize
 
+    if len(s) == 1:
+        return 1
+
     # while i < N where i represents length of compression string
     substring_length = 1
     while substring_length < N:
@@ -48,11 +51,17 @@ def compress_string(s,substring_length,N):
 
         i += 1
 
-    print(substring)
-
-    print(''.join(substrings_list))
+    if not all_substrings_added(substring):
+        substrings_list.append(substring)
 
     return len(''.join(substrings_list))
 
+def all_substrings_added(substring):
+    return True if len(substring) == 0 else False
+
 if __name__ == "__main__":
-    print(solution("aabbaccc"))
+    print(solution("aabbaccc")) #7
+    print(solution("ababcdcdababcdcd")) #9
+    print(solution("abcabcdede")) #8
+    print(solution("abcabcabcabcdededededede")) #14
+    print(solution("xababcdcdababcdcd")) #17
