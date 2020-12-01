@@ -7,6 +7,15 @@
 # brute force method
 #   - count
 #       - on every 3rd number increment value right after
+    #       - if the value after is 4, then append value of 1 after and reset prev count to 1
+#   but is crazy inefficient
+
+# Improved method
+#   1. 3진법
+#       - 1 / 3 = 0 && 1 % 3 = 1
+#       - 2 / 3 = 0 && 2 % 3 = 2
+#       - 3 / 3 = 1 && 3 % 3 = 0
+
 
 def solution(n):
     answer = ''
