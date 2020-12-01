@@ -48,9 +48,9 @@ def compress_string(s,substring_length,N):
                 substrings_list[-1] = str(substring_count) + (substring)
             else:
                 substrings_list.append(substring)
-                prev_substring = substring
                 substring_count = 0
 
+            prev_substring = substring
             substring = ''
 
         i += 1
