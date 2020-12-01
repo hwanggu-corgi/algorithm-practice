@@ -31,6 +31,7 @@ def compress_string(s,substring_length,N):
     substrings_list = []
     substring_count = 0
     substring = ''
+    prev_substring = ''
     compressed_string = ''
     i = 0
 
@@ -39,17 +40,24 @@ def compress_string(s,substring_length,N):
         current_length += 1
         if (current_length % substring_length == 0):
             substring_count += 1
+            print(substring_count)
+            if prev_substring == substring:
+                print("i {}".format(i))
+                print("substring {}".format(substring_count))
+                substrings_list[-1] = str(substring_count) + (substring)
+            else:
+                substrings_list.append(substring)
+                substring_count = 0
 
-            compressed_string += str(substring_count) + substring
+            prev_substring = substring
             substring = ''
-            substring_count = 0
 
         i += 1
 
 
-    print(compressed_string)
+    print(substrings_list)
 
-    return len(compressed_string)
+    return len(substrings_list)
 
 if __name__ == "__main__":
     print(solution("aabbaccc"))
