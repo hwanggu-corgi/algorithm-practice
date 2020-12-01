@@ -11,26 +11,38 @@ def solution(s):
     minimum_length = sys.maxsize
 
     # while i < N where i represents length of compression string
-    i = 1
-    while i < N:
+    substring_length = 1
+    while substring_length < N:
         # find the length of string after compression
-        length_after_compression = compress_string(s,i,N)
+        length_after_compression = compress_string(s,substring_length,N)
         if length_after_compression == -1:
-            i += 1
+            substring_length += 1
             continue
         # if length of string is less current, update minimum value
         minimum_length = min(minimum_length, length_after_compression)
-        i += 1
+        substring_length += 1
 
     # return minimum value
     answer = minimum_length
     return answer
 
-def compress_string(s,i,N):
-    current_length = 0
+def compress_string(s,substring_length,N):
+    current_length = 1
+    substrings_list = []
+    substring = ''
     i = 0
 
     while i < N:
 
+        if (current_length % substring_length == 0):
+            substrings_list.append(substring)
+            substring = ''
+
+        substring += s[i]
+        current_length += 1
+        i += 1
 
     return length
+
+if __name__ == "__main__":
+    print(solution("aabbaccc"))
