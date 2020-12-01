@@ -15,9 +15,6 @@ def solution(s):
     while substring_length < N:
         # find the length of string after compression
         length_after_compression = compress_string(s,substring_length,N)
-        if length_after_compression == -1:
-            substring_length += 1
-            continue
         # if length of string is less current, update minimum value
         minimum_length = min(minimum_length, length_after_compression)
         substring_length += 1
@@ -38,27 +35,24 @@ def compress_string(s,substring_length,N):
     while i < N:
         substring += s[i]
         current_length += 1
-        print("i {}".format(i))
         if (current_length % substring_length == 0):
             substring_count += 1
             if prev_substring == substring:
-                print(substring_count)
-                print("i {}".format(i))
-                print("substring {}".format(substring_count))
-                substrings_list[-1] = str(substring_count) + (substring)
+                substrings_list[-1] = str(substring_count) + (substring) if substring_count > 1 else substring
             else:
                 substrings_list.append(substring)
-                substring_count = 0
+                substring_count = 1 if i != 0 else substring_count
 
             prev_substring = substring
             substring = ''
 
         i += 1
 
+    print(substring)
 
-    print(substrings_list)
+    print(''.join(substrings_list))
 
-    return len(substrings_list)
+    return len(''.join(substrings_list))
 
 if __name__ == "__main__":
     print(solution("aabbaccc"))
