@@ -52,3 +52,16 @@ def solution(n):
 
     answer = strange_number
     return answer
+
+def convert_from_decimal_to_ternary(n):
+    ternary_number = ''
+    quotient = n
+
+    while quotient != 0:
+
+        quotient = quotient // 3
+
+    return ternary_number
+
+def convert_from_ternary_to_strange(ternary_number):
+    pass
