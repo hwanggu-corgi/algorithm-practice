@@ -10,6 +10,15 @@
 def solution(priorities, location):
     answer = 0
 
-    # map priorities to the form [[priority number, index], []]
+    # map priorities to the form [(index, priority number), []]
+    priorities = zip(priorities)
+
+    # while true
+    while True:
+    #   pop first element from list
+        #   if there is element in list with higher priority, then put back in.
+        #   increment count
+    #   otherwise,
+    #   check if location match. if so, return count
 
     return answer
