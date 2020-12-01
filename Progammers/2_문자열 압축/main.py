@@ -14,7 +14,7 @@ def solution(s):
     i = 1
     while i < N:
         # find the length of string after compression
-        length_after_compression = compress_string(s,i)
+        length_after_compression = compress_string(s,i,N)
         if length_after_compression == -1:
             i += 1
             continue
@@ -25,3 +25,12 @@ def solution(s):
     # return minimum value
     answer = minimum_length
     return answer
+
+def compress_string(s,i,N):
+    current_length = 0
+    i = 0
+
+    while i < N:
+
+
+    return length
