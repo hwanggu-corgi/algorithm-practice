@@ -5,12 +5,23 @@
 #   - s의 길이는 1 이상 1,000 이하입니다.
 #   - s는 알파벳 소문자로만 이루어져 있습니다.
 
+import sys
 def solution(s):
-    answer = 0
+    N = len(s)
+    minimum_length = sys.maxsize
 
     # while i < N where i represents length of compression string
-    # find the length of string after compression
-    # if length of string is less current, update minimum value
+    i = 1
+    while i < N:
+        # find the length of string after compression
+        length_after_compression = compress_string(s,i)
+        if length_after_compression == -1:
+            i += 1
+            continue
+        # if length of string is less current, update minimum value
+        minimum_length = min(minimum_length, length_after_compression)
+        i += 1
 
     # return minimum value
+    answer = minimum_length
     return answer
