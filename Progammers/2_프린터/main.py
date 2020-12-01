@@ -7,8 +7,11 @@
 #   - 인쇄 작업의 중요도는 1~9로 표현하며 숫자가 클수록 중요하다는 뜻입니다.
 #   - location은 0 이상 (현재 대기목록에 있는 작업 수 - 1) 이하의 값을 가지며 대기목록의 가장 앞에 있으면 0, 두 번째에 있으면 1로 표현합니다.
 
+from collections import deque
+
 def solution(priorities, location):
     answer = 0
+    count = 0
 
     # map priorities to the form [(index, priority number), []]
     priorities = zip(priorities)
@@ -16,9 +19,28 @@ def solution(priorities, location):
     # while true
     while True:
     #   pop first element from list
+        priority = priorities.pop(0)
         #   if there is element in list with higher priority, then put back in.
+        if higher_priority_exists(priority, priorities):
+            priorities.append(priority)
+            #   increment count
+        else:
+            #   otherwise,
+            #   check if location match. if so, return count
+            if priority[0] == location:
+                return count
         #   increment count
-    #   otherwise,
-    #   check if location match. if so, return count
+        count += 1
 
+    answer = count
     return answer
+
+def higher_priority_exists(priority, priorities):
+    has_higher_priority = priority[1] < max(priorities, key = lambda e: e[1])
+
+    if has_higher_priority:
+        return True
+    return False
+
+if __name__ == "__main__":
+    print(solution([2, 1, 3, 2], 2)) #1
