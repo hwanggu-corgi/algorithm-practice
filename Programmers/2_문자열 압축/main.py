@@ -27,9 +27,9 @@ def solution(s):
     return answer
 
 def compress_string(s,substring_length,N):
-    current_length = 1
+    current_length = 0
     substrings_list = []
-    substring_count = {}
+    substring_count = 0
     substring = ''
     compressed_string = ''
     i = 0
@@ -37,26 +37,17 @@ def compress_string(s,substring_length,N):
     while i < N:
         substring += s[i]
         current_length += 1
-
         if (current_length % substring_length == 0):
-            substrings_list.append(substring)
+            substring_count += 1
+
+            compressed_string += str(substring_count) + substring
             substring = ''
+            substring_count = 0
 
         i += 1
 
-    # count frequency of substrings
-    for substring in substrings_list:
-        if not substring in substring_count:
-            substring_count[substring] = 1
-        else:
-            substring_count[substring] += 1
 
-    print(substring_count)
-
-    # calculate length of compressed string
-    for substring in substrings_list:
-        count = substring_count[substring]
-        compressed_string += str(count) + substring
+    print(compressed_string)
 
     return len(compressed_string)
 
