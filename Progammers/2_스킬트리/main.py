@@ -30,6 +30,7 @@ def solution(skill, skill_trees):
 def is_valid(skill, skill_tree):
     order = 1
     N_skill_tree = len(skill_tree)
+    N_skill = len(skill)
     skill_order_by_name = {}
 
     for skill_name in skill:
@@ -42,7 +43,11 @@ def is_valid(skill, skill_tree):
             skill_order_by_name[skill_name] = i
 
         i+=1
-    print(skill_order_by_name)
+
+    if N_skill == 1:
+        skill_name = skill[0]
+        return True if skill_order_by_name[skill_name] < sys.maxsize else False
+
     j = 1
     while j < N_skill:
         skill_name_prev = skill[j-1]
@@ -50,6 +55,8 @@ def is_valid(skill, skill_tree):
 
         if skill_order_by_name[skill_name_prev] > skill_order_by_name[skill_name_current]:
             return False
+
+        j += 1
     return True
 
 if __name__ == "__main__":
