@@ -4,6 +4,10 @@
 # 제한사항
 #   - n은 500,000,000이하의 자연수 입니다.
 
+# brute force method
+#   - count
+#       - on every 3rd number increment value right after
+
 def solution(n):
     answer = ''
     return answer
