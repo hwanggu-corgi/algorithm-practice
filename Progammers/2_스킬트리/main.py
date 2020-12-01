@@ -26,6 +26,17 @@ def solution(skill, skill_trees):
     return answer
 
 def is_valid(skill, skill_tree):
+    index_skill = 0
+    index_skill_tree = 0
+
+    N_skill = len(skill)
+    N_skill_tree = len(skill_tree)
+
+    while index_skill <
+
+    # if index_skill_tree is out of bound and skill[skill_index] is in skill_tree, then return False
+
+    # otherwise, return true
 
     return True
 
