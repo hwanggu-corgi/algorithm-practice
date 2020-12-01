@@ -40,8 +40,8 @@ def compress_string(s,substring_length,N):
         current_length += 1
         if (current_length % substring_length == 0):
             substring_count += 1
-            print(substring_count)
             if prev_substring == substring:
+                print(substring_count)
                 print("i {}".format(i))
                 print("substring {}".format(substring_count))
                 substrings_list[-1] = str(substring_count) + (substring)
