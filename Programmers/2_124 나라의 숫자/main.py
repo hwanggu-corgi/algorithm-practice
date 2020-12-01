@@ -58,10 +58,19 @@ def convert_from_decimal_to_ternary(n):
     quotient = n
 
     while quotient != 0:
-
+        remainder = quotient % 3
         quotient = quotient // 3
+
+        ternary_number += str(remainder) + ternary_number
 
     return ternary_number
 
 def convert_from_ternary_to_strange(ternary_number):
-    pass
+    ternary_number_list = ternary_number.split()
+
+    i = 1
+    while i < N:
+
+        i += 1
+
+    return strange_number
