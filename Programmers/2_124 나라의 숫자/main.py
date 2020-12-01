@@ -46,6 +46,8 @@
 #       - 12 -> 1100 -> 44
 #       - 13 -> 1101 -> 111
 
+from collections import deque
+
 def solution(n):
     ternary_number = convert_from_decimal_to_ternary(n)
     strange_number = convert_from_ternary_to_strange(ternary_number)
@@ -68,12 +70,20 @@ def convert_from_ternary_to_strange(ternary_number):
     ternary_number_list = ternary_number.split()
     N = len(ternary_number_list)
 
+    strnage_number_list = deque()
+
     i = N - 2
     while i >= 0:
+        # case 1 - when ternary_number_list[i+1] == 0
+            # case 1.1 - when ternary_number_list[i] == 4 - store 2
+            # case 1.2 - when ternary_number_list[i] == 2 - store 1
+            # case 1.3 - when ternary_number_list[i] == 1 - store 4
 
-        if trit == 0
+        if ternary_number_list[i+1] == 0
             ternary_number_list[i] = 4
             ternary_number_list[i+1] = int(ternary_number_list[i-1])
         i -= 1
+
+        # case 2 - when ternary_number_list[i+1] != 0
 
     return strange_number
