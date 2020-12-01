@@ -10,6 +10,8 @@
     # - skill_trees의 원소는 스킬을 나타내는 문자열입니다.
     # - skill_trees의 원소는 길이가 2 이상 26 이하인 문자열이며, 스킬이 중복해 주어지지 않습니다.
 
+import sys
+
 def solution(skill, skill_trees):
     answer = 0
 
@@ -26,18 +28,28 @@ def solution(skill, skill_trees):
     return answer
 
 def is_valid(skill, skill_tree):
-    index_skill = 0
-    index_skill_tree = 0
-
-    N_skill = len(skill)
+    order = 1
     N_skill_tree = len(skill_tree)
+    skill_order_by_name = {}
 
-    while index_skill <
+    for skill_name in skill:
+        skill_order_by_name[skill_name] = sys.maxsize
 
-    # if index_skill_tree is out of bound and skill[skill_index] is in skill_tree, then return False
+    i = 0
+    while i < N_skill_tree:
+        skill_name = skill_tree[i]
+        if skill_name in skill_order_by_name:
+            skill_order_by_name[skill_name] = i
 
-    # otherwise, return true
+        i+=1
+    print(skill_order_by_name)
+    j = 1
+    while j < N_skill:
+        skill_name_prev = skill[j-1]
+        skill_name_current = skill[j]
 
+        if skill_order_by_name[skill_name_prev] > skill_order_by_name[skill_name_current]:
+            return False
     return True
 
 if __name__ == "__main__":
