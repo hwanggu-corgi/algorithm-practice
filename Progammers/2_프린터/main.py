@@ -46,4 +46,5 @@ def higher_priority_exists(priority, priorities):
 
 if __name__ == "__main__":
     print(solution([1], 0)) #1
+    print(solution([2,1], 1)) #2
     print(solution([2, 1, 3, 2], 2)) #1
