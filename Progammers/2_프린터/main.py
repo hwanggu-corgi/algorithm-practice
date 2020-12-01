@@ -14,12 +14,15 @@ def solution(priorities, location):
     count = 0
 
     # map priorities to the form [(index, priority number), []]
-    priorities = zip(priorities)
+    priorities = deque(enumerate(priorities))
+
+    print(priorities)
 
     # while true
     while True:
     #   pop first element from list
-        priority = priorities.pop(0)
+        priority = priorities.popleft()
+        print(priority)
         #   if there is element in list with higher priority, then put back in.
         if higher_priority_exists(priority, priorities):
             priorities.append(priority)
@@ -36,8 +39,7 @@ def solution(priorities, location):
     return answer
 
 def higher_priority_exists(priority, priorities):
-    has_higher_priority = priority[1] < max(priorities, key = lambda e: e[1])
-
+    has_higher_priority = priority[1] < max(priorities, key = lambda e: e[1])[1]
     if has_higher_priority:
         return True
     return False
