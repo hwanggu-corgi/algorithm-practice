@@ -66,14 +66,14 @@ def convert_from_decimal_to_ternary(n):
 
 def convert_from_ternary_to_strange(ternary_number):
     ternary_number_list = ternary_number.split()
+    N = len(ternary_number_list)
 
-    i = 1
-    while i < N:
-        trit = ternary_number_list[i]
+    i = N - 2
+    while i >= 0:
 
         if trit == 0
             ternary_number_list[i] = 4
-            ternary_number_list[i-1] = int(ternary_number_list[i-1])
-        i += 1
+            ternary_number_list[i+1] = int(ternary_number_list[i-1])
+        i -= 1
 
     return strange_number
