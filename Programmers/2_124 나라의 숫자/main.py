@@ -66,31 +66,43 @@ def convert_from_decimal_to_ternary(n):
     while quotient != 0:
         remainder = quotient % 3
         quotient = quotient // 3
-        ternary_number += str(remainder) + ternary_number
+
+        ternary_number = str(remainder) + ternary_number
 
     return ternary_number
 
 def convert_from_ternary_to_strange(ternary_number):
-    ternary_number_list = ternary_number.split()
+    print(ternary_number)
+    ternary_number_list = [x for x in ternary_number]
     N = len(ternary_number_list)
 
     strange_number_queue = deque()
 
     i = N - 1
     while i >= 0:
-        # if ternary_number_list[i+1] == 0
-        if ternary_number_list[i] == "0":
-            # append 4 in strange_number_queue
             if (i == N-1):
                 strange_number_queue.append("4")
                 i -= 1
                 continue
 
+        # if ternary_number_list[i+1] == 0
+        if ternary_number_list[i] == "0":
+            if i == N-1:
+                strange_number_queue.appendleft("4")
+                i -= 1
+                continue
+
+            # append 4 in strange_number_queue
             if ternary_number_list[i+1] != "0":
                 strange_number_queue.appendleft("4")
                 i -= 1
                 continue
 
+            if ternary_number_list[i+1] == "0":
+                strange_number_queue.appendleft("2")
+                i -= 1
+                continue
+        else:
             if ternary_number_list[i+1] == "0":
                 if ternary_number_list[i] == "4":
                     strange_number_queue.appendleft("2")
@@ -99,11 +111,10 @@ def convert_from_ternary_to_strange(ternary_number):
                 elif ternary_number_list[i] == "1" and i != 0:
                     strange_number_queue.appendleft("4")
 
-        else:
-            strange_number_queue.appendleft(ternary_number_list[i])
 
         i -= 1
 
+    print(strange_number_queue)
     strange_number = "".join(list(strange_number_queue))
 
     return strange_number
