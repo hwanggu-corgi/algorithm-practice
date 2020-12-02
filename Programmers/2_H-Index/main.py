@@ -7,4 +7,10 @@
 
 def solution(citations):
     answer = 0
+
+    # sort citations to increasing order
+
+    # find number that has h citations greater than h
+
+    # return answer
     return answer
