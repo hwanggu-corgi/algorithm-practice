@@ -11,10 +11,8 @@ def solution(citations):
     if N == 0:
         return 0
 
-    # sort citations to increasing order
     citations = sorted(citations)
 
-    # loop until finding index where number of paper is greater than equal to h and less than or equal to h
     h_index = citations[-1]
 
     while h_index >= 0:
@@ -30,12 +28,11 @@ def solution(citations):
             if ((count_above_or_equal_h_index >= h_index) and
             (count_less_or_equal_h_index <= h_index)):
                 answer = h_index
-                break
+                return answer
             j -= 1
         h_index -= 1
 
-    # return answer
-    return answer
+    return 0
 
 if __name__ == "__main__":
     print(solution([])) #0
