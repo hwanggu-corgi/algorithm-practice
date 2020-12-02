@@ -18,21 +18,22 @@ def solution(n):
 
     return answer
 
-def convert_from_decimal_to_ternary(n):
+def convert_from_decimal_to_strange(n):
+    strange_list = ["4", "1", "2"]
     ternary_number = ''
     quotient = n
 
     while quotient != 0:
         remainder = quotient % 3
-        quotient = quotient // 3
+        quotient = quotient // 3 if remainder != 0 else (quotient // 3) - 1
 
-        ternary_number = str(remainder) + ternary_number
+        ternary_number = strange_list[remainder] + ternary_number
 
     return ternary_number
 
 if __name__ == "__main__":
-    # print(solution(1)) #1
-    # print(solution(2)) #2
-    # print(solution(3)) #4
+    print(solution(1)) #1
+    print(solution(2)) #2
+    print(solution(3)) #4
     print(solution(4)) #11
     # print(solution(27)) #224
