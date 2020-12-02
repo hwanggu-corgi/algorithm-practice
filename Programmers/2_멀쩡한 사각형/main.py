@@ -5,7 +5,7 @@
 #   - W, H : 1억 이하의 자연수
 
 # idea
-
+#   - Moe having trouble finding how to get the squares in a diagonal;;;
 
 def solution(w,h):
     answer = 1
