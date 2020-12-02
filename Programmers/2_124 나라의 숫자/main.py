@@ -51,12 +51,13 @@ from collections import deque
 def solution(n):
 
     if n == 1 or n == 2:
-        return n
+        return str(n)
 
     ternary_number = convert_from_decimal_to_ternary(n)
     strange_number = convert_from_ternary_to_strange(ternary_number)
 
     answer = strange_number
+
     return answer
 
 def convert_from_decimal_to_ternary(n):
@@ -67,60 +68,25 @@ def convert_from_decimal_to_ternary(n):
         remainder = quotient % 3
         quotient = quotient // 3
 
-        ternary_number = str(remainder) + ternary_number
+        if ternary_number == '':
+            ternary_number = str(remainder) + ternary_number
+            continue
+
+        if ternary_number[0] == '0':
+
+        else:
+
 
     return ternary_number
 
 def convert_from_ternary_to_strange(ternary_number):
-    print(ternary_number)
-    ternary_number_list = [x for x in ternary_number]
-    N = len(ternary_number_list)
 
-    strange_number_queue = deque()
-
-    i = N - 1
-    while i >= 0:
-        # if ternary_number_list[i+1] == 0
-        if ternary_number_list[i] == "0":
-            if i == N-1:
-                strange_number_queue.appendleft("4")
-                i -= 1
-                continue
-
-            # append 4 in strange_number_queue
-            if ternary_number_list[i+1] != "0":
-                strange_number_queue.appendleft("4")
-                i -= 1
-                continue
-
-            if ternary_number_list[i+1] == "0":
-                strange_number_queue.appendleft("2")
-                i -= 1
-                continue
-
-        if ternary_number_list[i+1] == "0":
-            if ternary_number_list[i] == "2":
-                strange_number_queue.appendleft("1")
-                i -= 1
-                continue
-
-            if ternary_number_list[i] == "1" and i != 0:
-                strange_number_queue.appendleft("4")
-                i -= 1
-                continue
-        else:
-            strange_number_queue.appendleft(ternary_number_list[i])
-            i -= 1
-            continue
-
-
-        i -= 1
-
-    print(strange_number_queue)
-    strange_number = "".join(list(strange_number_queue))
 
     return strange_number
 
 if __name__ == "__main__":
-    print(solution(1))
-    print(solution(3))
+    # print(solution(1)) #1
+    # print(solution(2)) #2
+    # print(solution(3)) #4
+    print(solution(4)) #11
+    # print(solution(27)) #224
