@@ -7,6 +7,8 @@
 # idea
 #   - Moe having trouble finding how to get the squares in a diagonal;;;
 
+import math
+
 def solution(w,h):
     answer = 1
 
@@ -15,7 +17,22 @@ def solution(w,h):
         return w # or h
 
     # if it's not a square
-    number_of_squares_in_a_diagonal = get_number_of_squares_in_a_diagonal(...)
+    number_of_squares_in_a_diagonal = get_number_of_squares_in_a_diagonal(w, h)
+    total_squares = w * h
 
-    answer = number_of_squares_in_a_diagonal
+    answer = total_squares - number_of_squares_in_a_diagonal
     return answer
+
+
+def get_number_of_squares_in_a_diagonal(width, height):
+
+    gcd = math.gcd(width, height)
+
+    d_width = width / gcd
+    d_height = height / gcd
+
+    return int((d_width + d_height - 1) * gcd)
+
+
+if __name__ == "__main__":
+    print(solution(8, 12)) #80
