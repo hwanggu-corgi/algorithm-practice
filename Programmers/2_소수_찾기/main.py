@@ -8,10 +8,15 @@
 
 def solution(numbers):
     answer = 0
+    combinations_set = set()
+
+    # split numbers to array of digits
 
     # use DFS and set
+    i = 0
+    while i in
+        _solution(combined_word, combinations_set)
 
-    # split numbers to array of digit
 
     # for each number, perform search
 
