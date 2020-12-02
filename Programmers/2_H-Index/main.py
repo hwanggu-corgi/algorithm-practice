@@ -15,7 +15,9 @@ def solution(citations):
     # sort citations to increasing order
     citations = sorted(citations)
 
-    # find number that has h citations greater than h
+    # get the maimum number of h-index possible
+
+    # loop until finding index where number of paper is greater than equal to h and less than or equal to h
     i = 0
     while i < N:
         paper_reference_count = citations[i]
@@ -36,3 +38,4 @@ if __name__ == "__main__":
     print(solution([1])) #1
     print(solution([3, 0, 6, 1, 5])) #3
     print(solution([1, 1, 1, 1, 1])) #1
+    print(solution([5,5,5,5])) #4
