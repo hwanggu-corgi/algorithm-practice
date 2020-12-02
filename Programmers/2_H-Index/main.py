@@ -13,16 +13,17 @@ def solution(citations):
         return 0
 
     # sort citations to increasing order
-    citations = sorted(citations, reverse=True)
+    citations = sorted(citations)
 
     # find number that has h citations greater than h
     i = 0
     while i < N:
         paper_reference_count = citations[i]
-        number_of_papers_referenced_higher_than_equal_to_i = i + 1
+        h_geq = N - i
+        h_leq = i + 1
 
-        if ((paper_reference_count >= number_of_papers_referenced_higher_than_equal_to_i) and
-           (paper_reference_count <= number_of_papers_referenced_higher_than_equal_to_i)):
+        if ((paper_reference_count >= h_geq) and
+           (paper_reference_count <= h_leq)):
             answer = paper_reference_count
             break
         i += 1
@@ -34,3 +35,4 @@ if __name__ == "__main__":
     print(solution([])) #0
     print(solution([1])) #1
     print(solution([3, 0, 6, 1, 5])) #3
+    print(solution([1, 1, 1, 1, 1])) #1
