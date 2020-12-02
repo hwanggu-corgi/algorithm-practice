@@ -73,7 +73,6 @@ def convert_from_decimal_to_ternary(n):
     return ternary_number
 
 def convert_from_ternary_to_strange(ternary_number):
-    print(ternary_number)
     ternary_number_list = [x for x in ternary_number]
     N = len(ternary_number_list)
 
@@ -92,14 +91,18 @@ def convert_from_ternary_to_strange(ternary_number):
                     continue
             else:
                 strange_number_queue.appendleft(ternary_number_list[i])
+                i -= 1
+                continue
 
-        elif i == N-1:
+        if i == N-1:
             if ternary_number_list[i] == "0":
                 strange_number_queue.appendleft("4")
                 i -= 1
                 continue
             else:
                 strange_number_queue.appendleft(ternary_number_list[i])
+                i -= 1
+                continue
 
 
         if ternary_number_list[i] == "0":
