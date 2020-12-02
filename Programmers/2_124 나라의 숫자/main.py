@@ -70,20 +70,35 @@ def convert_from_ternary_to_strange(ternary_number):
     ternary_number_list = ternary_number.split()
     N = len(ternary_number_list)
 
-    strnage_number_list = deque()
+    strange_number_list = deque()
 
     i = N - 2
     while i >= 0:
-        # case 1 - when ternary_number_list[i+1] == 0
-            # case 1.1 - when ternary_number_list[i] == 4 - store 2
-            # case 1.2 - when ternary_number_list[i] == 2 - store 1
-            # case 1.3 - when ternary_number_list[i] == 1 - store 4
+        # if ternary_number_list[i+1] == 0
+        if ternary_number_list[i+1] == 0
+            # append 4 in strange_number_list
+            strange_number_list.append(4)
+
+            if ternary_number_list[i] == 4:
+                strange_number_list.append(2)
+            elif ternary_number_list[i] == 2:
+                strange_number_list.append(1)
+            # get what to put for strange_number_list[i]
+
+                # ternary_number_list[i] == 4 - 2
+                # ternary_number_list[i] == 2 - 1
+                # ternary_number_list[i] == 1 - 4
+
+            # if i == 0 and ternary_number_list[i] == 1, then don't append
+            # else, append above number to strange_number_list
+
+        # if ternary_number_list[i+1] != 0
+
 
         if ternary_number_list[i+1] == 0
             ternary_number_list[i] = 4
             ternary_number_list[i+1] = int(ternary_number_list[i-1])
         i -= 1
 
-        # case 2 - when ternary_number_list[i+1] != 0
 
     return strange_number
