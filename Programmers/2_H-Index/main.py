@@ -7,21 +7,20 @@
 
 def solution(citations):
     N = len(citations)
-    count_above_or_equal_h_index = 0
 
     if N == 0:
         return 0
 
     # sort citations to increasing order
-    citations = sorted(citations, reverse=True)
-
-    # get the maimum number of h-index possible
-    h_index_max = citations[0]
+    citations = sorted(citations)
 
     # loop until finding index where number of paper is greater than equal to h and less than or equal to h
-    h_index = h_index_max
+    h_index = citations[-1]
+
     while h_index >= 0:
         j = N - 1
+        count_above_or_equal_h_index = 0
+
         while j >= 0:
             if citations[j] >= h_index:
                 count_above_or_equal_h_index = count_above_or_equal_h_index + 1
