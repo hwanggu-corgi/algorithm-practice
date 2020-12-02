@@ -8,19 +8,27 @@
 
 def solution(numbers):
     answer = 0
-    combinations_set = set()
+    N = len(numbers)
+    combinations = set()
 
     # split numbers to array of digits
 
-    # use DFS and set
+    # use DFS to find all combination of words
     i = 0
-    while i in
-        _solution(combined_word, combinations_set)
+    while i < N:
+        _solution(..., N, combinations)
+        i += 1
 
+    # calculate length of combination of words
+    return len(combinations)
 
-    # for each number, perform search
+def _solution(...):
 
-    # on reaching the length of number N, return combined value
+    # if combined word length matches target, add to set and return
+    if len(combined_word) == N:
+        combinations.add(combined_word)
+        return
 
-    # add to set and continue
-    return answer
+    # if not, continue to add combinations
+    while ...:
+        _solution(...)
