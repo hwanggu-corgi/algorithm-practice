@@ -4,9 +4,6 @@
 # 제한사항
 #   - W, H : 1억 이하의 자연수
 
-# idea
-#   - Moe having trouble finding how to get the squares in a diagonal;;;
-
 import math
 
 def solution(w,h):
