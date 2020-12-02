@@ -72,12 +72,15 @@ def convert_from_ternary_to_strange(ternary_number):
 
     strange_number_list = deque()
 
-    i = N - 2
+    i = N - 1
     while i >= 0:
         # if ternary_number_list[i+1] == 0
-        if ternary_number_list[i+1] == 0
+        if ternary_number_list[i] == "0"
             # append 4 in strange_number_list
-            strange_number_list.append("4")
+            if (i == N-1):
+                strange_number_list.append("4")
+            elif ternary_number_list[i+1] != "0":
+                strange_number_list.append("4")
 
             if ternary_number_list[i] == "4":
                 strange_number_list.append("2")
@@ -86,7 +89,7 @@ def convert_from_ternary_to_strange(ternary_number):
             elif ternary_number_list[i] == "1" and i != 0:
                 strange_number_list.append("4")
 
-        # if ternary_number_list[i+1] != 0
+        else:
 
 
         i -= 1
