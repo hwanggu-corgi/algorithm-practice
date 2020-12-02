@@ -30,5 +30,9 @@ def _solution(...):
         return
 
     # if not, continue to add combinations
+    # for each character in word
     while ...:
+        # pop it
+        # add to combination
+        # get reminaing words after pop
         _solution(...)
