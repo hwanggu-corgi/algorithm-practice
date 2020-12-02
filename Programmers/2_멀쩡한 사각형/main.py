@@ -9,4 +9,13 @@
 
 def solution(w,h):
     answer = 1
+
+    # if it's a square
+    if w == h:
+        return w # or h
+
+    # if it's not a square
+    number_of_squares_in_a_diagonal = get_number_of_squares_in_a_diagonal(...)
+
+    answer = number_of_squares_in_a_diagonal
     return answer
