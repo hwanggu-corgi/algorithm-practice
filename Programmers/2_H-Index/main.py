@@ -7,7 +7,7 @@
 
 def solution(citations):
     N = len(citations)
-    answer = 0
+    count_above_or_equal_h_index = 0
 
     if N == 0:
         return 0
@@ -21,13 +21,18 @@ def solution(citations):
     # loop until finding index where number of paper is greater than equal to h and less than or equal to h
     h_index = h_index_max
     while h_index >= 0:
-        for reference_count in citations:
-            if ((paper_reference_count >= h_geq) and
-            (paper_reference_count <= h_leq)):
-                answer = paper_reference_count
-                break
-            i += 1
+        j = N - 1
+        while j >= 0:
+            if citations[j] >= h_index:
+                count_above_or_equal_h_index = count_above_or_equal_h_index + 1
 
+            count_less_or_equal_h_index = N - count_above_or_equal_h_index
+
+            if ((count_above_or_equal_h_index >= h_index) and
+            (count_less_or_equal_h_index <= h_index)):
+                answer = h_index
+                break
+            j -= 1
         h_index -= 1
 
     # return answer
