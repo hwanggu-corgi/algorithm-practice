@@ -45,14 +45,21 @@ def is_alright_to_cross_bridge(trucks_queue):
     if len(trucks_queue) == 0:
         return True
 
+    if trucks_queue[-1][1] > 0:
+        return True
 
-    pass
+    return False
 
-def move_truck_to_bridge(...):
-    pass
+def move_truck_to_bridge(trucks_queue, in_progress):
+    if len(trucks_queue) == 0:
+        return
 
-def update_trucks_on_bridge(...):
-    pass
+    truck = trucks_queue.popleft()
+    in_progress.append(truck)
+
+def update_trucks_on_bridge(in_progress):
+    for truck in in_progress:
+
 
 def is_alright_to_move_to_finish(...):
     pass
