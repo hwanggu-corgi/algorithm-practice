@@ -8,10 +8,19 @@
 #   - truck_weights의 길이는 1 이상 10,000 이하입니다.
 #   - 모든 트럭의 무게는 1 이상 weight 이하입니다.
 
+from collections import deque
+
 def solution(bridge_length, weight, truck_weights):
     answer = 0
 
+    # reformat trucks to following [[truck id, time spent moving across bridge]]
     # create a queue for waiting trucks
+    trucks_queue = deque([[x,0] for x in truck_weights])
+
+    # while
+    # wait until more truck can be added
+    # add more truck when free
+    # if truck is done, then move to finished
 
     # once all trucks have moved to the end of bridge, return answer
 
