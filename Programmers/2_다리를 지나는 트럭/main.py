@@ -41,14 +41,17 @@ def solution(bridge_length, weight, truck_weights):
     answer = time_elapsed
     return answer
 
-def is_alright_to_cross_bridge(trucks_queue, weight):
+def is_alright_to_cross_bridge(trucks_queue, bridge_weight, weight):
     if len(trucks_queue) == 0:
-        return True
+        return False
 
-    if trucks_queue[-1][1] > 0:
-        return True
+    if bridge_weight + trucks_queue[-1][0] > weight:
+        return False
 
-    return False
+    if trucks_queue[-1][1] <= 1:
+        return False
+
+    return True
 
 def move_truck_to_bridge(trucks_queue, in_progress):
     if len(trucks_queue) == 0:
