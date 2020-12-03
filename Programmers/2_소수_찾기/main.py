@@ -20,12 +20,8 @@ def solution(numbers):
     # use DFS to find all combination of words
     _solution("", numbers, combinations, N)
 
-    for combination in combinations:
-        if is_prime_number(int(combination)):
-            answer += 1
-
     # calculate length of combination of words
-    return answer
+    return len(combinations)
 
 def _solution(combined_number, numbers, combinations, target_length):
 
@@ -42,7 +38,13 @@ def _solution(combined_number, numbers, combinations, target_length):
         number = numbers[i]
         # add to combination
         new_combined_number = str(int(combined_number + number))
-        combinations.add(new_combined_number)
+
+        if new_combined_number in combinations:
+            i += 1
+            continue
+
+        if is_prime_number(new_combined_number):
+            combinations.add(new_combined_number)
 
         # get reminaing numbers after pop
         new_numbers = numbers[:i] + numbers[i+1:]
