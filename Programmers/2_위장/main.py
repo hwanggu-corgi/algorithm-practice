@@ -13,14 +13,23 @@ from itertools import permutations
 
 def solution(clothes):
     answer = 0
+    # find number of types
+    number_of_types = ...
 
-    # get permutations of the clothes
-    perms = permutations(clothes)
+    i = 1
+    while i <= number_of_types:
+        # get permutations of the clothes
+        perms = permutations(clothes, i)
 
-    # filter combination of same type
-    for permutation in perms:
-        if permutation[0][1] != permutation[1][1]:
-            answer += 1
+        # filter combination of same type
+        for permutation in perms:
+            if not has_the_same_kind_of_clothes(permutation):
+                answer += 1
+
+        i += 1
     # return total number of combinations
 
     return answer
+
+if __name__ == "__main__":
+    print(solution([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]])) #5
