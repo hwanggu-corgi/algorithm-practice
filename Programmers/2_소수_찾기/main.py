@@ -16,14 +16,15 @@ def solution(numbers):
     # use DFS to find all combination of words
     _solution("", numbers, combinations, N)
 
+    print(combinations)
+
     # calculate length of combination of words
     return len(combinations)
 
-def _solution(number_combination, numbers, combinations, target_length):
+def _solution(combined_number, numbers, combinations, target_length):
 
     # if combined word length matches target, add to set and return
-    if len(number_combination) == target_length:
-        combinations.add(number_combination)
+    if len(combined_number) == target_length:
         return
 
     # if not, continue to add combinations
@@ -34,12 +35,18 @@ def _solution(number_combination, numbers, combinations, target_length):
         # pop it
         number = numbers[i]
         # add to combination
-        combined_number += number
+        new_combined_number = combined_number + number
+
+        # check prime number
+
         # get reminaing numbers after pop
-        numbers = numbers[:i] + numbers[i+1:]
-        _solution(combined_number, numbers, combinations, target_length)
+        new_numbers = numbers[:i] + numbers[i+1:]
+        combinations.add(new_combined_number)
+        _solution(new_combined_number, new_numbers, combinations, target_length)
 
         i += 1
 
 if __name__ == "__main__":
-    print(solution(numbers))
+    print(solution("17")) #3
+    print(solution("011")) #2
+    print(solution("")) #0
