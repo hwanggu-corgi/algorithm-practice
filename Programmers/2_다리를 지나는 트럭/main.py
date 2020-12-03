@@ -12,15 +12,21 @@ from collections import deque
 
 def solution(bridge_length, weight, truck_weights):
     answer = 0
+    N = len(truck_weights)
 
     # reformat trucks to following [[truck id, time spent moving across bridge]]
     # create a queue for waiting trucks
     trucks_queue = deque([[x,0] for x in truck_weights])
+    in_progress = deque([])
+    finished = deque([])
 
     # while
-    # wait until more truck can be added
-    # add more truck when free
-    # if truck is done, then move to finished
+    while len(finished) == N:
+        if is_alright_to_cross_bridge(...):
+        # wait until more truck can be added
+            move_truck_to_bridge()
+        # add more truck when free
+        # if truck is done, then move to finished
 
     # once all trucks have moved to the end of bridge, return answer
 
