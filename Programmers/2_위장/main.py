@@ -9,10 +9,18 @@
 #   - 모든 문자열의 길이는 1 이상 20 이하인 자연수이고 알파벳 소문자 또는 '_' 로만 이루어져 있습니다.
 #   - 스파이는 하루에 최소 한 개의 의상은 입습니다.
 
+from itertools import permutations
+
 def solution(clothes):
     answer = 0
 
     # get permutations of the clothes
+    perms = permutations(clothes)
 
+    # filter combination of same type
+    for permutation in perms:
+        if permutation[0][1] != permutation[1][1]:
+            answer += 1
+    # return total number of combinations
 
     return answer
