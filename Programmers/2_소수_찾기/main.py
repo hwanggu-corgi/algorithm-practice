@@ -42,14 +42,7 @@ def is_prime_number(number):
 
     i = 2
     while i <= number:
-        if number > 2 and number % 2 == 0:
-            return False
 
-        if number > 3 and number % 3 == 0:
-            return False
-
-        if not math.gcd(i, number) in [1, number]:
-            return False
 
         i += 1
 
