@@ -29,6 +29,7 @@ def _solution(combined_number, numbers, combinations, target_length):
     if len(combined_number) == target_length:
         return
 
+
     # if not, continue to add combinations
     # for each character in numbers
     N = len(numbers)
@@ -38,10 +39,11 @@ def _solution(combined_number, numbers, combinations, target_length):
         number = numbers[i]
         # add to combination
         new_combined_number = str(int(combined_number + number))
+        print(new_combined_number)
+        # if len(new_combined_number) > 1 and (new_combined_number[-1] == "2" or new_combined_number[-1] == "0"):
+        #     i += 1
+        #     continue
 
-        if new_combined_number in combinations:
-            i += 1
-            continue
 
         if is_prime_number(new_combined_number):
             combinations.add(new_combined_number)
