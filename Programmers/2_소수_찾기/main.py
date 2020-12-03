@@ -6,25 +6,33 @@
 #   - numbers는 0~9까지 숫자만으로 이루어져 있습니다.
 #   - 013은 0, 1, 3 숫자가 적힌 종이 조각이 흩어져있다는 의미입니다.
 
+from itertools import permutations
 import math
 
 def solution(numbers):
     answer = 0
     N = len(numbers)
-    combinations = set()
+    numbers_set = set()
 
     # split numbers to array of digits
     if numbers == "":
         return 0
 
+    i = 0
+    while i < N:
+        perms = permutations(numbers, (i+1))
+        for number in perms:
+            number = int("".join(number))
 
+            if not is_prime_number(number):
+                continue
 
-    for combination in combinations:
-        if is_prime_number(int(combination)):
-            answer += 1
+            numbers_set.add(number)
+        i += 1
+
 
     # calculate length of combination of words
-    return answer
+    return len(numbers_set)
 
 def is_prime_number(number):
     number = int(number)
