@@ -14,14 +14,14 @@ def solution(numbers):
     # split numbers to array of digits
 
     # use DFS to find all combination of words
-    _solution("", numbers, combinations, N)
+    get_combinations("", numbers, combinations, N)
 
     print(combinations)
 
     # calculate length of combination of words
     return len(combinations)
 
-def _solution(combined_number, numbers, combinations, target_length):
+def get_combinations(combined_number, numbers, combinations, target_length):
 
     # if combined word length matches target, add to set and return
     if len(combined_number) == target_length:
@@ -35,16 +35,24 @@ def _solution(combined_number, numbers, combinations, target_length):
         # pop it
         number = numbers[i]
         # add to combination
-        new_combined_number = combined_number + number
+        new_combined_number = str(int(combined_number + number))
 
         # check prime number
+        combinations.add(new_combined_number)
 
         # get reminaing numbers after pop
         new_numbers = numbers[:i] + numbers[i+1:]
-        combinations.add(new_combined_number)
         _solution(new_combined_number, new_numbers, combinations, target_length)
 
         i += 1
+
+def is_prime_number(number):
+    number = int(number)
+
+    if number == 1 or number == 0:
+        return False
+
+
 
 if __name__ == "__main__":
     print(solution("17")) #3
