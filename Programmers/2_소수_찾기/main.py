@@ -14,25 +14,32 @@ def solution(numbers):
     # split numbers to array of digits
 
     # use DFS to find all combination of words
-    i = 0
-    while i < N:
-        _solution(..., N, combinations)
-        i += 1
+    _solution("", numbers, combinations, N)
 
     # calculate length of combination of words
     return len(combinations)
 
-def _solution(...):
+def _solution(number_combination, numbers, combinations, target_length):
 
     # if combined word length matches target, add to set and return
-    if len(combined_word) == N:
-        combinations.add(combined_word)
+    if len(number_combination) == target_length:
+        combinations.add(number_combination)
         return
 
     # if not, continue to add combinations
-    # for each character in word
-    while ...:
+    # for each character in numbers
+    N = len(numbers)
+    i = 0
+    while i < N:
         # pop it
+        number = numbers[i]
         # add to combination
-        # get reminaing words after pop
-        _solution(...)
+        combined_number += number
+        # get reminaing numbers after pop
+        numbers = numbers[:i] + numbers[i+1:]
+        _solution(combined_number, numbers, combinations, target_length)
+
+        i += 1
+
+if __name__ == "__main__":
+    print(solution(numbers))
