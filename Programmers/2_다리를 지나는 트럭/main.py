@@ -64,7 +64,14 @@ def update_trucks_on_bridge(in_progress):
     for truck in in_progress:
         truck[1] += 1
 
-def is_alright_to_move_to_finish(in_progress, ):
+def is_alright_to_move_to_finish(in_progress, bridge_length):
+    if len(in_progress) == 0:
+        return False
+
+    if in_progress[0][1] < bridge_length:
+        return False
+
+    return True
 
 
 def move_truck_to_finish(...):
