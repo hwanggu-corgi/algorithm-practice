@@ -23,13 +23,19 @@ def solution(clothes):
 
         # filter combination of same type
         for permutation in perms:
-            if not has_the_same_kind_of_clothes(permutation):
+            if not has_the_same_kind_of_clothes(permutation, i):
                 answer += 1
 
         i += 1
     # return total number of combinations
 
     return answer
+
+def has_the_same_kind_of_clothes(permutation, n):
+    i = 0
+    while i < n:
+
+        i += 1
 
 if __name__ == "__main__":
     print(solution([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]])) #5
