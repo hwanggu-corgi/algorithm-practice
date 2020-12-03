@@ -26,15 +26,14 @@ def solution(bridge_length, weight, truck_weights):
     while len(finished) != N:
         # wait until more truck can be added
         # add more truck when free
-        if is_alright_to_cross_bridge(trucks_queue, bridge_weight, weight):
+        if is_alright_to_cross_bridge(trucks_queue, in_progress, bridge_weight, weight):
             move_truck_to_bridge(trucks_queue, in_progress)
             bridge_weight = add_bridge_weight(in_progress, bridge_weight)
 
         update_trucks_on_bridge(in_progress)
-
         # if truck is done, then move to finished
         if is_alright_to_move_to_finish(in_progress, bridge_length):
-            move_truck_to_finish(in_progress, finish)
+            move_truck_to_finish(in_progress, finished)
             bridge_weight = remove_bridge_weight(finished, bridge_weight)
 
         time_elapsed += 1
@@ -43,14 +42,14 @@ def solution(bridge_length, weight, truck_weights):
     answer = time_elapsed
     return answer
 
-def is_alright_to_cross_bridge(trucks_queue, bridge_weight, weight):
+def is_alright_to_cross_bridge(trucks_queue, in_progress, bridge_weight, weight):
     if len(trucks_queue) == 0:
         return False
 
-    if bridge_weight + trucks_queue[-1][0] > weight:
+    if bridge_weight + trucks_queue[0][0] > weight:
         return False
 
-    if trucks_queue[-1][1] <= 1:
+    if len(in_progress) > 0 and in_progress[-1][1] <= 1:
         return False
 
     return True
@@ -78,10 +77,9 @@ def is_alright_to_move_to_finish(in_progress, bridge_length):
     return True
 
 
-def move_truck_to_finish(finished, in_progress):
+def move_truck_to_finish(in_progress, finished):
     if len(in_progress) == 0:
         return
-
     truck = in_progress.popleft()
     finished.append(truck)
 
