@@ -6,22 +6,28 @@
 #   - numbers는 0~9까지 숫자만으로 이루어져 있습니다.
 #   - 013은 0, 1, 3 숫자가 적힌 종이 조각이 흩어져있다는 의미입니다.
 
+import math
+
 def solution(numbers):
     answer = 0
     N = len(numbers)
     combinations = set()
 
     # split numbers to array of digits
+    if numbers == "":
+        return 0
 
     # use DFS to find all combination of words
-    get_combinations("", numbers, combinations, N)
+    _solution("", numbers, combinations, N)
 
-    print(combinations)
+    for combination in combinations:
+        if is_prime_number(int(combination)):
+            answer += 1
 
     # calculate length of combination of words
-    return len(combinations)
+    return answer
 
-def get_combinations(combined_number, numbers, combinations, target_length):
+def _solution(combined_number, numbers, combinations, target_length):
 
     # if combined word length matches target, add to set and return
     if len(combined_number) == target_length:
@@ -36,8 +42,6 @@ def get_combinations(combined_number, numbers, combinations, target_length):
         number = numbers[i]
         # add to combination
         new_combined_number = str(int(combined_number + number))
-
-        # check prime number
         combinations.add(new_combined_number)
 
         # get reminaing numbers after pop
@@ -52,9 +56,18 @@ def is_prime_number(number):
     if number == 1 or number == 0:
         return False
 
+    i = 2
+    while i <= number:
+        if not math.gcd(i, number) in [1, number]:
+            return False
 
+        i += 1
+
+    return True
 
 if __name__ == "__main__":
     print(solution("17")) #3
     print(solution("011")) #2
     print(solution("")) #0
+    print(solution("1")) #0
+    print(solution("0")) #0
