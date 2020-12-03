@@ -41,9 +41,9 @@ def is_prime_number(number):
         return False
 
     i = 2
-    while i <= number:
-
-
+    while i < number:
+        if number % i == 0:
+            return False
         i += 1
 
     return True
