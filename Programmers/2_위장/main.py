@@ -12,5 +12,7 @@
 def solution(clothes):
     answer = 0
 
+    # get permutations of the clothes
+
 
     return answer
