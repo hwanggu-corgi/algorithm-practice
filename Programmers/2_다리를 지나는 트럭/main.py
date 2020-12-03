@@ -10,4 +10,9 @@
 
 def solution(bridge_length, weight, truck_weights):
     answer = 0
+
+    # create a queue for waiting trucks
+
+    # once all trucks have moved to the end of bridge, return answer
+
     return answer
