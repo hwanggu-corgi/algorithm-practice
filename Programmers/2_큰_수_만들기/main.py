@@ -12,10 +12,24 @@ def solution(number, k):
 
     # convert number to queue
     number_list = [x for x in number]
-
+    print(number_list)
     # find biggest number after removing k
-    current_i = 0
+    i = 1
     while k > 0:
+        # start off with the second number i in list
+        # if number_list[i - 1] < number_list[i], then remove number
+        if number_list[i - 1] < number_list[i]:
+            number_list.pop(i-1)
+            # also decrement k
+            print(number_list)
+            k -= 1
+        else:
+            # else, move i by 1
+            i += 1
 
     # return result
+    ansewr = "".join(number_list)
     return answer
+
+if __name__ == "__main__":
+    print(solution("1924", 2))
