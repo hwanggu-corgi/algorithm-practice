@@ -8,11 +8,24 @@
 #   - 구명보트의 무게 제한은 항상 사람들의 몸무게 중 최댓값보다 크게 주어지므로 사람들을 구출할 수 없는 경우는 없습니다.
 
 def solution(people, limit):
-    answer = 0
-
     # sort people in increasing order
+    N = len(people)
+    people = sorted(people)
+    current_sum = people[0]
+    count = 0
+    i = 1
+    while i < N:
+        # if the current current_sum + a would result in over capacity, then add count
+        a = people[i]
+        if current_sum + a > limit:
+            count += 1
+            current_sum = 0
 
-    # if the current sum + a would result in over capacity, then add count
-    # reset sum and add a
-    for
+        current_sum += a
+        i += 1
+
     return answer
+
+if __name__ == "__main__":
+    print(solution([70, 50, 80, 50], 100))
+    print(solution([70, 80, 50], 100))
