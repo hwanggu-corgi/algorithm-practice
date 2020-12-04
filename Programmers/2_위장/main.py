@@ -14,7 +14,8 @@ from itertools import permutations
 def solution(clothes):
     answer = 0
     # find number of types
-    number_of_types = ...
+    number_of_types = len(set([x[1] for x in clothes]))
+    clothes_set = set()
 
     i = 1
     while i <= number_of_types:
@@ -23,9 +24,16 @@ def solution(clothes):
 
         # filter combination of same type
         for permutation in perms:
+            permutation = list(permutation)
+            permutation.sort(key=lambda e: e[0])
+
+            if str(permutation) in clothes_set:
+                continue
+
             if not has_the_same_kind_of_clothes(permutation, i):
                 answer += 1
 
+            clothes_set.add(str(permutation))
         i += 1
     # return total number of combinations
 
@@ -33,9 +41,15 @@ def solution(clothes):
 
 def has_the_same_kind_of_clothes(permutation, n):
     i = 0
+    clothe_types_set = set()
     while i < n:
+        clothe_type = permutation[i][1]
+        if clothe_type in clothe_types_set:
+            return True
 
+        clothe_types_set.add(clothe_type)
         i += 1
 
+    return False
 if __name__ == "__main__":
     print(solution([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]])) #5
