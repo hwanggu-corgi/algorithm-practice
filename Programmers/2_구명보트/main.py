@@ -29,16 +29,8 @@ def solution(people, limit):
         # if not check if smaller element can be filled in
 
         # if the current current_sum + a would result in over capacity, then add count
-        a = people[i]
-        if current_sum + a > limit:
-            count += 1
-            current_sum = 0
 
-        current_sum += a
-        i += 1
-
-    if current_sum > 0:
-        count += 1
+        # after add pop element
 
     answer = count
     return answer
