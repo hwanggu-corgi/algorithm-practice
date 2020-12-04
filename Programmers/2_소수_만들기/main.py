@@ -8,10 +8,10 @@
 from itertools import combinations
 
 def solution(nums):
-    answer = -1
+    count = 0
 
     # get all combinations
-    combinations_list = combination(nums, 3)
+    combinations_list = combinations(nums, 3)
 
     # for each combination,
     for comb in combinations_list:
@@ -34,3 +34,7 @@ def is_prime(number):
         if number % i == 0:
             return False
     return True
+
+if __name__ == "__main__":
+    print(solution([1,2,3,4])) #1
+    print(solution([1,2,7,6,4])) #4
