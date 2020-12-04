@@ -12,40 +12,32 @@
 from itertools import combinations
 
 def solution(clothes):
-    answer = 0
+    answer = 1
+    types_hash = {}
+
+    if len(clothes) == 0:
+        return 0
+
+    if len(clothes) == 1:
+        return 1
+
     # find number of types
-    number_of_types = len(set([x[1] for x in clothes]))
-    clothes_set = set()
+    for clothe in clothes:
+        print(clothe)
+        clothe_type = clothe[1]
+        if clothe_type not in types_hash:
+            types_hash[clothe_type] = 1
+        else:
+            types_hash[clothe_type] += 1
 
-    i = 1
-    while i <= number_of_types:
-        # get permutations of the clothes
-        combs = combinations(clothes, i)
+    for key in types_hash:
+        answer *= (types_hash[key] + 1)
 
-        # filter combination of same type
-        for combination in combs:
-            if not has_the_same_kind_of_clothes(combination):
-                answer += 1
-
-        i += 1
-    # return total number of combinations
-
+    answer = answer - 1
     return answer
 
-def has_the_same_kind_of_clothes(combination):
-    i = 0
-
-    if len(combination) == 1:
-        return False
-
-    clothe_types_set = set([x[1] for x in combination])
-    if len(clothe_types_set) == len(combination):
-        return False
-
-    return True
-
 if __name__ == "__main__":
-    print(solution([])) #0
-    print(solution([["yellow_hat", "headgear"]])) #1
-    print(solution([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]])) #5
+    # print(solution([])) #0
+    # print(solution([["yellow_hat", "headgear"]])) #1
+    # print(solution([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]])) #5
     print(solution([["crow_mask", "face"], ["blue_sunglasses", "face"], ["smoky_makeup", "face"]])) #3
