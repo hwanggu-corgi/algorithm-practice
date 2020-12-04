@@ -31,7 +31,7 @@ def solution(people, limit):
         # if the current current_sum + a would result in over capacity, then add count
 
         # after add pop element
-
+        i += 1
     answer = count
     return answer
 
