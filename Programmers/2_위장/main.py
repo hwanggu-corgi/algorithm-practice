@@ -24,7 +24,7 @@ def solution(clothes):
 
         # filter combination of same type
         for combination in combs:
-            if not has_the_same_kind_of_clothes(combination, i):
+            if not has_the_same_kind_of_clothes(combination):
                 answer += 1
 
         i += 1
@@ -32,20 +32,18 @@ def solution(clothes):
 
     return answer
 
-def has_the_same_kind_of_clothes(combination, n):
+def has_the_same_kind_of_clothes(permutation):
     i = 0
-    clothe_types_set = set()
-    while i < n:
-        clothe_type = combination[i][1]
-        if clothe_type in clothe_types_set:
-            return True
+    clothe_types_set = set([x[1] for x in permutation])
+    print(len(clothe_types_set))
+    print(len(permutation))
+    if len(clothe_types_set) < len(permutation):
+        return False
 
-        clothe_types_set.add(clothe_type)
-        i += 1
+    return True
 
-    return False
 if __name__ == "__main__":
-    print(solution([])) #0
-    print(solution([["yellow_hat", "headgear"]])) #1
-    print(solution([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]])) #5
+    # print(solution([])) #0
+    # print(solution([["yellow_hat", "headgear"]])) #1
+    # print(solution([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]])) #5
     print(solution([["crow_mask", "face"], ["blue_sunglasses", "face"], ["smoky_makeup", "face"]])) #3
