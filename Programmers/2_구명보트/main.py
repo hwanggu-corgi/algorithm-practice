@@ -13,7 +13,7 @@ def solution(people, limit):
     # sort people in increasing order
     N = len(people)
     people = deque(sorted(people))
-    current_sum = people[0]
+    current_weight = 0
     count = 0
 
     if len(people) == 1 and people[0] > limit:
@@ -27,11 +27,12 @@ def solution(people, limit):
         large_weight = people.popleft()
         current_weight += large_weight
 
+        if len(people) == 0:
+            count += 1
+            break
+
         # while boat is not full
         while True:
-            if len(people) == 0:
-                break
-
             # pop small weight
             small_weight = people.pop()
 
