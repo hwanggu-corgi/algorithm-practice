@@ -13,6 +13,13 @@ def solution(people, limit):
     people = sorted(people)
     current_sum = people[0]
     count = 0
+
+    if len(people) == 1 and people[0] > limit:
+        return 0
+
+    if len(people) == 1 and people[0] < limit:
+        return 1
+
     i = 1
     while i < N:
         # if the current current_sum + a would result in over capacity, then add count
@@ -24,8 +31,13 @@ def solution(people, limit):
         current_sum += a
         i += 1
 
+    if current_sum > 0:
+        count += 1
+
+    answer = count
     return answer
 
 if __name__ == "__main__":
+    print(solution([70], 100)) #1
     print(solution([70, 50, 80, 50], 100)) #3
     print(solution([70, 80, 50], 100)) #3
