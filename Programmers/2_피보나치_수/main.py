@@ -6,18 +6,18 @@
 
 def solution(n):
     answer = 0
-    hash = {}
+    hash = {0: 0, 1: 1}
 
-    fib = _solution(n, hash)
+    for i in range(n+1):
 
-    return fib % 1234567
+        if i == 0 or i == 1:
+            continue
 
-def _solution(n, hash):
+        hash[i] = hash[i-1] + hash[i-2]
 
-    if n == 0 or n == 1:
-        return n
+    return hash[n] % 1234567
 
-    if n in hash:
-        return hash[n]
-
-    return _solution(n-1) + _solution(n-2)
+if __name__ == "__main__":
+    print(solution(3)) #2
+    print(solution(5)) #5
+    print(solution(100000)) #
