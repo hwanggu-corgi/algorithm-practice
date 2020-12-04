@@ -22,15 +22,14 @@ def solution(people, limit):
 
     i = 1
     while i < N:
-        # for each large weight, check if smallest weight can be filled in
+        # pop a large weight
 
-        # if so, add to current_sum and pop two elements
+        # check if smallest weight can be filled in
 
-        # if not check if smaller element can be filled in
+        # if so, pop small weight and add count
 
-        # if the current current_sum + a would result in over capacity, then add count
+        # if not, just add count
 
-        # after add pop element
         i += 1
     answer = count
     return answer
