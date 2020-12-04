@@ -12,7 +12,7 @@ from collections import deque
 def solution(people, limit):
     # sort people in increasing order
     N = len(people)
-    people = deque(sorted(people))
+    people = deque(sorted(people, reverse=True))
     current_weight = 0
     count = 0
 
@@ -33,6 +33,7 @@ def solution(people, limit):
 
         # while boat is not full
         while True:
+            print(people)
             # pop small weight
             small_weight = people.pop()
 
