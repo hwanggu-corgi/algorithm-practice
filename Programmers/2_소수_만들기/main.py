@@ -11,13 +11,26 @@ def solution(nums):
     answer = -1
 
     # get all combinations
+    combinations_list = combination(nums, 3)
 
     # for each combination,
-    # add sum
-    # if sum ends with 2 or 0 continue
-    # otherwise, check for prime number
-    # if so, add count
+    for comb in combinations_list:
+        # add sum
+        number = sum(comb)
+        # if sum ends with 2 or 0 continue
+        if number % 2 == 0:
+            continue
+        # otherwise, check for prime number
+        if is_prime(number):
+            # if so, add count
+            count += 1
 
     # return count
     answer = count
     return answer
+
+def is_prime(number):
+    for i in range(2,number):
+        if number % i == 0:
+            return False
+    return True
