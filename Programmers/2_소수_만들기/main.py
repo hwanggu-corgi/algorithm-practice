@@ -8,7 +8,14 @@
 def solution(nums):
     answer = -1
 
-    # [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
-    print('Hello Python')
+    # get all combinations
 
+    # for each combination,
+    # add sum
+    # if sum ends with 2 or 0 continue
+    # otherwise, check for prime number
+    # if so, add count
+
+    # return count
+    answer = count
     return answer
