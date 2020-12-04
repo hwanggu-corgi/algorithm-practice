@@ -9,7 +9,7 @@
 #   - 모든 문자열의 길이는 1 이상 20 이하인 자연수이고 알파벳 소문자 또는 '_' 로만 이루어져 있습니다.
 #   - 스파이는 하루에 최소 한 개의 의상은 입습니다.
 
-from itertools import permutations
+from itertools import combinations
 
 def solution(clothes):
     answer = 0
@@ -20,30 +20,23 @@ def solution(clothes):
     i = 1
     while i <= number_of_types:
         # get permutations of the clothes
-        perms = permutations(clothes, i)
+        combs = combinations(clothes, i)
 
         # filter combination of same type
-        for permutation in perms:
-            permutation = list(permutation)
-            permutation.sort(key=lambda e: e[0])
-
-            if str(permutation) in clothes_set:
-                continue
-
-            if not has_the_same_kind_of_clothes(permutation, i):
+        for combination in combs:
+            if not has_the_same_kind_of_clothes(combination, i):
                 answer += 1
 
-            clothes_set.add(str(permutation))
         i += 1
     # return total number of combinations
 
     return answer
 
-def has_the_same_kind_of_clothes(permutation, n):
+def has_the_same_kind_of_clothes(combination, n):
     i = 0
     clothe_types_set = set()
     while i < n:
-        clothe_type = permutation[i][1]
+        clothe_type = combination[i][1]
         if clothe_type in clothe_types_set:
             return True
 
@@ -52,4 +45,7 @@ def has_the_same_kind_of_clothes(permutation, n):
 
     return False
 if __name__ == "__main__":
+    print(solution([])) #0
+    print(solution([["yellow_hat", "headgear"]])) #1
     print(solution([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]])) #5
+    print(solution([["crow_mask", "face"], ["blue_sunglasses", "face"], ["smoky_makeup", "face"]])) #3
