@@ -24,30 +24,33 @@ def solution(people, limit):
 
     while len(people) != 0:
         # pop a large weight
-        large_weight = people.popleft()
-        current_weight += large_weight
-
+        current_weight += people.popleft()
+        is_full = False
         if len(people) == 0:
             count += 1
             break
 
         # while boat is not full
-        while True:
-            print(people)
+        while not is_full:
             # pop small weight
-            small_weight = people.pop()
+            print(people)
+            small_weight = people[-1]
 
             # check if smallest weight can be filled in
             # if so, add to current sum and continue
             if small_weight + current_weight <= limit:
                 current_weight += small_weight
-                continue
+                people.pop()
+
+                if len(people) == 0:
+                    count += 1
+                    current_weight = 0
+                    is_full = True
             else:
                 # if not, add the small_weight back, add count, reset current weight and break
-                people.append(small_weight)
                 count += 1
                 current_weight = 0
-                break
+                is_full = True
 
     answer = count
     return answer
