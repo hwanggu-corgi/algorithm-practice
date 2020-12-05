@@ -175,17 +175,27 @@ def move_vertical(letter):
 
 def move_horizontal(i, name, my_name, N):
     # find closest non-filled letter to left and its index
-    i_left = i
-    move_left_count = 0
-    while i_left % N != 0:
+    i_left = i - 1
+    distance_left = 1
+    while distance_left % N != 0:
         if name[i_left] != my_name[i_left]:
             break
         i_left -= 1
+        distance_left += 1
 
 
     # find closest non-filled letter to right and its index
+    i_right = i + 1
+    distance_right = 1
+    while move_right_count % N != 0:
+        if name[i_right] != my_name[i_right]:
+            break
+        i_right -= 1
+        distance_right += 1
 
-    return distance_left if distance_left < distance_right else distance_right
+    distance = distance_left if distance_left < distance_right else distance_right
+    index = i_left if distance_left < distance_right else i_right
+    return distance, index
 
 if __name__ == "__main__":
     print(solution("JAZ")) #11
