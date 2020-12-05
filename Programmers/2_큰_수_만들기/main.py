@@ -25,10 +25,30 @@
 
 from collections import deque
 
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.prev = None
+        self.next = None
+
 class LinkedList:
-    def __init__(self, head):
-        self.head = head
-        self.end = head
+    def __init__(self, item_list):
+        self.head = Node(item_list[0])
+        self.end = None
+        N = len(item_list)
+        i = 1
+        while i < N:
+            self.append(Node(item_list[i]))
+            i += 1
+
+    def __str__(self):
+        answer = ""
+        current_node = self.head
+        while current_node.next != None:
+            answer += current_node.value
+            current_node = current_node.next
+
+        return answer
 
     def append(self, node):
         self.end = node
@@ -56,40 +76,35 @@ class LinkedList:
             prev_node.next = next_node
 
 
-class Node:
-    def __init__(self, value):
-        self.value = value
-        self.prev = None
-        self.next = None
-
 def solution(number, k):
     answer = ''
 
     # convert number to queue
-    number_list = deque([x for x in number])
-    N = len(number_list)
+    numbers_ll = LinkedList(number)
+    current_node = numbers_ll.head.next
     # find biggest number after removing k
-    i = 1
-    while k > 0:
-        current_node = None
+    while k > 0 and current_node != None:
+        prev_node = current_node.prev
+
+        print(k)
         # start off with the second number i in list
         # if number_list[i - 1] < number_list[i], then remove number
-        if number_list[i - 1] < number_list[i]:
-            number_list.remove(number_list[i - 1])
+        if prev_node.value < current_node.value:
+            numbers_ll.remove(prev_node)
             # also decrement k
-            i = 1
+            current_node = numbers_ll.head.next
             k -= 1
         else:
             # else, move i by 1
-            i += 1
+            current_node = current_node.next
 
 
     while k > 0:
-        number_list.pop()
+        numbers_ll.remove(numbers_ll.end)
         k -= 1
 
     # return result
-    answer = "".join(list(number_list))
+    answer = str(numbers_ll)
     return answer
 
 if __name__ == "__main__":
