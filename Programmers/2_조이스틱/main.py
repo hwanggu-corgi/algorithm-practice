@@ -120,7 +120,7 @@
 #             ^
 #          BBBBAAAABA
 #                 *
-#       18.BBBBAAAAAA --> Check distance between A and B (1 by up - by down) --> choose up by 1 --> add to total (8)
+#       18.BBBBAAAAAA --> Check distance between A and B (1 by up - by down) --> choose up by 1 --> add to total (7)
 #             ^
 #          BBBBAAAABA
 #                  *
