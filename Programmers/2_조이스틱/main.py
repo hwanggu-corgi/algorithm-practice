@@ -47,6 +47,37 @@
 #          JAZ
 #            *
 
+# BBBBAAAABA
+#       1. AAAAAAAAAA -> Check distance between A and B (1 by up - by down) --> choose up by 1 --> add to total (1)
+#          ^
+#          BBBBAAAABA
+#          *
+#       2. BAAAAAAAAA
+#          ^
+#          BBBBAAAABA
+#          *
+#       3. BAAAAAAAAA -> Calculate distance between left and right cursur (1 by right, - by left) --> move right by 1 --> add tototal (2)
+#          ^
+#          BBBBAAAABA
+#           *
+#       4. BAAAAAAAAA -> Check distance between A and B (1 by up - by down) --> choose up by 1 --> add to total (3)
+#           ^
+#          BBBBAAAABA
+#           *
+#       5. BBAAAAAAAA
+#           ^
+#          BBBBAAAABA
+#           *
+#       6. BBAAAAAAAA
+#           ^
+#          BBBBAAAABA -> Calculate distance between left and right cursur (1 by right, - by left) --> move right by 1 --> add tototal (4)
+#            *
+#       7. BBAAAAAAAA
+#            ^
+#          BBBBAAAABA -> Check distance between A and B (1 by up - by down) --> choose up by 1 --> add to total (5)
+#            *
+
+
 # cases
 #   If length of name is 1
 #   If length of name is not 1
@@ -101,3 +132,6 @@ if __name__ == "__main__":
     print(solution("J")) #9
     print(solution("JEROEN")) #56
     print(solution("JAN")) #23
+    print(solution("ABAAAAAAABA")) #6
+    print(solution("ZZZ")) #5
+    print(solution("BBBBAAAABA")) #12
