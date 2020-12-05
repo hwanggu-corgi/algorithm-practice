@@ -5,47 +5,25 @@
 #   - number는 1자리 이상, 1,000,000자리 이하인 숫자입니다.
 #   - k는 1 이상 number의 자릿수 미만인 자연수입니다.
 
-# class Node:
-#     def __init__(self, value):
-
-# class LinkedList:
-#     def __init__(self, nodes_list):
-#         N = len(nodes_list)
-#         self.head = None
-
-#         if N == 0:
-#             return
-
-#         self.head = Node(nodes_list[0])
-
-#         i = 1
-#         while i < N:
-#             self.append(Node(nodes_list[i]))
-#             i += 1
-
-from collections import deque
-
 def solution(number, k):
+    stack = []
 
-    # if the numbers are all the same, then return first few number
-
-    # convert number to queue
-    number_list = deque([x for x in number])
-    N = len(number_list)
-    # find biggest number after removing k
-    i = 1
-    for num in number:
+    for i,num in enumerate(number):
         while stack and stack[-1] < num and  k > 0:
-            number_list.popleft()
+            stack.pop()
             k -= 1
+
+        if k == 0:
+            stack +=
+
 
         stack.append(number)
 
     if k != 0:
-        number_list = list(number_list)[:-k]
+        number_list = stack[:-k]
 
     # return result
-    answer = "".join(list(number_list))
+    answer = "".join(stack)
     return answer
 
 # from collections import deque
