@@ -65,6 +65,7 @@
 def solution(name):
     answer = 0
     my_index = 0
+    total_moves = 0
     N = len(name)
 
     for i, letter in enumerate(name):
@@ -87,10 +88,16 @@ def move_vertical(name):
 
     return distance_up if distance_up < distance_down else distance_down
 
-def move_horizontal(i, my_index):
-    last_index = N - 1
+def move_horizontal(i, current_letter_index, N):
+    last_letter_index = N - 1
     # find which has closer distance
-    distance_right = i - my_index
-    distance_down = last_index - i) + my_index + 1
+    distance_right = i - current_letter_index
+    distance_left = current_letter_index + 1 + (last_letter_index - i)
 
-    return distance_up if distance_up < distance_down else distance_down
+    return distance_left if distance_left < distance_right else distance_right
+
+if __name__ == "__main__":
+    print(solution("JAZ")) #11
+    print(solution("J")) #9
+    print(solution("JEROEN")) #56
+    print(solution("JAN")) #23
