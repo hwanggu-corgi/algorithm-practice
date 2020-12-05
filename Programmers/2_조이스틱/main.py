@@ -92,7 +92,18 @@
 #             ^
 #          BBBBAAAABA
 #             *
-
+#       11.BBBBAAAAAA --> letter is A --> skip
+#             ^
+#          BBBBAAAABA
+#              *
+#       12.BBBBAAAAAA --> letter is A --> skip
+#             ^
+#          BBBBAAAABA
+#              *
+#       12.BBBBAAAAAA --> letter is A --> skip
+#             ^
+#          BBBBAAAABA
+#              *
 
 # cases
 #   If length of name is 1
