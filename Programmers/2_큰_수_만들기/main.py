@@ -29,7 +29,7 @@ def solution(number, k):
     answer = ''
 
     # convert number to queue
-    number_list = deque([x for x in number])
+    number_list = [x for x in number]
     N = len(number_list)
     # find biggest number after removing k
     i = 1
@@ -38,7 +38,7 @@ def solution(number, k):
         # if number_list[i - 1] < number_list[i], then remove number
         try:
             if number_list[i - 1] < number_list[i]:
-                number_list.remove(number_list[i - 1])
+                number_list.pop(i - 1)
                 # also decrement k
                 i = 1
                 k -= 1
