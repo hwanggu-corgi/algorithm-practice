@@ -36,8 +36,6 @@ def solution(number, k):
     # find biggest number after removing k
     i = 1
     while k > 0:
-        if i == (N - k):
-            break
 
         # start off with the second number i in list
         # if number_list[i - 1] < number_list[i], then remove number
@@ -53,9 +51,8 @@ def solution(number, k):
         except IndexError:
             break
 
-    while k > 0:
-        number_list.pop()
-        k -= 1
+    if k != 0:
+        number_list = list(number_list)[:-k]
 
     # return result
     answer = "".join(list(number_list))
