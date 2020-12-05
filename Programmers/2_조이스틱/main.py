@@ -22,11 +22,11 @@
 
 # Detail
 #   - JAZ
-#       1. AAA -> Check distance between A and J (9 by up 17 by down) --> choose up by 9
+#       1. AAA -> Check distance between A and J (9 by up 17 by down) --> choose up by 9 --> add to total (9)
 #          ^
 #          JAZ
 #          *
-#       2. JAA -> Check distance between A and J (9 by up 17 by down) --> choose up by 9
+#       2. JAA
 #          ^
 #          JAZ
 #          *
@@ -34,15 +34,23 @@
 #          ^
 #          JAZ
 #           *
-#       4. JAA -> Next is Z --> Calculate  distance between left and right cursur (2 by right, 1 by left) --> move left by 1
+#       4. JAA -> Next is Z --> Calculate  distance between left and right cursur (2 by right, 1 by left) --> move left by 1 --> add tototal (10)
 #          ^
 #          JAZ
 #            *
-#       4. JAA -> Next is Z --> Calculate  distance between left and right cursur (2 by right, 1 by left) --> move left by 1
+#       4. JAA ->Check distance between A and Z (25 by up 1 by down) --> choose down by 1 --> add to total (11)
 #            ^
 #          JAZ
 #            *
 
+# cases
+#   Vertical
+#       1. if the current letter and target letter are the same
+#       2. if the current letter and target letter are not the same
+
 def solution(name):
     answer = 0
+
+    for letter in name:
+
     return answer
