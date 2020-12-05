@@ -175,6 +175,13 @@ def move_vertical(letter):
 
 def move_horizontal(i, name, my_name, N):
     # find closest non-filled letter to left and its index
+    i_left = i
+    move_left_count = 0
+    while i_left % N != 0:
+        if name[i_left] != my_name[i_left]:
+            break
+        i_left -= 1
+
 
     # find closest non-filled letter to right and its index
 
