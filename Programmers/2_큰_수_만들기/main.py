@@ -5,40 +5,39 @@
 #   - number는 1자리 이상, 1,000,000자리 이하인 숫자입니다.
 #   - k는 1 이상 number의 자릿수 미만인 자연수입니다.
 
-class Node:
-    def __init__(self, value):
+# class Node:
+#     def __init__(self, value):
 
-class LinkedList:
-    def __init__(self, nodes_list):
-        N = len(nodes_list)
-        self.head = None
+# class LinkedList:
+#     def __init__(self, nodes_list):
+#         N = len(nodes_list)
+#         self.head = None
 
-        if N == 0:
-            return
+#         if N == 0:
+#             return
 
-        self.head = Node(nodes_list[0])
+#         self.head = Node(nodes_list[0])
 
-        i = 1
-        while i < N:
-            self.append(Node(nodes_list[i]))
-            i += 1
+#         i = 1
+#         while i < N:
+#             self.append(Node(nodes_list[i]))
+#             i += 1
 
-
-from collections import deque
 
 def solution(number, k):
     answer = ''
 
     # convert number to queue
-    number_list = deque([x for x in number])
+    number_list = [x for x in number]
     # find biggest number after removing k
     i = 1
     while k > 0:
         # start off with the second number i in list
         # if number_list[i - 1] < number_list[i], then remove number
         if number_list[i - 1] < number_list[i]:
-            number_list.remove(i-1)
+            number_list.pop(i-1)
             # also decrement k
+            i = 1
             k -= 1
         else:
             # else, move i by 1
@@ -50,3 +49,5 @@ def solution(number, k):
 
 if __name__ == "__main__":
     print(solution("1924", 2)) #94
+    print(solution("1231234", 3)) #3234
+    print(solution("4177252841", 4)) #775841
