@@ -24,7 +24,25 @@
 #   - JAZ
 #       1. AAA -> Check distance between A and J (9 by up 17 by down) --> choose up by 9
 #          ^
-#
+#          JAZ
+#          *
+#       2. JAA -> Check distance between A and J (9 by up 17 by down) --> choose up by 9
+#          ^
+#          JAZ
+#          *
+#       3. JAA -> Next is A --> skip
+#          ^
+#          JAZ
+#           *
+#       4. JAA -> Next is Z --> Calculate  distance between left and right cursur (2 by right, 1 by left) --> move left by 1
+#          ^
+#          JAZ
+#            *
+#       4. JAA -> Next is Z --> Calculate  distance between left and right cursur (2 by right, 1 by left) --> move left by 1
+#            ^
+#          JAZ
+#            *
+
 def solution(name):
     answer = 0
     return answer
