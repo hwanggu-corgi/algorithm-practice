@@ -48,28 +48,49 @@
 #            *
 
 # cases
-#   Vertical
-#       1. if the current letter and target letter are the same
-#       2. if the current letter and target letter are not the same
-#           2.1 if is closer moving up
-#           2.2 if is closer moving down
-#   Horizontal
-#       1. if closer by moving left
-#       1. if closer by moving right
+#   If length of name is 1
+#   If length of name is not 1
+    #   If index == 0
+    #   If index != 0
+
+    #   Vertical
+    #       1. if the current letter and target letter are the same
+    #       2. if the current letter and target letter are not the same
+    #           2.1 if is closer moving up
+    #           2.2 if is closer moving down
+    #   Horizontal
+    #       1. if closer by moving left
+    #       1. if closer by moving right
 
 def solution(name):
     answer = 0
     my_index = 0
+    N = len(name)
 
     for i, letter in enumerate(name):
         if letter == "A":
             continue
 
-        total_moves += move_vertical(name)
+        total_moves += move_vertical(letter)
 
         if i < N:
-            total_moves += move_horizontal(i, my_index)
+            total_moves += move_horizontal(i, my_index, N)
             my_index = i
 
-
+    answer = total_moves
     return answer
+
+def move_vertical(name):
+    # find which has closer distance
+    distance_up = ord(name) - ord("A")
+    distance_down = ord("Z") - ord(name) + 1
+
+    return distance_up if distance_up < distance_down else distance_down
+
+def move_horizontal(i, my_index):
+    last_index = N - 1
+    # find which has closer distance
+    distance_right = i - my_index
+    distance_down = last_index - i) + my_index + 1
+
+    return distance_up if distance_up < distance_down else distance_down
