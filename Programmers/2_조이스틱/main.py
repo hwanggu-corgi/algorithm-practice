@@ -38,7 +38,11 @@
 #          ^
 #          JAZ
 #            *
-#       4. JAA ->Check distance between A and Z (25 by up 1 by down) --> choose down by 1 --> add to total (11)
+#       5. JAA ->Check distance between A and Z (25 by up 1 by down) --> choose down by 1 --> add to total (11)
+#            ^
+#          JAZ
+#            *
+#       6. JAZ
 #            ^
 #          JAZ
 #            *
@@ -47,10 +51,25 @@
 #   Vertical
 #       1. if the current letter and target letter are the same
 #       2. if the current letter and target letter are not the same
+#           2.1 if is closer moving up
+#           2.2 if is closer moving down
+#   Horizontal
+#       1. if closer by moving left
+#       1. if closer by moving right
 
 def solution(name):
     answer = 0
+    my_index = 0
 
-    for letter in name:
+    for i, letter in enumerate(name):
+        if letter == "A":
+            continue
+
+        total_moves += move_vertical(name)
+
+        if i < N:
+            total_moves += move_horizontal(i, my_index)
+            my_index = i
+
 
     return answer
