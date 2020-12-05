@@ -26,7 +26,6 @@
 from collections import deque
 
 def solution(number, k):
-    answer = ''
 
     # if the numbers are all the same, then return first few number
 
@@ -40,10 +39,11 @@ def solution(number, k):
         # start off with the second number i in list
         # if number_list[i - 1] < number_list[i], then remove number
         try:
-            if number_list[i - 1] < number_list[i]:
-                number_list.remove(number_list[i - 1])
+            if stack[0] < stack[1]:
+                stack.popleft()
+
+                stack.append(numbers[i+1])
                 # also decrement k
-                i = 1
                 k -= 1
             else:
                 # else, move i by 1
