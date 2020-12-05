@@ -25,28 +25,64 @@
 
 from collections import deque
 
+class LinkedList:
+    def __init__(self, head):
+        self.head = head
+        self.end = head
+
+    def append(self, node):
+        self.end = node
+        current_node = self.head
+
+        while current_node.next != None:
+            current_node = current_node.next
+
+        current_node.next = node
+
+    def remove(self, node):
+        prev_node = node.prev
+        next_node = node.next
+
+        if prev_node == None:
+            self.head = next_node
+            next_node.prev = None
+
+        if next_node == None:
+            self.end = prev_node
+            prev_node.next = None
+
+        if prev_node != None and next_node != None:
+            next_node.prev = prev_node
+            prev_node.next = next_node
+
+
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.prev = None
+        self.next = None
+
 def solution(number, k):
     answer = ''
 
     # convert number to queue
-    number_list = [x for x in number]
+    number_list = deque([x for x in number])
     N = len(number_list)
     # find biggest number after removing k
     i = 1
     while k > 0:
+        current_node = None
         # start off with the second number i in list
         # if number_list[i - 1] < number_list[i], then remove number
-        try:
-            if number_list[i - 1] < number_list[i]:
-                number_list.pop(i - 1)
-                # also decrement k
-                i = 1
-                k -= 1
-            else:
-                # else, move i by 1
-                i += 1
-        except IndexError:
-            break
+        if number_list[i - 1] < number_list[i]:
+            number_list.remove(number_list[i - 1])
+            # also decrement k
+            i = 1
+            k -= 1
+        else:
+            # else, move i by 1
+            i += 1
+
 
     while k > 0:
         number_list.pop()
