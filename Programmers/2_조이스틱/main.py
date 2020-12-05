@@ -141,20 +141,27 @@
     #       1. if closer by moving right
 
 def solution(name):
-    answer = 0
     my_index = 0
+    my_name = ["A"] * len(name)
+    completed_count = 0
     total_moves = 0
     N = len(name)
 
-    for i, letter in enumerate(name):
+    i = 0
+    while completed_count < N:
+        letter = name[i]
+
         if letter == "A":
+            completed_count += 1
             continue
 
         total_moves += move_vertical(letter)
+        my_name[i] = letter
+        completed_count += 1
 
-        if i < N:
-            total_moves += move_horizontal(i, my_index, N)
-            my_index = i
+        horizontal_move_amt, i = move_horizontal(i, name, my_name, N)
+        total_moves += horizontal_move_amt
+
 
     answer = total_moves
     return answer
@@ -166,11 +173,10 @@ def move_vertical(letter):
 
     return distance_up if distance_up < distance_down else distance_down
 
-def move_horizontal(i, current_letter_index, N):
-    last_letter_index = N - 1
-    # find which has closer distance
-    distance_right = i - current_letter_index
-    distance_left = current_letter_index + 1 + (last_letter_index - i)
+def move_horizontal(i, name, my_name, N):
+    # find closest non-filled letter to left and its index
+
+    # find closest non-filled letter to right and its index
 
     return distance_left if distance_left < distance_right else distance_right
 
