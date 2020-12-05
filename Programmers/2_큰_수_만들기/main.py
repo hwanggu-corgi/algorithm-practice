@@ -5,6 +5,26 @@
 #   - number는 1자리 이상, 1,000,000자리 이하인 숫자입니다.
 #   - k는 1 이상 number의 자릿수 미만인 자연수입니다.
 
+# cases
+
+
+# k = 4 number="4177252841" stack=[]
+#
+# k = 4 number="4177252841" stack=[4]  stack empty --> add
+#               ^
+# k = 4 number="4177252841" stack=[4,1] 4 < 1 (false) --> continue
+#                ^
+# k = 2 number="4177252841" stack=[4]  1 < 7 (true) --> pop
+#                 ^
+# k = 1 number="4177252841" stack=[] 4 < 7 (true) --> pop
+#                 ^
+# k = 3 number="4177252841" stack=[7]
+#                 ^
+# k = 3 number="4177252841" stack=[7,7]
+#                  ^
+# k = 3 number="4177252841" stack=[7,7]
+#                  ^
+
 def solution(number, k):
     stack = []
 
@@ -14,13 +34,13 @@ def solution(number, k):
             k -= 1
 
         if k == 0:
-            stack +=
+            stack += number[i:]
+            break
 
-
-        stack.append(number)
+        stack.append(num)
 
     if k != 0:
-        number_list = stack[:-k]
+        stack = stack[:-k]
 
     # return result
     answer = "".join(stack)
