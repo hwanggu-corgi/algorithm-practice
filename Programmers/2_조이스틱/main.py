@@ -76,6 +76,22 @@
 #            ^
 #          BBBBAAAABA -> Check distance between A and B (1 by up - by down) --> choose up by 1 --> add to total (5)
 #            *
+#       8. BBBAAAAAAA
+#            ^
+#          BBBBAAAABA
+#            *
+#       9. BBBAAAAAAA -> Calculate distance between left and right cursur (1 by right, - by left) --> move right by 1 --> add tototal (6)
+#            ^
+#          BBBBAAAABA
+#             *
+#       9. BBBAAAAAAA --> Check distance between A and B (1 by up - by down) --> choose up by 1 --> add to total (7)
+#             ^
+#          BBBBAAAABA
+#             *
+#       10.BBBBAAAAAA
+#             ^
+#          BBBBAAAABA
+#             *
 
 
 # cases
@@ -112,10 +128,10 @@ def solution(name):
     answer = total_moves
     return answer
 
-def move_vertical(name):
+def move_vertical(letter):
     # find which has closer distance
-    distance_up = ord(name) - ord("A")
-    distance_down = ord("Z") - ord(name) + 1
+    distance_up = ord(letter) - ord("A")
+    distance_down = ord("Z") - ord(letter) + 1
 
     return distance_up if distance_up < distance_down else distance_down
 
@@ -134,4 +150,5 @@ if __name__ == "__main__":
     print(solution("JAN")) #23
     print(solution("ABAAAAAAABA")) #6
     print(solution("ZZZ")) #5
+    print(solution("BAB")) #4
     print(solution("BBBBAAAABA")) #12
