@@ -34,22 +34,12 @@ def solution(number, k):
     N = len(number_list)
     # find biggest number after removing k
     i = 1
-    while k > 0:
+    for num in number:
+        while stack and stack[-1] < num and  k > 0:
+            number_list.popleft()
+            k -= 1
 
-        # start off with the second number i in list
-        # if number_list[i - 1] < number_list[i], then remove number
-        try:
-            if stack[0] < stack[1]:
-                stack.popleft()
-
-                stack.append(numbers[i+1])
-                # also decrement k
-                k -= 1
-            else:
-                # else, move i by 1
-                i += 1
-        except IndexError:
-            break
+        stack.append(number)
 
     if k != 0:
         number_list = list(number_list)[:-k]
