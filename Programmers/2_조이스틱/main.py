@@ -12,7 +12,19 @@
 #       - [11]: 마지막 위치에서 조이스틱을 아래로 1번 조작하여 Z를 완성합니다.
 #           - 따라서 11번 이동시켜 "JAZ"를 만들 수 있고, 이때가 최소 이동입니다.
 #   - JAN --> 23
+#       - [9]: 첫 번째 위치에서 조이스틱을 위로 9번 조작하여 J를 완성합니다.
+#       - [10]: 조이스틱을 왼쪽으로 1번 조작하여 커서를 마지막 문자 위치로 이동시킵니다.
+#       - [23]: 마지막 위치에서 조이스틱을 아래로 13번 조작하여 N를 완성합니다.
+#           - 따라서 23번 이동시켜 "JAN"를 만들 수 있고, 이때가 최소 이동입니다.
 
+# pattern
+#   - Always choose directions closest to current cursor
+
+# Detail
+#   - JAZ
+#       1. AAA -> Check distance between A and J (9 by up 17 by down) --> choose up by 9
+#          ^
+#
 def solution(name):
     answer = 0
     return answer
