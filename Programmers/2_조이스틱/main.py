@@ -100,10 +100,30 @@
 #             ^
 #          BBBBAAAABA
 #              *
-#       12.BBBBAAAAAA --> letter is A --> skip
+#       13.BBBBAAAAAA --> letter is A --> skip
 #             ^
 #          BBBBAAAABA
 #              *
+#       14.BBBBAAAAAA --> letter is A --> skip
+#             ^
+#          BBBBAAAABA
+#               *
+#       15.BBBBAAAAAA --> letter is A --> skip
+#             ^
+#          BBBBAAAABA
+#                *
+#       16.BBBBAAAAAA --> letter is A --> skip
+#             ^
+#          BBBBAAAABA
+#                 *
+#       17.BBBBAAAAAA --> letter is A --> skip
+#             ^
+#          BBBBAAAABA
+#                 *
+#       18.BBBBAAAAAA --> Check distance between A and B (1 by up - by down) --> choose up by 1 --> add to total (8)
+#             ^
+#          BBBBAAAABA
+#                  *
 
 # cases
 #   If length of name is 1
