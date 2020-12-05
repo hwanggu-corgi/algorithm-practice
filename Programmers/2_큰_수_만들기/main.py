@@ -23,25 +23,34 @@
 #             self.append(Node(nodes_list[i]))
 #             i += 1
 
+from collections import deque
 
 def solution(number, k):
     answer = ''
 
     # convert number to queue
-    number_list = [x for x in number]
+    number_list = deque([x for x in number])
+    N = len(number_list)
     # find biggest number after removing k
     i = 1
     while k > 0:
         # start off with the second number i in list
         # if number_list[i - 1] < number_list[i], then remove number
-        if number_list[i - 1] < number_list[i]:
-            number_list.pop(i-1)
-            # also decrement k
-            i = 1
-            k -= 1
-        else:
-            # else, move i by 1
-            i += 1
+        try:
+            if number_list[i - 1] < number_list[i]:
+                number_list.remove(number_list[i - 1])
+                # also decrement k
+                i = 1
+                k -= 1
+            else:
+                # else, move i by 1
+                i += 1
+        except IndexError:
+            break
+
+    while k > 0:
+        number_list.pop()
+        k -= 1
 
     # return result
     answer = "".join(list(number_list))
@@ -50,4 +59,4 @@ def solution(number, k):
 if __name__ == "__main__":
     print(solution("1924", 2)) #94
     print(solution("1231234", 3)) #3234
-    print(solution("4177252841", 4)) #775841
+    print(solution("1111", 2)) #11
