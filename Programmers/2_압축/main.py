@@ -39,6 +39,7 @@
 def solution(msg):
     answer = []
     dictionary = initialize_dictionary()
+    last_number = 26
     current_index = 0
     ending_index = 0
     N = len(msg)
@@ -47,11 +48,16 @@ def solution(msg):
         while ending_index < N:
             piece = msg[current_index:ending_index+1]
             if piece in dictionary:
-                number = dictionary[piece]
-                answer.append(number)
+                piece_prev = msg[current_index:ending_index]
+                number_prev = dictionary[piece_prev]
+                answer.append(number_prev)
+
+                dictionary[piece] = last_number
+                current_index = ending_index
+
+                ending_index += 1
             else:
-
-            ending_index += 1
-
+                last_number += 1
+        current_index = ending_index
 
     return answer 
