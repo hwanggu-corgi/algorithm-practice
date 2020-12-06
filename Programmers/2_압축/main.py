@@ -43,11 +43,13 @@ def solution(msg):
     ending_index = 0
     N = len(msg)
 
-    while current_index < N:
-        if ending_index == N - 1:
-            if msg[current_index:ending_index+1] in dictionary:
+    while ending_index < N:
 
 
+    if current_index < N:
+        piece = msg[current_index:ending_index+1]
+        if piece in dictionary:
+            number = dictionary[piece]
 
 
 
