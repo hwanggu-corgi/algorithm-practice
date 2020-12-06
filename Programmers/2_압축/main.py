@@ -13,8 +13,17 @@
 
 # Example
 #   1. KAKAO
-#       - K exists         --> "K":11 , {"A": 1, "B": 2, "C": 3, ..., "Z": 26}
-#       - KA doesn't exist --> "KA":27 , {"A": 1, "B": 2, "C": 3, ..., "Z": 26, "KA": 27}
+#       - K exists         --> "K":11 , {"A": 1, "B": 2, "C": 3, ..., "Z": 26}, [11]
+#       - KA doesn't exist --> "KA":27 , {"A": 1, "B": 2, "C": 3, ..., "Z": 26, "KA": 27}, [11]
+#       - A exists         --> "A": 1, {"A": 1, "B": 2, "C": 3, ..., "Z": 26, "KA": 27}, [11,1]
+#       - AK doesn't exist --> "AK": 28, {"A": 1, "B": 2, "C": 3, ..., "Z": 26, "KA": 27, "AK": 28}, [1, 11]
+#       - KA exist         --> "KA":27 , {"A": 1, "B": 2, "C": 3, ..., "Z": 26, "KA": 27}, [1,11,27]
+#       - O exists         --> "O": 15, {"A": 1, "B": 2, "C": 3, ..., "Z": 26, "KA": 27, "AK": 28}, [1, 11, 27, 15]
+#       - KAO doesnt exist --> "KAO": 29, {"A": 1, "B": 2, "C": 3, ..., "Z": 26, "KA": 27, "AK": 28, "KAO": 29}, [27, 28]
+
+# 1. if exists, add to array
+# 2. if doesn't exist, add to directionary
+# 3. set current index to be the index where letter doesn't exist
 
 def solution(msg):
     answer = []
