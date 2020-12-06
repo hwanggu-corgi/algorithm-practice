@@ -21,9 +21,11 @@
 #       - O exists         --> "O": 15, {"A": 1, "B": 2, "C": 3, ..., "Z": 26, "KA": 27, "AK": 28}, [1, 11, 27, 15]
 #       - KAO doesnt exist --> "KAO": 29, {"A": 1, "B": 2, "C": 3, ..., "Z": 26, "KA": 27, "AK": 28, "KAO": 29}, [27, 28]
 
-# 1. if exists, add to array
-# 2. if doesn't exist, add to directionary
-# 3. set current index to be the index where letter doesn't exist
+# 1. start with current_index=ending_index=0
+# 2. if exists, add to array
+# 3. move ending_index by 1
+# 4. if doesn't exist, add to directionary
+# 5. set current_index to be the index where letter doesn't exist
 
 def solution(msg):
     answer = []
