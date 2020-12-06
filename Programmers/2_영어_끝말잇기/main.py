@@ -14,8 +14,26 @@
 # Example
 #   1. ["tank", "kick", "know", "wheel", "land", "dream", "mother", "robot", "tank"]
 #       - Person who said tank last is out (repeat)
-#       - ["tank", "kick", "know", "wheel", "land", "dream", "mother", "robot", "tank"]
 
+#   2. ["hello", "one", "even", "never", "now", "world", "draw"]
+#       - Person who got the connecting word wrong is out
+
+# Example - detail
+#   1. ["tank", "kick", "know", "wheel", "land", "dream", "mother", "robot", "tank"]
+#
+#      1) {1:0,2:0,3:0} --> raise word count player 1
+#         [["tank",1], ["kick",2], ["know",3], ["wheel",1], ["land",2], ["dream",3], ["mother",1], ["robot",2], ["tank",3]]
+#              ^
+
+#      2) {1:1,2:0,3:0} --> raise word count player 1
+#         [["tank",1], ["kick",2], ["know",3], ["wheel",1], ["land",2], ["dream",3], ["mother",1], ["robot",2], ["tank",3]]
+#              ^
+
+#   2. ["hello", "one", "even", "never", "now", "world", "draw"]
+#       - Person who got the connecting word wrong is out
+
+# Pseudocode
+#
 
 def solution(n, words):
     answer = []
