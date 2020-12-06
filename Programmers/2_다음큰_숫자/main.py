@@ -22,13 +22,16 @@
 #       3.1 convert to binary form and find number of 1's
 #       3.2 if the number of 1's are equal, then return the consecutive number
 
+from collections import deque
+
 def solution(n):
     answer = 0
+
     # 1. convert n to binary number
     n_binary_list = convert_to_binary(n)
 
     # 2. count number of 1's in binary form of n
-    count = sum(n_binary_list)
+    count_n = sum(n_binary_list)
     # 3. for each consecutive number,
     i = n + 1
     while True:
@@ -43,3 +46,16 @@ def solution(n):
     return answer
 
 def convert_to_binary(n):
+    binary_list = deque()
+
+    while n != 0:
+        binary_list.appendleft(n % 2)
+        n = n // 2
+
+    return list(binary_list)
+
+
+if __name__ == "__main__":
+    print(solution(78)) #83
+    print(solution(15)) #23
+    print(solution(1)) #2
