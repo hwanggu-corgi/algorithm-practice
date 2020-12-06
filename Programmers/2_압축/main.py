@@ -45,6 +45,8 @@ def solution(msg):
 
     while current_index < N:
         if ending_index == N - 1:
+            if msg[current_index:ending_index+1] in dictionary:
+
 
 
 
