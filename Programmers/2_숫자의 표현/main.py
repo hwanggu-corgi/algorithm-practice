@@ -18,6 +18,34 @@
 
 # There's 4 in total
 
+# Pseudocode
+#   for each number num ranging from 1 to n
+#   add consecutive numbers of x to current_sum
+#   if current_sum == n,
+#       add to count
+#       reset current_sum
+#       break
+#   if current_sum > n,
+#       reset current_sum
+#       break
+
 def solution(n):
-    answer = 0
-    return answer
+    count = 0
+    current_sum = 0
+
+    for num in range(1, n+1):
+        current_sum += num
+
+        while current_sum < n:
+            num += 1
+            current_sum += num
+
+        if current_sum == n:
+            count += 1
+
+        current_sum = 0
+    return count
+
+if __name__ == "__main__":
+    print(solution(15)) #4
+    print(solution(1)) #1
