@@ -68,10 +68,18 @@ def solution(msg):
     return answer
 
 def initialize_dictionary():
-    res = {"A": 1}
+    res = {}
 
-    i = 26
-    while ord("A") + i :
+    i = 0
+    while i < 26:
+        letter = chr(ord("A") + i)
+        res[letter] = (i + 1)
+        i += 1
+
+    return res
 
 if __name__ == "__main__":
     print(solution("KAKAO")) #[11, 1, 27, 15]
+    print(solution("TOBEORNOTTOBEORTOBEORNOT")) #[11, 1, 27, 15]
+    print(solution("A")) #[1]
+    print(solution("AA")) #[1]
