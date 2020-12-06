@@ -21,13 +21,71 @@
 # Example - detail
 #   1. ["tank", "kick", "know", "wheel", "land", "dream", "mother", "robot", "tank"]
 #
-#      1) {1:0,2:0,3:0} --> raise word count player 1
+#      1) {}
+#         {1:0,2:0,3:0} --> raise word count player 1
 #         [["tank",1], ["kick",2], ["know",3], ["wheel",1], ["land",2], ["dream",3], ["mother",1], ["robot",2], ["tank",3]]
 #              ^
 
-#      2) {1:1,2:0,3:0} --> raise word count player 1
+#      2) {}
+#         {1:1,2:0,3:0}
 #         [["tank",1], ["kick",2], ["know",3], ["wheel",1], ["land",2], ["dream",3], ["mother",1], ["robot",2], ["tank",3]]
 #              ^
+
+#      3) {}
+#         {1:1,2:0,3:0} --> check if word connects --> skip since it's the first word
+#         [["tank",1], ["kick",2], ["know",3], ["wheel",1], ["land",2], ["dream",3], ["mother",1], ["robot",2], ["tank",3]]
+#              ^
+
+#      4) {}
+#         {1:1,2:0,3:0} --> check if word in set --> No --> Add to set
+#         [["tank",1], ["kick",2], ["know",3], ["wheel",1], ["land",2], ["dream",3], ["mother",1], ["robot",2], ["tank",3]]
+#              ^
+
+#      5) {"tank"}
+#         {1:1,2:0,3:0}
+#         [["tank",1], ["kick",2], ["know",3], ["wheel",1], ["land",2], ["dream",3], ["mother",1], ["robot",2], ["tank",3]]
+#              ^
+
+#      7) {"tank"}
+#         {1:1,2:0,3:0} --> raise word count player 2
+#         [["tank",1], ["kick",2], ["know",3], ["wheel",1], ["land",2], ["dream",3], ["mother",1], ["robot",2], ["tank",3]]
+#                          ^
+
+#      8) {"tank"}
+#         {1:1,2:1,3:0}
+#         [["tank",1], ["kick",2], ["know",3], ["wheel",1], ["land",2], ["dream",3], ["mother",1], ["robot",2], ["tank",3]]
+#                          ^
+
+#      9) {"tank"}
+#         {1:1,2:1,3:0} --> check if word connects --> yes
+#         [["tank",1], ["kick",2], ["know",3], ["wheel",1], ["land",2], ["dream",3], ["mother",1], ["robot",2], ["tank",3]]
+#                          ^
+
+#      10){"tank"}
+#         {1:1,2:1,3:0} --> check if word in set --> No --> Add to set
+#         [["tank",1], ["kick",2], ["know",3], ["wheel",1], ["land",2], ["dream",3], ["mother",1], ["robot",2], ["tank",3]]
+#                          ^
+
+#      11){"tank", "kick"}
+#         {1:1,2:1,3:0}
+#         [["tank",1], ["kick",2], ["know",3], ["wheel",1], ["land",2], ["dream",3], ["mother",1], ["robot",2], ["tank",3]]
+#                          ^
+
+#      12){"tank", "kick"}
+#         {1:1,2:1,3:0} --> raise word count player 3
+#         [["tank",1], ["kick",2], ["know",3], ["wheel",1], ["land",2], ["dream",3], ["mother",1], ["robot",2], ["tank",3]]
+#                                       ^
+
+#      13){"tank", "kick"}
+#         {1:1,2:1,3:1}
+#         [["tank",1], ["kick",2], ["know",3], ["wheel",1], ["land",2], ["dream",3], ["mother",1], ["robot",2], ["tank",3]]
+#                                       ^
+
+
+#      14){"tank", "kick"}
+#         {1:1,2:1,3:1} --> check if word connects --> yes
+#         [["tank",1], ["kick",2], ["know",3], ["wheel",1], ["land",2], ["dream",3], ["mother",1], ["robot",2], ["tank",3]]
+#                                       ^
 
 #   2. ["hello", "one", "even", "never", "now", "world", "draw"]
 #       - Person who got the connecting word wrong is out
