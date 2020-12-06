@@ -87,16 +87,52 @@
 #         [["tank",1], ["kick",2], ["know",3], ["wheel",1], ["land",2], ["dream",3], ["mother",1], ["robot",2], ["tank",3]]
 #                                       ^
 
+# ...
+
+#      15){"tank", "kick", "know", "wheel", "land", "dream", "mother", "robot"}
+#         {1:3,2:3,3:2} --> raise word count player 3
+#         [["tank",1], ["kick",2], ["know",3], ["wheel",1], ["land",2], ["dream",3], ["mother",1], ["robot",2], ["tank",3]]
+#
+
+#      16){"tank", "kick", "know", "wheel", "land", "dream", "mother", "robot"}
+#         {1:3,2:3,3:3} --> raise word count player 3
+#         [["tank",1], ["kick",2], ["know",3], ["wheel",1], ["land",2], ["dream",3], ["mother",1], ["robot",2], ["tank",3]]
+#
+
+
+#      17){"tank", "kick", "know", "wheel", "land", "dream", "mother", "robot"}
+#         {1:3,2:3,3:3} --> check if word connects --> yes
+#         [["tank",1], ["kick",2], ["know",3], ["wheel",1], ["land",2], ["dream",3], ["mother",1], ["robot",2], ["tank",3]]
+#
+
+#      17){"tank", "kick", "know", "wheel", "land", "dream", "mother", "robot"}
+#         {1:3,2:3,3:3} --> check if word is in set --> yes --> return [ 번호, 차례 ]
+#         [["tank",1], ["kick",2], ["know",3], ["wheel",1], ["land",2], ["dream",3], ["mother",1], ["robot",2], ["tank",3]]
+#
+
+
+
 #   2. ["hello", "one", "even", "never", "now", "world", "draw"]
 #       - Person who got the connecting word wrong is out
 
 # Pseudocode
-#
+#   for each word in words,
+#   Add 차례 to player
+#   check if word connects
+#       if not connects, return [ 번호, 차례 ]
+#   check if word is in set
+#       if not in set, add
+#       if in set, return [ 번호, 차례 ]
 
 def solution(n, words):
     answer = []
+    used_words_set = set()
 
-    # [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
-    print('Hello Python')
-
+    #   for each word in words,
+    #   Add 차례 to player
+    #   check if word connects
+    #       if not connects, return [ 번호, 차례 ]
+    #   check if word is in set
+    #       if not in set, add
+    #       if in set, return [ 번호, 차례 ]
     return answer
