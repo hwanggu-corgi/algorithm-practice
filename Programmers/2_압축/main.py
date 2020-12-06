@@ -58,6 +58,19 @@ def solution(msg):
                 current_index = ending_index
 
             ending_index += 1
-        current_index = ending_index
 
-    return answer 
+        if current_index <= N-1:
+            piece = msg[current_index:]
+            number = dictionary[piece]
+            answer.append(number)
+            current_index = ending_index
+
+    return answer
+
+def initialize_dictionary():
+    res = {}
+
+    while ord("A") - i < 26:
+
+if __name__ == "__main__":
+    print(solution("KAKAO")) #[11, 1, 27, 15]
