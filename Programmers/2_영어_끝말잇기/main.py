@@ -132,7 +132,7 @@ def solution(n, words):
     #   for each word in words,
     for i, word in enumerate(words):
         #   Add 차례 to player
-        player = i + 1
+        player = n if (i + 1) % n == 0 else (i+1) % n
         order[player] += 1
 
         #   check if word connects
@@ -158,3 +158,7 @@ def is_word_connecting(current_index, words):
         return True
 
     return False
+
+if __name__ == "__main__":
+    print(solution(3, ["tank", "kick", "know", "wheel", "land", "dream", "mother", "robot", "tank"])) #[3,3]
+    print(solution(2, ["hello", "one", "even", "never", "now", "world", "draw"])) #[1,3]
