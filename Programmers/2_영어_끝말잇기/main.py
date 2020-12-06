@@ -126,13 +126,16 @@
 
 def solution(n, words):
     answer = []
-    used_words_set = set()
+    order_of_spoken_words = dict(zip(range(1,n+1), [0] * n))
+    used_words = set()
 
     #   for each word in words,
-    #   Add 차례 to player
-    #   check if word connects
-    #       if not connects, return [ 번호, 차례 ]
-    #   check if word is in set
-    #       if not in set, add
-    #       if in set, return [ 번호, 차례 ]
+    for word in words
+        #   Add 차례 to player
+
+        #   check if word connects
+        #       if not connects, return [ 번호, 차례 ]
+        #   check if word is in set
+        #       if not in set, add
+        #       if in set, return [ 번호, 차례 ]
     return answer
