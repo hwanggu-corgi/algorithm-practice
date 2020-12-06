@@ -187,7 +187,7 @@ def move_horizontal(i, name, my_name, N):
     while distance_right % N != 0:
         if name[i_right % N] != my_name[i_right % N]:
             break
-        i_right -= 1
+        i_right += 1
         distance_right += 1
 
     distance = distance_left if distance_left < distance_right else distance_right
