@@ -151,13 +151,11 @@ def solution(name):
     while completed_count < N:
         letter = name[i]
 
-        if letter == "A":
-            completed_count += 1
-            continue
-
         total_moves += move_vertical(letter)
         my_name[i] = letter
-        completed_count += 1
+
+        if "".join(my_name) == name:
+            break
 
         horizontal_move_amt, i = move_horizontal(i, name, my_name, N)
         total_moves += horizontal_move_amt
@@ -183,12 +181,11 @@ def move_horizontal(i, name, my_name, N):
         i_left -= 1
         distance_left += 1
 
-
     # find closest non-filled letter to right and its index
     i_right = i + 1
     distance_right = 1
-    while move_right_count % N != 0:
-        if name[i_right] != my_name[i_right]:
+    while distance_right % N != 0:
+        if name[i_right % N] != my_name[i_right % N]:
             break
         i_right -= 1
         distance_right += 1
@@ -204,5 +201,5 @@ if __name__ == "__main__":
     print(solution("JAN")) #23
     print(solution("ABAAAAAAABA")) #6
     print(solution("ZZZ")) #5
-    print(solution("BAB")) #4
-    print(solution("BBBBAAAABA")) #12
+    print(solution("BAB")) #3
+    print(solution("BBBBAAAABA")) #13
