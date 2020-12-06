@@ -68,9 +68,10 @@ def solution(msg):
     return answer
 
 def initialize_dictionary():
-    res = {}
+    res = {"A": 1}
 
-    while ord("A") - i < 26:
+    i = 26
+    while ord("A") + i :
 
 if __name__ == "__main__":
     print(solution("KAKAO")) #[11, 1, 27, 15]
