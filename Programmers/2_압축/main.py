@@ -47,17 +47,17 @@ def solution(msg):
     while current_index < N:
         while ending_index < N:
             piece = msg[current_index:ending_index+1]
-            if piece in dictionary:
+
+            if piece not in dictionary:
                 piece_prev = msg[current_index:ending_index]
                 number_prev = dictionary[piece_prev]
                 answer.append(number_prev)
 
+                last_number += 1
                 dictionary[piece] = last_number
                 current_index = ending_index
 
-                ending_index += 1
-            else:
-                last_number += 1
+            ending_index += 1
         current_index = ending_index
 
     return answer 
