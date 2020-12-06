@@ -21,14 +21,32 @@
 #       - O exists         --> "O": 15, {"A": 1, "B": 2, "C": 3, ..., "Z": 26, "KA": 27, "AK": 28}, [1, 11, 27, 15]
 #       - KAO doesnt exist --> "KAO": 29, {"A": 1, "B": 2, "C": 3, ..., "Z": 26, "KA": 27, "AK": 28, "KAO": 29}, [27, 28]
 
+# cases
+#   1. when len(msg) == 1
+#   2. when len(msg) != 1
+#       - When letter(s) exists in dictionary
+#       - When letter(s) don't exists in dictionary
+
 # 1. start with current_index=ending_index=0
 # 2. check if msg[current_index:ending_index+1] is in dictionary
-# 3. if exists, get number and add to array
-# 3.1. move ending_index by 1
-# 4. if doesn't exist, add to directionary with assigned number
-# 4.1. set current_index to be the index where letter doesn't exist
-# 4.2. move ending_index by 1
+# 3. if exists, move ending_index by 1
+# 4. if doesn't exist,
+# 4.1. find number of msg[current_index:ending_index] add to array
+# 4.1. add msg[current_index:ending_index+1] to directionary with assigned number
+# 4.2. set current_index to be the index where letter doesn't exist
+# 4.3. move ending_index by 1
 
 def solution(msg):
     answer = []
+    dictionary = initialize_dictionary()
+    current_index = 0
+    ending_index = 0
+    N = len(msg)
+
+    while current_index < N:
+        if ending_index == N - 1:
+
+
+
+
     return answer 
