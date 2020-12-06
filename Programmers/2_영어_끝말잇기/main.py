@@ -13,7 +13,8 @@
 
 # Example
 #   1. ["tank", "kick", "know", "wheel", "land", "dream", "mother", "robot", "tank"]
-#       -
+#       - Person who said tank last is out (repeat)
+#       - ["tank", "kick", "know", "wheel", "land", "dream", "mother", "robot", "tank"]
 
 
 def solution(n, words):
