@@ -24,12 +24,22 @@
 
 def solution(n):
     answer = 0
-    #   1. convert n to binary number
-    n_binary = convert_to_binary(n)
+    # 1. convert n to binary number
+    n_binary_list = convert_to_binary(n)
 
-    #   2. count number of 1's in binary form of n
-    n
-    #   3. for each consecutive number,
-    #       3.1 convert to binary form and find number of 1's
-    #       3.2 if the number of 1's are equal, then return the consecutive number
+    # 2. count number of 1's in binary form of n
+    count = sum(n_binary_list)
+    # 3. for each consecutive number,
+    i = n + 1
+    while True:
+        # 3.1 convert to binary form and find number of 1's
+        i_binary_list = convert_to_binary(i)
+        count_i = sum(i_binary_list)
+        # 3.2 if the number of 1's are equal, then return the consecutive number
+        if count_n == count_i:
+            return i
+        i += 1
+
     return answer
+
+def convert_to_binary(n):
