@@ -16,4 +16,10 @@
 
 def solution(arr):
     answer = 0
+
+    # Find maximum in array, store in max_num
+    # in multiples of max_num, check if all divides the number
+    # if yes, return number
+    # if not keep going
+
     return answer
