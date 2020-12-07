@@ -87,7 +87,7 @@ def traverse_left(answer, i, current_value, n):
     while depth < n:
         answer[i] = current_value
 
-        if depth == n:
+        if depth == (n-1):
             break
 
         steps += 1
@@ -99,27 +99,29 @@ def traverse_left(answer, i, current_value, n):
 
 
 def traverse_bottom(answer, i, current_value, n):
-    filled_count = 0
-    while filled_count < (n - 1):
+    to_be_filled = (n - 1)
+    while to_be_filled > 0:
         i += 1
-        filled_count += 1
         current_value += 1
 
         answer[i] = current_value
+
+        to_be_filled -= 1
 
     return i, current_value
 
 def traverse_right(answer, i, current_value, n):
     steps = n
-    depth = n
+    to_be_filled = (n - 2)
 
-    while depth > 2:
+    while to_be_filled > 0:
         i -= steps
         steps -= 1
-        depth -= 1
         current_value += 1
 
         answer[i] = current_value
+
+        to_be_filled -= 1
 
     return i, current_value
 
