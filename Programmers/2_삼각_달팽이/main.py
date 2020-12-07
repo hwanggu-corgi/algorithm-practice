@@ -44,10 +44,11 @@ def solution(n):
         return [1]
 
     i = 0
-    current_value = 1
+    current_value = 0
     while n > 0:
+        print(n)
+        current_value += 1
         i = get_starting_index(answer, i)
-
         i, current_value = traverse_left(answer, i, current_value, n)
         i, current_value = traverse_bottom(answer, i, current_value, n)
         i, current_value = traverse_right(answer, i, current_value, n)
@@ -78,11 +79,11 @@ def get_starting_index(answer, i):
 
 def traverse_left(answer, i, current_value, n):
     steps = 0
-    depth = 0
+    depth = 1
     while depth < n:
         answer[i] = current_value
 
-        if depth == (n-1):
+        if depth == n:
             break
 
         steps += 1
@@ -96,9 +97,7 @@ def traverse_left(answer, i, current_value, n):
 def traverse_bottom(answer, i, current_value, n):
     list_size = len(answer)
 
-    if
-
-    while i < list_size:
+    while i < list_size and n > 1:
         answer[i] = current_value
 
         if i == (list_size-1):
@@ -111,18 +110,15 @@ def traverse_bottom(answer, i, current_value, n):
 
 def traverse_right(answer, i, current_value, n):
     steps = n
-    depth = n-1
+    depth = n
 
-    while depth > 0:
+    while depth != 2:
         i -= steps
         steps -= 1
         depth -= 1
         current_value += 1
 
         answer[i] = current_value
-
-        if depth == 1:
-            break
 
 
     return i, current_value
