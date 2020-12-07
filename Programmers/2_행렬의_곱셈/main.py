@@ -6,9 +6,18 @@
 # 곱할 수 있는 배열만 주어집니다.
 
 # Example
-#   1) arr1: [[1, 4], [3, 2], [4, 1]]	arr2: [[3, 3], [3, 3]]
-
+#   1) A: [[1, 4], [3, 2], [4, 1]]	B: [[3, 3], [3, 3]]
 #   This is matrix multiplication
+
+# Pseudocode
+#   for each row in arr1 (i),
+    #   for each column in arr2 (j),
+    #   calculate element after matrix multiplication
+    #       get column length of arr1
+    #       for each column in arr1 (m),
+    #       compute sum of A[i][m]B[m][j] for all m
+    #       add to list
+    #   after going through all columns in arr2
 def solution(arr1, arr2):
     answer = [[]]
     return answer
