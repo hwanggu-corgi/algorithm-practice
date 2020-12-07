@@ -37,23 +37,18 @@
 #       7.1) repeat step 1) to 6) until no more inner, smaller triangle is found
 
 def solution(n):
-    answer = []
+    list_size = calculate_list_size(...)
+    answer = [0] * list_size
 
-    _solution(...)
+    current_index = 0
+
+    while n > 0:
+        current_index = get_starting_index(answer, current_index)
+        current_index = traverse_left(...)
+        current_index = traverse_bottom(...)
+        current_index = traverse_right(...)
+
+        n -= 3
 
     return answer
-
-def _solution(...):
-
-    if n <= 0:
-        return
-
-    current_index = traverse_left(...)
-    current_index = traverse_bottom(...)
-    current_index = traverse_right(...)
-
-    starting_index = get_starting_index(...)
-
-    n = n - 3
-    _solution(...)
 
