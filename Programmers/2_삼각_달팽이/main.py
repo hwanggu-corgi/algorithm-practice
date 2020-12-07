@@ -43,12 +43,34 @@ def solution(n):
     current_index = 0
 
     while n > 0:
-        current_index = get_starting_index(answer, current_index)
-        current_index = traverse_left(...)
-        current_index = traverse_bottom(...)
-        current_index = traverse_right(...)
+        current_index = get_starting_index(answer, current_index list_size)
+        current_index = traverse_left(answer, current_index, list_size, n)
+        current_index = traverse_bottom(answer, current_index, list_size, n)
+        current_index = traverse_right(answer, current_index, list_size, n)
 
         n -= 3
 
     return answer
+
+def get_starting_index(answer, current_index list_size):
+    answer_size = len(answer)
+    while current_index < answer_size:
+        if answer[current_index] == 0:
+            break
+        current_index += 1
+    return current_index
+
+def traverse_left(answer, current_index, list_size, n):
+
+    i = 0
+    depth = 0
+    while depth < n:
+
+
+
+def traverse_bottom(answer, current_index, list_size, n):
+    pass
+
+def traverse_right(answer, current_index, list_size, n):
+    pass
 
