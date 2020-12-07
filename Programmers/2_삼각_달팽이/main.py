@@ -78,7 +78,7 @@ def get_starting_index(answer, i):
 
 def traverse_left(answer, i, current_value, n):
     steps = 0
-    depth = 1
+    depth = 0
 
     if n == 1:
         answer[i] = current_value
@@ -100,12 +100,12 @@ def traverse_left(answer, i, current_value, n):
 
 def traverse_bottom(answer, i, current_value, n):
     filled_count = 0
-    while filled_count < n:
-        answer[i] = current_value
-
+    while filled_count < (n - 1):
         i += 1
         filled_count += 1
         current_value += 1
+
+        answer[i] = current_value
 
     return i, current_value
 
