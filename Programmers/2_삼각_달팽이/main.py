@@ -37,20 +37,29 @@
 #       7.1) repeat step 1) to 6) until no more inner, smaller triangle is found
 
 def solution(n):
-    list_size = calculate_list_size(...)
+    list_size = calculate_list_size(n)
     answer = [0] * list_size
 
     i = 0
     current_value = 1
     while n > 0:
         i = get_starting_index(answer, i)
-        i = traverse_left(answer, i, current_value, n)
-        i = traverse_bottom(answer, i, current_value, n)
-        i = traverse_right(answer, i, current_value, n)
+        i, current_value = traverse_left(answer, i, current_value, n)
+        i, current_value = traverse_bottom(answer, i, current_value, n)
+        i, current_value = traverse_right(answer, i, current_value, n)
 
         n -= 3
 
     return answer
+
+def calculate_list_size(n):
+    size = 0
+    i = 0
+    while i < n:
+        size += (i+1)
+        i += 1
+
+    return size
 
 def get_starting_index(answer, i):
     list_size = len(answer)
@@ -80,10 +89,10 @@ def traverse_left(answer, i, current_value, n):
 def traverse_bottom(answer, i, current_value, n):
     list_size = len(answer)
 
-    while i < traverse_bottom:
+    while i < list_size:
         answer[i] = current_value
 
-        if depth == (list_size-1):
+        if i == (list_size-1):
             break
 
         i += 1
@@ -91,6 +100,22 @@ def traverse_bottom(answer, i, current_value, n):
 
     return i, current_value
 
-def traverse_right(answer, i, list_size, n):
-    pass
+def traverse_right(answer, i, current_value, n):
+    steps = 0
+    depth = n-1
 
+    while depth > 0:
+        answer[i] = current_value
+
+        if depth == 1:
+            break
+
+        steps += 1
+        i -= steps
+        depth -= 1
+        current_value += 1
+
+    return i, current_value
+
+if __name__ == "__main__":
+    print(solution(4)) # [1,2,9,3,10,8,4,5,6,7]
