@@ -40,6 +40,7 @@ def solution(n):
     list_size = calculate_list_size(n)
     answer = [0] * list_size
 
+    print(n)
     if n == 1:
         return [1]
 
@@ -50,12 +51,12 @@ def solution(n):
         current_value += 1
         i = get_starting_index(answer, i)
         i, current_value = traverse_left(answer, i, current_value, n)
+        print(answer)
         i, current_value = traverse_bottom(answer, i, current_value, n)
+        print(answer)
         i, current_value = traverse_right(answer, i, current_value, n)
 
-
         print(answer)
-
         n -= 3
 
     return answer
@@ -112,7 +113,8 @@ def traverse_right(answer, i, current_value, n):
     steps = n
     depth = n
 
-    while depth != 2:
+    while depth > 1:
+
         i -= steps
         steps -= 1
         depth -= 1
@@ -120,10 +122,9 @@ def traverse_right(answer, i, current_value, n):
 
         answer[i] = current_value
 
-
     return i, current_value
 
 if __name__ == "__main__":
     print(solution(4)) # [1,2,9,3,10,8,4,5,6,7]
     print(solution(1)) # [1]
-    print(solution(2)) # [1,3,2]
+    print(solution(2)) # [1,2,3]
