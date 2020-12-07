@@ -16,6 +16,15 @@
 
 #   3) traverse bottom side of triangle and fill values
 #   [1,2,0,3,0,0,4,5,6,7], current_index = 9
+#                      ^
+
+#   4) traverse right side of triangle and fill values
+#   [1,2,9,3,0,8,4,5,6,7], current_index = 2
+#        ^
+
+#   5) check if smaller triangle exists
+#   [1,2,9,3,0,8,4,5,6,7], current_index = 4
+#            ^
 
 # Pseudocode
 #   1) find size of array (sigma of i from 1 to n)
