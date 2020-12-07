@@ -36,7 +36,7 @@ def solution(arr1, arr2):
             #   for each column in arr1 (m),
             for m in range(n_col_arr1):
                 #   compute sum of A[i][m]B[m][j] for all m
-                new_value = arr1[i][m] * arr2[m][j]
+                new_value += arr1[i][m] * arr2[m][j]
             #   add to list new_row
             new_row.append(new_value)
         #   append new_row to answer
@@ -44,5 +44,6 @@ def solution(arr1, arr2):
     return answer
 
 if __name__ == "__main__":
+    print(solution([[2,2], [2,2]], [[2,2], [2,2]])) # [[8, 8], [8, 8]]
     print(solution([[1, 4], [3, 2], [4, 1]], [[3, 3], [3, 3]])) # [[15, 15], [15, 15], [15, 15]]
     print(solution([[2, 3, 2], [4, 2, 4], [3, 1, 4]], [[5, 4, 3], [2, 4, 1], [3, 1, 1]])) # [[22, 22, 11], [36, 28, 18], [29, 20, 14]]
