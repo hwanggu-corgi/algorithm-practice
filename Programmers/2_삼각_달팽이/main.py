@@ -39,10 +39,21 @@
 def solution(n):
     answer = []
 
-    while n > 0:
-        traverse_left(...)
-        traverse_bottom(...)
-        traverse_right(...)
+    _solution(...)
 
-        n -= 3
     return answer
+
+def _solution(...):
+
+    if n <= 0:
+        return
+
+    current_index = traverse_left(...)
+    current_index = traverse_bottom(...)
+    current_index = traverse_right(...)
+
+    starting_index = get_starting_index(...)
+
+    n = n - 3
+    _solution(...)
+
