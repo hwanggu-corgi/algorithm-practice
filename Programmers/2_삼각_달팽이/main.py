@@ -7,23 +7,23 @@
 # Example
 #   - n = 4
 #   1) traverse left side of triangle and fill values
-#   [1,2,0,3,0,0,4,0,0,0], current_index = 6
+#   [1,2,0,3,0,0,4,0,0,0], i = 6
 #                ^
 
 #   2) traverse bottom side of triangle and fill values
-#   [1,2,0,3,0,0,4,5,6,7], current_index = 9
+#   [1,2,0,3,0,0,4,5,6,7], i = 9
 #                      ^
 
 #   3) traverse bottom side of triangle and fill values
-#   [1,2,0,3,0,0,4,5,6,7], current_index = 9
+#   [1,2,0,3,0,0,4,5,6,7], i = 9
 #                      ^
 
 #   4) traverse right side of triangle and fill values
-#   [1,2,9,3,0,8,4,5,6,7], current_index = 2
+#   [1,2,9,3,0,8,4,5,6,7], i = 2
 #        ^
 
 #   5) check if smaller triangle exists
-#   [1,2,9,3,0,8,4,5,6,7], current_index = 4
+#   [1,2,9,3,0,8,4,5,6,7], i = 4
 #            ^
 
 # Pseudocode
@@ -40,37 +40,57 @@ def solution(n):
     list_size = calculate_list_size(...)
     answer = [0] * list_size
 
-    current_index = 0
-
+    i = 0
+    current_value = 1
     while n > 0:
-        current_index = get_starting_index(answer, current_index list_size)
-        current_index = traverse_left(answer, current_index, list_size, n)
-        current_index = traverse_bottom(answer, current_index, list_size, n)
-        current_index = traverse_right(answer, current_index, list_size, n)
+        i = get_starting_index(answer, i)
+        i = traverse_left(answer, i, current_value, n)
+        i = traverse_bottom(answer, i, current_value, n)
+        i = traverse_right(answer, i, current_value, n)
 
         n -= 3
 
     return answer
 
-def get_starting_index(answer, current_index list_size):
-    answer_size = len(answer)
-    while current_index < answer_size:
-        if answer[current_index] == 0:
+def get_starting_index(answer, i):
+    list_size = len(answer)
+    while i < list_size:
+        if answer[i] == 0:
             break
-        current_index += 1
-    return current_index
+        i += 1
+    return i
 
-def traverse_left(answer, current_index, list_size, n):
-
-    i = 0
+def traverse_left(answer, i, current_value, n):
+    steps = 0
     depth = 0
     while depth < n:
+        answer[i] = current_value
+
+        if depth == (n-1):
+            break
+
+        steps += 1
+        i += steps
+        depth += 1
+        current_value += 1
+
+    return i, current_value
 
 
+def traverse_bottom(answer, i, current_value, n):
+    list_size = len(answer)
 
-def traverse_bottom(answer, current_index, list_size, n):
-    pass
+    while i < traverse_bottom:
+        answer[i] = current_value
 
-def traverse_right(answer, current_index, list_size, n):
+        if depth == (list_size-1):
+            break
+
+        i += 1
+        current_value += 1
+
+    return i, current_value
+
+def traverse_right(answer, i, list_size, n):
     pass
 
