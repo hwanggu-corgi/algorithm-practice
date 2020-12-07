@@ -38,4 +38,6 @@
 
 def solution(n):
     answer = []
+
+    _solution(...)
     return answer
