@@ -45,16 +45,14 @@ def solution(n):
 
     i = 0
     current_value = 0
+    layer = 0
     while n > 0:
         i = get_starting_index(answer, i)
         current_value += 1
-        print(n)
-        i, current_value = traverse_left(answer, i, current_value, n)
-        print(answer)
+        i, current_value = traverse_left(answer, i, current_value, layer, n)
         i, current_value = traverse_bottom(answer, i, current_value, n)
-        print(answer)
-        i, current_value = traverse_right(answer, i, current_value, n)
-        print(answer)
+        i, current_value = traverse_right(answer, i, current_value, layer, n)
+        layer += 1
         n -= 3
 
     return answer
@@ -76,7 +74,7 @@ def get_starting_index(answer, i):
         i += 1
     return i
 
-def traverse_left(answer, i, current_value, n):
+def traverse_left(answer, i, current_value, layer, n):
     steps = 0
     depth = 0
 
@@ -91,7 +89,7 @@ def traverse_left(answer, i, current_value, n):
             break
 
         steps += 1
-        i += steps
+        i += steps + (2 * layer)
         depth += 1
         current_value += 1
 
@@ -110,12 +108,12 @@ def traverse_bottom(answer, i, current_value, n):
 
     return i, current_value
 
-def traverse_right(answer, i, current_value, n):
+def traverse_right(answer, i, current_value, layer, n):
     steps = n
     to_be_filled = (n - 2)
 
     while to_be_filled > 0:
-        i -= steps
+        i -= steps + (2 * layer)
         steps -= 1
         current_value += 1
 
@@ -130,3 +128,4 @@ if __name__ == "__main__":
     print(solution(1)) # [1]
     print(solution(2)) # [1,2,3]
     print(solution(5)) # [1,2,12,3,13,11,4,14,15,10,5,6,7,8,9]
+    print(solution(6)) # [1,2,15,3,16,14,4,17,21,13,5,18,19,20,12,6,7,8,9,10,11]
