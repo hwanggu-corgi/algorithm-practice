@@ -39,5 +39,10 @@
 def solution(n):
     answer = []
 
-    _solution(...)
+    while n > 0:
+        traverse_left(...)
+        traverse_bottom(...)
+        traverse_right(...)
+
+        n -= 3
     return answer
