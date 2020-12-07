@@ -14,4 +14,28 @@
 
 def solution(s):
     answer = ''
+
+    #   split s into array of string
+    s = s.split(" ")
+
+    #   for each word,
+    for i, word in enumerate(s):
+        #   turn to lowercase letters
+        #   find the location of first letter in each string and convert that to uppercase letter
+        s[i] = word.lower()
+        if s[i][0].isalpha():
+            s[i] = capitalize_first_letter(s[i])
+
+    #   join all letters in the end
+    answer = " ".join(s)
     return answer
+
+def capitalize_first_letter(word):
+    word = [x for x in word]
+    word[0] = word[0].upper()
+    return "".join(word)
+
+
+if __name__ == "__main__":
+    print(solution("3people unFollowed me")) #3people Unfollowed Me
+    print(solution("for the last week")) # For The Last Week
