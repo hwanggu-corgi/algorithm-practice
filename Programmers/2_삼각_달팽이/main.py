@@ -6,12 +6,26 @@
 
 # Example
 #   - n = 4
-#   - [0,0,0,0,0,0,0,0,0,0]
+#   1) traverse left side of triangle and fill values
+#   [1,2,0,3,0,0,4,0,0,0], current_index = 6
+#                ^
+
+#   2) traverse bottom side of triangle and fill values
+#   [1,2,0,3,0,0,4,5,6,7], current_index = 9
+#                      ^
+
+#   3) traverse bottom side of triangle and fill values
+#   [1,2,0,3,0,0,4,5,6,7], current_index = 9
 
 # Pseudocode
-#   - find size of array (sigma of i from 1 to n)
-#   - create array
-#   -
+#   1) find size of array (sigma of i from 1 to n)
+#   2) create array
+#   3) traverse left side of triangle and fill values
+#   4) traverse bottom side of triangle and fill values
+#   5) traverse right side of triangle and fill values
+#   6) check if smaller triangle exists
+#   7) if exists, find the starting point of the smaller triangle
+#       7.1) repeat step 1) to 6) until no more inner, smaller triangle is found
 
 def solution(n):
     answer = []
