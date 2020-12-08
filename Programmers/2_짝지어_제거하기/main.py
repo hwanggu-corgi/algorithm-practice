@@ -21,35 +21,40 @@
 #       remove characters
 #   if it doesn't exist, return 0
 
+from collections import deque
+
 def solution(s):
     answer = 0
 
-    while len(s) > 0:
+    s_queue = deque(s)
+
+    while len(s_queue) > 0:
         #   search for first repeating characters
-        start_index = search_repeating_characters(s)
+        start_index = search_repeating_characters(s_queue)
         #   if it exists, show where it starts
         if start_index >= 0:
             # remove characters
-            s = s[:start_index] + s[start_index+2:]
+            del s_queue[start_index+1]
+            del s_queue[start_index]
         #   if it doesn't exist, return 0
         else:
             return 0
 
     return 1
 
-def search_repeating_characters(s):
-    N =len(s)
+def search_repeating_characters(queue):
+    N =len(queue)
 
     if N == 1:
         return -1
 
     i = 1
     while i < N:
-        if s[i] == s[i-1]:
-            break
+        if queue[i] == queue[i-1]:
+            return i-1
         i += 1
 
-    return i-1
+    return -1
 
 if __name__ == "__main__":
     print(solution("baabaa")) #1
