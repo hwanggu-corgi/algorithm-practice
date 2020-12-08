@@ -3,7 +3,26 @@
 
 def solution(s):
     answer = True
+    stack = []
 
-    print('Hello Python')
+    for parenthesis in s:
+        if parenthesis == "(":
+            stack.append(parenthesis)
+            continue
+        else:
+            if len(stack) == 0:
+                return False
+
+            stack.pop()
+
+    if len(stack) > 0:
+        return False
 
     return True
+
+if __name__ == "__main__":
+    print(solution("()()")) #true
+    print(solution("")) #true
+    print(solution(")()(")) #false
+    print(solution("(()(")) #false
+    print(solution("(())()")) #true
