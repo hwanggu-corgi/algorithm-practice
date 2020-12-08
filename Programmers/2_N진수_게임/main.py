@@ -78,6 +78,11 @@
 
 #     13579BDF13579BD
 
+# Pseudocode
+# while the length of answer is less than t,
+#   print value of p distance in m
+#   increment by m
+
 def solution(n, t, m, p):
     answer = ''
 
