@@ -27,14 +27,18 @@ def solution(s):
 
     while len(s) > 0:
         #   search for first repeating characters
-        match = re.search(r'(\w){2}')
+        match = re.search(r'(\w){2}', s)
         #   if it exists, show where it starts
         if match:
             start_index = match.start()
             # remove characters
-            s = [:start_index] + [start_index+2:]
+            s = s[:start_index] + s[start_index+2:]
         #   if it doesn't exist, return 0
         else:
             return 0
 
     return 1
+
+if __name__ == "__main__":
+    print(solution("baabaa")) #1
+    print(solution("cdcd")) #1
