@@ -25,20 +25,15 @@ from collections import deque
 
 def solution(s):
     answer = 0
+    stack = []
 
-    s_queue = deque(s)
+    for letter in s:
+        if len(stack) == 0:
+            stack.append(letter)
+            continue
 
-    while len(s_queue) > 0:
-        #   search for first repeating characters
-        start_index = search_repeating_characters(s_queue)
-        #   if it exists, show where it starts
-        if start_index >= 0:
-            # remove characters
-            del s_queue[start_index+1]
-            del s_queue[start_index]
-        #   if it doesn't exist, return 0
-        else:
-            return 0
+        if stack[-1] == letter:
+            stack.pop()
 
     return 1
 
