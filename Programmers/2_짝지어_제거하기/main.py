@@ -21,11 +21,13 @@
 #       remove characters
 #   if it doesn't exist, return 0
 
-from collections import deque
 
 def solution(s):
     answer = 0
     stack = []
+
+    if len(s) == 0:
+        return 0
 
     for letter in s:
         if len(stack) == 0:
@@ -34,22 +36,13 @@ def solution(s):
 
         if stack[-1] == letter:
             stack.pop()
+        else:
+            stack.append(letter)
 
-    return 1
-
-def search_repeating_characters(queue):
-    N =len(queue)
-
-    if N == 1:
-        return -1
-
-    i = 1
-    while i < N:
-        if queue[i] == queue[i-1]:
-            return i-1
-        i += 1
-
-    return -1
+    if len(stack) == 0:
+        return 1
+    else:
+        return 0
 
 if __name__ == "__main__":
     print(solution("baabaa")) #1
