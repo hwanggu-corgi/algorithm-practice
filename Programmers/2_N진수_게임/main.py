@@ -125,9 +125,38 @@
 #   go to arr[i]
 #   if not indexerror, add value to answer
 #   if indexerror, fill arr by 5 values in n-ary form
-#   increment by m
+#   increment i by m
+# return answer
 
 def solution(n, t, m, p):
-    answer = ''
+    answer = ""
+    arr = []
+    number_ending = 0
+
+    # start with i = (p-1)
+    i = p-1
+    # while the length of answer is less than t,
+    while len(answer) < t:
+        try:
+            #   go to arr[i]
+            #   if not indexerror, add value to answer
+            answer += arr[i]
+            #   increment i by m
+            i += m
+        except IndexError:
+            #   if indexerror, fill arr by 5 values in n-ary form
+            number_ending = fill_values(arr, number_ending, n)
+    # return answer
 
     return answer
+
+def fill_values(arr, number_ending, n):
+
+    i = 0
+    while i < 5:
+        nary_number = get_nary(number_ending, n)
+        i += 1
+
+    number_ending += i
+
+    return number_ending
