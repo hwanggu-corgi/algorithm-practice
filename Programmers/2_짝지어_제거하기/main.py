@@ -20,7 +20,6 @@
 #   if it exists, show where it starts
 #       remove characters
 #   if it doesn't exist, return 0
-import re
 
 def solution(s):
     answer = 0
@@ -29,7 +28,7 @@ def solution(s):
         #   search for first repeating characters
         start_index = search_repeating_characters(s)
         #   if it exists, show where it starts
-        if start_index:
+        if start_index >= 0:
             # remove characters
             s = s[:start_index] + s[start_index+2:]
         #   if it doesn't exist, return 0
@@ -54,4 +53,4 @@ def search_repeating_characters(s):
 
 if __name__ == "__main__":
     print(solution("baabaa")) #1
-    print(solution("cdcd")) #1
+    print(solution("cdcd")) #0
