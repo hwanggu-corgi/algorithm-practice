@@ -20,10 +20,21 @@
 #   if it exists, show where it starts
 #       remove characters
 #   if it doesn't exist, return 0
-
+import re
 
 def solution(s):
     answer = 0
 
+    while len(s) > 0:
+        #   search for first repeating characters
+        match = re.search(r'(\w){2}')
+        #   if it exists, show where it starts
+        if match:
+            start_index = match.start()
+            # remove characters
+            s = [:start_index] + [start_index+2:]
+        #   if it doesn't exist, return 0
+        else:
+            return 0
 
-    return answer
+    return 1
