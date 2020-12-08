@@ -27,7 +27,7 @@ def solution(s):
 
     while len(s) > 0:
         #   search for first repeating characters
-        start_index = search_repeating_characters(...)
+        start_index = search_repeating_characters(s)
         #   if it exists, show where it starts
         if start_index:
             # remove characters
@@ -37,6 +37,20 @@ def solution(s):
             return 0
 
     return 1
+
+def search_repeating_characters(s):
+    N =len(s)
+
+    if N == 1:
+        return -1
+
+    i = 1
+    while i < N:
+        if s[i] == s[i-1]:
+            break
+        i += 1
+
+    return i-1
 
 if __name__ == "__main__":
     print(solution("baabaa")) #1
