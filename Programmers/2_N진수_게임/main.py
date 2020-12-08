@@ -154,9 +154,35 @@ def fill_values(arr, number_ending, n):
 
     i = 0
     while i < 5:
-        nary_number = get_nary(number_ending, n)
+        nary_number = get_nary(number_ending + i, n)
+        arr.extend([x for x in nary_number])
         i += 1
 
     number_ending += i
 
     return number_ending
+
+def get_nary(number, n):
+    nary_number = ""
+    nary_dict = {}
+
+    if number == 0:
+        return "0"
+
+    for i in range(0, 16):
+        if i < 10:
+            nary_dict[i] = str(i)
+        else:
+            nary_dict[i] = chr(ord('A') + (i - 10))
+
+    while number != 0:
+        remainder = number % n
+        nary_number = nary_dict[remainder] + nary_number
+        number = number // n
+
+    return nary_number
+
+if __name__ == "__main__":
+    print(solution(2,4,2,1)) #0111
+    print(solution(16,16,2,1)) #02468ACE11111111
+    print(solution(16,16,2,2)) #13579BDF01234567
