@@ -4,8 +4,11 @@
 # Example
 #   1) FRANCE	french
 #       A= {FR, RA, AN, NC, CE}  B = {FR, RE, EN, NC, CH}
-#   A U B = {FR, RA, AN, CE, RE, EN, CH}
-#   A n B = {FR, }
+#   A U B = {FR, RA, RE, AN, NC, EN, CE, VH}
+#   A n B = {FR, NC}
+#
+#   J("FRANCE", "FRENCH") = 2/8 = 0.25
+#   0.25 * 65536 = 16384.0
 
 def solution(str1, str2):
     answer = 0
