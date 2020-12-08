@@ -19,7 +19,6 @@
 #   convert to binary, and add count to converted_count
 
 def solution(s):
-    answer = []
     zeros_removed = 0
     converted_count = 0
     while len(s) > 1:
@@ -30,24 +29,31 @@ def solution(s):
         s = convert_decimal_to_binary(s_length)
         converted_count += 1
 
+    answer = [converted_count, zeros_removed]
     return answer
 
 def remove_zeros(s):
     res = ""
+    count = 0
     for bit in s:
         if bit == "1":
-            res += 1
+            res += bit
+        else:
+            count += 1
 
-    return res
+    return res, count
 
 def convert_decimal_to_binary(number):
     binary = ""
     while number != 0:
         remainder = number % 2
-        binary = remainder + binary
+        binary = str(remainder) + binary
         number = number // 2
 
     return binary
 
 if __name__ == "__main__":
     print(solution("01110")) # [3,3]
+    print(solution("110010101001")) # [3,8]
+    print(solution("1111111")) # [4,1]
+    print(solution("1")) # [4,1]
