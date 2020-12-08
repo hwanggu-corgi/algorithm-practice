@@ -8,12 +8,46 @@
 
 # Example
 #   1) "01110"
-#       - "01110" --> erase 0 (2) ("111") --> get length (4) --> convert to binary ("100")
-#       - "100" --> erase 0 ("1") --> get length (1) --> convert to binary ("1")
+#       - "01110" --> erase 0 (2) ("111") --> get length (3) --> convert to binary ("11")
+#       - "11" --> erase 0 (0)("11") --> get length (2) --> convert to binary ("10")
+#       - "10" --> erase 0 (1)("1") --> get length (1) --> convert to binary ("1")
+
+# Pseudocode
+#   while length of s is greater than 1,
+#   remove 0s, and add count to zeros_removed
+#   get length
+#   convert to binary, and add count to converted_count
 
 def solution(s):
     answer = []
-
+    zeros_removed = 0
+    converted_count = 0
     while len(s) > 1:
+        s, removed_count = remove_zeros(s)
+        zeros_removed += removed_count
+
+        s_length = len(s)
+        s = convert_decimal_to_binary(s_length)
+        converted_count += 1
 
     return answer
+
+def remove_zeros(s):
+    res = ""
+    for bit in s:
+        if bit == "1":
+            res += 1
+
+    return res
+
+def convert_decimal_to_binary(number):
+    binary = ""
+    while number != 0:
+        remainder = number % 2
+        binary = remainder + binary
+        number = number // 2
+
+    return binary
+
+if __name__ == "__main__":
+    print(solution("01110")) # [3,3]
