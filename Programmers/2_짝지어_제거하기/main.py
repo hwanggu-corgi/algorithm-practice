@@ -27,10 +27,9 @@ def solution(s):
 
     while len(s) > 0:
         #   search for first repeating characters
-        match = re.search(r'(\w){2}', s)
+        start_index = search_repeating_characters(...)
         #   if it exists, show where it starts
-        if match:
-            start_index = match.start()
+        if start_index:
             # remove characters
             s = s[:start_index] + s[start_index+2:]
         #   if it doesn't exist, return 0
