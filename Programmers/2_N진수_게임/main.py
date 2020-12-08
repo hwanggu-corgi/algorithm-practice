@@ -78,9 +78,53 @@
 
 #     13579BDF13579BD
 
+# Example Detail
+#   n: 2 t: 4 (length of value to print) m: 2 (represents skip distance) p: 1
+#       - [] -> go to (p-1) --> out of bound --> fill values (first 5 values (0,1,2,3,4,5))
+#       - [0, 1, 1, 0, 1, 1, ...] -> go to p-1 (0) --> value exists --> add to answer ("0")
+#          ^
+#       - [0, 1, 1, 0, 1, 1, ...] -> increase by m (2)
+#          ^
+
+#       - [0, 1, 1, 0, 1, 1, ...] -> is length t (4)? --> no --> continue
+#          ^
+
+#       - [0, 1, 1, 0, 1, 1, ...] -> value exists --> add to answer ("01")
+#                ^
+
+#       - [0, 1, 1, 0, 1, 1, ...] -> increase by m (2)
+#                ^
+
+#       - [0, 1, 1, 0, 1, 1, ...] -> is length t (4)? --> no --> continue
+#                      ^
+
+#       - [0, 1, 1, 0, 1, 1, ...] -> value exists --> add to answer ("011")
+#                      ^
+
+#       - [0, 1, 1, 0, 1, 1, ...] -> increase by m (2)
+#                      ^
+
+#       - [0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1] -> is length t (4)? --> no --> continue
+#                      ^
+
+
+
+#       - [0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1] -> value exists --> add to answer ("0111")
+#                            ^
+
+#       - [0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1] -> increase by m (2)
+#                            ^
+
+#       - [0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1] -> is length t (4)? --> no --> exit
+#                                  ^
+
+
 # Pseudocode
+# start with i = (p-1)
 # while the length of answer is less than t,
-#   print value of p distance in m
+#   go to arr[i]
+#   if not indexerror, add value to answer
+#   if indexerror, fill arr by 5 values in n-ary form
 #   increment by m
 
 def solution(n, t, m, p):
