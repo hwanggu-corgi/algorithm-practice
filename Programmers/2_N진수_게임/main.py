@@ -2,8 +2,22 @@
 # 숫자를 스마트폰에 미리 출력해주는 프로그램을 만들려고 한다. 튜브의 프로그램을 구현하라.
 
 # Example
-#   n: 2 t: 4 m: 2 p: 1
-#
+#   n: 2 t: 4 (length of value to print) m: 2 (represents skip distance) p: 1
+#     1) 0 - 0
+#     2) 2 - 11
+#     3) 4 - 100
+
+#     0111 | 00 --> 0111
+
+#   n: 16 t: 16 (length of value to print) m: 2 (represents skip distance) p: 1
+#     1) 0 - 0
+#     2) 2 - 2
+#     3) 4 - 4
+#     4) 6 - 6
+#     5) 8 - 8
+#     6) 10 - A
+#     7) 12 - C
+#     7) 12 - C
 
 def solution(n, t, m, p):
     answer = ''
