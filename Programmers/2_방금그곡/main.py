@@ -58,9 +58,7 @@ def solution(m, musicinfos):
         # calculate duration
         duration = (datetime.strptime(time_end, "%H:%M") - datetime.strptime(time_start, "%H:%M")).seconds
 
-        # if 음악 길이보다 재생된 시간이 길 때, extend m_music
-        if len(m_music) < len(m):
-            m_music = extend_m(m_music, m)
+        m_music = extend_m(m_music, m)
 
         # check if m in extended m_music
         # if exists and has higher duration, record name, duration and continue
@@ -69,3 +67,9 @@ def solution(m, musicinfos):
             highest_duration = max(duration, highest_duration)
 
     return answer
+
+def replace_sharps(m):
+    pass
+
+def extend_music(m_music, m):
+    pass
