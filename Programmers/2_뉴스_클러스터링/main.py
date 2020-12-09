@@ -36,3 +36,41 @@ def solution(str1, str2):
         j = (length_intersection // length_union) * 65536
 
     return answer
+
+def create_set(s):
+    res = []
+    N = len(s)
+    s = s.upper()
+    i = 0
+    while i < (N-1):
+        if not (s[i].isalpha() and s[i+1].isalpha()):
+            i += 1
+            continue
+
+        res.append(s[i] + s[i+1])
+        i += 1
+
+    return res
+
+def calculate_union_length(set1, set2):
+    length = 0
+    frequency_set1 = {}
+    frequency_set2 = {}
+
+    # count frequency of each element in set1
+    for e in set1:
+        if e not in frequency_set1:
+            frequency_set1[e] = 1
+        else:
+            frequency_set1[e] += 1
+
+    # count frequency of each element in set2
+    for e in set2:
+        if e not in frequency_set2:
+            frequency_set2 = 1
+        else:
+            frequency_set2[e] += 1
+
+    # calculate length
+    i = 0
+    while i < min(set1, set2)
