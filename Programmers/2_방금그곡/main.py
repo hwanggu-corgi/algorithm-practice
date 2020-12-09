@@ -31,12 +31,23 @@
 # Pseudocode
 #   - for each musicinfo,
 #       Parse string to time_start, time_end, name, m_music
+#       Calculate duration
 #       for each substring of decreasing size in m, check if the substring exists n m_music
 #           if exists and has higher duration, record name, duration and continue
 
 #   return name
 
+from time import time
 
 def solution(m, musicinfos):
     answer = ''
+
+    # for each musicinfo,
+    for info in musicinfos:
+        # Parse string to time_start, time_end, name, m_music
+        time_start, time_end, name, m_music = info.split(",")
+        # calculate duration
+        duration = time()
+        # for each substring of decreasing size in m, check if the substring exists n m_music
+        # if exists and has higher duration, record name, duration and continue
     return answer
