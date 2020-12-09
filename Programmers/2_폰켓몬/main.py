@@ -20,10 +20,15 @@
 # 최대 두마리
 
 #   2) [3,3,3,2,2,4]
-# 최대 세마리
+# 최대 세마리 [2,3,4]
 
 #   3) [3,3,3,2,2,2]
-# 최대 세마리
+# 최대 두마리 [2,3]
+
+# Pseudocode
+#    create set of nums (set_nums)
+#   if length of set_nums is greater than len(nums) // 2, then return len(nums) // 2
+#   if length of set_nums is less than len(nums) // 2, then return len(set_nums) // 2
 
 def solution(nums):
     answer = 0
