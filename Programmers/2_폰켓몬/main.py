@@ -37,11 +37,16 @@ def solution(nums):
     nums_set = set(nums)
 
     #   if length of nums_set is greater than len(nums) // 2, then return len(nums) // 2
-    if len(nums_set) >= (N / 2):
-        return (N / 2)
+    if len(nums_set) > (N // 2):
+        return (N // 2)
     else:
-        #   if length of nums_set is less than len(nums) // 2, then return len(nums_set) // 2
+        #   if length of nums_set is less than or equal to len(nums) // 2, then return len(nums_set)
         return len(nums_set)
     return answer
 
 if __name__ == "__main__":
+    print(solution([3,1,2,3])) #2
+    print(solution([3,3,3,2,2,4])) #3
+    print(solution([3,3,3,2,2,2])) #2
+    print(solution([3,3])) #1
+    print(solution([3,2])) #2
