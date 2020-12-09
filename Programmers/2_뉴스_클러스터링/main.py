@@ -25,8 +25,14 @@ def solution(str1, str2):
     str1_set = create_set(str1)
     str2_set = create_set(str2)
     # find the length of the union of str1_set and str2_set
+    length_union = calculate_union_length(str1_set, str2_set)
     # find the length of intersection of str1_set and str2_set
+    length_intersection = calculate_intersection_length(str1_set, str2_set)
     # if the length of intersection is 0, then return 1 * 65536
-    # else, return int(length of intersection / length of union) * 65536
+    if length_intersection == 0:
+        return 1 * 65536
+    else:
+        # else, return int(length of intersection / length of union) * 65536
+        j = (length_intersection // length_union) * 65536
 
     return answer
