@@ -9,6 +9,10 @@
 #   - 음악 제목은 ',' 이외의 출력 가능한 문자로 표현된 길이 1 이상 64 이하의 문자열이다.
 #   - 악보 정보는 음 1개 이상 1439개 이하로 구성되어 있다.
 
+# Example
+#   1) m: ABCDEFG   musicinfos: ["12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF"]
+
+
 
 def solution(m, musicinfos):
     answer = ''
