@@ -19,22 +19,24 @@
 
 
 def solution(str1, str2):
-    answer = 0
 
     # divide str1 into set of two characters (str1_set). do the same for str2 (str2_set)
     str1_set = create_set(str1)
     str2_set = create_set(str2)
     # find the length of the union of str1_set and str2_set
     length_union = calculate_union_length(str1_set, str2_set)
+    print(length_union)
     # find the length of intersection of str1_set and str2_set
     length_intersection = calculate_intersection_length(str1_set, str2_set)
+    print(length_intersection)
     # if the length of intersection is 0, then return 1 * 65536
     if length_intersection == 0:
         return 1 * 65536
     else:
         # else, return int(length of intersection / length of union) * 65536
-        j = (length_intersection // length_union) * 65536
+        j = int((length_intersection / length_union) * 65536)
 
+    answer = j
     return answer
 
 def create_set(s):
@@ -54,8 +56,11 @@ def create_set(s):
 
 def calculate_union_length(set1, set2):
     length = 0
+    common_keys = []
     frequency_set1 = {}
     frequency_set2 = {}
+    print(set1)
+    print(set2)
 
     # count frequency of each element in set1
     for e in set1:
@@ -67,7 +72,7 @@ def calculate_union_length(set1, set2):
     # count frequency of each element in set2
     for e in set2:
         if e not in frequency_set2:
-            frequency_set2 = 1
+            frequency_set2[e] = 1
         else:
             frequency_set2[e] += 1
 
@@ -76,15 +81,19 @@ def calculate_union_length(set1, set2):
         for key in frequency_set2:
             if key in frequency_set1:
                 length += max(frequency_set1[key], frequency_set2[key])
-                del frequency_set1[key]
-                del frequency_set2[key]
+                common_keys.append(key)
     else:
         for key in frequency_set1:
             if key in frequency_set2:
                 length += max(frequency_set1[key], frequency_set2[key])
-                del frequency_set1[key]
-                del frequency_set2[key]
+                common_keys.append(key)
 
+    # clean up
+    for key in common_keys:
+        del frequency_set1[key]
+        del frequency_set2[key]
+
+    # calculate remaining length
     if len(frequency_set1) > 0:
         for key in frequency_set1:
             length += frequency_set1[key]
@@ -112,7 +121,7 @@ def calculate_intersection_length(set1, set2):
     # count frequency of each element in set2
     for e in set2:
         if e not in frequency_set2:
-            frequency_set2 = 1
+            frequency_set2[e] = 1
         else:
             frequency_set2[e] += 1
 
@@ -129,3 +138,6 @@ def calculate_intersection_length(set1, set2):
     return length
 
 
+if __name__ == "__main__":
+    print(solution("FRANCE", "french")) #16384
+    print(solution("handshake", "shake hands")) #65536
