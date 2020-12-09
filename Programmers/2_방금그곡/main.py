@@ -66,10 +66,38 @@ def solution(m, musicinfos):
             answer = name if duration > highest_duration else answer
             highest_duration = max(duration, highest_duration)
 
-    return answer
+
+    if highest_duration < 0:
+        return None
+    else:
+        return answer
 
 def replace_sharps(m):
-    pass
+    res = ""
+    N = len(m)
+
+    if N == 1:
+        return m
+
+    i = 0
+    while i < N:
+        if i == (N-1) and m[i] == "#":
+            i += 1
+            continue
+
+        if i == (N-1) and m[i] != "#":
+            res += m[i]
+            i += 1
+            continue
+
+        if m[i+1] == "#":
+            res += m[i].lower()
+            i += 2
+        else:
+            res += m[i]
+            i += 1
+
+    return res
 
 def extend_music(m_music, m):
-    pass
+    res = ""
