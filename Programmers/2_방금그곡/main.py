@@ -58,9 +58,10 @@ def solution(m, musicinfos):
         duration = (datetime.strptime(time_end, "%H:%M") - datetime.strptime(time_start, "%H:%M")).seconds
 
         if len(m_music) > len(m):
+            m_music = extend_m(m_music, m)
 
-        else:
-
-
+        # check if m in extended m_music
         # if exists and has higher duration, record name, duration and continue
+        if m in m_music:
+
     return answer
