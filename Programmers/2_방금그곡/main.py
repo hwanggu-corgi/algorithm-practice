@@ -40,13 +40,17 @@
 import datetime
 def solution(m, musicinfos):
     answer = ''
-
+    m = replace_sharps(m)
     # for each musicinfo,
     for info in musicinfos:
         # Parse string to time_start, time_end, name, m_music
         time_start, time_end, name, m_music = info.split(",")
+        # replace sharps
+        m_music = replace_sharps(m)
         # calculate duration
         duration = (datetime.strptime(time_end, "%H:%M") - datetime.strptime(time_start, "%H:%M")).seconds
+
         # for each substring of decreasing size in m, check if the substring exists n m_music
+
         # if exists and has higher duration, record name, duration and continue
     return answer
