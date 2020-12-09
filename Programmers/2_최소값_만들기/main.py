@@ -23,8 +23,17 @@ def solution(A,B):
     B.sort(reverse=True)
     N = len(A)
 
+    i = 0
     while i < N:
         answer += A[i] * B[i]
         i += 1
 
     return answer
+
+if __name__ == "__main__":
+    print(solution([1,4,2], [5,4,4])) #29
+    print(solution([1,2], [3,4])) #10
+    print(solution([], [])) #0
+    print(solution([1], [2])) #2
+    print(solution([1,1], [1,1])) #2
+    print(solution([1,2], [10,9])) #28
