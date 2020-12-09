@@ -139,4 +139,6 @@ if __name__ == "__main__":
     print(solution("handshake", "shake hands")) #65536
     print(solution("aa1+aa2", "AAAA12")) #43690
     print(solution("E=M*C^2", "e=m*c^2")) #65536
-    print(solution("abc", "def")) #65536
+    print(solution("abc", "def")) #0
+    print(solution("abc", "abc")) #65536
+    print(solution("++a++", "a+++")) #0
