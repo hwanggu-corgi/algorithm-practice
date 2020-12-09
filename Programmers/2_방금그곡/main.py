@@ -15,7 +15,15 @@
 #       - ABCDE in musicinfos[1], length 5 seconds
 #       - Choose musicinfos[0]
 
-#   2) m: CC#BCC#BCC#BCC#B
+#   2) m: CC#BCC#BCC#BCC#B  musicinfos: ["03:00,03:30,FOO,CC#B", "04:00,04:08,BAR,CC#BCC#BCC#B"]
+#       - CC#B in musicinfos[0], length 30 seconds
+#       - CC#BCC#BCC#B in musicinfos[1], length 8 seconds
+#       - Choose musicinfos[0]
+
+#   3) m: ABC  musicinfos: ["12:00,12:14,HELLO,C#DEFGAB", "13:00,13:05,WORLD,ABCDEF"]
+#       - None in musicinfos[0], length 14 seconds
+#       - ABC in musicinfos[1], length 5 seconds
+#       - Choose musicinfos[1]
 
 
 def solution(m, musicinfos):
