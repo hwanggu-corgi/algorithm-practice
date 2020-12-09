@@ -26,21 +26,28 @@
 #       - Choose musicinfos[1]
 
 # Cases
-#   1. when len(m) > len(musicinfos[i]) (e.g. CDEFGAB)
+#   1. 음악 길이보다 재생된 시간이 길 때
+#   2. 음악 길이보다 재생된 시간이 짧을 때
 
 # Pseudocode
-#   - for each musicinfo,
+#   split m to list of substrings to use in search
+#   for each musicinfo,
 #       Parse string to time_start, time_end, name, m_music
 #       Calculate duration
 #       for each substring of decreasing size in m, check if the substring exists n m_music
-#           if exists and has higher duration, record name, duration and continue
-
+#           if 음악 길이보다 재생된 시간이 길 때
+#               extend m_music to match m
+#               check if m in extended m_music
+#           if 음악 길이보다 재생된 시간이 짧을 때
+#               check if m in extended m_music
 #   return name
 
 import datetime
 def solution(m, musicinfos):
     answer = ''
     m = replace_sharps(m)
+    # split m to list of substrings to use in search
+
     # for each musicinfo,
     for info in musicinfos:
         # Parse string to time_start, time_end, name, m_music
@@ -50,7 +57,10 @@ def solution(m, musicinfos):
         # calculate duration
         duration = (datetime.strptime(time_end, "%H:%M") - datetime.strptime(time_start, "%H:%M")).seconds
 
-        # for each substring of decreasing size in m, check if the substring exists n m_music
+        if len(m_music) > len(m):
+
+        else:
+
 
         # if exists and has higher duration, record name, duration and continue
     return answer
