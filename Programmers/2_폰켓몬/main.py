@@ -22,6 +22,9 @@
 #   2) [3,3,3,2,2,4]
 # 최대 세마리
 
+#   3) [3,3,3,2,2,2]
+# 최대 세마리
+
 def solution(nums):
     answer = 0
     return answer
