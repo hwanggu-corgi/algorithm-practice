@@ -11,13 +11,22 @@
 #   0.25 * 65536 = 16384.0
 
 # Pseudocode
-#   - divide str1 into list of two characters (str1_list). do the same for str2 (str2_list)
-#   - find the length of the union of str1_list and str2_list
-#   - find the length of intersection of str1_list and str2_list
+#   - divide str1 into list of two characters (str1_set). do the same for str2 (str2_set)
+#   - find the length of the union of str1_set and str2_set
+#   - find the length of intersection of str1_set and str2_set
 #   - if the length of intersection is 0, then return 1 * 65536
 #   - else, return int(length of intersection / length of union) * 65536
 
 
 def solution(str1, str2):
     answer = 0
+
+    # divide str1 into set of two characters (str1_set). do the same for str2 (str2_set)
+    str1_set = create_set(str1)
+    str2_set = create_set(str2)
+    # find the length of the union of str1_set and str2_set
+    # find the length of intersection of str1_set and str2_set
+    # if the length of intersection is 0, then return 1 * 65536
+    # else, return int(length of intersection / length of union) * 65536
+
     return answer
