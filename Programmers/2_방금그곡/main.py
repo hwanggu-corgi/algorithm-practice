@@ -15,7 +15,7 @@
 #       - ABCDE in musicinfos[1], length 5 seconds
 #       - Choose musicinfos[0]
 
-#   2) m:
+#   2) m: CC#BCC#BCC#BCC#B
 
 
 def solution(m, musicinfos):
