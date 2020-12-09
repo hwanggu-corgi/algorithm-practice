@@ -49,8 +49,6 @@ def solution(m, musicinfos):
     answer = ''
     m = replace_sharps(m)
 
-    print(m)
-
     highest_duration = -1
 
     # for each musicinfo,
@@ -60,12 +58,10 @@ def solution(m, musicinfos):
         # replace sharps
         m_music = replace_sharps(m_music)
         # calculate duration
-        duration = (datetime.strptime(time_end, "%H:%M") - datetime.strptime(time_start, "%H:%M")).seconds
+        duration = (datetime.strptime(time_end, "%H:%M") - datetime.strptime(time_start, "%H:%M")).seconds // 60
 
-        m_music = extend_m_music(m_music, m)
-        print("m_music {}".format(m_music))
-        print("music {}".format(m))
-        print("===")
+        m_music = extend_m_music(m_music, m, duration)
+
         # check if m in extended m_music
         # if exists and has higher duration, record name, duration and continue
         if m in m_music:
@@ -90,19 +86,21 @@ def replace_sharps(m):
 
     return m
 
-def extend_m_music(m_music, m):
+def extend_m_music(m_music, m, duration):
     res = ""
     N_m_music = len(m_music)
     N_m = len(m)
     if N_m_music < N_m :
-
         res = m_music * math.ceil(N_m / N_m_music)
     else:
         res = m_music * 2
-    print("res {}".format(res))
+
+    res = res[:duration+1]
+
     return res
 
 if __name__ == "__main__":
+    print(solution("ABC", ["12:00,12:14,HELLO,DEF", "13:00,13:05,WORLD,EFG"])) #	None
     print(solution("ABCDEFG", ["12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF"])) #	HELLO
     print(solution("CC#BCC#BCC#BCC#B", ["03:00,03:30,FOO,CC#B", "04:00,04:08,BAR,CC#BCC#BCC#B"])) #	FOO
     print(solution("ABC", ["12:00,12:14,HELLO,C#DEFGAB", "13:00,13:05,WORLD,ABCDEF"])) # WORLD
