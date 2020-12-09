@@ -43,6 +43,8 @@
 #   return name
 
 import datetime
+import math
+
 def solution(m, musicinfos):
     answer = ''
     m = replace_sharps(m)
@@ -73,31 +75,22 @@ def solution(m, musicinfos):
         return answer
 
 def replace_sharps(m):
-    res = ""
-    N = len(m)
+    sharps = ["C#", "D#", "F#", "G#", "A#"]
 
     if N == 1:
         return m
 
-    i = 0
-    while i < N:
-        if i == (N-1) and m[i] == "#":
-            i += 1
-            continue
+    for sharp in sharps:
+        m = m.replace(sharp, sharp[0].lower())
 
-        if i == (N-1) and m[i] != "#":
-            res += m[i]
-            i += 1
-            continue
-
-        if m[i+1] == "#":
-            res += m[i].lower()
-            i += 2
-        else:
-            res += m[i]
-            i += 1
-
-    return res
+    return m
 
 def extend_music(m_music, m):
     res = ""
+    if len(m_music) < m:
+
+        res = m_music * math.ceil(m / m_music)
+    else:
+        res = m_music * 2
+
+    return res
