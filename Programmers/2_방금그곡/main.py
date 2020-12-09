@@ -46,7 +46,8 @@ import datetime
 def solution(m, musicinfos):
     answer = ''
     m = replace_sharps(m)
-    # split m to list of substrings to use in search
+
+    highest_duration = -1
 
     # for each musicinfo,
     for info in musicinfos:
@@ -57,11 +58,14 @@ def solution(m, musicinfos):
         # calculate duration
         duration = (datetime.strptime(time_end, "%H:%M") - datetime.strptime(time_start, "%H:%M")).seconds
 
-        if len(m_music) > len(m):
+        # if 음악 길이보다 재생된 시간이 길 때, extend m_music
+        if len(m_music) < len(m):
             m_music = extend_m(m_music, m)
 
         # check if m in extended m_music
         # if exists and has higher duration, record name, duration and continue
         if m in m_music:
+            answer = name if duration > highest_duration else answer
+            highest_duration = max(duration, highest_duration)
 
     return answer
