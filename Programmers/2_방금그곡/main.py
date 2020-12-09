@@ -42,7 +42,7 @@
 #               check if m in extended m_music
 #   return name
 
-import datetime
+from datetime import datetime
 import math
 
 def solution(m, musicinfos):
@@ -60,7 +60,7 @@ def solution(m, musicinfos):
         # calculate duration
         duration = (datetime.strptime(time_end, "%H:%M") - datetime.strptime(time_start, "%H:%M")).seconds
 
-        m_music = extend_m(m_music, m)
+        m_music = extend_m_music(m_music, m)
 
         # check if m in extended m_music
         # if exists and has higher duration, record name, duration and continue
@@ -76,6 +76,7 @@ def solution(m, musicinfos):
 
 def replace_sharps(m):
     sharps = ["C#", "D#", "F#", "G#", "A#"]
+    N = len(m)
 
     if N == 1:
         return m
@@ -85,12 +86,15 @@ def replace_sharps(m):
 
     return m
 
-def extend_music(m_music, m):
+def extend_m_music(m_music, m):
     res = ""
-    if len(m_music) < m:
+    if len(m_music) < len(m):
 
         res = m_music * math.ceil(m / m_music)
     else:
         res = m_music * 2
 
     return res
+
+if __name__ == "__main__":
+    print(solution("ABCDEFG", ["12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF"])) #	HELLO
