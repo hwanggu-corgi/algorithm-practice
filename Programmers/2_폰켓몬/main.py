@@ -26,10 +26,22 @@
 # 최대 두마리 [2,3]
 
 # Pseudocode
-#    create set of nums (set_nums)
-#   if length of set_nums is greater than len(nums) // 2, then return len(nums) // 2
-#   if length of set_nums is less than len(nums) // 2, then return len(set_nums) // 2
+#    create set of nums (nums_set)
+#   if length of nums_set is greater than len(nums) // 2, then return len(nums) // 2
+#   if length of nums_set is less than len(nums) // 2, then return len(nums_set)
 
 def solution(nums):
     answer = 0
+    N =len(nums)
+    #   create set of nums (nums_set)
+    nums_set = set(nums)
+
+    #   if length of nums_set is greater than len(nums) // 2, then return len(nums) // 2
+    if len(nums_set) >= (N / 2):
+        return (N / 2)
+    else:
+        #   if length of nums_set is less than len(nums) // 2, then return len(nums_set) // 2
+        return len(nums_set)
     return answer
+
+if __name__ == "__main__":
