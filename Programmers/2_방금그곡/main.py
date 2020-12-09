@@ -11,7 +11,11 @@
 
 # Example
 #   1) m: ABCDEFG   musicinfos: ["12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF"]
+#       - CDEFG in musicinfos[0], length 14 seconds
+#       - ABCDE in musicinfos[1], length 5 seconds
+#       - Choose musicinfos[0]
 
+#   2) m:
 
 
 def solution(m, musicinfos):
