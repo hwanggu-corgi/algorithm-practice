@@ -25,6 +25,17 @@
 #       - ABC in musicinfos[1], length 5 seconds
 #       - Choose musicinfos[1]
 
+# Cases
+#   1. when len(m) > len(musicinfos[i]) (e.g. CDEFGAB)
+
+# Pseudocode
+#   - for each musicinfo,
+#       Parse string to time_start, time_end, name, m_music
+#       for each substring of decreasing size in m, check if the substring exists n m_music
+#           if exists and has higher duration, record name, duration and continue
+
+#   return name
+
 
 def solution(m, musicinfos):
     answer = ''
