@@ -72,5 +72,60 @@ def calculate_union_length(set1, set2):
             frequency_set2[e] += 1
 
     # calculate length
-    i = 0
-    while i < min(set1, set2)
+    if len(frequency_set1) > len(frequency_set2):
+        for key in frequency_set2:
+            if key in frequency_set1:
+                length += max(frequency_set1[key], frequency_set2[key])
+                del frequency_set1[key]
+                del frequency_set2[key]
+    else:
+        for key in frequency_set1:
+            if key in frequency_set2:
+                length += max(frequency_set1[key], frequency_set2[key])
+                del frequency_set1[key]
+                del frequency_set2[key]
+
+    if len(frequency_set1) > 0:
+        for key in frequency_set1:
+            length += frequency_set1[key]
+
+    if len(frequency_set2) > 0:
+        for key in frequency_set1:
+            length += frequency_set1[key]
+
+
+    return length
+
+
+def calculate_intersection_length(set1, set2):
+    length = 0
+    frequency_set1 = {}
+    frequency_set2 = {}
+
+    # count frequency of each element in set1
+    for e in set1:
+        if e not in frequency_set1:
+            frequency_set1[e] = 1
+        else:
+            frequency_set1[e] += 1
+
+    # count frequency of each element in set2
+    for e in set2:
+        if e not in frequency_set2:
+            frequency_set2 = 1
+        else:
+            frequency_set2[e] += 1
+
+    # calculate length
+    if len(frequency_set1) > len(frequency_set2):
+        for key in frequency_set2:
+            if key in frequency_set1:
+                length += min(frequency_set1[key], frequency_set2[key])
+    else:
+        for key in frequency_set1:
+            if key in frequency_set2:
+                length += min(frequency_set1[key], frequency_set2[key])
+
+    return length
+
+
