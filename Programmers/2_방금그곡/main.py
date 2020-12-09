@@ -70,7 +70,7 @@ def solution(m, musicinfos):
 
 
     if highest_duration < 0:
-        return None
+        return "`(None)`"
     else:
         return answer
 
