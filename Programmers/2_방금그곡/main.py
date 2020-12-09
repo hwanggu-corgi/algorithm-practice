@@ -37,8 +37,7 @@
 
 #   return name
 
-from time import time
-
+import datetime
 def solution(m, musicinfos):
     answer = ''
 
@@ -47,7 +46,7 @@ def solution(m, musicinfos):
         # Parse string to time_start, time_end, name, m_music
         time_start, time_end, name, m_music = info.split(",")
         # calculate duration
-        duration = time()
+        duration = (datetime.strptime(time_end, "%H:%M") - datetime.strptime(time_start, "%H:%M")).seconds
         # for each substring of decreasing size in m, check if the substring exists n m_music
         # if exists and has higher duration, record name, duration and continue
     return answer
