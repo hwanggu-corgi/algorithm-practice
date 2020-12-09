@@ -25,12 +25,10 @@ def solution(str1, str2):
     str2_set = create_set(str2)
     # find the length of the union of str1_set and str2_set
     length_union = calculate_union_length(str1_set, str2_set)
-    print(length_union)
     # find the length of intersection of str1_set and str2_set
     length_intersection = calculate_intersection_length(str1_set, str2_set)
-    print(length_intersection)
     # if the length of intersection is 0, then return 1 * 65536
-    if length_intersection == 0:
+    if length_intersection == 0 and length_union == 0:
         return 1 * 65536
     else:
         # else, return int(length of intersection / length of union) * 65536
@@ -59,8 +57,6 @@ def calculate_union_length(set1, set2):
     common_keys = []
     frequency_set1 = {}
     frequency_set2 = {}
-    print(set1)
-    print(set2)
 
     # count frequency of each element in set1
     for e in set1:
@@ -141,3 +137,6 @@ def calculate_intersection_length(set1, set2):
 if __name__ == "__main__":
     print(solution("FRANCE", "french")) #16384
     print(solution("handshake", "shake hands")) #65536
+    print(solution("aa1+aa2", "AAAA12")) #43690
+    print(solution("E=M*C^2", "e=m*c^2")) #65536
+    print(solution("abc", "def")) #65536
