@@ -310,6 +310,7 @@ def solution(m, n, board):
         # find removable tiles using board
         # place coordinates in to_be_removed
         to_be_removed = search_removable_tiles(board)
+        print(to_be_removed)
         # if none found, break
         if len(to_be_removed) == 0:
             break
@@ -321,35 +322,19 @@ def solution(m, n, board):
 
 
             # else, for each item in to_be_removed, remove item in queue
-            del board_queues[queue_number][tile_number+1]
-            print(board_queues[0])
-            print(board_queues[1])
-            print(board_queues[2])
-            print(board_queues[3])
-            print(board_queues[4])
-            print("------")
-            del board_queues[queue_number][tile_number]
-            print(board_queues[0])
-            print(board_queues[1])
-            print(board_queues[2])
-            print(board_queues[3])
-            print(board_queues[4])
-            print("------")
-            del board_queues[queue_number+1][tile_number+1]
-            print(board_queues[0])
-            print(board_queues[1])
-            print(board_queues[2])
-            print(board_queues[3])
-            print(board_queues[4])
-            print("------")
-            del board_queues[queue_number+1][tile_number]
-            print(board_queues[0])
-            print(board_queues[1])
-            print(board_queues[2])
-            print(board_queues[3])
-            print(board_queues[4])
-            print("------")
-            print("======")
+            if board[tile_number+1][queue_number] != "-":
+                del board_queues[queue_number][tile_number+1]
+                board[tile_number+1][queue_number] = "-"
+            if board[tile_number][queue_number] != "-":
+                del board_queues[queue_number][tile_number]
+                board[tile_number][queue_number] = "-"
+            if board[tile_number+1][queue_number+1] != "-":
+                del board_queues[queue_number+1][tile_number+1]
+                board[tile_number+1][queue_number+1] = "-"
+            if board[tile_number][queue_number+1] != "-":
+                del board_queues[queue_number+1][tile_number]
+                board[tile_number][queue_number+1] = "-"
+
 
         # refresh board using queue
         board = refresh_board(board, board_queues)
@@ -380,7 +365,8 @@ def search_removable_tiles(board):
 
     for i in range(N_rows-1):
         for j in range(N_cols-1):
-            if board[i][j] == board[i+1][j] == board[i][j+1] == board[i+1][j+1]:
+            if ((board[i][j] != '-') and
+               (board[i][j] == board[i+1][j] == board[i][j+1] == board[i+1][j+1])):
                 to_be_removed.append([i,j])
 
     return to_be_removed
