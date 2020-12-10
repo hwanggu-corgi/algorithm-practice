@@ -50,8 +50,8 @@
 
 #   2)
 #           [CCBDE,  --> Remove 1 and 2 of 0th queue
-#            AAADE,
-#            AAABF,
+#            -AADE,
+#            -AABF,
 #            CCBBF]
 
 #                |C| |B| |D| |E|
