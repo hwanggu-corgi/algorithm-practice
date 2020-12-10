@@ -71,10 +71,10 @@
 #            |C| |C| |B| |B| |F|  < - head of queue
 
 #   4)
-#           [CCBDE,
+#           [CCBBF,
 #            --ABF,
 #            --ADE,
-#            CCBBF]
+#            CCBDE]
 
 #                    |B| |D| |E|
 #                    |A| |D| |E|
@@ -83,10 +83,10 @@
 
 
 #   5)
-#           [CCBDE, --> Remove 1 and 2 of 2nd queue
+#           [CCBBF, --> Remove 1 and 2 of 2nd queue
 #            --ABF,
 #            --ADE,
-#            CCBBF]
+#            CCBDE]
 
 #                    |B| |D| |E|
 #                    |A| |D| |E|
@@ -94,10 +94,10 @@
 #            |C| |C| |B| |B| |F|  < - head of queue
 
 #   6)
-#           [CCBDE,
+#           [CCBBF,
 #            ---BF,
 #            ---DE,
-#            CCBBF]
+#            CCBDE]
 
 #                        |D| |E|
 #                        |D| |E|
@@ -105,10 +105,10 @@
 #            |C| |C| |B| |B| |F|  < - head of queue
 
 #   6)
-#           [CCBDE, --> regenerate matrix using queue
+#           [CCBBF, --> regenerate matrix using queue
 #            ---BF,
 #            ---DE,
-#            CCBBF]
+#            CCBDE]
 
 #                        |D| |E|
 #                        |D| |E|
@@ -116,15 +116,97 @@
 #            |C| |C| |B| |B| |F|  < - head of queue
 
 #   7)
-#           [---DE, --> regenerate matrix using queue
-#            ---BF,
-#            CCBDE,
-#            CCBBF]
+#           [CCBBF,
+#            CCBBF,
+#            ---DE,
+#            ---DE]
 
 #                        |D| |E|
 #                        |D| |E|
 #            |C| |C| |B| |B| |F|
 #            |C| |C| |B| |B| |F|  < - head of queue
+
+
+#   8)
+#           [CCBBF, --> search --> [0,0] and [0,2] has removable tiles
+#            CCBBF,
+#            ---DE,
+#            ---DE]
+
+#                        |D| |E|
+#                        |D| |E|
+#            |C| |C| |B| |B| |F|
+#            |C| |C| |B| |B| |F|  < - head of queue
+
+
+#   9)
+#           [CCBBF, --> search --> [0,0] and [0,2] has removable tiles
+#            CCBBF,
+#            ---DE,
+#            ---DE]
+
+#                        |D| |E|
+#                        |D| |E|
+#            |C| |C| |B| |B| |F|
+#            |C| |C| |B| |B| |F|  < - head of queue
+
+
+#   9)
+#           [CCBBF, --> Remove 0 and 1 of 0th queue
+#            CCBBF,
+#            ---DE,
+#            ---DE]
+
+#                        |D| |E|
+#                        |D| |E|
+#            |C| |C| |B| |B| |F|
+#            |C| |C| |B| |B| |F|  < - head of queue
+
+#   10)
+#           [-CBBF,
+#            -CBBF,
+#            ---DE,
+#            ---DE]
+
+#                        |D| |E|
+#                        |D| |E|
+#                |C| |B| |B| |F|
+#             *  |C| |B| |B| |F|  < - head of queue
+
+#   11)
+#           [-CBBF, --> Remove 0 and 1 of 1st queue
+#            -CBBF,
+#            ---DE,
+#            ---DE]
+
+#                        |D| |E|
+#                        |D| |E|
+#                |C| |B| |B| |F|
+#             *  |C| |B| |B| |F|  < - head of queue
+
+
+
+#   12)
+#           [--BBF,
+#            --BBF,
+#            ---DE,
+#            ---DE]
+
+#                        |D| |E|
+#                        |D| |E|
+#                    |B| |B| |F|
+#             *   *  |B| |B| |F|  < - head of queue
+
+#   12)
+#           [--BBF, --> Remove 0 and 1 of 2nd queue
+#            --BBF,
+#            ---DE,
+#            ---DE]
+
+#                        |D| |E|
+#                        |D| |E|
+#                    |B| |B| |F|
+#             *   *  |B| |B| |F|  < - head of queue
 
 
 # Pseudocode
