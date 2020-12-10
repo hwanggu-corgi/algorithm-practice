@@ -29,6 +29,46 @@
 
 #           Total 14 tiles have been removed
 
+
+#   1)
+#           [CCBDE,  --> [2,0] and [2,1] has deletable tiles
+#            AAADE,
+#            AAABF,
+#            CCBBF]
+
+#            |C| |C| |B| |D| |E|
+#            |A| |A| |A| |D| |E|
+#            |A| |A| |A| |B| |F|
+#            |C| |C| |B| |B| |F|  < - head of queue
+
+
+#   2)
+#           [CCBDE,  --> Remove first two (vertical direction)
+#            AAADE,
+#            AAABF,
+#            CCBBF]
+
+#                |C| |B| |D| |E|
+#                |A| |A| |D| |E|
+#            |C| |A| |A| |B| |F|
+#            |C| |C| |B| |B| |F|  < - head of queue
+
+#   3)
+#           [CCBDE,
+#            -AADE,
+#            -AABF,
+#            CCBBF]
+
+#                |C| |B| |D| |E|
+#                |A| |A| |D| |E|
+#            |C| |A| |A| |B| |F|
+#            |C| |C| |B| |B| |F|  < - head of queue
+
+# Pseudocode
+#   - Create a copy of board using list of queues where each queue represents column
+#   - find removable tiles using board
+#   -
+
 def solution(m, n, board):
     answer = 0
     return answer
