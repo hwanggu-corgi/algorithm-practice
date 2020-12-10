@@ -16,10 +16,18 @@
 #            AAABF,
 #            CCBBF]
 
-#           [---DE,  --> [1,0] and [1,1] has deletable tiles
+#           [---DE,  --> [2,0] and [2,2] has deletable tiles
 #            --BDE,
 #            CCBBF,
 #            CCBBF]
+
+#           [----E,  --> [2,0] and [2,2] has deletable tiles
+#            ----E,
+#            ---DF,
+#            --BDF]
+
+
+#           Total 14 tiles have been removed
 
 def solution(m, n, board):
     answer = 0
