@@ -315,8 +315,8 @@ def solution(m, n, board):
             break
 
         for item in to_be_removed:
-            queue_number = item[1]
-            tile_number = item[0]
+            queue_number = item[0]
+            tile_number = item[1]
             # else, for each item in to_be_removed, remove item in queue
             del board_queues[queue_number][tile_number]
         # refresh board using queue
@@ -348,5 +348,21 @@ def search_removable_tiles(board):
             if board[i][j] == board[i+1][j] == board[i][j+1] == board[i+1][j+1]:
                 to_be_removed.append([j,i])
 
+    return to_be_removed
 
 def refresh_board(board, board_queues):
+    N_cols = len(board[0])
+    N_rows = len(board)
+    new_board = []
+
+    for i in range(N_rows):
+        row = []
+        for j in range(N_cols):
+            try:
+                row.append(board_queues[j][i])
+            except IndexError:
+                row.append("-")
+
+        new_board.append(row)
+    return new_board
+
