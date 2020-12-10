@@ -26,7 +26,7 @@
 #   if height divides total_squares
 #       get width
 #       if height > width, break
-#       if there is room for yellow tiles, return dimension
+#       if yellow == yellow_tiles_needed, return dimension
 #       else continue
 #   if doesnt divide
 #       continue
@@ -51,7 +51,10 @@ def solution(brown, yellow):
         if height > width:
             break
 
-        # if there is room for yellow tiles, return dimension
+        # if yellow == yellow_tiles_needed, return dimension
+        yellow_tiles_needed = total_squares - ((height * 2) + (width * 2) - 4)
+        if yellow_tiles_needed == yellow:
+            return [width, height]
 
         # else continue
         # if doesnt divide
