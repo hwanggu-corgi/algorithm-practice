@@ -13,12 +13,18 @@
 #   1) brown: 10    yellow: 2
 #       - 12 x 1 - not possible
 #       - 6 x 2 - not possible
-#       - 4 x 3 - possible
+#       - 4 x 3 - (4 x 3) - (4 + 4 + 3 + 3 - 4) = 2 (yes there is room fow yellow tile) --> possible
 #   result [4,3]
 
 #   2) brown: 8     yellow: 1
 #       - 4 x 2 - (4 x 2) - (4 + 4 + 2 + 2 - 4) = 0 (no room for brown tiles) --> not possible
 #       - 3 x 3 - (3 x 3) - (3 + 3 + 3 + 3 - 4) = 1 (yes there is room fow yellow tile) --> possible
+
+# Pseudocode
+#   calculate total squares, and store in total_squares
+#   for number from 2,
+#   check if number divides total_squares
+#
 
 def solution(brown, yellow):
     answer = []
