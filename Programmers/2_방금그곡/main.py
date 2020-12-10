@@ -70,7 +70,7 @@ def solution(m, musicinfos):
 
 
     if highest_duration < 0:
-        return "`(None)`"
+        return "(None)"
     else:
         return answer
 
@@ -91,7 +91,7 @@ def extend_m_music(m_music, m, duration):
     N_m_music = len(m_music)
     N_m = len(m)
     if N_m_music < N_m :
-        res = m_music * math.ceil(N_m / N_m_music)
+        res = m_music * duration
     else:
         res = m_music * 2
 
