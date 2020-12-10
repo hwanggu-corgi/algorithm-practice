@@ -37,11 +37,24 @@ def solution(brown, yellow):
     # calculate total squares, and store in total_squares
     total_squares = brown + yellow
     # for height from 2,
-    # if height divides total_squares
-    # get width
-    # if height > width, break
-    # if there is room for yellow tiles, return dimension
-    # else continue
-    # if doesnt divide
-    # continue
+    height = 2
+    while True:
+        # if height doesn't divides total_squares, continue
+        if total_squares % height != 0:
+            i += 1
+            continue
+
+        # get width
+        width = total_squares // height
+
+        # if height > width, break
+        if height > width:
+            break
+
+        # if there is room for yellow tiles, return dimension
+
+        # else continue
+        # if doesnt divide
+        # continue
+        i += 1
     return answer
