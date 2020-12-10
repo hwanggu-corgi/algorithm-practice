@@ -90,11 +90,8 @@ def extend_m_music(m_music, m, duration):
     res = ""
     N_m_music = len(m_music)
     N_m = len(m)
-    if N_m_music < N_m :
-        res = m_music * duration
-    else:
-        res = m_music * 2
 
+    res = m_music * duration
     res = res[:duration+1]
 
     return res
