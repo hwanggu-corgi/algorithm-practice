@@ -20,10 +20,24 @@
 #      ["Prodo님이 들어왔습니다.", "Ryan님이 들어왔습니다.", "Prodo님이 나갔습니다.", "Prodo님이 들어왔습니다."]
 
 #      ["Enter uid1234 Muzi"] --> {"uid1234": "Muzi"}
-#      ["Enter uid1234 Muzi"] --> {"uid1234": "Muzi"}
+#      ["Enter uid1234 Muzi", Enter uid4567 Prodo] --> {"uid1234": "Muzi", "uid4567": "Prodo"}
+#      ["Enter uid1234 Muzi", "Enter uid4567 Prodo", "Leave uid1234"] --> {"uid1234": "Muzi", "uid4567": "Prodo"}
+#      ["Enter uid1234 Muzi", "Enter uid4567 Prodo", "Leave uid1234", "Enter uid1234 Prodo"] --> {"uid1234": "Prodo", "uid4567": "Prodo"}
+#      ["Enter uid1234 Muzi", "Enter uid4567 Prodo", "Leave uid1234", "Enter uid1234 Prodo", "Change uid4567 Ryan"] --> {"uid1234": "Prodo", "uid4567": "Ryan"}
+
+
+#      ["Prodo님이 들어왔습니다.", "Ryan님이 들어왔습니다.", "Prodo님이 나갔습니다.", "Prodo님이 들어왔습니다."]
 
 # Pseudocode
-#
+#   from record store usernames by id
+#   for each record
+#       parse by space store in item
+#       if item[0] has Enter, create string "____님이 들어왔습니다"
+#       if item[0] has Leave, create string "____님이 나갔습니다"
+#       if item[0] has Change, skip"
+#       append string to answer
+
+#   return answer
 
 def solution(record):
     answer = []
