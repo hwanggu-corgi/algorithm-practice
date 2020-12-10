@@ -310,7 +310,6 @@ def solution(m, n, board):
         # find removable tiles using board
         # place coordinates in to_be_removed
         to_be_removed = search_removable_tiles(board)
-        print(to_be_removed)
         # if none found, break
         if len(to_be_removed) == 0:
             break
@@ -398,5 +397,7 @@ def count_removed(board):
 
     return count
 if __name__ == "__main__":
+    print(solution(2, 2, ["AA", "AA"])) #4
+    print(solution(2, 2, ["AB", "AB"])) #0
     print(solution(4, 5, ["CCBDE", "AAADE", "AAABF", "CCBBF"])) #14
 
