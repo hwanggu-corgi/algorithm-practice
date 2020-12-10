@@ -197,7 +197,7 @@
 #                    |B| |B| |F|
 #             *   *  |B| |B| |F|  < - head of queue
 
-#   12)
+#   13)
 #           [--BBF, --> Remove 0 and 1 of 2nd queue
 #            --BBF,
 #            ---DE,
@@ -207,6 +207,44 @@
 #                        |D| |E|
 #                    |B| |B| |F|
 #             *   *  |B| |B| |F|  < - head of queue
+
+
+#   14)
+#           [---BF,
+#            ---BF,
+#            ---DE,
+#            ---DE]
+
+#                        |D| |E|
+#                        |D| |E|
+#                        |B| |F|
+#             *   *   *  |B| |F|  < - head of queue
+
+
+#   15)
+#           [---BF, --> Remove 0 and 1 of 3rd queue
+#            ---BF,
+#            ---DE,
+#            ---DE]
+
+#                        |D| |E|
+#                        |D| |E|
+#                        |B| |F|
+#             *   *   *  |B| |F|  < - head of queue
+
+
+#   16)
+#           [----F,
+#            ----F,
+#            ---DE,
+#            ---DE]
+
+#                            |E|
+#                            |E|
+#                        |D| |F|
+#             *   *   *  |D| |F|  < - head of queue
+
+
 
 
 # Pseudocode
