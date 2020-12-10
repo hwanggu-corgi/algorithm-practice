@@ -290,6 +290,8 @@
 #       refresh board using queue
 #   -
 
+from collections import deque
+
 def solution(m, n, board):
     answer = 0
     to_be_removed = []
@@ -301,13 +303,13 @@ def solution(m, n, board):
     board = [[y for y in x] for x in board]
 
     # Create a copy of board using list of queues where each queue represents column
-    board_queue = create_board_queues(board)
+    board_queues = create_board_queues(board)
 
     # while True
     while True:
         # find removable tiles using board
         # place coordinates in to_be_removed
-        to_be_removed = search_removable_tiles(...)
+        to_be_removed = search_removable_tiles(board)
         # if none found, break
         if len(to_be_removed) == 0:
             break
@@ -316,11 +318,35 @@ def solution(m, n, board):
             queue_number = item[1]
             tile_number = item[0]
             # else, for each item in to_be_removed, remove item in queue
-            del board_queue[queue_number][tile_number]
+            del board_queues[queue_number][tile_number]
         # refresh board using queue
-        board = refresh_board(board, board_queue)
+        board = refresh_board(board, board_queues)
     return answer
 
-def create_board_queues(...):
-    pass
+def create_board_queues(board):
+    board_queues = []
+    N_rows = len(board)
+    N_cols = len(board[0])
 
+    for j in range(N_cols):
+        col = deque()
+        for i in range(N_rows):
+            col.append(board[i][j])
+
+        board_queues.append(col)
+
+    return board_queues
+
+def search_removable_tiles(board):
+    to_be_removed = []
+
+    N_rows = len(board)
+    N_cols = len(board[0])
+
+    for i in range(N_rows-1):
+        for j in range(N_cols-1):
+            if board[i][j] == board[i+1][j] == board[i][j+1] == board[i+1][j+1]:
+                to_be_removed.append([j,i])
+
+
+def refresh_board(board, board_queues):
