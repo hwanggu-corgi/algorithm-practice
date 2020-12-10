@@ -305,6 +305,8 @@ def solution(m, n, board):
     # Create a copy of board using list of queues where each queue represents column
     board_queues = create_board_queues(board)
 
+    print(board_queues)
+
     # while True
     while True:
         # find removable tiles using board
@@ -314,13 +316,23 @@ def solution(m, n, board):
         if len(to_be_removed) == 0:
             break
 
-        for item in to_be_removed:
-            queue_number = item[0]
-            tile_number = item[1]
+        print(to_be_removed)
+        while len(to_be_removed) > 0:
+            item = to_be_removed.pop()
+            queue_number = item[1]
+            tile_number = item[0]
+
             # else, for each item in to_be_removed, remove item in queue
+            del board_queues[queue_number][tile_number+1]
             del board_queues[queue_number][tile_number]
+            del board_queues[queue_number+1][tile_number+1]
+            del board_queues[queue_number+1][tile_number]
+
         # refresh board using queue
         board = refresh_board(board, board_queues)
+
+    answer = count_removed(board)
+
     return answer
 
 def create_board_queues(board):
@@ -346,7 +358,7 @@ def search_removable_tiles(board):
     for i in range(N_rows-1):
         for j in range(N_cols-1):
             if board[i][j] == board[i+1][j] == board[i][j+1] == board[i+1][j+1]:
-                to_be_removed.append([j,i])
+                to_be_removed.append([i,j])
 
     return to_be_removed
 
@@ -365,4 +377,17 @@ def refresh_board(board, board_queues):
 
         new_board.append(row)
     return new_board
+
+def count_removed(board):
+    N_rows = len(board)
+    N_cols = len(board[0])
+    count = 0
+    for i in range(N_rows):
+        for j in range(N_cols):
+            if board[i][j] == "-":
+                count += 1
+
+    return count
+if __name__ == "__main__":
+    print(solution(4, 5, ["CCBDE", "AAADE", "AAABF", "CCBBF"])) #14
 
