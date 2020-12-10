@@ -15,6 +15,16 @@
 #   유저 아이디와 닉네임의 길이는 1 이상 10 이하이다.
 #   채팅방에서 나간 유저가 닉네임을 변경하는 등 잘못 된 입력은 주어지지 않는다.
 
+# Example
+#   1) ["Enter uid1234 Muzi", "Enter uid4567 Prodo","Leave uid1234","Enter uid1234 Prodo","Change uid4567 Ryan"]
+#      ["Prodo님이 들어왔습니다.", "Ryan님이 들어왔습니다.", "Prodo님이 나갔습니다.", "Prodo님이 들어왔습니다."]
+
+#      ["Enter uid1234 Muzi"] --> {"uid1234": "Muzi"}
+#      ["Enter uid1234 Muzi"] --> {"uid1234": "Muzi"}
+
+# Pseudocode
+#
+
 def solution(record):
     answer = []
 
