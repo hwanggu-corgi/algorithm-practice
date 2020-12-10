@@ -22,13 +22,25 @@
 
 # Pseudocode
 #   calculate total squares, and store in total_squares
-#   for number from 2,
-#   check if number divides total_squares
-#   if divides,
-#       check if there is room for yellow tiles
+#   for height from 2,
+#   if height divides total_squares
+#       get width
+#       if height > width, break
+#       if there is room for yellow tiles, return dimension
+#       else continue
 #   if doesnt divide
 #       continue
 
 def solution(brown, yellow):
     answer = []
+
+    # calculate total squares, and store in total_squares
+    # for height from 2,
+    # if height divides total_squares
+    # get width
+    # if height > width, break
+    # if there is room for yellow tiles, return dimension
+    # else continue
+    # if doesnt divide
+    # continue
     return answer
