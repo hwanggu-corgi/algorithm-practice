@@ -294,8 +294,14 @@ def solution(m, n, board):
     answer = 0
     to_be_removed = []
 
+    # Flip board
+    board = board[::-1]
+
+    # create 2d board
+    board = [[y for y in x] for x in board]
+
     # Create a copy of board using list of queues where each queue represents column
-    board_queue = create_board_queues(...)
+    board_queue = create_board_queues(board)
 
     # while True
     while True:
@@ -307,7 +313,14 @@ def solution(m, n, board):
             break
 
         for item in to_be_removed:
+            queue_number = item[1]
+            tile_number = item[0]
             # else, for each item in to_be_removed, remove item in queue
+            del board_queue[queue_number][tile_number]
         # refresh board using queue
         board = refresh_board(board, board_queue)
     return answer
+
+def create_board_queues(...):
+    pass
+
