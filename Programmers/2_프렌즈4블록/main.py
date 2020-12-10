@@ -11,10 +11,15 @@
 #       AAABF,
 #       CCBBF]
 #
-#      [CCBDE,
-#       AAADE,
-#       AAABF,
-#       CCBBF]
+#           [CCBDE,  --> [1,0] and [1,1] has deletable tiles
+#            AAADE,
+#            AAABF,
+#            CCBBF]
+
+#           [---DE,  --> [1,0] and [1,1] has deletable tiles
+#            --BDE,
+#            CCBBF,
+#            CCBBF]
 
 def solution(m, n, board):
     answer = 0
