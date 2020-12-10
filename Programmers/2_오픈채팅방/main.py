@@ -31,7 +31,7 @@
 # Pseudocode
 #   from record store usernames by id
 #   for each record
-#       parse by space store in item
+#       parse by space in item
 #       if item[0] has Enter, create string "____님이 들어왔습니다"
 #       if item[0] has Leave, create string "____님이 나갔습니다"
 #       if item[0] has Change, skip"
@@ -42,4 +42,36 @@
 def solution(record):
     answer = []
 
+    # from record store usernames by id
+    nicknames = store_nicknames(record)
+
+    # for each record
+    for item in record:
+        msg = ""
+
+        # parse by space in item
+        item = item.split(" ")
+        id = item[1]
+        # if item[0] has Enter, create string "____님이 들어왔습니다"
+        if item[0] == "Enter":
+            msg = "{}님이 들어왔습니다".format(nicknames[id])
+        # if item[0] has Leave, create string "____님이 나갔습니다"
+        elif item[0] == "Leave":
+            msg = "{}님이 나갔습니다".format(nicknames[id])
+        # if item[0] has Change, skip"
+        else:
+            continue
+        # append string to answer
+        answer.append(msg)
+
+    # return answer
     return answer
+
+def store_nicknames(record):
+    res = {}
+
+
+
+
+    return res
+
