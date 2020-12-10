@@ -140,18 +140,6 @@
 
 
 #   9)
-#           [CCBBF, --> search --> [0,0] and [0,2] has removable tiles
-#            CCBBF,
-#            ---DE,
-#            ---DE]
-
-#                        |D| |E|
-#                        |D| |E|
-#            |C| |C| |B| |B| |F|
-#            |C| |C| |B| |B| |F|  < - head of queue
-
-
-#   9)
 #           [CCBBF, --> Remove 0 and 1 of 0th queue
 #            CCBBF,
 #            ---DE,
@@ -244,14 +232,71 @@
 #                        |D| |F|
 #             *   *   *  |D| |F|  < - head of queue
 
+#   16)
+#           [----F, --> regenerate matrix using queue
+#            ----F,
+#            ---DE,
+#            ---DE]
+
+#                            |E|
+#                            |E|
+#                        |D| |F|
+#             *   *   *  |D| |F|  < - head of queue
+
+
+#   17)
+#           [---DF, --> regenerate matrix using queue
+#            ---DF,
+#            ----E,
+#            ----E]
+
+#                            |E|
+#                            |E|
+#                        |D| |F|
+#             *   *   *  |D| |F|  < - head of queue
+
+#   18)
+#           [---DF, --> search --> none
+#            ---DF,
+#            ----E,
+#            ----E]
+
+#                            |E|
+#                            |E|
+#                        |D| |F|
+#             *   *   *  |D| |F|  < - head of queue
+
+
+#   18)
+#           [---DF, count number removed --> 14 --> return value
+#            ---DF,
+#            ----E,
+#            ----E]
+
+#                            |E|
+#                            |E|
+#                        |D| |F|
+#             *   *   *  |D| |F|  < - head of queue
 
 
 
 # Pseudocode
 #   - Create a copy of board using list of queues where each queue represents column
-#   - find removable tiles using board
+#   while True
+#       find removable tiles using board
+#           place coordinates in to_be_removed
+#       if none found, break
+#       else, for each item in to_be_removed, remove item in queue
+#       refresh board using queue
 #   -
 
 def solution(m, n, board):
     answer = 0
+
+    #   while True
+    #       find removable tiles using board
+    #           place coordinates in to_be_removed
+    #       if none found, break
+    #       else, for each item in to_be_removed, remove item in queue
+    #       refresh board using queue
     return answer
