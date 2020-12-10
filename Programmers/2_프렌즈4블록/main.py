@@ -281,7 +281,7 @@
 
 
 # Pseudocode
-#   - Create a copy of board using list of queues where each queue represents column
+#   Create a copy of board using list of queues where each queue represents column
 #   while True
 #       find removable tiles using board
 #           place coordinates in to_be_removed
@@ -292,11 +292,22 @@
 
 def solution(m, n, board):
     answer = 0
+    to_be_removed = []
 
-    #   while True
-    #       find removable tiles using board
-    #           place coordinates in to_be_removed
-    #       if none found, break
-    #       else, for each item in to_be_removed, remove item in queue
-    #       refresh board using queue
+    # Create a copy of board using list of queues where each queue represents column
+    board_queue = create_board_queues(...)
+
+    # while True
+    while True:
+        # find removable tiles using board
+        # place coordinates in to_be_removed
+        to_be_removed = search_removable_tiles(...)
+        # if none found, break
+        if len(to_be_removed) == 0:
+            break
+
+        for item in to_be_removed:
+            # else, for each item in to_be_removed, remove item in queue
+        # refresh board using queue
+        board = refresh_board(board, board_queue)
     return answer
