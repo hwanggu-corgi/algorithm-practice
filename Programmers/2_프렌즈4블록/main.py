@@ -30,11 +30,17 @@
 #           Total 14 tiles have been removed
 
 
-#   1)
-#           [CCBDE,  --> [2,0] and [2,1] has deletable tiles
-#            AAADE,
+#   0)
+#           [CCBBF,  -->  Flip tiles
 #            AAABF,
-#            CCBBF]
+#            AAADE,
+#            CCBDE]
+#
+#   1)
+#           [CCBBF,  -->  [1,0] and [1,1] has removable tiles
+#            AAABF,
+#            AAADE,
+#            CCBDE]
 
 #            |C| |C| |B| |D| |E|
 #            |A| |A| |A| |D| |E|
@@ -43,7 +49,7 @@
 
 
 #   2)
-#           [CCBDE,  --> Remove first two (vertical direction)
+#           [CCBDE,  --> Remove 1 and 2 of 0th queue
 #            AAADE,
 #            AAABF,
 #            CCBBF]
