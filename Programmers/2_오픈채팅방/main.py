@@ -42,6 +42,9 @@
 def solution(record):
     answer = []
 
+    # parse by space for each item in record
+    record = [x.split(" ") for x in record]
+
     # from record store usernames by id
     nicknames = store_nicknames(record)
 
@@ -49,15 +52,13 @@ def solution(record):
     for item in record:
         msg = ""
 
-        # parse by space in item
-        item = item.split(" ")
         id = item[1]
         # if item[0] has Enter, create string "____님이 들어왔습니다"
         if item[0] == "Enter":
-            msg = "{}님이 들어왔습니다".format(nicknames[id])
+            msg = "{}님이 들어왔습니다.".format(nicknames[id])
         # if item[0] has Leave, create string "____님이 나갔습니다"
         elif item[0] == "Leave":
-            msg = "{}님이 나갔습니다".format(nicknames[id])
+            msg = "{}님이 나갔습니다.".format(nicknames[id])
         # if item[0] has Change, skip"
         else:
             continue
@@ -68,10 +69,17 @@ def solution(record):
     return answer
 
 def store_nicknames(record):
-    res = {}
+    nicknames_dict = {}
+
+    for item in record:
+        if (item[0] == "Enter") or (item[0] == "Change"):
+            name = item[2]
+            id = item[1]
+            nicknames_dict[id] = name
+
+    return nicknames_dict
 
 
-
-
-    return res
-
+if __name__ == "__main__":
+    # ["Prodo님이 들어왔습니다.", "Ryan님이 들어왔습니다.", "Prodo님이 나갔습니다.", "Prodo님이 들어왔습니다."]
+    print(solution(["Enter uid1234 Muzi", "Enter uid4567 Prodo","Leave uid1234","Enter uid1234 Prodo","Change uid4567 Ryan"]))
