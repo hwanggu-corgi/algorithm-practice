@@ -115,6 +115,17 @@
 #            |C| |C| |B| |B| |F|
 #            |C| |C| |B| |B| |F|  < - head of queue
 
+#   7)
+#           [---DE, --> regenerate matrix using queue
+#            ---BF,
+#            CCBDE,
+#            CCBBF]
+
+#                        |D| |E|
+#                        |D| |E|
+#            |C| |C| |B| |B| |F|
+#            |C| |C| |B| |B| |F|  < - head of queue
+
 
 # Pseudocode
 #   - Create a copy of board using list of queues where each queue represents column
