@@ -49,10 +49,10 @@
 
 
 #   2)
-#           [CCBDE,  --> Remove 1 and 2 of 0th queue
-#            -AADE,
+#           [CCBBF,  --> Remove 1 and 2 of 0th queue
 #            -AABF,
-#            CCBBF]
+#            -AADE,
+#            CCBDE]
 
 #                |C| |B| |D| |E|
 #                |A| |A| |D| |E|
@@ -60,15 +60,61 @@
 #            |C| |C| |B| |B| |F|  < - head of queue
 
 #   3)
-#           [CCBDE,
-#            -AADE,
+#           [CCBBF, --> Remove 1 and 2 of 1st queue
 #            -AABF,
-#            CCBBF]
+#            -AADE,
+#            CCBDE]
 
 #                |C| |B| |D| |E|
 #                |A| |A| |D| |E|
 #            |C| |A| |A| |B| |F|
 #            |C| |C| |B| |B| |F|  < - head of queue
+
+#   4)
+#           [CCBDE,
+#            --ABF,
+#            --ADE,
+#            CCBBF]
+
+#                    |B| |D| |E|
+#                    |A| |D| |E|
+#            |C| |C| |A| |B| |F|
+#            |C| |C| |B| |B| |F|  < - head of queue
+
+
+#   5)
+#           [CCBDE, --> Remove 1 and 2 of 2nd queue
+#            --ABF,
+#            --ADE,
+#            CCBBF]
+
+#                    |B| |D| |E|
+#                    |A| |D| |E|
+#            |C| |C| |A| |B| |F|
+#            |C| |C| |B| |B| |F|  < - head of queue
+
+#   6)
+#           [CCBDE,
+#            ---BF,
+#            ---DE,
+#            CCBBF]
+
+#                        |D| |E|
+#                        |D| |E|
+#            |C| |C| |B| |B| |F|
+#            |C| |C| |B| |B| |F|  < - head of queue
+
+#   6)
+#           [CCBDE, --> regenerate matrix using queue
+#            ---BF,
+#            ---DE,
+#            CCBBF]
+
+#                        |D| |E|
+#                        |D| |E|
+#            |C| |C| |B| |B| |F|
+#            |C| |C| |B| |B| |F|  < - head of queue
+
 
 # Pseudocode
 #   - Create a copy of board using list of queues where each queue represents column
