@@ -41,7 +41,7 @@ def solution(brown, yellow):
     while True:
         # if height doesn't divides total_squares, continue
         if total_squares % height != 0:
-            i += 1
+            height += 1
             continue
 
         # get width
@@ -59,5 +59,10 @@ def solution(brown, yellow):
         # else continue
         # if doesnt divide
         # continue
-        i += 1
+        height += 1
     return answer
+
+if __name__ == "__main__":
+    print(solution(10,2)) #[4,3]
+    print(solution(8,1)) #[3,3]
+    print(solution(24,24)) #[8,6]
