@@ -35,6 +35,7 @@ def solution(brown, yellow):
     answer = []
 
     # calculate total squares, and store in total_squares
+    total_squares = brown + yellow
     # for height from 2,
     # if height divides total_squares
     # get width
