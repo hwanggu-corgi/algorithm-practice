@@ -13,10 +13,29 @@
 #     1  -  2     3  -  4
 #        1           2
 
+# Pseudocode
+# find smaller of two values, call it smaller
+# find larger of two values, call it larger
+# while both floor and larger are not 1
+# if larger/smaller is odd, do, math.ceil(a/2)
+# if larger/smaller is even, do math.floor(a/2)
+# add count
+# return count
+
 def solution(n,a,b):
 
+    # find smaller of two values, call it smaller
+    smaller = min(a,b)
+    # find larger of two values, call it larger
+    larger = max(a,b)
 
-    # [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
-    print('Hello Python')
+    # while both floor and larger are not 1
+    while smaller != 1 and larger != 1:
+        # if larger/smaller is odd, do, math.ceil(a/2)
+        smaller = math.floor(smaller/2) if smaller % 2 == 0 else math.ceil(smaller/2)
+        larger = math.floor(larger/2) if larger % 2 == 0 else math.ceil(larger/2)
+        # if larger/smaller is even, do math.floor(a/2)
+        # add count
+        # return count
 
     return answer
