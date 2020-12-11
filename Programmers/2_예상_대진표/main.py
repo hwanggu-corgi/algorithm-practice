@@ -40,7 +40,7 @@ def solution(n,a,b):
         # add count
         count += 1
 
-        if smaller == 1 and larger == 1:
+        if smaller == larger:
             break
     # return count
     answer = count
