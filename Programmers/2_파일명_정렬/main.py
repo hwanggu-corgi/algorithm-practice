@@ -39,11 +39,16 @@ def solution(files):
 
 def compare(a,b):
 
-    #   parse head of a and b using regex
-    head_a = re.search(r'(.*)\d', a)
-    #   parse number of a and b using regex
-    #       compare
-    #   if head_a.lower() != head_b.lower()
-    #       sort in increasing order
-    #   if head_a.lower() == head_b.lower()
-    #       sort in increasing order by int(number_a) and int(number_b)
+    # parse head of a and b using regex
+    # parse number of a and b using regex
+    head_a = re.search(r'^([^0-9]+)', a)
+    head_b = re.search(r'^([^0-9]+)', b)
+
+    number_a = re.search(r'([0-9]+)', a)
+    number_b = re.search(r'([0-9]+)', b)
+
+    # compare
+    # if head_a.lower() != head_b.lower(), sort in increasing order
+    if head_a.lower() != head_b.lower():
+        return head_a.lower() < head_b.lower()
+    # if head_a.lower() == head_b.lower(), sort in increasing order by int(number_a) and int(number_b)
