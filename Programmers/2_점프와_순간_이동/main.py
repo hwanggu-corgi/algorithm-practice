@@ -40,13 +40,34 @@
 # dp = [0,1,1,2,0,0,0,0] 6 is even --> dp[6] = dp[6 // 2] = 2
 # dp = [0,1,1,2,0,0,0,0] 7 is odd --> dp[7] = dp[7 // 2] + 1 = 3
 
+# pseudocode
+#   create array of size n+1 (call it dp)
+#   for i from 1 until n+1,
+#   if i is odd, set dp[i] = dp[i//2] + 1
+#   if i is even, set dp[i] = dp[i//2]
+#   return last number dp[-1]
+
+# cases
+#   1. when n = 1
+#   2. when n != 1
 
 def solution(n):
     ans = 0
 
-    # [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
-    print('Hello Python')
+    #   create array of size n+1 (call it dp)
+    dp = [0] * (n+1)
+    #   for i from 1 until n,
+    i = 1
+    while i < n+1:
+        #   if i is odd, set dp[i] = dp[i//2] + 1
+        dp[i] = dp[i//2] if i %2 == 0 else dp[i//2] + 1
+        #   if i is even, set dp[i] = dp[i//2]
+        i += 1
 
-    #
-
+    ans = dp[-1]
     return ans
+
+if __name__ == "__main__":
+    print(solution(5)) #2
+    print(solution(6)) #2
+    print(solution(5000)) #5
