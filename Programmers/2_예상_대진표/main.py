@@ -21,21 +21,32 @@
 # if larger/smaller is even, do math.floor(a/2)
 # add count
 # return count
+import math
 
 def solution(n,a,b):
-
+    count = 0
     # find smaller of two values, call it smaller
     smaller = min(a,b)
     # find larger of two values, call it larger
     larger = max(a,b)
 
     # while both floor and larger are not 1
-    while smaller != 1 and larger != 1:
+    while smaller != 1 or larger != 1:
         # if larger/smaller is odd, do, math.ceil(a/2)
         smaller = math.floor(smaller/2) if smaller % 2 == 0 else math.ceil(smaller/2)
-        larger = math.floor(larger/2) if larger % 2 == 0 else math.ceil(larger/2)
         # if larger/smaller is even, do math.floor(a/2)
-        # add count
-        # return count
+        larger = math.floor(larger/2) if larger % 2 == 0 else math.ceil(larger/2)
 
+        # add count
+        count += 1
+    # return count
+    answer = count
     return answer
+
+if __name__ == "__main__":
+    print(solution(8,4,7)) #3
+    print(solution(8,2,3)) #2
+    print(solution(8,1,8)) #3
+    print(solution(8,3,6)) #3
+    print(solution(8,1,2)) #1
+    print(solution(2,1,2)) #1
