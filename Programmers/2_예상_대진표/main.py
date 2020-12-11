@@ -9,8 +9,8 @@
 # A, B : N 이하인 자연수 (단, A ≠ B 입니다.)
 
 # Example
-#   1 - 2 3 - 4 5 - 6 7 - 8
-#     1  -  2     3  -  4
+#   1 - 2 3 - 4 5 - 6 7 - 8 9 - 10 11- 12 13 - 14
+#     1  -  2     3  -  4      5      6      7
 #        1           2
 
 # Pseudocode
@@ -31,7 +31,7 @@ def solution(n,a,b):
     larger = max(a,b)
 
     # while both floor and larger are not 1
-    while smaller != 1 or larger != 1:
+    while True:
         # if larger/smaller is odd, do, math.ceil(a/2)
         smaller = math.floor(smaller/2) if smaller % 2 == 0 else math.ceil(smaller/2)
         # if larger/smaller is even, do math.floor(a/2)
@@ -39,6 +39,9 @@ def solution(n,a,b):
 
         # add count
         count += 1
+
+        if smaller == 1 and larger == 1:
+            break
     # return count
     answer = count
     return answer
