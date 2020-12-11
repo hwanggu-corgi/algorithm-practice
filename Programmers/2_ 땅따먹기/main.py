@@ -13,15 +13,22 @@
 #       5 + 7 + 4 = 16
 #
 #
-# | 1 | 2 | 3 | 5 |  -> -> copy first row [(0,1), (1,2), (2,3), (3,4)]  -> & sort ([1,2,3,5]) -->
+# | 1 | 2 | 3 | 5 |  -> copy first row [(0,1), (1,2), (2,3), (3,5)]  -> & sort ([(0,1), (1,2), (2,3), (3,5)]) --> check if maximum value (3,5) on same column --> no --> add to sum
 #
 # | 5 | 6 | 7 | 8 |
 #
 # | 4 | 3 | 2 | 1 |
 
-# | 1 | 2 | 3 | 5 |  < -
+# | 1 | 2 | 3 | *5 |
 #
-# | 5 | 6 | 7 | 8 |
+# | 5 | 6 | 7 | 8 | -> copy first row [(0,5), (1,6), (2,7), (3,8)]  -> & sort ([(0,5), (1,6), (2,7), (3,8)]) --> check if maximum value (3,8) on same column --> yes --> add second largest value
+#
+# | 4 | 3 | 2 | 1 |
+
+
+# | 1 | 2 | 3 | *5 |
+#
+# | 5 | 6 | 7 | 8 | -> copy first row [(0,5), (1,6), (2,7), (3,8)]  -> & sort ([(0,5), (1,6), (2,7), (3,8)]) --> check if maximum value (3,8) on same column --> yes --> add second largest value
 #
 # | 4 | 3 | 2 | 1 |
 
