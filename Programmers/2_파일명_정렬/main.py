@@ -51,7 +51,8 @@ def compare(a,b):
     # compare
     # if head_a.lower() != head_b.lower(), sort in increasing order
     if head_a.lower() != head_b.lower():
-        return head_a.lower() < head_b.lower()
+
+        return -1 if head_a.lower() < head_b.lower() else 1
     # if head_a.lower() == head_b.lower(), sort in increasing order by int(number_a) and int(number_b)
     else:
         return number_a - number_b
@@ -59,3 +60,8 @@ def compare(a,b):
 if __name__ == "__main__":
     # [img1.png, IMG01.GIF, img02.png, img2.JPG, img10.png, img12.png]
     print(solution(["img12.png", "img10.png", "img02.png", "img1.png", "IMG01.GIF", "img2.JPG"]))
+
+    # ["A-10 Thunderbolt II", "B-50 Superfortress", "F-5 Freedom Fighter", "F-14 Tomcat"]
+    print(solution(["F1","E2", "D3", "C0", "B4", "A5"]))
+
+    print(solution(["F-5 Freedom Fighter", "B-50 Superfortress", "A-10 Thunderbolt II", "F-14 Tomcat"]))
