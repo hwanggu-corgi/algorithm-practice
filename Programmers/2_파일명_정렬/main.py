@@ -17,15 +17,33 @@
 #      [img1.png, IMG01.GIF, img02.png, img2.JPG, img10.png, img12.png]
 
 # Pseudocode
-#   - using sorted function with comparison function
+#   - using sorted function (stable) with comparison function
 #       - parse head of a and b using regex
 #       - parse number of a and b using regex
 #       - compare
 #           - if head_a.lower() != head_b.lower()
 #               sort in increasing order
-#           - if
+#           - if head_a.lower() == head_b.lower()
+#               sort in increasing order by int(number_a) and int(number_b)
+
+from functools import cmp_to_key
+import re
 
 def solution(files):
     answer = []
 
+    #   using sorted function (stable) with comparison function
+    files = sorted(files, cmp=cmp_to_key(compare))
+
     return answer
+
+def compare(a,b):
+
+    #   parse head of a and b using regex
+    head_a = re.search(r'(.*)\d', a)
+    #   parse number of a and b using regex
+    #       compare
+    #   if head_a.lower() != head_b.lower()
+    #       sort in increasing order
+    #   if head_a.lower() == head_b.lower()
+    #       sort in increasing order by int(number_a) and int(number_b)
