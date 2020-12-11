@@ -59,6 +59,7 @@ def solution(n):
         n = n // 2
         count += r
 
+    ans = count
     return ans
 
 # def solution(n):
@@ -81,4 +82,4 @@ if __name__ == "__main__":
     print(solution(5)) #2
     print(solution(6)) #2
     print(solution(5000)) #5
-    print(solution(1000000)) #5
+    print(solution(1000000)) #7
