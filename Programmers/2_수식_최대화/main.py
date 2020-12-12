@@ -29,7 +29,7 @@
 #   When consists of both positive and negative number
 
 # Pseudocode
-#
+# get combination of operands
 
 def solution(expression):
     answer = 0
