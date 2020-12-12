@@ -17,7 +17,9 @@
 #   it's 2.
 #   - [이름, 전공] as relation key
 
-# Pesudocode#
+# Pesudocode
+#   - create combination of column indexes (start from 1)
+#   - extract columns and zip them together
 
 from itertools import permutations
 
