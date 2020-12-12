@@ -31,6 +31,7 @@ def solution(relation):
     N_rows = len(relation)
     columns_list = []
     answer = 1
+    has_key_relation = False
 
     # create list of values by column
     for col_index in range(N_cols):
@@ -39,21 +40,21 @@ def solution(relation):
 
     for number_of_cols in range(1,N_cols+1):
         # create combination of column indexes (start from combination of 1 element)
-        combs = combinations(range(1,N_cols),number_of_cols)
+        combs = combinations(range(N_cols),number_of_cols)
 
         for combination in combs:
             candidate = [columns_list[x] for x in combination]
-
-            # test minimality
-            is_minimal = test_minimality(candidate)
-
-            if not is_minimal:
-                continue
 
             # test uniqueness
             is_unique = test_uniqueness(columns_list, combination)
 
             if not is_unique:
+                continue
+
+            # test minimality
+            is_minimal = test_minimality(candidate)
+
+            if not is_minimal:
                 continue
 
             answer += 1
@@ -68,19 +69,21 @@ def get_column(relation, col_index, N_rows):
 
 def test_uniqueness(candidate, N_rows):
     # if set of candidate is equal to N_rows, then is unique
-    if len(set(zip(candidate))) == N_rows:
+    if len(set(zip(*candidate))) == N_rows:
         return True
     return False
 
 def test_minimality(columns_list, combination):
     N_comb = len(combination)
 
-    for i in range(1, N_comb+1):
+    for i in range(1, N_comb):
         sub_combs = combination(combination, i)
 
         for sub_combination in sub_combs:
 
-
+            if len(set(zip(*[columns_list[j] for j in sub_combination]))) == N_rows:
+                return False
+    return True
 
 if __name__ == "__main__":
     test_a = [["100","ryan","music","2"],["200","apeach","math","2"],["300","tube","computer","3"],["400","con","computer","4"],["500","muzi","music","3"],["600","apeach","music","2"]]
