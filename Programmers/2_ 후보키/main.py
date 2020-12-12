@@ -26,5 +26,23 @@
 from itertools import permutations
 
 def solution(relation):
+    # get number of columns
+    N_cols = len(relation[0])
+    N_rows = len(relation)
     answer = 0
+
+    for i in range(1,N_cols+1):
+        columns_list = []
+        # create combination of column indexes (start from combination of 1 element)
+        perms = permutation(range(N_cols),i)
+
+        for permutation in perms:
+            for col_index in permutation:
+                # extract columns and zip them together
+                column = get_column(relation, col_index)
+                columns_list.append(column)
+
+            columzip
+            # put all in set and check if length of set is equal to length of array
+            # if so, return number of columns
     return answer
