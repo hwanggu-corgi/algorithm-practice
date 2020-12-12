@@ -30,8 +30,7 @@ def solution(relation):
     N_cols = len(relation[0])
     N_rows = len(relation)
     columns_list = []
-    answer = 1
-    has_key_relation = False
+    answer = set()
 
     # create list of values by column
     for col_index in range(N_cols):
@@ -40,7 +39,7 @@ def solution(relation):
 
     for number_of_cols in range(1,N_cols+1):
         # create combination of column indexes (start from combination of 1 element)
-        combs = combinations(range(1,N_cols),number_of_cols)
+        combs = combinations(range(N_cols),number_of_cols)
 
         for combination in combs:
             candidate = [columns_list[x] for x in combination]
@@ -57,9 +56,11 @@ def solution(relation):
             if not is_minimal:
                 continue
 
-            answer += 1
+            print(combination)
+            answer.add(sorted(list(combination)))
+            print(answer)
 
-    return answer
+    return len(answer)
 
 def get_column(relation, col_index, N_rows):
     return [relation[i][col_index] for i in range(N_rows)]
