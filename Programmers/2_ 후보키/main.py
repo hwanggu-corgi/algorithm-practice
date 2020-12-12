@@ -11,6 +11,14 @@
 #   - relation의 모든 문자열의 길이는 1 이상 8 이하이며, 알파벳 소문자와 숫자로만 이루어져 있다.
 #   - relation의 모든 튜플은 유일하게 식별 가능하다.(즉, 중복되는 튜플은 없다.)
 
+# Example
+#   1)
+#   [["100","ryan","music","2"],["200","apeach","math","2"],["300","tube","computer","3"],["400","con","computer","4"],["500","muzi","music","3"],["600","apeach","music","2"]]
+#   it's 2.
+
+# Pesudocode
+#   - [이름, 전공] as relation key
+
 from itertools import permutations
 
 def solution(relation):
