@@ -28,9 +28,16 @@
 
 # | 1 | 2 | 3 | *5 |
 #
-# | 5 | 6 | 7 | 8 | -> copy first row [(0,5), (1,6), (2,7), (3,8)]  -> & sort ([(0,5), (1,6), (2,7), (3,8)]) --> check if maximum value (3,8) on same column --> yes --> add second largest value
+# | 5 | 6 | 7 | 8 | -> copy second row [(0,5), (1,6), (2,7), (3,8)]  -> & sort ([(0,5), (1,6), (2,7), (3,8)]) --> check if maximum value (3,8) on same column --> yes --> add second largest value
 #
 # | 4 | 3 | 2 | 1 |
+
+
+# | 1 | 2 | 3 | *5 |
+#
+# | 5 | 6 | 7 | *8 |
+#
+# | 4 | 3 | 2 | 1 | -> copy third row [(0,5), (1,6), (2,7), (3,8)]  -> & sort ([(0,5), (1,6), (2,7), (3,8)]) --> check if maximum value (3,8) on same column --> yes --> add second largest value
 
 
 
