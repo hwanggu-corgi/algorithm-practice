@@ -18,8 +18,10 @@
 #   - [이름, 전공] as relation key
 
 # Pesudocode
-#   - create combination of column indexes (start from 1)
+#   - create combination of column indexes (start from combination of 1 element)
 #   - extract columns and zip them together
+#   - put all in set and check if length of set is equal to length of array
+#   - if so, return number of columns
 
 from itertools import permutations
 
