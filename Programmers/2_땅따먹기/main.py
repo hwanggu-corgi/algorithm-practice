@@ -49,6 +49,14 @@
 #   - if not, choose row[-1], and add to sum
 #   - return value
 
+# fix
+  # | 1 | 2 | 3 | 5   |  -> copy first row [(0,1), (1,2), (2,3), (3,5)]  -> & sort ([(0,1), (1,2), (2,3), (3,5)]) --> check if maximum value (3,5) on same column --> no --> add to sum
+  #
+  # | 5 | 6 | 7 | 100 |
+  #
+  # | 4 | 3 | 2 | 1 |
+
+
 
 def solution(land):
     answer = 0
