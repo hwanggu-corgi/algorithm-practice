@@ -59,7 +59,7 @@ def solution(land):
         # crease a new array with element of form [(index, value)].\ (call it row)
         row_copy = list(zip(range(4), row))
         # sort array
-        row_copy.sort()
+        row_copy.sort(key=lambda e: e[1])
         # check if max value row[-1] is on the same column as before (initially -1)
         # if yes, choose row[-2], and add to sum
         # if not, choose row[-1], and add to sum
@@ -72,3 +72,6 @@ def solution(land):
 
     # return value
     return answer
+
+if __name__ == "__main__":
+    print(solution([[1,2,3,5],[5,6,7,8],[4,3,2,1]])) #16
