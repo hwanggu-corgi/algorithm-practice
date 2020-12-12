@@ -44,9 +44,8 @@ def solution(relation):
 
         for combination in combs:
             candidate = [columns_list[x] for x in combination]
-            print(combination)
-            # test uniqueness
 
+            # test uniqueness
             is_unique = test_uniqueness(candidate, N_rows)
 
             if not is_unique:
@@ -59,10 +58,7 @@ def solution(relation):
                 continue
 
             answer += 1
-            has_key_relation = True
 
-        if has_key_relation:
-            break
     return answer
 
 def get_column(relation, col_index, N_rows):
@@ -81,7 +77,6 @@ def test_minimality(columns_list, combination, N_rows):
         sub_combs = combinations(combination, i)
 
         for sub_combination in sub_combs:
-            print("sub {}".format(sub_combination))
             if len(set(zip(*[columns_list[j] for j in sub_combination]))) == N_rows:
                 return False
     return True
