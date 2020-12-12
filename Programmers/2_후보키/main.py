@@ -43,16 +43,17 @@ def solution(relation):
 
         for combination in combs:
             candidate = [columns_list[x] for x in combination]
-            # test uniqueness
-            is_unique = test_uniqueness(candidate, N_rows)
 
-            if not is_unique:
-                continue
             # test minimality
-
             is_minimal = test_minimality(candidate)
 
             if not is_minimal:
+                continue
+
+            # test uniqueness
+            is_unique = test_uniqueness(columns_list, combination)
+
+            if not is_unique:
                 continue
 
             answer += 1
@@ -67,12 +68,19 @@ def get_column(relation, col_index, N_rows):
 
 def test_uniqueness(candidate, N_rows):
     # if set of candidate is equal to N_rows, then is unique
-    if len(set(candidate)) == N_rows:
+    if len(set(zip(candidate))) == N_rows:
         return True
     return False
 
-def test_minimality(candidate):
-    pass
+def test_minimality(columns_list, combination):
+    N_comb = len(combination)
+
+    for i in range(1, N_comb+1):
+        sub_combs = combination(combination, i)
+
+        for sub_combination in sub_combs:
+
+
 
 if __name__ == "__main__":
     test_a = [["100","ryan","music","2"],["200","apeach","math","2"],["300","tube","computer","3"],["400","con","computer","4"],["500","muzi","music","3"],["600","apeach","music","2"]]
