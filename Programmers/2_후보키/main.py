@@ -30,23 +30,33 @@ def solution(relation):
     N_cols = len(relation[0])
     N_rows = len(relation)
     columns_list = []
-    answer = 0
+    answer = 1
 
     # create list of values by column
-    for i in range(N_cols):
-        column = get_column(relation, col_index)
+    for col_index in range(N_cols):
+        column = get_column(relation, col_index, N_rows)
         columns_list.append(column)
 
-    for cols_used in range(1,N_cols+1):
+    for number_of_cols in range(1,N_cols+1):
         # create combination of column indexes (start from combination of 1 element)
-        combs = combinations(range(N_cols),cols_used)
+        combs = combinations(range(1,N_cols),number_of_cols)
 
         for combination in combs:
             key_relation = [columns_list[x] for x in combination]
-                # extract columns and zip them together
+            # extract columns and zip them together
 
             # put all in set and check if length of set is equal to length of array
             if len(set(zip(*key_relation))) == N_rows:
                 # if so, return number of columns
-                return cols_used
-    return 0
+                answer += 1
+                has_key_relation = True
+        if has_key_relation:
+            break
+    return answer
+
+def get_column(relation, col_index, N_rows):
+    return [relation[i][col_index] for i in range(N_rows)]
+
+if __name__ == "__main__":
+    test_a = [["100","ryan","music","2"],["200","apeach","math","2"],["300","tube","computer","3"],["400","con","computer","4"],["500","muzi","music","3"],["600","apeach","music","2"]]
+    print(solution(test_a)) #2
