@@ -28,6 +28,40 @@
 #   if len(cache_queue) == cacheSize, popleft cache_queue and remove popped item from cache_set
 #   append to cache_queue and add to cache_set
 
+from collections import deque
+
 def solution(cacheSize, cities):
     answer = 0
+    # create a queue called cache_queue
+    cache_queue = deque()
+    # create a set called cache_set
+    cache_set = set()
+
+    # for each city in cities
+    for city in cities:
+        city = city.lower()
+        # if city in cache_set (cache hit),
+        if city in cache_set:
+            # add answer by 1 and continue
+            answer += 1
+            continue
+
+        # else (cache miss)
+        # if len(cache_queue) == cacheSize, popleft cache_queue and remove popped item from cache_set
+        answer += 5
+
+        if cacheSize == 0:
+            continue
+
+        if len(cache_queue) == cacheSize:
+            popped_city = cache_queue.popleft()
+            cache_set.remove(popped_city)
+        # append to cache_queue and add to cache_set
+        cache_queue.append(city)
+        cache_set.add(city)
     return answer
+
+if __name__ == "__main__":
+    print(solution(3, ["Jeju", "Pangyo", "Seoul", "NewYork", "LA", "Jeju", "Pangyo", "Seoul", "NewYork", "LA"])) #50
+    print(solution(3, 	["Jeju", "Pangyo", "Seoul", "Jeju", "Pangyo", "Seoul", "Jeju", "Pangyo", "Seoul"])) #21
+    print(solution(2, 	["Jeju", "Pangyo", "NewYork", "newyork"])) #16
