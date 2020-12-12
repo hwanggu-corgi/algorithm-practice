@@ -35,6 +35,20 @@
 
 #   return calculated value
 
+from itertools import combinations
+import sys
+
 def solution(expression):
     answer = 0
+    highest_value = -sys.maxsize
+    operands = ["+", "*", "-"]
+    # get combination of operands
+    combs = combinations(operands)
+    # for each combination, starting from left most operand perform calculation
+    for combination in combinations:
+        calculated_value = calculate(expression, combination)
+        # if the current calculated value is greater than highest value, replace
+        highest_value = max(highest_value, calculated_value)
+    # return calculated value
+    answer = highest_value
     return answer
