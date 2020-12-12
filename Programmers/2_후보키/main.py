@@ -40,19 +40,20 @@ def solution(relation):
 
     for number_of_cols in range(1,N_cols+1):
         # create combination of column indexes (start from combination of 1 element)
-        combs = combinations(range(N_cols),number_of_cols)
+        combs = combinations(range(1,N_cols),number_of_cols)
 
         for combination in combs:
             candidate = [columns_list[x] for x in combination]
-
+            print(combination)
             # test uniqueness
-            is_unique = test_uniqueness(columns_list, combination)
+
+            is_unique = test_uniqueness(candidate, N_rows)
 
             if not is_unique:
                 continue
 
             # test minimality
-            is_minimal = test_minimality(candidate)
+            is_minimal = test_minimality(columns_list, combination, N_rows)
 
             if not is_minimal:
                 continue
@@ -73,14 +74,14 @@ def test_uniqueness(candidate, N_rows):
         return True
     return False
 
-def test_minimality(columns_list, combination):
+def test_minimality(columns_list, combination, N_rows):
     N_comb = len(combination)
 
     for i in range(1, N_comb):
-        sub_combs = combination(combination, i)
+        sub_combs = combinations(combination, i)
 
         for sub_combination in sub_combs:
-
+            print("sub {}".format(sub_combination))
             if len(set(zip(*[columns_list[j] for j in sub_combination]))) == N_rows:
                 return False
     return True
