@@ -52,3 +52,15 @@ def solution(expression):
     # return calculated value
     answer = highest_value
     return answer
+
+def calculate(expression, combination):
+    value = 0
+    current_expression = expression
+
+    for operand in combination:
+        # find signs and numbers around operand
+
+        # use python's eval to comput value
+
+        # add back in
+
