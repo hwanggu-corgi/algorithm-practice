@@ -19,12 +19,6 @@
 #
 # | 4 | 3 | 2 | 1 |
 
-# | 1 | 2 | 3 | *5 |
-#
-# | 5 | 6 | 7 | 8 | -> copy first row [(0,5), (1,6), (2,7), (3,8)]  -> & sort ([(0,5), (1,6), (2,7), (3,8)]) --> check if maximum value (3,8) on same column --> yes --> add second largest value
-#
-# | 4 | 3 | 2 | 1 |
-
 
 # | 1 | 2 | 3 | *5 |
 #
@@ -35,16 +29,46 @@
 
 # | 1 | 2 | 3 | *5 |
 #
-# | 5 | 6 | 7 | *8 |
+# | 5 | 6 | *7 | 8 |
 #
-# | 4 | 3 | 2 | 1 | -> copy third row [(0,5), (1,6), (2,7), (3,8)]  -> & sort ([(0,5), (1,6), (2,7), (3,8)]) --> check if maximum value (3,8) on same column --> yes --> add second largest value
+# | 4 | 3 | 2 | 1 | -> copy third row [(0,4), (1,3), (2,2), (3,1)]  -> & sort ([(3,1), (2,2), (1,3), (0,4)]) --> check if maximum value (0,4) on same column --> no --> add to sum
 
+
+# | 1 | 2 | 3 | *5 |
+#
+# | 5 | 6 | *7 | 8 |
+#
+# | *4 | 3 | 2 | 1 |
+
+# Pseudocode
+#   - For each row,
+#   - crease a new array with element of form [(index, value)].\ (call it row)
+#   - sort array
+#   - check if max value row[-1] is on the same column as before (initially -1)
+#   - if yes, choose row[-2], and add to sum
+#   - if not, choose row[-1], and add to sum
+#   - return value
 
 
 def solution(land):
     answer = 0
+    prev_column_index = -1
 
-    # [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
-    print('Hello Python')
+    # For each row,
+    for row in land:
+        # crease a new array with element of form [(index, value)].\ (call it row)
+        row_copy = list(zip(range(4), row))
+        # sort array
+        row_copy.sort()
+        # check if max value row[-1] is on the same column as before (initially -1)
+        # if yes, choose row[-2], and add to sum
+        # if not, choose row[-1], and add to sum
+        if row_copy[-1][0] == prev_column_index:
+            answer += row_copy[-2][1]
+            prev_column_index = row_copy[-2][0]
+        else:
+            answer += row_copy[-1][1]
+            prev_column_index = row_copy[-1][0]
 
-    return s
+    # return value
+    return answer
