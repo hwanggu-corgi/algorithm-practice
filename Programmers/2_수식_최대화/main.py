@@ -29,7 +29,11 @@
 #   When consists of both positive and negative number
 
 # Pseudocode
-# get combination of operands
+#   get combination of operands
+#   for each combination, starting from left most operand perform calculation
+#   if the current calculated value is greater than highest value, replace
+
+#   return calculated value
 
 def solution(expression):
     answer = 0
