@@ -58,9 +58,12 @@ def calculate(expression, combination):
     current_expression = expression
 
     for operand in combination:
+
         # find signs and numbers around operand
 
         # use python's eval to comput value
 
-        # add back in
+        # add back into current expression
+
+        #
 
