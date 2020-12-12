@@ -42,20 +42,34 @@ def solution(relation):
         combs = combinations(range(1,N_cols),number_of_cols)
 
         for combination in combs:
-            key_relation = [columns_list[x] for x in combination]
-            # extract columns and zip them together
+            candidate = [columns_list[x] for x in combination]
+            # test uniqueness
+            is_unique = test_uniqueness(candidate)
 
-            # put all in set and check if length of set is equal to length of array
-            if len(set(zip(*key_relation))) == N_rows:
-                # if so, return number of columns
-                answer += 1
-                has_key_relation = True
+            if not is_unique:
+                continue
+            # test minimality
+
+            is_minimal = test_minimality(candidate)
+
+            if not is_minimal:
+                continue
+
+            answer += 1
+            has_key_relation = True
+
         if has_key_relation:
             break
     return answer
 
 def get_column(relation, col_index, N_rows):
     return [relation[i][col_index] for i in range(N_rows)]
+
+def test_uniqueness(candidate):
+    pass
+
+def test_minimality(candidate):
+    pass
 
 if __name__ == "__main__":
     test_a = [["100","ryan","music","2"],["200","apeach","math","2"],["300","tube","computer","3"],["400","con","computer","4"],["500","muzi","music","3"],["600","apeach","music","2"]]
