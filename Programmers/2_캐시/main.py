@@ -43,6 +43,8 @@ def solution(cacheSize, cities):
         # if city in cache_set (cache hit),
         if city in cache_set:
             # add answer by 1 and continue
+            cache_queue.remove(city)
+            cache_queue.append(city)
             answer += 1
             continue
 
