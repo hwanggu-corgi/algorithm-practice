@@ -56,9 +56,7 @@ def solution(relation):
             if not is_minimal:
                 continue
 
-            print(combination)
-            answer.add(sorted(list(combination)))
-            print(answer)
+            answer.add(str(sorted(list(combination))))
 
     return len(answer)
 
