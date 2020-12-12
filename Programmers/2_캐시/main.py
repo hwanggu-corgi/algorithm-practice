@@ -9,7 +9,24 @@
 
 # Example
 #   1) [Jeju, Pangyo, Seoul, NewYork, LA, Jeju, Pangyo, Seoul, NewYork, LA]
-#       - Jeju --> cache miss {Jeju}
+#       - Jeju --> cache miss [Jeju] {Jeju} 5
+#       - Pangyo --> cache miss [Jeju]-[Pangyo] {Jeju, Pangyo}10
+#       - Seoul --> cache miss [Jeju]-[Pangyo]-[Seoul] {Jeju, Pangyo, Seoul} 15
+#       - NewYork --> cachemiss [Pangyo]-[Seoul]-[NewYork] {Pangyo, Seoul, NewYork} 20
+#       - LA --> cachemiss [Seoul]-[NewYork]-[LA] {Seoul, NewYork, LA} 25
+#       - Jeju --> cachemiss [NewYork]-[LA]-[Jeju] {NewYork, LA, Jeju} 30
+#       - Pangyo --> cachemiss [LA]-[Jeju]-[Pangyo] {LA, Jeju, Pangyo} 35
+#       - Seoul --> cachemiss [Jeju]-[Pangyo]-[Seoul] {Jeju, Pangyo, Seoul} 40
+#       - NewYork --> cachemiss [Pangyo]-[Seoul]-[NewYork] {Pangyo, Seoul, NewYork} 45
+#       - LA --> cachemiss [Seoul]-[NewYork]-[LA] {Seoul, NewYork, LA} 50
+
+# Pseudocode
+# create a queue called cache_queue
+# create a set called cache_set
+# for each city in cities
+# if city not in cache_set (cache miss),
+#   if len(cache_queue) == cacheSize, popleft cache_queue and remove popped item from cache_set
+#   append to cache_queue and add to cache_set
 
 def solution(cacheSize, cities):
     answer = 0
