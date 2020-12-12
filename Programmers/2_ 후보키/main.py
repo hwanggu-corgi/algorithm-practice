@@ -23,26 +23,30 @@
 #   - put all in set and check if length of set is equal to length of array
 #   - if so, return number of columns
 
-from itertools import permutations
+from itertools import combinations
 
 def solution(relation):
     # get number of columns
     N_cols = len(relation[0])
     N_rows = len(relation)
+    columns_list = []
     answer = 0
 
-    for i in range(1,N_cols+1):
-        columns_list = []
+    # create list of values by column
+    for i in range(N_cols):
+        column = get_column(relation, col_index)
+        columns_list.append(column)
+
+    for cols_used in range(1,N_cols+1):
         # create combination of column indexes (start from combination of 1 element)
-        perms = permutation(range(N_cols),i)
+        combs = combinations(range(N_cols),cols_used)
 
-        for permutation in perms:
-            for col_index in permutation:
+        for combination in combs:
+            key_relation = [columns_list[x] for x in combination]
                 # extract columns and zip them together
-                column = get_column(relation, col_index)
-                columns_list.append(column)
 
-            columzip
             # put all in set and check if length of set is equal to length of array
-            # if so, return number of columns
-    return answer
+            if len(set(zip(*key_relation))) == N_rows:
+                # if so, return number of columns
+                return cols_used
+    return 0
