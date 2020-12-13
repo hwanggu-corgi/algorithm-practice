@@ -55,20 +55,20 @@ def solution(expression):
 
 def calculate(expression, combination):
     value = 0
-    current_expression = [x for x in expression]
+    current_expression = expression
 
-    for operand in combination:
-        next_expression = ""
-        for i,symbol in enumerate(current_expression):
+    for target_operand in combination:
+        while current_expression.find(target_operand) > 0:
             # find signs and numbers around operand
-            if symbol == operand:
-                index_start = get_index_start(i, current_expression)
-                index_end = get_index_end(i, current_expression)
+            index_start = get_expression_start(i, current_expression)
+            index_end = get_expression_end(i, current_expression)
 
-                # use python's eval to comput value
-                calculated_value = eval(current_expression[index_start:index_end+1])
+            # use python's eval to comput value
+            calculated_value = eval(current_expression[index_start:index_end+1])
 
-                # add to next expression
-                next_expression +=
+            # add to next expression
+            current_expression = current_expression[:index_start] + str(calculated_value) + current_expression[index_end+1:]
+
+
 
 
