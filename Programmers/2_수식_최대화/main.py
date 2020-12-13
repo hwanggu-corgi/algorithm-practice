@@ -62,9 +62,7 @@ def calculate(expression, combination):
         while i > 0:
             # find signs and numbers around operand
             index_start = get_expression_start(i, current_expression)
-            print(index_start)
             index_end = get_expression_end(i, current_expression)
-            print(index_end)
 
             # use python's eval to comput value
             calculated_value = eval(current_expression[index_start:index_end+1])
@@ -75,27 +73,37 @@ def calculate(expression, combination):
     return int(current_expression)
 
 def get_expression_start(i, current_expression):
-    i += 1
-
-    while current_expression[i].isdigit():
-        i -= 1
 
     try:
-        if (current_expression[i-2] == "-") and (current_expression[i-3] == "-"):
-            return i
+        i -= 1
+
+        while current_expression[i+1].isdigit():
+            i -= 1
+
+        if (not current_expression[i-2].isdigit()) and (current_expression[i-1] == "-"):
+            return i-1
 
     except IndexError:
         pass
 
-    return i - 1
+    return i
 
 def get_expression_end(i, current_expression):
 
-    while not current_expression[i].isdigit():
+    try:
         i += 1
+        if current_expression[i] == "-":
+            i += 1
+
+        while current_expression[i+1].isdigit():
+            i += 1
+
+    except IndexError:
+        pass
 
     return i
 
 if __name__ == "__main__":
+    print(solution("10")) #10
     print(solution("5+5")) #10
     print(solution("50*6-3*2")) #300
