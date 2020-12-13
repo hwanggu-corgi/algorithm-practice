@@ -109,7 +109,7 @@ def solution(expression):
 
     # for each combination, starting from left most operand perform calculation
     for permutation in perms:
-        calculated_value = abs(calculate(expression, permutation, 0))
+        calculated_value = abs(int(calculate(expression, permutation, 0)))
         # if the current calculated value is greater than highest value, replace
         highest_value = max(highest_value, calculated_value)
     # return calculated value
@@ -120,18 +120,21 @@ def calculate(expression, operands, operand_index):
 
     # if expression is a number, then return as is
     try:
-        return int(expression)
+        return str(int(expression))
     except:
         pass
     # split expression by operand (-)
-    operand = operands[operands_index]
+    operand = operands[operand_index]
     expression_list = expression.split(operand)
+    new_expression = []
 
-    for splitted_expression
-    # for each expression perform recursion but with operand of higher priority
+    for splitted_expression in expression_list:
+        # for each expression perform recursion but with operand of higher priority
+        calculated_value = calculate(splitted_expression, operands, operand_index+1)
+        new_expression.append(calculated_value)
+
     # add to expression by the current operand, and return string of evaluated value
-
-    return int(eval(current_expression))
+    return str(eval(operand.join(new_expression)))
 
 # from itertools import permutations
 # import sys
