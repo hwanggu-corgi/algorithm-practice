@@ -118,17 +118,18 @@ def solution(expression):
 
 def calculate(expression, operands, operand_index):
 
+    # if expression is a number, then return as is
+    try:
+        return int(expression)
+    except:
+        pass
     # split expression by operand (-)
     operand = operands[operands_index]
     expression_list = expression.split(operand)
 
-    # if length of spliited arr is 1, then return string of evaluated number
-    if len(expression_list) == 1:
-        return str(eval(expression))
-
+    for splitted_expression
     # for each expression perform recursion but with operand of higher priority
     # add to expression by the current operand, and return string of evaluated value
-
 
     return int(eval(current_expression))
 
