@@ -35,6 +35,50 @@
 
 #   return calculated value
 
+
+# ===========
+
+# Example in detail
+
+# 5 + 5
+#
+#   5 + 5
+#   ^
+#   number queue [5]
+#   operand queue [+]
+#   expression queue [+,5]
+#   new expression queue []
+
+#   5 + 5
+#     ^
+#   number queue [5]
+#   operand queue [+]
+#   expression queue [5]
+#   new expression queue []
+
+#   5 + 5
+#       ^
+#   number queue [5,5]
+#   operand queue [+]
+#   expression queue []
+#   new expression queue []
+
+#   5 + 5
+#       ^
+#   number queue []
+#   operand queue []
+#   expression queue []
+#   new expression queue [10]
+
+
+# Example 2: "100-200*300-500+20"
+
+#   100-200*300-500+20
+#    ^
+#   number queue []
+#   operand queue []
+#   expression queue [10]
+
 from itertools import permutations
 import sys
 
@@ -73,6 +117,76 @@ def calculate(expression, permutation):
 
             i = current_expression.find(target_operand)
     return int(eval(current_expression))
+
+# from itertools import permutations
+# import sys
+
+# def solution(expression):
+#     answer = 0
+#     highest_value = -sys.maxsize
+#     operands = ["+", "*", "-"]
+#     # get combination of operands
+#     perms = permutations(operands, len(operands))
+
+#     # for each combination, starting from left most operand perform calculation
+#     for permutation in perms:
+#         calculated_value = abs(calculate(expression, permutation))
+#         # if the current calculated value is greater than highest value, replace
+#         highest_value = max(highest_value, calculated_value)
+#     # return calculated value
+#     answer = highest_value
+#     return answer
+
+# def calculate(expression, permutation):
+#     value = 0
+#     current_expression = expression
+
+#     for target_operand in permutation:
+#         i = current_expression.find(target_operand)
+#         while i > 0:
+#             # find signs and numbers around operand
+#             index_start = get_expression_start(i, current_expression)
+#             index_end = get_expression_end(i, current_expression)
+
+#             # use python's eval to comput value
+#             calculated_value = eval(current_expression[index_start:index_end+1])
+
+#             # add to next expression
+#             current_expression = current_expression[:index_start] + str(calculated_value) + current_expression[index_end+1:]
+
+#             i = current_expression.find(target_operand)
+#     return int(eval(current_expression))
+
+# def get_expression_start(i, current_expression):
+
+#     i -= 1
+
+#     while i > 0:
+#         if not current_expression[i].isdigit():
+#             break
+
+#         i -= 1
+
+#     if i == 0:
+#         return i
+
+#     if not current_expression[i-1].isdigit():
+#         return i
+
+#     return i+1
+
+# def get_expression_end(i, current_expression):
+
+#     i += 1
+#     if current_expression[i] == "-":
+#         i += 1
+
+#     while i < len(current_expression):
+#         if not current_expression[i].isdigit():
+#             break
+#         i += 1
+
+#     return i - 1
 
 if __name__ == "__main__":
     print(solution("10")) #10
