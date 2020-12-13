@@ -116,14 +116,18 @@ def solution(expression):
     answer = highest_value
     return answer
 
-def calculate(expression, permutation, operand_index):
+def calculate(expression, operands, operand_index):
 
-    # split by operand index
+    # split expression by operand (-)
+    operand = operands[operands_index]
+    expression_list = expression.split(operand)
 
-    # if the length of arr is 1, then return number
-    try:
-        number = int(expression)
-        return
+    # if length of spliited arr is 1, then return string of evaluated number
+    if len(expression_list) == 1:
+        return str(eval(expression))
+
+    # for each expression perform recursion but with operand of higher priority
+    # add to expression by the current operand, and return string of evaluated value
 
 
     return int(eval(current_expression))
