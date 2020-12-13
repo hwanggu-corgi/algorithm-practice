@@ -35,7 +35,7 @@
 
 #   return calculated value
 
-from itertools import combinations
+from itertools import permutations
 import sys
 
 def solution(expression):
@@ -43,21 +43,22 @@ def solution(expression):
     highest_value = -sys.maxsize
     operands = ["+", "*", "-"]
     # get combination of operands
-    combs = combinations(operands, len(operands))
+    perms = permutations(operands, len(operands))
+
     # for each combination, starting from left most operand perform calculation
-    for combination in combs:
-        calculated_value = abs(calculate(expression, combination))
+    for permutation in perms:
+        calculated_value = abs(calculate(expression, permutation))
         # if the current calculated value is greater than highest value, replace
         highest_value = max(highest_value, calculated_value)
     # return calculated value
     answer = highest_value
     return answer
 
-def calculate(expression, combination):
+def calculate(expression, permutation):
     value = 0
     current_expression = expression
 
-    for target_operand in combination:
+    for target_operand in permutation:
         i = current_expression.find(target_operand)
         while i > 0:
             print(current_expression)
@@ -79,14 +80,19 @@ def get_expression_start(i, current_expression):
     try:
         i -= 1
 
-        while (i - 1) >= 0 and current_expression[i-1].isdigit():
+        while i >= 0:
+            if (not current_expression[i].isdigit()):
+                break
             i -= 1
 
-        if (not current_expression[i-2].isdigit()) and (current_expression[i-1] == "-"):
+        if (not current_expression[i-1].isdigit()):
+            return i
+        else:
             return i-1
 
     except IndexError:
         pass
+
 
     return i
 
