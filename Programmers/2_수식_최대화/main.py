@@ -60,9 +60,12 @@ def calculate(expression, combination):
     for target_operand in combination:
         i = current_expression.find(target_operand)
         while i > 0:
+            print(current_expression)
             # find signs and numbers around operand
             index_start = get_expression_start(i, current_expression)
+            print(index_start)
             index_end = get_expression_end(i, current_expression)
+            print(index_end)
 
             # use python's eval to comput value
             calculated_value = eval(current_expression[index_start:index_end+1])
@@ -77,7 +80,7 @@ def get_expression_start(i, current_expression):
     try:
         i -= 1
 
-        while current_expression[i+1].isdigit():
+        while current_expression[i-1].isdigit():
             i -= 1
 
         if (not current_expression[i-2].isdigit()) and (current_expression[i-1] == "-"):
