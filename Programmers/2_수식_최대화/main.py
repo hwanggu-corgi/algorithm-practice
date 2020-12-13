@@ -61,7 +61,6 @@ def calculate(expression, permutation):
     for target_operand in permutation:
         i = current_expression.find(target_operand)
         while i > 0:
-            print(current_expression)
             # find signs and numbers around operand
             index_start = get_expression_start(i, current_expression)
             index_end = get_expression_end(i, current_expression)
@@ -73,38 +72,10 @@ def calculate(expression, permutation):
             current_expression = current_expression[:index_start] + str(calculated_value) + current_expression[index_end+1:]
 
             i = current_expression.find(target_operand)
-    return int(current_expression)
-
-def get_expression_start(i, current_expression):
-
-    i -= 1
-
-    while i > 0:
-        if not current_expression[i].isdigit():
-            break
-
-        i -= 1
-
-    if (i > 0) and (not current_expression[i-1].isdigit()):
-        return i
-    else:
-        return i+1
-
-def get_expression_end(i, current_expression):
-
-    i += 1
-    if current_expression[i] == "-":
-        i += 1
-
-    while i < len(current_expression):
-        if not current_expression[i].isdigit():
-            i -= 1
-            break
-        i += 1
-
-    return i
+    return int(eval(current_expression))
 
 if __name__ == "__main__":
     print(solution("10")) #10
     print(solution("5+5")) #10
     print(solution("50*6-3*2")) #300
+    print(solution("100-200*300-500+20")) #60420
