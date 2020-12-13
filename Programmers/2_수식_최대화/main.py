@@ -70,5 +70,22 @@ def calculate(expression, combination):
             current_expression = current_expression[:index_start] + str(calculated_value) + current_expression[index_end+1:]
 
 
+    return int(current_expression)
 
+def get_expression_start(i, current_expression):
+    i += 1
+
+    try:
+        if current_expression[]
+
+    except IndexError:
+
+    return i
+
+def get_expression_end(i, current_expression):
+
+    while not current_expression[i].isdigit():
+        i += 1
+
+    return i
 
