@@ -77,37 +77,30 @@ def calculate(expression, permutation):
 
 def get_expression_start(i, current_expression):
 
-    try:
+    i -= 1
+
+    while i > 0:
+        if not current_expression[i].isdigit():
+            break
+
         i -= 1
 
-        while i >= 0:
-            if (not current_expression[i].isdigit()):
-                break
-            i -= 1
-
-        if (not current_expression[i-1].isdigit()):
-            return i
-        else:
-            return i-1
-
-    except IndexError:
-        pass
-
-
-    return i
+    if (i > 0) and (not current_expression[i-1].isdigit()):
+        return i
+    else:
+        return i+1
 
 def get_expression_end(i, current_expression):
 
-    try:
+    i += 1
+    if current_expression[i] == "-":
         i += 1
-        if current_expression[i] == "-":
-            i += 1
 
-        while current_expression[i+1].isdigit():
-            i += 1
-
-    except IndexError:
-        pass
+    while i < len(current_expression):
+        if not current_expression[i].isdigit():
+            i -= 1
+            break
+        i += 1
 
     return i
 
