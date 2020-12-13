@@ -62,7 +62,9 @@ def calculate(expression, combination):
         while i > 0:
             # find signs and numbers around operand
             index_start = get_expression_start(i, current_expression)
+            print(index_start)
             index_end = get_expression_end(i, current_expression)
+            print(index_end)
 
             # use python's eval to comput value
             calculated_value = eval(current_expression[index_start:index_end+1])
