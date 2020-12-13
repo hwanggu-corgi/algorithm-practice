@@ -71,21 +71,23 @@ def calculate(expression, combination):
 
             # add to next expression
             current_expression = current_expression[:index_start] + str(calculated_value) + current_expression[index_end+1:]
-            print(current_expression)
             i = current_expression.find(target_operand)
-            print(i)
     return int(current_expression)
 
 def get_expression_start(i, current_expression):
+    i += 1
+
+    while current_expression[i].isdigit():
+        i -= 1
 
     try:
-        if (current_expression[i+2] == "-") and (current_expression[i+3] == "-"):
-            return i + 2
+        if (current_expression[i-2] == "-") and (current_expression[i-3] == "-"):
+            return i
 
     except IndexError:
         pass
 
-    return i + 1
+    return i - 1
 
 def get_expression_end(i, current_expression):
 
@@ -95,5 +97,5 @@ def get_expression_end(i, current_expression):
     return i
 
 if __name__ == "__main__":
-    print(solution("100-200*300-500+20")) #60420
+    print(solution("5+5")) #10
     print(solution("50*6-3*2")) #300
