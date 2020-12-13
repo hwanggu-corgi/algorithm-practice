@@ -43,9 +43,9 @@ def solution(expression):
     highest_value = -sys.maxsize
     operands = ["+", "*", "-"]
     # get combination of operands
-    combs = combinations(operands)
+    combs = combinations(operands, len(operands))
     # for each combination, starting from left most operand perform calculation
-    for combination in combinations:
+    for combination in combs:
         calculated_value = calculate(expression, combination)
         # if the current calculated value is greater than highest value, replace
         highest_value = max(highest_value, calculated_value)
@@ -58,7 +58,8 @@ def calculate(expression, combination):
     current_expression = expression
 
     for target_operand in combination:
-        while current_expression.find(target_operand) > 0:
+        i = current_expression.find(target_operand)
+        while i > 0:
             # find signs and numbers around operand
             index_start = get_expression_start(i, current_expression)
             index_end = get_expression_end(i, current_expression)
@@ -68,19 +69,21 @@ def calculate(expression, combination):
 
             # add to next expression
             current_expression = current_expression[:index_start] + str(calculated_value) + current_expression[index_end+1:]
-
-
+            print(current_expression)
+            i = current_expression.find(target_operand)
+            print(i)
     return int(current_expression)
 
 def get_expression_start(i, current_expression):
-    i += 1
 
     try:
-        if current_expression[]
+        if (current_expression[i+2] == "-") and (current_expression[i+3] == "-"):
+            return i + 2
 
     except IndexError:
+        pass
 
-    return i
+    return i + 1
 
 def get_expression_end(i, current_expression):
 
@@ -89,3 +92,6 @@ def get_expression_end(i, current_expression):
 
     return i
 
+if __name__ == "__main__":
+    print(solution("100-200*300-500+20")) #60420
+    print(solution("50*6-3*2")) #300
