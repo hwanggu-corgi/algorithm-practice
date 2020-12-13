@@ -44,8 +44,8 @@
 #
 #   5 + 5
 #   ^
-#   number queue [5]
-#   operand queue [+]
+#   number [5]
+#   operand [+]
 #   expression queue [+,5]
 #   new expression queue []
 
@@ -77,7 +77,8 @@
 #    ^
 #   number queue []
 #   operand queue []
-#   expression queue [10]
+#   expression queue [100,-,200,*,300,-,500,+,20]
+#   new expression queue []
 
 from itertools import permutations
 import sys
