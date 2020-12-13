@@ -85,16 +85,16 @@
 
 # Example : "100-200*300-500+20"
 
-#   Order * > + > -
-#       1) split by -
+#   Order * > + > - (-, +, *)
+#       1) split expression by operand (-)
+#       2) if length of spliited arr is 1, then return number
+#       3) otherwise, split expression by operand (-)
+
 #           arr = ["100", "200*300", "500+20"]
 
-#       2) for each expression in arr,
-#           if it's just a number then return number
-#
-#           otherwise, split by +
-#               - "100-200" -> ["100-200"]
-#               - "500+20"  -> ["500", "20"]
+#       4) for each expression perform recursion but with operand of higher priority
+
+#       5) add to expression by the current operand, and return string of evaluated value
 
 
 from itertools import permutations
@@ -109,31 +109,23 @@ def solution(expression):
 
     # for each combination, starting from left most operand perform calculation
     for permutation in perms:
-        calculated_value = abs(calculate(expression, permutation))
+        calculated_value = abs(calculate(expression, permutation, 0))
         # if the current calculated value is greater than highest value, replace
         highest_value = max(highest_value, calculated_value)
     # return calculated value
     answer = highest_value
     return answer
 
-def calculate(expression, permutation):
-    value = 0
-    current_expression = expression
+def calculate(expression, permutation, operand_index):
 
-    for target_operand in permutation:
-        i = current_expression.find(target_operand)
-        while i > 0:
-            # find signs and numbers around operand
-            index_start = get_expression_start(i, current_expression)
-            index_end = get_expression_end(i, current_expression)
+    # split by operand index
 
-            # use python's eval to comput value
-            calculated_value = eval(current_expression[index_start:index_end+1])
+    # if the length of arr is 1, then return number
+    try:
+        number = int(expression)
+        return
 
-            # add to next expression
-            current_expression = current_expression[:index_start] + str(calculated_value) + current_expression[index_end+1:]
 
-            i = current_expression.find(target_operand)
     return int(eval(current_expression))
 
 # from itertools import permutations
