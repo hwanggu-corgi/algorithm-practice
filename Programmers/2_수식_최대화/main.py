@@ -55,15 +55,13 @@ def solution(expression):
 
 def calculate(expression, combination):
     value = 0
-    current_expression = expression
+    current_expression = [x for x in expression]
 
     for operand in combination:
+        for symbol in current_expression:
+            # find signs and numbers around operand
+            if symbol == operand:
+                # use python's eval to comput value
 
-        # find signs and numbers around operand
-
-        # use python's eval to comput value
-
-        # add back into current expression
-
-        #
+                # add back into current expression
 
