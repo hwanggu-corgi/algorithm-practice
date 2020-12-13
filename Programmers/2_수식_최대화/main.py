@@ -58,10 +58,17 @@ def calculate(expression, combination):
     current_expression = [x for x in expression]
 
     for operand in combination:
-        for symbol in current_expression:
+        next_expression = ""
+        for i,symbol in enumerate(current_expression):
             # find signs and numbers around operand
             if symbol == operand:
-                # use python's eval to comput value
+                index_start = get_index_start(i, current_expression)
+                index_end = get_index_end(i, current_expression)
 
-                # add back into current expression
+                # use python's eval to comput value
+                calculated_value = eval(current_expression[index_start:index_end+1])
+
+                # add to next expression
+                next_expression +=
+
 
