@@ -80,6 +80,16 @@
 #   expression queue [100,-,200,*,300,-,500,+,20]
 #   new expression queue []
 
+
+# Strategy #2
+
+# Example : "100-200*300-500+20"
+
+#   Order * > + > -
+#       1) split by *
+#           ["100-200", "300-500+20"]
+
+
 from itertools import permutations
 import sys
 
