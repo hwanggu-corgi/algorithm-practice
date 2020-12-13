@@ -46,7 +46,7 @@ def solution(expression):
     combs = combinations(operands, len(operands))
     # for each combination, starting from left most operand perform calculation
     for combination in combs:
-        calculated_value = calculate(expression, combination)
+        calculated_value = abs(calculate(expression, combination))
         # if the current calculated value is greater than highest value, replace
         highest_value = max(highest_value, calculated_value)
     # return calculated value
