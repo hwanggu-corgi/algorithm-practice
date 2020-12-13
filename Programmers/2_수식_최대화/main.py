@@ -86,8 +86,15 @@
 # Example : "100-200*300-500+20"
 
 #   Order * > + > -
-#       1) split by *
-#           ["100-200", "300-500+20"]
+#       1) split by -
+#           arr = ["100", "200*300", "500+20"]
+
+#       2) for each expression in arr,
+#           if it's just a number then return number
+#
+#           otherwise, split by +
+#               - "100-200" -> ["100-200"]
+#               - "500+20"  -> ["500", "20"]
 
 
 from itertools import permutations
