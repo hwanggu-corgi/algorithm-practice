@@ -82,3 +82,6 @@ def count_plays_by_genre(zipped_list):
         else:
             plays_by_genre[genre] += plays
     return plays_by_genre
+
+if __name__ == "__main__":
+    print(solution(["classic", "pop", "classic", "classic", "pop"], [500, 600, 150, 800, 2500])) #[4, 1, 3, 0]
