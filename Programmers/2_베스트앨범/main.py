@@ -54,14 +54,21 @@ def solution(genres, plays):
             dictionary[genre].append(item)
 
     # count total plays by genre {pop: 3100, classic: 1450}
+    # convert to list of tuples [(pop, 3100), (classic, 1450)]
+    # sort genres by total frequency [pop, classic]
     plays_by_genre = count_plays_by_genre(zipped_list)
+    plays_by_genre = sorted(zip(plays_by_genre.keys(), plays_by_genre.values()), key= lambda e: e[1])
 
     # sort items in each genre by times played (stable) {pop: [(4, pop, 2500),  (1, pop, 600)], classic:[(3, classic, 800), (0, classic, 5000), (2, classic, 150)]}
     for genre in dictionary:
-        dictionary[genre] = sorted(dictionary[genre], key=lambda e: e[2])
+        dictionary[genre] = sorted(dictionary[genre], key=lambda e: e[2], reverse=True)
 
-    # sort genres by total frequency [pop, classic]
     # add music (2 per genre) [(4, pop, 2500), (1, pop, 600), (3, classic, 800), (0, classic, 500)]
+    for genre, _ in plays_by_genre:
+        i = 0
+        while i < 2:
+            answer,append(dictionary[genre][i])
+            i += 1
     # return result
     return answer
 
