@@ -50,16 +50,18 @@ def solution(board):
         for i in range(N_rows):
             #   for j in N_cols,
             for j in range(N_cols):
-                try:
-                    #   check if square of size n at [i,j] has all 1s
-                    square_sum = sum([sum(x[j:(j + square_size)]) for x in board[i: (i + square_size)]])
-                    #   if not, move to right
-                    if square_sum == square_size**2:
-                        return square_sum
+                target_row = i + (square_size-1)
+                target_colum = j + (square_size-1)
 
-                #   if index error, break
-                except IndexError:
+                if (target_row >= N_rows) or (target_colum >= N_cols):
                     break
+
+                board[i][j] += sum(board[target_row][j:j+square_size]) + sum(board[i:i+square_size][target_colum])
+
+                #   if not, move to right
+                if board[i][j] == square_size**2:
+                    return board[i][j]
+
     return 0
 
 if __name__ == "__main__":
