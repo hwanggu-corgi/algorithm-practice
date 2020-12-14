@@ -45,9 +45,14 @@ def solution(board):
     answer = -1
 
     #   for i in N_rows,
-    for i in range(1,N_rows):
+    for i in range(0,N_rows):
         #   for j in N_cols,
-        for j in range(1,N_cols):
+        for j in range(0,N_cols):
+
+            if i == 0 or j == 0:
+                 answer = max(answer, board[i][j] ** 2)
+                 continue
+
             if board[i][j] == 0:
                 continue
 
@@ -118,5 +123,7 @@ def solution(board):
 #     return 0
 
 if __name__ == "__main__":
+    print(solution([[0,0],[0,0]])) #1
+    print(solution([[1,0],[0,0]])) #1
     print(solution([[0,0,1,1],[1,1,1,1]])) #4
     print(solution([[0,1,1,1],[1,1,1,1],[1,1,1,1],[0,0,1,0]])) #9
