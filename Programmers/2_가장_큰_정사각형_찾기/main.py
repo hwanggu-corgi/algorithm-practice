@@ -36,6 +36,8 @@
 #   if index error, break
 #   if none exists, reduce size of n by 1 and repeat
 
+from functools import reduce
+
 def solution(board):
     answer = 1234
 
@@ -43,14 +45,25 @@ def solution(board):
     print('Hello Python')
     N_rows = len(board)
     N_cols = len(board[0])
+    #   find max nxn size given board min(N_rows, N_cols)
     square_size = min(N_rows, N_cols)
 
-    #   find max nxn size given board min(N_rows, N_cols)
-    #   for i in N_rows,
-    #   for j in N_cols,
-    #   check if square of size n at [i,j] has all 1s
-    #   if not, move to right
-    #   if index error, break
-    #   if none exists, reduce size of n by 1 and repeat
+    while square_size > 0:
+        #   for i in N_rows,
+        for i in range(N_rows):
+            #   for j in N_cols,
+            for j in range(N_cols):
+                try:
+                    #   check if square of size n at [i,j] has all 1s
+                    square_sum = sum([sum(x[i:square_size]) for x in board[j:square_size]])
+                    #   if not, move to right
+                    if square_sum != square_size**2:
+                        continue
+
+                #   if index error, break
+                except IndexError:
+                    break
+        #   if none exists, reduce size of n by 1 and repeat
+        square_size -= 1
 
     return answer
