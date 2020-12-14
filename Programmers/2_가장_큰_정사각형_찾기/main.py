@@ -27,6 +27,9 @@
 #       | 1 | 1 | 1 | 1 |
 
 
+# Pseudocode
+#
+
 def solution(board):
     answer = 1234
 
