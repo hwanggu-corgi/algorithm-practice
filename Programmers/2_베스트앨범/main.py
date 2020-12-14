@@ -27,6 +27,12 @@
 #           BEFORE [(4, pop, 2500), (1, pop, 600), (3, classic, 800), (0, classic, 500), (2,classic, 150)]
 #           AFTER  [(4, pop, 2500), (1, pop, 600), (3, classic, 800), (0, classic, 500)]
 
+
+# peseudocode
+#   - zip them together (range, genre, plays)
+#   - put item in dictionary by genre {pop: [], classic:[]}
+#   - count total plays by genre
+#   -
 def solution(genres, plays):
     answer = []
     return answer
