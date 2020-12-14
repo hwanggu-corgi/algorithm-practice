@@ -39,10 +39,6 @@
 from functools import reduce
 
 def solution(board):
-    answer = 1234
-
-    # [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
-    print('Hello Python')
     N_rows = len(board)
     N_cols = len(board[0])
     #   find max nxn size given board min(N_rows, N_cols)
@@ -55,10 +51,11 @@ def solution(board):
             for j in range(N_cols):
                 try:
                     #   check if square of size n at [i,j] has all 1s
-                    square_sum = sum([sum(x[i:square_size]) for x in board[j:square_size]])
+                    square_sum = sum_values_in_square(i,j,N_rows,N_cols,board)
+                    print(square_sum)
                     #   if not, move to right
-                    if square_sum != square_size**2:
-                        continue
+                    if square_sum == square_size**2:
+                        return square_size
 
                 #   if index error, break
                 except IndexError:
@@ -66,4 +63,7 @@ def solution(board):
         #   if none exists, reduce size of n by 1 and repeat
         square_size -= 1
 
-    return answer
+    return 0
+
+if __name__ == "__main__":
+    print(solution([[0,0,1,1],[1,1,1,1]])) #4
