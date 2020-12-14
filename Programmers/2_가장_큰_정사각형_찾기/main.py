@@ -48,11 +48,11 @@ def solution(board):
     for i in range(1,N_rows):
         #   for j in N_cols,
         for j in range(1,N_cols):
+            if board[i][j] == 0:
+                continue
 
-            board[i][j] += board[i-1][j] + board[i][j-1] + board[i-1][j-1]
-            # print(board[i][j])
-            print(board)
-            answer = max(answer, board[i][j])
+            board[i][j] = min(board[i-1][j],board[i][j-1],board[i-1][j-1]) + 1
+            answer = max(answer, board[i][j] ** 2)
     return answer
 
 
