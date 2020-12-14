@@ -50,12 +50,12 @@ def solution(board):
             #   for j in N_cols,
             for j in range(N_cols):
                 try:
+
                     #   check if square of size n at [i,j] has all 1s
-                    square_sum = sum_values_in_square(i,j,N_rows,N_cols,board)
-                    print(square_sum)
+                    square_sum = sum([sum(x[j:(j + square_size)]) for x in board[i: (i + square_size)]])
                     #   if not, move to right
                     if square_sum == square_size**2:
-                        return square_size
+                        return square_sum
 
                 #   if index error, break
                 except IndexError:
@@ -67,3 +67,4 @@ def solution(board):
 
 if __name__ == "__main__":
     print(solution([[0,0,1,1],[1,1,1,1]])) #4
+    print(solution([[0,1,1,1],[1,1,1,1],[1,1,1,1],[0,0,1,0]])) #9
