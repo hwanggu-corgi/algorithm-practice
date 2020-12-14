@@ -43,6 +43,7 @@ def solution(board):
     N_cols = len(board[0])
     #   find max nxn size given board min(N_rows, N_cols)
     square_size = min(N_rows, N_cols)
+    dp = {}
 
     while square_size > 0:
         #   for i in N_rows,
@@ -50,9 +51,15 @@ def solution(board):
             #   for j in N_cols,
             for j in range(N_cols):
                 try:
-
                     #   check if square of size n at [i,j] has all 1s
-                    square_sum = sum([sum(x[j:(j + square_size)]) for x in board[i: (i + square_size)]])
+                    coord = "{},{}".format(i,j)
+                    square_sum = 0
+                    if coord in dp:
+                        square_sum = dp[coord] - ((square_size+1) * 2 - 1)
+                    else:
+                        square_sum = sum([sum(x[j:(j + square_size)]) for x in board[i: (i + square_size)]])
+
+                    dp[coord] = square_sum
                     #   if not, move to right
                     if square_sum == square_size**2:
                         return square_sum
@@ -62,7 +69,6 @@ def solution(board):
                     break
         #   if none exists, reduce size of n by 1 and repeat
         square_size -= 1
-
     return 0
 
 if __name__ == "__main__":
