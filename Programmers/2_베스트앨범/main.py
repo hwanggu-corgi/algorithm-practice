@@ -17,6 +17,10 @@
 #   1)  [classic, pop, classic, classic, pop] [500, 600, 150, 800, 2500]
 #       - 속한 노래가 많이 재생된 장르를 먼저 수록합니다.
 #           BEFORE [(0, classic, 500), (1, pop, 600), (2, classic, 150), (3, classic, 800), (4, pop, 2500)]
+#           AFTER  [(4, pop, 2500), (1, pop, 600), (2, classic, 150), (3, classic, 800), ()]
+
+#       - 장르 내에서 많이 재생된 노래를 먼저 수록합니다.
+#           BEFORE [[(4, pop, 2500), (3, classic, 800), (1, pop, 600), (0, classic, 500)]
 #           AFTER  [(4, pop, 2500), (3, classic, 800), (1, pop, 600), (0, classic, 500)]
 
 def solution(genres, plays):
