@@ -36,8 +36,6 @@
 #   if index error, break
 #   if none exists, reduce size of n by 1 and repeat
 
-from functools import reduce
-from copy import deepcopy
 
 def solution(board):
     N_rows = len(board)
@@ -45,23 +43,16 @@ def solution(board):
     #   find max nxn size given board min(N_rows, N_cols)
     max_square_size = min(N_rows, N_cols)
     answer = -1
-    dp = deepcopy(board)
 
-    for square_size in range(2, max_square_size+1):
-        #   for i in N_rows,
-        for i in range(N_rows):
-            #   for j in N_cols,
-            for j in range(N_cols):
-                target_row = i + (square_size-1)
-                target_colum = j + (square_size-1)
+    #   for i in N_rows,
+    for i in range(1,N_rows):
+        #   for j in N_cols,
+        for j in range(1,N_cols):
 
-                if (target_row >= N_rows) or (target_colum >= N_cols):
-                    break
-
-                dp[i][j] += sum(board[target_row][j:j+square_size]) + sum([x[target_colum] for x in board[i:i+square_size]]) - board[target_row][target_colum]
-                # print(board[i][j])
-                if dp[i][j] == square_size**2:
-                    answer = max(answer, dp[i][j])
+            board[i][j] += board[i-1][j] + board[i][j-1] + board[i-1][j-1]
+            # print(board[i][j])
+            print(board)
+            answer = max(answer, board[i][j])
     return answer
 
 
