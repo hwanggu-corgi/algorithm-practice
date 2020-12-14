@@ -30,9 +30,13 @@
 
 # peseudocode
 #   - zip them together (range, genre, plays)
-#   - put item in dictionary by genre {pop: [], classic:[]}
-#   - count total plays by genre
-#   -
+#   - put item in dictionary by genre {pop: [(1, pop, 600),  (4, pop, 2500)], classic:[(0, classic, 500), (2, classic, 150), (3, classic, 800)]}
+#   - count total plays by genre {pop: 3100, classic: 1450}
+#   - count items in each genre by times played (stable) {pop: [(4, pop, 2500),  (1, pop, 600)], classic:[(3, classic, 800), (0, classic, 5000), (2, classic, 150)]}
+#   - sort genres by total frequency [pop, classic]
+#   - add music (2 per genre) [(4, pop, 2500), (1, pop, 600), (3, classic, 800), (0, classic, 500)]
+#   - return result
+
 def solution(genres, plays):
     answer = []
     return answer
