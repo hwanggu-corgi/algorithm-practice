@@ -46,8 +46,8 @@ def solution(genres, plays):
     zipped_list = list(zip(range(N), genres, plays))
 
     # print [(0, 'classic', 800), (1, 'pop', 500)]
+    # print(zipped_list)
 
-    print(zipped_list)
     # put item in dictionary by genre {pop: [(1, pop, 600),  (4, pop, 2500)], classic:[(0, classic, 500), (2, classic, 150), (3, classic, 800)]}
     for item in zipped_list:
         genre = item[1]
@@ -58,24 +58,33 @@ def solution(genres, plays):
             dictionary[genre].append(item)
 
     # print {'classic': [(0, 'classic', 800)], 'pop': [(1, 'pop', 500)]}
-    print(dictionary)
+    # print(dictionary)
 
     # count total plays by genre {pop: 3100, classic: 1450}
     # convert to list of tuples [(pop, 3100), (classic, 1450)]
     # sort genres by total frequency [pop, classic]
     plays_by_genre = count_plays_by_genre(zipped_list)
 
-    print(plays_by_genre)
+    # print {'classic': 800, 'pop': 500}
+    # print(plays_by_genre)
+
     plays_by_genre = sorted(zip(plays_by_genre.keys(), plays_by_genre.values()), key= lambda e: e[1], reverse=True)
+
+    # print [('classic', 800), ('pop', 500)]
+    # print(plays_by_genre)
 
     # sort items in each genre by times played (stable) {pop: [(4, pop, 2500),  (1, pop, 600)], classic:[(3, classic, 800), (0, classic, 5000), (2, classic, 150)]}
     for genre in dictionary:
         dictionary[genre] = sorted(dictionary[genre], key=lambda e: e[2], reverse=True)
 
+    # print [('classic', 800), ('pop', 500)]
+    # print(dictionary)
+
     # add music (2 per genre) [(4, pop, 2500), (1, pop, 600), (3, classic, 800), (0, classic, 500)]
     for genre, _ in plays_by_genre:
         i = 0
-        while i < 2:
+        N_genre = len(dictionary[genre])
+        while i < min(N_genre ,2):
             answer.append(dictionary[genre][i][0])
             i += 1
     # return result
@@ -94,7 +103,7 @@ def count_plays_by_genre(zipped_list):
 
 if __name__ == "__main__":
     print(solution([], [])) #[]
-    # print(solution(["classic"], [800])) #[0]
+    print(solution(["classic"], [800])) #[0]
     print(solution(["classic", "pop"], [800, 500])) #[0, 1]
     print(solution(["classic", "pop", "classic", "classic", "pop"], [500, 600, 800, 800, 2500])) #[4, 1, 2, 3]
     print(solution(["classic", "pop", "classic", "classic", "pop"], [500, 600, 150, 800, 2500])) #[4, 1, 3, 0]
