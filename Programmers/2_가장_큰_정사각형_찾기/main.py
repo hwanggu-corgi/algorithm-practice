@@ -42,7 +42,7 @@ def solution(board):
     N_rows = len(board)
     N_cols = len(board[0])
     #   find max nxn size given board min(N_rows, N_cols)
-    max_square_size = min(N_rows, N_cols)
+    max_square_size =-1
     dp = {}
 
     for square_size in range(2, max_square_size+1):
@@ -53,16 +53,19 @@ def solution(board):
                 target_row = i + (square_size-1)
                 target_colum = j + (square_size-1)
 
+                print(target_row)
+                print(target_colum)
+
                 if (target_row >= N_rows) or (target_colum >= N_cols):
                     break
 
-                board[i][j] += sum(board[target_row][j:j+square_size]) + sum(board[i:i+square_size][target_colum])
+                board[i][j] += sum(board[target_row][j:j+square_size]) + sum([x[target_colum] for x in board[i:i+square_size]])
 
-                #   if not, move to right
                 if board[i][j] == square_size**2:
-                    return board[i][j]
+                    print(board[i][j])
+                    max_square_size = max(max_square_size, board[i][j])
 
-    return 0
+    return max_square_size
 
 if __name__ == "__main__":
     print(solution([[0,0,1,1],[1,1,1,1]])) #4
