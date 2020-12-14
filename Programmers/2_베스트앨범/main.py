@@ -39,4 +39,23 @@
 
 def solution(genres, plays):
     answer = []
+    dictionary = {}
+    N = len(genres)
+    # zip them together (range, genre, plays)
+    zipped_list = list(zip(range(N), genres, plays))
+    # put item in dictionary by genre {pop: [(1, pop, 600),  (4, pop, 2500)], classic:[(0, classic, 500), (2, classic, 150), (3, classic, 800)]}
+    for item in zipped_list:
+        genre = item[1]
+        if genre not in dictionary:
+            dictionary[genre] = []
+            dictionary[genre].append(item)
+        else:
+            dictionary[genre].append(item)
+
+    # count total plays by genre {pop: 3100, classic: 1450}
+
+    # count items in each genre by times played (stable) {pop: [(4, pop, 2500),  (1, pop, 600)], classic:[(3, classic, 800), (0, classic, 5000), (2, classic, 150)]}
+    # sort genres by total frequency [pop, classic]
+    # add music (2 per genre) [(4, pop, 2500), (1, pop, 600), (3, classic, 800), (0, classic, 500)]
+    # return result
     return answer
