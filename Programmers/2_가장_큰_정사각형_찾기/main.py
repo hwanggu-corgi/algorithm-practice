@@ -64,6 +64,68 @@ def solution(board):
                     answer = max(answer, dp[i][j])
     return answer
 
+
+
+# ==== attempt 2=====
+# from functools import reduce
+# from copy import deepcopy
+
+# def solution(board):
+#     N_rows = len(board)
+#     N_cols = len(board[0])
+#     #   find max nxn size given board min(N_rows, N_cols)
+#     max_square_size = min(N_rows, N_cols)
+#     answer = -1
+#     dp = deepcopy(board)
+
+#     for square_size in range(2, max_square_size+1):
+#         #   for i in N_rows,
+#         for i in range(N_rows):
+#             #   for j in N_cols,
+#             for j in range(N_cols):
+#                 target_row = i + (square_size-1)
+#                 target_colum = j + (square_size-1)
+
+#                 if (target_row >= N_rows) or (target_colum >= N_cols):
+#                     break
+
+#                 dp[i][j] += sum(board[target_row][j:j+square_size]) + sum([x[target_colum] for x in board[i:i+square_size]]) - board[target_row][target_colum]
+#                 # print(board[i][j])
+#                 if dp[i][j] == square_size**2:
+#                     answer = max(answer, dp[i][j])
+#     return answer
+
+
+# ==== attempt 1=====
+# from functools import reduce
+
+# def solution(board):
+#     N_rows = len(board)
+#     N_cols = len(board[0])
+#     #   find max nxn size given board min(N_rows, N_cols)
+#     square_size = min(N_rows, N_cols)
+
+#     while square_size > 0:
+#         #   for i in N_rows,
+#         for i in range(N_rows):
+#             #   for j in N_cols,
+#             for j in range(N_cols):
+#                 try:
+
+#                     #   check if square of size n at [i,j] has all 1s
+#                     square_sum = sum([sum(x[j:(j + square_size)]) for x in board[i: (i + square_size)]])
+#                     #   if not, move to right
+#                     if square_sum == square_size**2:
+#                         return square_sum
+
+#                 #   if index error, break
+#                 except IndexError:
+#                     break
+#         #   if none exists, reduce size of n by 1 and repeat
+#         square_size -= 1
+
+#     return 0
+
 if __name__ == "__main__":
     print(solution([[0,0,1,1],[1,1,1,1]])) #4
     print(solution([[0,1,1,1],[1,1,1,1],[1,1,1,1],[0,0,1,0]])) #9
