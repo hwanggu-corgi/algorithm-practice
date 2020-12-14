@@ -28,12 +28,29 @@
 
 
 # Pseudocode
-#
+#   find max nxn size given board min(N_rows, N_cols)
+#   for i in N_rows,
+#   for j in N_cols,
+#   check if square of size n at [i,j] has all 1s
+#   if not, move to right
+#   if index error, break
+#   if none exists, reduce size of n by 1 and repeat
 
 def solution(board):
     answer = 1234
 
     # [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
     print('Hello Python')
+    N_rows = len(board)
+    N_cols = len(board[0])
+    square_size = min(N_rows, N_cols)
+
+    #   find max nxn size given board min(N_rows, N_cols)
+    #   for i in N_rows,
+    #   for j in N_cols,
+    #   check if square of size n at [i,j] has all 1s
+    #   if not, move to right
+    #   if index error, break
+    #   if none exists, reduce size of n by 1 and repeat
 
     return answer
