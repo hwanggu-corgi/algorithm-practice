@@ -9,6 +9,19 @@
 #   - 각 작업에 대해 작업의 소요시간은 1 이상 1,000 이하입니다.
 #   - 하드디스크가 작업을 수행하고 있지 않을 때에는 먼저 요청이 들어온 작업부터 처리합니다.
 
+# Example
+#   1) [[0, 3], [1, 9], [2, 6]]
+#       - use shorttest job first
+#       (0,3) -> 3 (shortest)
+#       (1,9) -> 8 (last)
+#       (2,6) -> 4 (second shortest)
+
+#       (0,3) starts first
+#       (2,6) comes when finished
+#           - calculate time deplayed (3 - 2) = 1
+#            - calculate total time taken
+#
+
 def solution(jobs):
     answer = 0
     return answer
