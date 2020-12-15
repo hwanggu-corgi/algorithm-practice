@@ -15,15 +15,15 @@
 
 function solution(n, lost, reserve) {
     let lentCount = 0;
-    let N_lost = lost.length;
+
     // turn lost and reserve to sets
     let lostSet = new Set(lost);
     let reserveSet = new Set(reserve);
 
     // find available sets
     // remove number in both reserve and lost
-    lost = lost.filter(x => !(x in reserveSet));
-    reserve = reserve.filter(x => !(x in lostSet));
+    lost = lost.filter(x => !(reserveSet.has(x)));
+    reserve = reserve.filter(x => !(lostSet.has(x)));
     reserveSet = new Set(reserve);
 
     // sort lost
@@ -42,7 +42,6 @@ function solution(n, lost, reserve) {
         }
 
         if (reserveSet.has(i+1)) {
-            console.log("I am here");
             // if lent, add count
             lentCount += 1;
 
@@ -53,7 +52,7 @@ function solution(n, lost, reserve) {
     }
 
     // return total number of participants in gym class
-    answer = n - (lost.length - lentCount);
+    let answer = n - (lost.length - lentCount);
     return answer;
 }
 
@@ -66,5 +65,7 @@ function compare(a,b) {
         return -1;
     }
 }
-console.log(solution(5, [2,4], [1,3,5])); // 5
+console.log(solution(3, [1], [4])); // 2
+console.log(solution(5, [1,2], [1])); // 4
+console.log(solution(5, [1,2], [1,2])); // 5
 console.log(solution(5, [2,4], [1,3,5])); // 5
