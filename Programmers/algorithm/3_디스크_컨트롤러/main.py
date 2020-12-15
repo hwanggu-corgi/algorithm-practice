@@ -17,17 +17,23 @@
 #       (2,6) -> 6 (second shortest)
 
 #       (0,3) starts first
+#           - time starts 0
+#           - calculate time deplayed (0 - 0) = 0
+#           - calculate total time taken 0 + 3  = 3
+#           - time ends 3
+#
 #       (2,6) comes next
-#           - time starts 4
+#           - time starts 3
 #           - calculate time deplayed (3 - 2) = 1
-#           - calculate total time taken (6)
-#           - time total = 7
+#           - calculate total time taken 1 + 6  = 7
+#           - time ends 9
 #
 #       (1,9) comes next
-#           - time starts 8
-#           - calculate time deplayed (7 - 1) = 6
-#           - calculate total time taken (9)
-#           - time total = 15
+#           - time starts 9
+#           - calculate time deplayed (9 - 1) = 8
+#           - calculate total time taken 8 + 9 = 17
+
+# average time =  (3 + 7 + 17) / 3 = 9
 
 def solution(jobs):
     answer = 0
