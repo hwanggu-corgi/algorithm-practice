@@ -13,14 +13,21 @@
 #   1) [[0, 3], [1, 9], [2, 6]]
 #       - use shorttest job first
 #       (0,3) -> 3 (shortest)
-#       (1,9) -> 8 (last)
-#       (2,6) -> 4 (second shortest)
+#       (1,9) -> 9 (last)
+#       (2,6) -> 6 (second shortest)
 
 #       (0,3) starts first
-#       (2,6) comes when finished
+#       (2,6) comes next
+#           - time starts 4
 #           - calculate time deplayed (3 - 2) = 1
-#           - calculate total time taken
+#           - calculate total time taken (6)
+#           - time total = 7
 #
+#       (1,9) comes next
+#           - time starts 8
+#           - calculate time deplayed (7 - 1) = 6
+#           - calculate total time taken (9)
+#           - time total = 15
 
 def solution(jobs):
     answer = 0
