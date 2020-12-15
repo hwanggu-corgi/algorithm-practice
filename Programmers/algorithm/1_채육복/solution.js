@@ -15,21 +15,24 @@
 
 function solution(n, lost, reserve) {
     var answer = 0;
+    let N_lost = lost.length;
     // turn lost and reserve to sets
-    lostSet = new Set(lost)
-    reserveSet = new Set(reserve)
+    let lostSet = new Set(lost);
+    let reserveSet = new Set(reserve);
     // find available sets
-    // remove number in both reserve and
-    lostSet = lostSet - reserveSet;
-    lostSet = lostSet - reserveSet;
+    // remove number in both reserve and lost
+    lost = lost.filter(x => !(x in reserveSet));
+    reserve = reserve.filter(x => !(x in lostSet));
 
-    // convert lost back to list
     // sort lost
     // lend reserve to peers
     // for each lost
+    for (let i = 0; i < N_lost; i++) {
         // if the different between lost and reserve is 1 apart, lend gym shirt
         // if lent, add count
         // if lent, remove number from reserve
+    }
+
     // return total number of participants in gym class
         // n - (lost.length - lentCount)
     return answer;
