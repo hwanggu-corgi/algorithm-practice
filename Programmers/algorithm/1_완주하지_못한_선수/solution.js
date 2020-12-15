@@ -13,17 +13,13 @@ function solution(participant, completion) {
         }
     }
 
-    console.log(count);
-
     for (let i = 0; i < N_completion; i++) {
         count[completion[i]] -= 1;
     }
 
-    console.log(count);
-
     for (let i = 0; i < N_participant; i++) {
         if (count[participant[i]] != 0 ) {
-            answer = completion[i];
+            answer = participant[i];
             break;
         }
     }
