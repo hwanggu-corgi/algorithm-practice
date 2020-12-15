@@ -24,11 +24,11 @@
 function solution(a, b) {
     let answer = '';
     let daysCount = 0;
-    let days = {0: "FRI", 1: "SAT", 2:"SUN", 3:"MON", 4:"TUES", 5:"WED", 6:"THU"};
+    let days = {1: "FRI", 2: "SAT", 3:"SUN", 4:"MON", 5:"TUE", 6:"WED", 0:"THU"};
 
     // find the closest friday to target from january 1st
     daysCount += get_days(a-1);
-
+    daysCount += b;
     // find the distance from the closest friday
     offset = daysCount % 7;
 
@@ -53,4 +53,6 @@ let get_days = (months) => {
     return daysCount;
 }
 
+console.log(solution(1,1)) // FRI
+console.log(solution(1,8)) // FRI
 console.log(solution(5,24)) // TUE
