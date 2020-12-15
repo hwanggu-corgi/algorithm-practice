@@ -36,7 +36,8 @@
 # average time =  (3 + 7 + 17) / 3 = 9
 
 # Pseudocode
-#
+#   for each jobs store time starts in a dictionary by time taken
+#   {3: [0], 6:[2] 9:[1]}
 
 def solution(jobs):
     answer = 0
