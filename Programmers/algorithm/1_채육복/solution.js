@@ -30,15 +30,25 @@ function solution(n, lost, reserve) {
     lost = lost.sort(compare);
     // lend reserve to peers
     // for each lost
-    console.log(lost);
-    for (i in lost) {
+    for (let i of lost) {
         // if the different between lost and reserve is 1 apart, lend gym shirt
-        if ((i-1) in reserveSet) {
+        if (reserveSet.has(i-1)) {
             // if lent, add count
             lentCount += 1;
 
             // if lent, remove number from reserve
-            reserveSet.remove(i-1);
+            reserveSet.delete(i-1);
+            continue;
+        }
+
+        if (reserveSet.has(i+1)) {
+            console.log("I am here");
+            // if lent, add count
+            lentCount += 1;
+
+            // if lent, remove number from reserve
+            reserveSet.delete(i+1);
+            continue;
         }
     }
 
@@ -49,12 +59,12 @@ function solution(n, lost, reserve) {
 
 function compare(a,b) {
     if (a > b) {
-        return -1;
+        return 1;
     } else if (a == b) {
         return 0;
     } else {
-        return 1;
+        return -1;
     }
 }
-
+console.log(solution(5, [2,4], [1,3,5])); // 5
 console.log(solution(5, [2,4], [1,3,5])); // 5
