@@ -19,7 +19,7 @@
 #       (0,3) starts first
 #       (2,6) comes when finished
 #           - calculate time deplayed (3 - 2) = 1
-#            - calculate total time taken
+#           - calculate total time taken
 #
 
 def solution(jobs):
