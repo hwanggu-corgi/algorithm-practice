@@ -43,7 +43,8 @@
 
 #   until heap queue is empty
 #   pop an element from heap
-#   pop starting time from
+#   popleft dictionary by the value of heap
+#
 
 def solution(jobs):
     answer = 0
