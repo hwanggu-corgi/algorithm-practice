@@ -35,6 +35,9 @@
 
 # average time =  (3 + 7 + 17) / 3 = 9
 
+# Pseudocode
+#
+
 def solution(jobs):
     answer = 0
     return answer
