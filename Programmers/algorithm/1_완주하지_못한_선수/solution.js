@@ -2,21 +2,30 @@ function solution(participant, completion) {
     let answer = '';
     let count = {};
 
-    let N = completion.length;
+    let N_completion = completion.length;
+    let N_participant = participant.length;
 
-    participant = participant.sort();
-    completion = completion.sort();
-
-    for (let i = 0; i < N; i++) {
-        if (participant[i] != completion[i]) {
-            console.log(participant[i]);
-            answer = participant[i];
-            break;
+    for (let i = 0; i < N_participant; i++) {
+        if (!(participant[i] in count)) {
+            count[participant[i]] = 1;
+        } else {
+            count[participant[i]] += 1;
         }
     }
 
-    if (participant.length > completion.length) {
-        answer = participant[N];
+    console.log(count);
+
+    for (let i = 0; i < N_completion; i++) {
+        count[completion[i]] -= 1;
+    }
+
+    console.log(count);
+
+    for (let i = 0; i < N_participant; i++) {
+        if (count[participant[i]] != 0 ) {
+            answer = completion[i];
+            break;
+        }
     }
 
     return answer;
