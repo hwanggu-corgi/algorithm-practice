@@ -39,6 +39,12 @@
 #   for each jobs store time starts in a dictionary by time taken
 #   {3: [0], 6:[2] 9:[1]}
 
+#   store time taken to heap
+
+#   until heap queue is empty
+#   pop an element from heap
+#   pop starting time from
+
 def solution(jobs):
     answer = 0
     return answer
