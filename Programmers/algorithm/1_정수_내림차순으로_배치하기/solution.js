@@ -3,7 +3,7 @@ function solution(n) {
     n = n.toString();
 
     // split string into array arr
-    let n_array = n.split();
+    let n_array = n.split("");
 
     // reverse array
     n_array = n_array.sort((a,b) => {
@@ -17,9 +17,11 @@ function solution(n) {
     });
 
     // recombine and convert to integer
-    n = int(n_array.join(""));
+    n = parseInt(n_array.join(""));
 
     // return
     let answer = n;
     return answer;
 }
+
+console.log(solution(118372));
