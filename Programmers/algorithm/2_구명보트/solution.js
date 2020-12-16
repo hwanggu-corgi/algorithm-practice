@@ -15,9 +15,17 @@ function solution(people, limit) {
     people = people.sort();
 
     while (i_left < i_right) {
+        let current_weight = people[i_right];
+
         // for each large element add small elements until full (no small element exists or small element + large weight >= limit)
-        // when full, add count
-        // repeat until empty
+        while (current_weight < limit && (i_left < i_right)) {
+            // when full, add count
+            current_weight += people[i_left];
+            // repeat until empty
+            i_left += 1;
+        }
+        count += 1;
+        i_right += 1;
     }
 
     return answer;
