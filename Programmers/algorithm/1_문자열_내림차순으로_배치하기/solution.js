@@ -15,25 +15,34 @@
 function solution(s) {
     let N = s.length;
 
-    let lowercase_s = get_lowercase_s(s);
-    let uppercase_s = get_uppercase_s(s);
+    let lowercase_s = get_lowercase_s(s).split("").sort().reverse().join("");
+    let uppercase_s = get_uppercase_s(s).split("").sort().reverse().join("");
 
-    let answer = s.split("").reverse().join("");
+    let answer = lowercase_s + uppercase_s;
     return answer;
 }
 
-let lowercase_s = (s) => {
+let get_lowercase_s = (s) => {
     let res = "";
     for(let char of s) {
-        if (s.lowercase() == s) {
-
+        if (char.toLowerCase() == char) {
+            res += char;
         }
     }
+
+    return res;
 };
 
-let uppercase_s = (s) => {
+let get_uppercase_s = (s) => {
+    let res = "";
+    for(let char of s) {
+        if (char.toUpperCase() == char) {
+            res += char;
+        }
+    }
 
+    return res;
 };
 
 
-console.log(solution("Zbcdefg"));
+console.log(solution("Zbcdefg")); // gfedcbZ
