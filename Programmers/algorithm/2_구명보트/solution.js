@@ -7,27 +7,33 @@
 
 function solution(people, limit) {
     var answer = 0;
-    let N = people.length;
 
     // sort list in order
     people = people.sort(compare);
-    while (i_left <= i_right) {
-        let current_weight = people[i_right];
+    while (people.length > 0) {
+        let current_weight = people.pop();
 
         // for each large element add small elements until full (no small element exists or small element + large weight >= limit)
-        while ((current_weight + people[i_left] < limit) && (i_left < i_right)) {
-            // when full, add count
-            current_weight += people[i_left];
-            console.log(current_weight);
+        while (true) {
+            if (people.length == 0) {
+                break;
+            }
+
+            if (current_weight + people[0] >  limit) {
+                break;
+            }
+
             // repeat until empty
-            i_left += 1;
+            let small_weight = people.shift();
+            current_weight += small_weight;
+
         }
         answer += 1;
-        i_right -= 1;
     }
 
     return answer;
 }
+
 
 let compare = (a,b) => {
     return a - b;
