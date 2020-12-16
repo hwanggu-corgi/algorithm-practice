@@ -9,8 +9,9 @@
 
 
 // Example
-//  1) [2, 1, 3, 2]
+//  1) [2, 1, 3, 2] location 2
 //
+//      return 1
 
 function solution(priorities, location) {
     var answer = 0;
