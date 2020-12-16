@@ -32,24 +32,26 @@ function solution(priorities, location) {
     let count = 0;
 
     priorities = Array.from(priorities.entries());
-    highest_priority = get_highest_priority(priorities);
-    //  while priorities not equal to 0
+    let highest_priority = get_highest_priority(priorities);
+
+    // while priorities not equal to 0
     while (priorities.length > 0) {
-        //  popleft an element
-        item = priorities.unshift();
-        item_priority = item[1];
-        item_location = item[0];
-        //  check if priority matches first priority
-        //      if no, push item
+        // popleft an element
+        let item = priorities.shift();
+        let item_priority = item[1];
+        let item_location = item[0];
+        // check if priority matches first priority
+        // if no, push item
         if (item_priority != highest_priority) {
             priorities.push(item);
+            continue
         }
 
-        //      if yes, add count
+        // if yes, add count
         count += 1;
 
-        //      check if location is the target location
-        //      if yes, return count
+        // check if location is the target location
+        // if yes, return count
         if (item_location == location) {
             return count;
         }
@@ -61,10 +63,13 @@ function solution(priorities, location) {
 
 let get_highest_priority = (priorities) => {
     let maximum = -1;
-    for (item of priorities) {
+    for (let item of priorities) {
         let item_priority = item[1];
-        let maximum = Math.max(item_priority, maximum);
+        maximum = Math.max(item_priority, maximum);
     }
 
     return maximum;
 }
+
+console.log(solution([2, 1, 3, 2], 2)); // 1
+console.log(solution([1, 1, 9, 1, 1, 1], 0)); // 5
