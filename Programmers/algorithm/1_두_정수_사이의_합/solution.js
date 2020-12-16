@@ -3,5 +3,12 @@
 
 function solution(a, b) {
     var answer = 0;
+    let total_sum = 0;
+    let smaller = Math.min(a,b);
+    let larger = Math.max(a,b);
+    for (let i = smaller; i <= larger; i++) {
+        total_sum += i;
+    }
+    answer = total_sum;
     return answer;
 }
