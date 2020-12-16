@@ -12,11 +12,15 @@
 //  1) [2, 1, 3, 2] location 2
 //     get priority of target location 2 --> 3
 //     find max priority --> 3
-//     [[0,2],[1,1], [2,3], [3,2]]
-//     [0,2] [[1,1],[2,3], [3,2]] popleft --> check if priority matches target --> no --> append
-//     [0,2] [[1,1],[2,3], [3,2]] popleft --> check if priority matches target --> no --> append
-//
+//     [[0,2],[1,1],[2,3], [3,2]]
+//     [0,2] [[1,1],[2,3], [3,2]] popleft --> check if priority matches first priority --> no --> append
+//     [1,1] [[2,3],[3,2], [0,2]] popleft --> check if priority matches first priority --> no --> append
+//     [2,3] [[3,2],[0,2], [1,1]] popleft --> check if priority matches first priority--> yes --> add count --> check if priority matches target --> yes --> return count
 //      return 1
+
+// Pseudocode
+//  while priorities not equal to 0
+// pop
 
 function solution(priorities, location) {
     var answer = 0;
