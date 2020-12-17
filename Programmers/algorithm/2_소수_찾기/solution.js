@@ -23,7 +23,7 @@ function solution(numbers) {
     for (let number_length = 1; number_length <= n; number_length++) {
         get_combined_prime_numbers("", numbers, number_length, prime_set);
     }
-    console.log(prime_set);
+
     answer =prime_set.size;
     return answer;
 }
