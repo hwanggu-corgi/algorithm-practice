@@ -48,12 +48,44 @@
 // copy land call it dp
 // while i start from 1 until n
 // add dp[i][0] = max(dp[i-1][1], dp[i-1][2], dp[i-1][3])
+// add dp[i][1] = max(dp[i-1][0], dp[i-1][1], dp[i-1][2])
+// add dp[i][2] = max(dp[i-1][0], dp[i-1][1], dp[i-1][3])
+// add dp[i][3] = max(dp[i-1][0], dp[i-1][1], dp[i-1][2])
+
+
+// return the max of the last row
 
 function solution(land) {
-    var answer = 0;
+    // copy land call it dp
+    let dp = copy_array(land);
+    let i = 1;
+    let n = land.length;
+    // while i start from 1 until n
+    while (i < n) {
+        // add dp[i][0] = max(dp[i-1][1], dp[i-1][2], dp[i-1][3])
+        // add dp[i][1] = max(dp[i-1][0], dp[i-1][1], dp[i-1][2])
+        // add dp[i][2] = max(dp[i-1][0], dp[i-1][1], dp[i-1][3])
+        // add dp[i][3] = max(dp[i-1][0], dp[i-1][1], dp[i-1][2])
 
-    // [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
-    console.log('Hello Javascript')
+        dp[i][0] = Math.max(dp[i-1][1], dp[i-1][2], dp[i-1][3]);
+        dp[i][1] = Math.max(dp[i-1][0], dp[i-1][1], dp[i-1][2]);
+        dp[i][2] = Math.max(dp[i-1][0], dp[i-1][1], dp[i-1][3]);
+        dp[i][3] = Math.max(dp[i-1][0], dp[i-1][1], dp[i-1][2]);
+        i += 1
+    }
 
+    // return the max of the last row
+    let answer = Math.max(...dp[n-1]);
     return answer;
 }
+
+let copy_array = (array) => {
+    let res = [];
+    for (row of array) {
+        let row_copy = [...row];
+        res.push(row_copy);
+    }
+    return res;
+}
+
+console.log(solution([[1,2,3,5],[5,6,7,8],[4,3,2,1]])); // 16
