@@ -41,7 +41,7 @@ function solution(n,a,b)
         }
     }
     //  if so , return count
-    answer = count;
+    let answer = count;
     return answer;
 }
 
