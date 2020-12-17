@@ -8,6 +8,18 @@
 // N : 21 이상 220 이하인 자연수 (2의 지수 승으로 주어지므로 부전승은 발생하지 않습니다.)
 // A, B : N 이하인 자연수 (단, A ≠ B 입니다.)
 
+// Cases
+//  -
+
+// Example
+//  1 - 2 3 - 4 5 - 6 7 - 8 9 - 10 11- 12 13 - 14 15 - 16
+//    1     2     3     4     5       6      7       8
+//       1           2            3
+
+//
+//  when odd --> Math.ceil(number / 2)
+//  when even--> number / 2
+
 function solution(n,a,b)
 {
     var answer = 3;
