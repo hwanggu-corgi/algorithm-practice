@@ -20,23 +20,45 @@ function solution(numbers) {
 
     // for number length from 1 to n,
     // use recursion to find combination of prime numbers of length from 1 to n
-    for (let number_length = 1; number <= n; number++) {
-        for (const [index, number] of Object.entries(numbers)) {
-            let new_numbers = numbers.substring(0, index) + numbers.substring(index+1);
-            get_combined_prime_numbers(number, new_numbers, number_length, prime_set);
-        }
+    for (let number_length = 1; number_length <= n; number_length++) {
+        get_combined_prime_numbers("", numbers, number_length, prime_set);
     }
-
+    console.log(prime_set);
     answer =prime_set.size;
     return answer;
 }
 
-function get_combined_prime_numbers(number, numbers, n, prime_set) {
+let get_combined_prime_numbers = (number, numbers, n, prime_set) => {
     // if number length == n, check prime
     // if prime, add to prime_set
-    if (n == 1) {
-
+    if (number.length == n) {
+        number = parseInt(number);
+        if (!prime_set.has(number) && is_prime(number)) {
+            prime_set.add(number)
+        }
+        return;
     }
 
-    // else
+    // else continue to add combination of numbers
+    for (const [index, e] of Object.entries(numbers)) {
+        let new_numbers = numbers.substring(0, index) + numbers.substring(index+1);
+        get_combined_prime_numbers(number + e, new_numbers, n, prime_set);
+    }
 }
+
+let is_prime = (number) => {
+    if (number == 1 || number == 0) {
+        return false;
+    }
+
+    for (let i = 2; i < number; i++) {
+        if (number % i == 0) {
+            return false
+        }
+    }
+
+    return true;
+}
+
+console.log(solution("17")); // 3
+console.log(solution("011")); // 2
