@@ -34,7 +34,7 @@ let get_combined_prime_numbers = (number, numbers, n, prime_set) => {
     if (number.length == n) {
         number = parseInt(number);
         if (!prime_set.has(number) && is_prime(number)) {
-            prime_set.add(number)
+            prime_set.add(number);
         }
         return;
     }
