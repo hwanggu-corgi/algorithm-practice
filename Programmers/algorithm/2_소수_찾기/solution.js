@@ -16,18 +16,18 @@ function solution(numbers) {
     var answer = 0;
     // find length of numbers, call it n
     let n = numbers.length;
-    let numbers_arr = numbers.split();
-    let number_length = 1;
-    let combinations_set = new Set();
+    let prime_set = new Set();
 
     // for number length from 1 to n,
-    while (number_length <= n) {
-        // use recursion to find combination of digits of length n
-        get_combined_number(numbers, number_length, combinations_set);
-        // convert to integer
-        // check if it's not in set and is a prime number
-        // if so, add integer of number to set
+    // use recursion to find combination of prime numbers of length from 1 to n
+    for (number of numbers) {
+        get_combined_prime_numbers(number, numbers, n, prime_set);
     }
 
+    answer =prime_set.size;
     return answer;
+}
+
+function get_combined_prime_numbers(number, numbers, n, prime_set) {
+    if (n == 1 && is_prime())
 }
