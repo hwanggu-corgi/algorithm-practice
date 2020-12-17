@@ -21,8 +21,9 @@ function solution(numbers) {
     // for number length from 1 to n,
     // use recursion to find combination of prime numbers of length from 1 to n
     for (let number_length = 1; number <= n; number++) {
-        for (number of numbers) {
-            get_combined_prime_numbers(number, numbers, n, prime_set);
+        for (const [index, number] of Object.entries(numbers)) {
+            let new_numbers = numbers.substring(0, index) + numbers.substring(index+1);
+            get_combined_prime_numbers(number, new_numbers, number_length, prime_set);
         }
     }
 
@@ -31,5 +32,11 @@ function solution(numbers) {
 }
 
 function get_combined_prime_numbers(number, numbers, n, prime_set) {
-    if (n == 1 && is_prime())
+    // if number length == n, check prime
+    // if prime, add to prime_set
+    if (n == 1) {
+
+    }
+
+    // else
 }
