@@ -10,6 +10,7 @@
 // find length of numbers, call it n
 // for number length from 1 to n,
 // use recursion to find combination of digits of length n
+// if found, add integer of number to set
 
 function solution(numbers) {
     var answer = 0;
