@@ -16,16 +16,34 @@
 //    1     2     3     4     5       6      7       8
 //       1           2            3
 
-//
+// while True
 //  when odd --> Math.ceil(number / 2)
 //  when even--> number / 2
+//  add count
+//  check if number_left == number_right
+//  if so , return count
 
 function solution(n,a,b)
 {
-    var answer = 3;
+    let count = 0;
 
-    // [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
-    console.log('Hello Javascript')
-
+    // while True
+    while (true) {
+        //  when odd --> Math.ceil(number / 2)
+        a = a % 2 == 1 ? Math.ceil(a / 2) : a/2;
+        //  when even--> number / 2
+        b = b % 2 == 1 ? Math.ceil(b / 2) : b/2;
+        //  add count
+        count += 1
+        //  check if number_left == number_right
+        if (a == b) {
+            break;
+        }
+    }
+    //  if so , return count
+    answer = count;
     return answer;
 }
+
+
+console.log(solution(8,4,7)); // 3
