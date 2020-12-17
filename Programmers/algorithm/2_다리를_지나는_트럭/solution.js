@@ -21,15 +21,34 @@
 //  start of i = 8        []        []
 
 // Pseudocode
-//      start from i = 0
-//      while length of truck_weights is greater than 0,
-//      shift bridge
-//      append 0 to bridge
-//      if truck weight is less than bridge weight, push to bridge
-//      else
-//
+// start from i = 0
+// while length of truck_weights is greater than 0,
+// shift bridge
+// append 0 to bridge
+// if truck weight is less than bridge weight, push to bridge
+// else continue
 
 function solution(bridge_length, weight, truck_weights) {
     var answer = 0;
+
+    // start from i = 0
+    let time_elapsed = 0
+    let bridge = [];
+    // while length of truck_weights is greater than 0,
+    while (truck_weights.length > 0) {
+        // shift bridge
+        // append 0 to bridge
+        bridge.shift();
+        bridge.push(0);
+        // if truck weight is less than bridge weight, push to bridge, move index for truck_weights
+        let current_weight = bridge.reduce((acc, val) => acc + val, 0);
+
+        if (current_weight + truck_weights[truck_index] <= weights) {
+            bridge[]
+        }
+        // else continue
+        time_elapsed += 1;
+    }
+    answer = time_elapsed;
     return answer;
 }
