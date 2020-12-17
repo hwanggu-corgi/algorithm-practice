@@ -30,33 +30,33 @@
 
 function solution(bridge_length, weight, truck_weights) {
     var answer = 0;
-    // start from i = 0
+
     let n = truck_weights.length;
     let time_elapsed = 0;
     let bridge = new Array(bridge_length).fill(0);
     let truck_index = 0;
     let current_weight = 0;
-    // while length of truck_weights is greater than 0,
+
     while (truck_index < n) {
-        console.log(bridge);
-        // shift bridge
-        // append 0 to bridge
         let finished_truck_weight = bridge.shift();
         current_weight -= finished_truck_weight;
         bridge.push(0);
-        // if truck weight is less than bridge weight, push to bridge, move index for truck_weights
-        let current_weight = bridge.reduce((acc, val) => acc + val, 0);
 
         if (current_weight + truck_weights[truck_index] <= weight) {
             bridge[bridge_length-1] = truck_weights[truck_index];
-            finished_truck_weight += truck_weights[truck_index];
+            current_weight += truck_weights[truck_index];
             truck_index += 1;
         }
-        // else continue
+
         time_elapsed += 1;
     }
 
-    while (current_weight > 0)
+    while (current_weight > 0) {
+        let finished_truck_weight = bridge.shift();
+        current_weight -= finished_truck_weight;
+        bridge.push(0);
+        time_elapsed += 1;
+    }
 
     answer = time_elapsed;
     return answer;
