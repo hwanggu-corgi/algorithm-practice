@@ -23,6 +23,7 @@ function solution(numbers) {
     // for number length from 1 to n,
     while (number_length <= n) {
         // use recursion to find combination of digits of length n
+        get_combined_number(numbers, number_length, combinations_set);
         // convert to integer
         // check if it's not in set and is a prime number
         // if so, add integer of number to set
