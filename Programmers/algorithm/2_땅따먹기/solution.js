@@ -67,10 +67,10 @@ function solution(land) {
         // add dp[i][2] = max(dp[i-1][0], dp[i-1][1], dp[i-1][3])
         // add dp[i][3] = max(dp[i-1][0], dp[i-1][1], dp[i-1][2])
 
-        dp[i][0] = Math.max(dp[i-1][1], dp[i-1][2], dp[i-1][3]);
-        dp[i][1] = Math.max(dp[i-1][0], dp[i-1][1], dp[i-1][2]);
-        dp[i][2] = Math.max(dp[i-1][0], dp[i-1][1], dp[i-1][3]);
-        dp[i][3] = Math.max(dp[i-1][0], dp[i-1][1], dp[i-1][2]);
+        dp[i][0] += Math.max(dp[i-1][1], dp[i-1][2], dp[i-1][3]);
+        dp[i][1] += Math.max(dp[i-1][0], dp[i-1][2], dp[i-1][3]);
+        dp[i][2] += Math.max(dp[i-1][0], dp[i-1][1], dp[i-1][3]);
+        dp[i][3] += Math.max(dp[i-1][0], dp[i-1][1], dp[i-1][2]);
         i += 1
     }
 
@@ -81,7 +81,7 @@ function solution(land) {
 
 let copy_array = (array) => {
     let res = [];
-    for (row of array) {
+    for (let row of array) {
         let row_copy = [...row];
         res.push(row_copy);
     }
