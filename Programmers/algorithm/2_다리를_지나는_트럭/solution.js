@@ -8,6 +8,13 @@
 //   - truck_weights의 길이는 1 이상 10,000 이하입니다.
 //   - 모든 트럭의 무게는 1 이상 weight 이하입니다.
 
+// Exmaple
+//  1) bridge_length: 2, weight: 10, truck_weights: [7,4,5,6]
+//  start of i = 0        [0,0] [7,4,5,6]
+//  start of i = 1        [0,7] [4,5,6]
+//  start of i = 2        [7,0] [4,5,6]
+//  start of i = 2        [7,0] [4,5,6]
+
 function solution(bridge_length, weight, truck_weights) {
     var answer = 0;
     return answer;
