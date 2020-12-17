@@ -20,8 +20,10 @@ function solution(numbers) {
 
     // for number length from 1 to n,
     // use recursion to find combination of prime numbers of length from 1 to n
-    for (number of numbers) {
-        get_combined_prime_numbers(number, numbers, n, prime_set);
+    for (let number_length = 1; number <= n; number++) {
+        for (number of numbers) {
+            get_combined_prime_numbers(number, numbers, n, prime_set);
+        }
     }
 
     answer =prime_set.size;
