@@ -14,5 +14,19 @@
 
 function solution(numbers) {
     var answer = 0;
+    // find length of numbers, call it n
+    let n = numbers.length;
+    let numbers_arr = numbers.split();
+    let number_length = 1;
+    let combinations_set = new Set();
+
+    // for number length from 1 to n,
+    while (number_length <= n) {
+        // use recursion to find combination of digits of length n
+        // convert to integer
+        // check if it's not in set and is a prime number
+        // if so, add integer of number to set
+    }
+
     return answer;
 }
