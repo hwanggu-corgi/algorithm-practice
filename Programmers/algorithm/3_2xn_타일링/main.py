@@ -38,8 +38,12 @@ def solution(n):
 
     dp = [0] * (n+1)
 
-    while
+    i = 3
+    while i < (n+1):
+        dp[i] = dp[i-1] + dp[i-2]
+        i += 1
 
+    answer = dp[-1]
     return asnwer
 
 # from itertools import permutations
