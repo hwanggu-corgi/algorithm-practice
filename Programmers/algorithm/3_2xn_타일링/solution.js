@@ -28,13 +28,14 @@ function solution(n) {
     if (n == 0 || n == 1 || n == 2) {
         return n;
     }
+    let c = 0;
     let a = 1;
     let b = 2;
     let i = 3;
     while (i < (n+1)) {
         c = (a + b) % 1000000007;
-        b = c;
         a = b;
+        b = c;
         i += 1;
     }
 
