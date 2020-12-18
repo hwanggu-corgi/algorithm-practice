@@ -24,42 +24,48 @@
 
 # Creating a permutation
 #
+#
+# n = 1
+#   -> there is 1 combination (V)
+#
+# n = 2
+#   -> there are 2 combinations ([V,V], [2H])
 
-from itertools import permutations
+# from itertools import permutations
 
-def solution(n):
-    count = 0
+# def solution(n):
+#     count = 0
 
-    #  1) For each combination starting with n-i many Vs and i many 2Hs (until there are 0 many Vs)
-    i = 0
-    while i < (n+1):
-        number_of_2hs = i/2
-        number_of_vs = n - i
+#     #  1) For each combination starting with n-i many Vs and i many 2Hs (until there are 0 many Vs)
+#     i = 0
+#     while i < (n+1):
+#         number_of_2hs = i/2
+#         number_of_vs = n - i
 
-        #  2) Check if 2H is valid
-        if number_of_2hs > 0 and number_of_2hs < 1:
-            continue
+#         #  2) Check if 2H is valid
+#         if number_of_2hs > 0 and number_of_2hs < 1:
+#             continue
 
-        tiling = get_tiling(int(number_of_2hs), number_of_vs)
-        #  3) Create permutations of V and 2H
-        combs = permutations(tiling)
-        #  4) Add it's length to count
-        count += len(list(set(combs)))
-        #  5) increase i and continue
-        i += 2
+#         tiling = get_tiling(int(number_of_2hs), number_of_vs)
+#         #  3) Create permutations of V and 2H
+#         combs = permutations(tiling)
+#         #  4) Add it's length to count
+#         count += len(list(set(combs)))
+#         #  5) increase i and continue
+#         i += 2
 
-    return count
+#     return count
 
-def get_tiling(number_2h, number_v):
-    res = []
+# def get_tiling(number_2h, number_v):
+#     res = []
 
-    for i in range(number_2h):
-        res.append("2H")
+#     for i in range(number_2h):
+#         res.append("2H")
 
-    for j in range(number_v):
-        res.append("V")
+#     for j in range(number_v):
+#         res.append("V")
 
-    return res
+#     return res
 
 if __name__ == "__main__":
     print(solution(3)) # 3
