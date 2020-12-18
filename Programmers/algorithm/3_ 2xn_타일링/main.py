@@ -18,10 +18,9 @@
 
 # Pseudocode
 #  1) For each combination starting with n-i many Vs and i many 2Hs (until there are 0 many Vs)
-#  2) check if such formation is valid
-#  3) Create permutations of V and 2H
-#  4) Add it's length to count
-#  3) increase i and continue
+#  2) Create permutations of V and 2H
+#  3) Add it's length to count
+#  4) increase i and continue
 
 # Creating a permutation
 #
@@ -30,4 +29,27 @@ from itertools import combinations
 
 def solution(n):
     answer = 0
+
+    #  1) For each combination starting with n-i many Vs and i many 2Hs (until there are 0 many Vs)
+    for i in range(n+1):
+        tiling = get_tiling(i, n-i)
+        #  2) Create permutations of V and 2H
+        combs = combinations(tiling)
+
+        #  3) Add it's length to count
+        count = len(combs)
+        #  4) increase i and continue
+        i += 2
+
     return answer
+
+def get_tiling(number_2h, number_v):
+    res = []
+
+    for i in range(number_2h):
+        res.push("2H")
+
+    for j in range(number_v):
+        res.push("V")
+
+    return res
