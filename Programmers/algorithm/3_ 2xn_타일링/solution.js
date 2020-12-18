@@ -7,6 +7,20 @@
 
 // Example
 //  1)
+//      V V V V --> possible
+//      V V V H --> not possible
+//      V V H H --> possible
+//      V H H V --> possible
+//      H H V V --> possible
+//      V H H H --> not possible
+//      H H H V --> not possible
+//      H H H H --> possible
+
+
+// Pseudocode
+//  1) Create permutations of V and H
+//  2) for each permutation, check if solution is valid
+//  3) if valid, add to count
 
 function solution(n) {
     var answer = 0;
