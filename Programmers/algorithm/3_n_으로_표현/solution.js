@@ -2,7 +2,7 @@
 // 사용횟수의 최솟값을 return 하도록 solution 함수를 작성하세요.
 
 // Example
-//  1)
+//  1) N: 5     Number: 12
 
 function solution(N, number) {
     var answer = 0;
