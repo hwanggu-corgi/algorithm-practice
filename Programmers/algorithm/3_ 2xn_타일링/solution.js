@@ -22,6 +22,10 @@
 //  2) for each permutation, check if solution is valid
 //  3) if valid, add to count
 
+
+// Creating a permutation
+//
+
 function solution(n) {
     var answer = 0;
     return answer;
