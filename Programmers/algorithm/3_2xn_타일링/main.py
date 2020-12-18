@@ -25,11 +25,19 @@
 # Creating a permutation
 #
 #
-# n = 1
-#   -> there is 1 combination (V)
-#
-# n = 2
-#   -> there are 2 combinations ([V,V], [2H])
+# n = 1 -> there is  1 combination (V)
+# n = 2 -> there are 2 combinations ([V,V], [2H])
+# n = 3 -> there are 3 combinations ([V,V,V], [2H,V], [V,2H])
+# n = 4 -> there are 5 combinations ([V,V,V,V], [V,2H,V], [V,V,2H], [2H,V,V], [2H, 2H])
+
+def solution(n):
+    count = 0
+
+    dp = [0] * (n+1)
+
+    while
+
+    return asnwer
 
 # from itertools import permutations
 
