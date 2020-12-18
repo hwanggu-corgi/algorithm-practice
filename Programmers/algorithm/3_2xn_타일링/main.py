@@ -25,31 +25,43 @@
 # Creating a permutation
 #
 
-from itertools import combinations
+from itertools import permutations
 
 def solution(n):
-    answer = 0
+    count = 0
 
     #  1) For each combination starting with n-i many Vs and i many 2Hs (until there are 0 many Vs)
-    for i in range(n+1):
-        tiling = get_tiling(i, n-i)
-        #  2) Create permutations of V and 2H
-        combs = combinations(tiling)
+    i = 0
+    while i < (n+1):
+        number_of_2hs = i/2
+        number_of_vs = n - i
 
+        if number_of_2hs > 0 and number_of_2hs < 1:
+            continue
+
+        tiling = get_tiling(int(number_of_2hs), number_of_vs)
+        print(tiling)
+        #  2) Create permutations of V and 2H
+        combs = permutations(tiling)
         #  3) Add it's length to count
-        count = len(combs)
+        print(list(set(combs)))
+        count += len(list(set(combs)))
         #  4) increase i and continue
         i += 2
 
-    return answer
+    return count
 
 def get_tiling(number_2h, number_v):
     res = []
 
     for i in range(number_2h):
-        res.push("2H")
+        res.append("2H")
 
     for j in range(number_v):
-        res.push("V")
+        res.append("V")
 
     return res
+
+if __name__ == "__main__":
+    print(solution(3)) # 2
+    print(solution(4)) # 5
