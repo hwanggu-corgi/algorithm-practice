@@ -30,44 +30,65 @@
 # n = 3 -> there are 3 combinations ([V,V,V], [2H,V], [V,2H])
 # n = 4 -> there are 5 combinations ([V,V,V,V], [V,2H,V], [V,V,2H], [2H,V,V], [2H, 2H])
 
+
 def solution(n):
     count = 0
-    memo = {}
 
-    answer = _solution(n, memo)
+    if n == 0 or n == 1 or n == 2:
+        return n
 
+    a = 1
+    b = 2
+
+    i = 3
+    while i < (n+1):
+        c = (a + b) % 1000000007
+        a = b
+        b = c
+        i += 1
+
+    answer = c
     return answer
 
-def _solution(n, memo):
-    if n == 0 or n == 1:
-        return 1
-
-    if n in memo:
-        return memo[n]
-
-    res = (_solution(n-1, memo) + _solution(n-2, memo)) % 1000000007
-
-    memo[n] = res
-
-    return res
 
 # def solution(n):
 #     count = 0
+#     memo = {}
 
-#     if n == 0 or n == 1 or n == 2:
-#         return n
+#     answer = _solution(n, memo)
 
-#     dp = [0] * (n+1)
-#     dp[1] = 1
-#     dp[2] = 2
-
-#     i = 3
-#     while i < (n+1):
-#         dp[i] = dp[i-1] + dp[i-2]
-#         i += 1
-
-#     answer = dp[-1] % 1000000007
 #     return answer
+
+# def _solution(n, memo):
+#     if n == 0 or n == 1:
+#         return 1
+
+#     if n in memo:
+#         return memo[n]
+
+#     res = (_solution(n-1, memo) + _solution(n-2, memo)) % 1000000007
+
+#     memo[n] = res
+
+#     return res
+
+def solution(n):
+    count = 0
+
+    if n == 0 or n == 1 or n == 2:
+        return n
+
+    dp = [0] * (n+1)
+    dp[1] = 1
+    dp[2] = 2
+
+    i = 3
+    while i < (n+1):
+        dp[i] = dp[i-1] + dp[i-2]
+        i += 1
+
+    answer = dp[-1] % 1000000007
+    return answer
 
 # from itertools import permutations
 
