@@ -32,19 +32,42 @@
 
 def solution(n):
     count = 0
+    memo = {}
 
-    if n == 0 or n == 1 or n == 2:
-        return n
+    answer = _solution(n, memo)
 
-    dp = [0] * (n+1)
+    return answer
 
-    i = 3
-    while i < (n+1):
-        dp[i] = dp[i-1] + dp[i-2]
-        i += 1
+def _solution(n, memo):
+    if n == 0 or n == 1:
+        return 1
 
-    answer = dp[-1]
-    return asnwer
+    if n in memo:
+        return memo[n]
+
+    res = (_solution(n-1, memo) + _solution(n-2, memo)) % 1000000007
+
+    memo[n] = res
+
+    return res
+
+# def solution(n):
+#     count = 0
+
+#     if n == 0 or n == 1 or n == 2:
+#         return n
+
+#     dp = [0] * (n+1)
+#     dp[1] = 1
+#     dp[2] = 2
+
+#     i = 3
+#     while i < (n+1):
+#         dp[i] = dp[i-1] + dp[i-2]
+#         i += 1
+
+#     answer = dp[-1] % 1000000007
+#     return answer
 
 # from itertools import permutations
 
