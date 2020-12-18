@@ -17,16 +17,29 @@
 //      H H H H --> possible
 
 
-// Pseudocode
-//  1) Create permutations of V and H
-//  2) for each permutation, check if solution is valid
-//  3) if valid, add to count
-
-
 // Creating a permutation
 //
+// n = 1 -> there is  1 combination (V)
+// n = 2 -> there are 2 combinations ([V,V], [2H])
+// n = 3 -> there are 3 combinations ([V,V,V], [2H,V], [V,2H])
+// n = 4 -> there are 5 combinations ([V,V,V,V], [V,2H,V], [V,V,2H], [2H,V,V], [2H, 2H])
 
 function solution(n) {
-    var answer = 0;
+    if (n == 0 || n == 1 || n == 2) {
+        return n;
+    }
+    let a = 1;
+    let b = 2;
+    let i = 3;
+    while (i < (n+1)) {
+        c = (a + b) % 1000000007;
+        b = c;
+        a = b;
+        i += 1;
+    }
+
+    let answer = c;
     return answer;
 }
+
+console.log(solution(4)); // 5
