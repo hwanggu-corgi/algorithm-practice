@@ -32,7 +32,7 @@ let get_combined_prime_numbers = (number, numbers, n, prime_set) => {
         }
         return;
     }
-
+    console.log(prime_set);
     // else continue to add combination of numbers
     for (const [index, e] of Object.entries(numbers)) {
         let new_numbers = numbers.substring(0, index) + numbers.substring(index+1);
