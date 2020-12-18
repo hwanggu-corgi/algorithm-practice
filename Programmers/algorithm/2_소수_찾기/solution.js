@@ -6,12 +6,6 @@
 //   - numbers는 0~9까지 숫자만으로 이루어져 있습니다.
 //   - 013은 0, 1, 3 숫자가 적힌 종이 조각이 흩어져있다는 의미입니다.
 
-// Pseudocode
-// find length of numbers, call it n
-// for number length from 1 to n,
-// use recursion to find combination of digits of length n
-// if found, add integer of number to set
-
 function solution(numbers) {
     var answer = 0;
     // find length of numbers, call it n
