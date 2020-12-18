@@ -36,17 +36,16 @@ def solution(n):
         number_of_2hs = i/2
         number_of_vs = n - i
 
+        #  2) Check if 2H is valid
         if number_of_2hs > 0 and number_of_2hs < 1:
             continue
 
         tiling = get_tiling(int(number_of_2hs), number_of_vs)
-        print(tiling)
-        #  2) Create permutations of V and 2H
+        #  3) Create permutations of V and 2H
         combs = permutations(tiling)
-        #  3) Add it's length to count
-        print(list(set(combs)))
+        #  4) Add it's length to count
         count += len(list(set(combs)))
-        #  4) increase i and continue
+        #  5) increase i and continue
         i += 2
 
     return count
@@ -63,5 +62,5 @@ def get_tiling(number_2h, number_v):
     return res
 
 if __name__ == "__main__":
-    print(solution(3)) # 2
+    print(solution(3)) # 3
     print(solution(4)) # 5
