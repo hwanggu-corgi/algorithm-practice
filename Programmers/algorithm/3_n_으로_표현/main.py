@@ -143,11 +143,14 @@
 #  using 55 and 5
 
 # Pseudocode
-#   1. add different combinations of computation using 2 many 5's
-#       2.1 5 + 5
-#       2.2 5 - 5
-#       2.3 5 * 5
-#       2.4 5 / 5
+#   1. Start with 1 many 5
+#       1.1 if array is empty
+#   1. if value == number, then return number of ns
+#   2. else add different combinations of computation of 5's
+#       2.1 existing + 5
+#       2.2 existing - 5
+#       2.3 existing * 5
+#       2.4 existing / 5
 #   2. Repeat above but using recursion until answer emerges
 
 
