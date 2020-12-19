@@ -26,11 +26,11 @@
 # How many different patterns exist with 1 many 5's --> 0
 # How many different patterns exist with 2 many 5's --> 4
 # using only 5
-    #  - 55
-    #  - 5 x 5 --> 25
-    #  - 5 - 5 --> 0
-    #  - 5 + 5 --> 10
-    #  - 5 / 5 --> 1
+    #  - 55                 {5: [5], 55: [55]}
+    #  - 5 x 5 --> 25       {5: [25], 55: [55]}
+    #  - 5 - 5 --> 0        {5: [25, 0], 55: [55]}
+    #  - 5 + 5 --> 10       {5: [25, 0, 10], 55: [55]}
+    #  - 5 / 5 --> 1        {5: [25, 0, 10, 1], 55: [55]}
 # How many different patterns exist with 3 many 5's --> 16
 # Using only 5
     #  - 555
@@ -141,6 +141,10 @@
     #  - ((5 / 5) / 5) * 5
     #  - ((5 / 5) / 5) / 5
 #  using 55 and 5
+
+# Pseudocode
+#   1. start with 1 many 5
+#   2. check and see
 
 
 # Detailed Example
