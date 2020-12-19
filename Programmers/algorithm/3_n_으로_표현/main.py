@@ -143,8 +143,12 @@
 #  using 55 and 5
 
 # Pseudocode
-#   1. start with 1 many 5
-#   2. check and see
+#   1. add different combinations of computation using 2 many 5's
+#       2.1 5 + 5
+#       2.2 5 - 5
+#       2.3 5 * 5
+#       2.4 5 / 5
+#   2. Repeat above but using recursion until answer emerges
 
 
 # Detailed Example
