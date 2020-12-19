@@ -18,12 +18,15 @@
 //  12 = (55 + 5) / 5
 //      12 = 60 / 5
 
+// Dynamic Programming
+// 0    1   2   3   4   5   6   7   8   9   10
 
 // Cases
 //  1. when N == number
 //      - return 1
 //  2. when N != number
 //      - dynamic programming!!
+
 
 function solution(N, number) {
     var answer = 0;
