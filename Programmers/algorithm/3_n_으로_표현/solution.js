@@ -20,6 +20,16 @@
 
 // Dynamic Programming
 // 0    1   2   3   4   5   6   7   8   9   10
+// 0    0   4
+
+// How many different patterns exist with 0 many 5's --> 0
+// How many different patterns exist with 1 many 5's --> 0
+// How many different patterns exist with 2 many 5's --> 4
+//  - 5 x 5
+//  - 5 - 5
+//  - 5 + 5
+//  - 5 / 5
+
 
 // Cases
 //  1. when N == number
