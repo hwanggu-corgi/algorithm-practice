@@ -10,6 +10,11 @@
 # Examples
 #   1) n: 3     computers:[[1, 1, 0], [1, 1, 0], [0, 0, 1]]
 #
+#       - has two networks
+#           - the connection between computer 0 and 1
+#           - computer 2 (alone)
+
+#   2) n: 3     computers:[[1, 1, 0], [1, 1, 1], [0, 1, 1]]
 
 def solution(n, computers):
     answer = 0
