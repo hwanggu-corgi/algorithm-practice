@@ -243,8 +243,7 @@ def solution(N, number):
     dp = []
     number_counts = 1
     #   1. for number_counts starting from 1,
-    while True:
-        #   2. initialize dp_temp = []
+    while number_counts <= 8:
         dp_temp = []
         #   3. for each number in dp, perform different combinations of computation of 5's and add to queue
         for dp_value in dp:
@@ -277,42 +276,80 @@ def solution(N, number):
                 elif operand == "*":
                     new_value = dp_value * N
                 else:
-                    new_value = dp_value / N
+                    new_value = dp_value // N
 
                 if new_value in memo:
                     continue
+
+                if new_value == number:
+                    return number_counts
 
                 memo.add(new_value)
                 dp_temp.append(new_value)
 
         #   4. for a staring with number of 5's,
-        #   5. calculate number of b (i.e. b = number of 5's - a)
-        #   6. if b > a, then break
-        #   7. if b == 0, then dp_temp.append(a many 5's)
-        #   8. if b != 0, then
-        #       8.1 dp_temp.append(a many 5's + b many 5's)
-        #            if number is in memo, then skip
-        #            if a many 5's + b many 5's == number, then return number_counts
-        #            add to memoization
-        #            append to dp_temp
-        #       8.2 dp_temp.append(a many 5's - b many 5's)
-        #            if number is in memo, then skip
-        #            if a many 5's - b many 5's == number, then return number_counts
-        #            add to memoization
-        #            append to dp_temp
-        #       8.3 dp_temp.append(a many 5's * b many 5's)
-        #            if number is in memo, then skip
-        #            if a many 5's * b many 5's == number, then return number_counts
-        #            add to memoization
-        #            append to dp_temp
-        #       8.4 dp_temp.append(a many 5's // b many 5's)
-        #            if number is in memo, then skip
-        #            if a many 5's / b many 5's == number, then return number_counts
-        #            add to memoization
-        #            append to dp_temp
+        a = number_counts
+        while a >= 1:
+            #   5. calculate number of b (i.e. b = number_counts - a)
+            b = number_counts - a
+
+            print(str(N) * a)
+            print(b)
+            a_number_of_N = int(str(N) * a)
+            b_number_of_N = int(str(N) * b) if b > 0 else 0
+            #   6. if b > a, then break
+            if b > a:
+                break
+            #   7. if b == 0, then dp_temp.append(a many 5's)
+            elif b == 0:
+                dp_temp.append(a_number_of_N)
+            #   8. if b != 0, then
+            else:
+                #       8.1 dp_temp.append(a many 5's + b many 5's)
+                #            if number is in memo, then skip
+                #            if a many 5's + b many 5's == number, then return number_counts
+                #            add to memoization
+                #            append to dp_temp
+                #       8.2 dp_temp.append(a many 5's - b many 5's)
+                #            if number is in memo, then skip
+                #            if a many 5's - b many 5's == number, then return number_counts
+                #            add to memoization
+                #            append to dp_temp
+                #       8.3 dp_temp.append(a many 5's * b many 5's)
+                #            if number is in memo, then skip
+                #            if a many 5's * b many 5's == number, then return number_counts
+                #            add to memoization
+                #            append to dp_temp
+                #       8.4 dp_temp.append(a many 5's // b many 5's)
+                #            if number is in memo, then skip
+                #            if a many 5's / b many 5's == number, then return number_counts
+                #            add to memoization
+                #            append to dp_temp
+                for operand in ["+", "-", "*", "/"]:
+                    new_value = 0
+                    if operand == "+":
+                        new_value = a_number_of_N + b_number_of_N
+                    elif operand == "-":
+                        new_value = a_number_of_N - b_number_of_N
+                    elif operand == "*":
+                        new_value = a_number_of_N * b_number_of_N
+                    else:
+                        new_value = a_number_of_N // b_number_of_N
+
+                    if new_value in memo:
+                        continue
+
+                    if new_value == number:
+                        return number_counts
+
+                    memo.add(new_value)
+                    dp_temp.append(new_value)
         #   9. set dp = dp_temp
         dp = dp_temp
         #   10. increment number_counts
         number_counts += 1
 
-    return answer
+    return -1
+
+if __name__ == "__main__":
+    print(solution(5, 12)) # 4
