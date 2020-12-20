@@ -145,13 +145,14 @@
 # Pseudocode
 #   1. Start with 1 many 5
 #       1.1 if array is empty
-#   1. if value == number, then return number of ns
-#   2. else add different combinations of computation of 5's
+#   2. if value == number, then return number of ns
+#   3.
+#   4. else add different combinations of computation of 5's
 #       2.1 existing + 5
 #       2.2 existing - 5
 #       2.3 existing * 5
 #       2.4 existing / 5
-#   2. Repeat above but using recursion until answer emerges
+#   5. Repeat each above but using recursion until answer emerges
 
 
 # Detailed Example
