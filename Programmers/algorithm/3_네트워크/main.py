@@ -20,14 +20,14 @@
 
 # Pseudocode
 #   for each computer (starting from 0)
-#   if computer in set, continue
-#   if computer not in set, find all computers in a single network
-#       for each col of a row,
+#   if computer in set continue
+#   find all computers in a single network
+#       if computer in set, return
 #       find index of all computers other than itself and not in set, and add to queue
+#       if length of queue is 0, then return
 #       for each computer in queue,
 #       add computer to set
 #       perform recursion on value
-#   add found computers to set
 #   increment network count by 1
 #   return network count
 
