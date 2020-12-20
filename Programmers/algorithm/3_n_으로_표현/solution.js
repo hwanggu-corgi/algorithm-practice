@@ -16,15 +16,17 @@ function solution(N, number) {
         dp[i].add(parseInt(N.toString().repeat(i)));
     }
 
+    console.log(dp);
+
     for (let number_counts = 1; number_counts < 9; number_counts++) {
         for (let j = number_counts; j >= 1; j--) {
             let k = number_counts - j;
-            if (!(k in dp)) {
+            if (!(k.toString() in dp)) {
                 continue;
             }
 
-            for (a of dp[j]) {
-                for (b of dp[k]) {
+            for (a of dp[j.toString()]) {
+                for (b of dp[k.toString()]) {
                     dp[number_counts].add(a + b)
                     dp[number_counts].add(a - b)
                     dp[number_counts].add(a * b)
@@ -39,7 +41,7 @@ function solution(N, number) {
             }
         }
     }
-    return answer;
+    return -1;
 }
 
 console.log(solution(5, 12)) // 4

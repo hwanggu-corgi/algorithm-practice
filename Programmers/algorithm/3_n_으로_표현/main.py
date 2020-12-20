@@ -235,6 +235,9 @@
 #  2. when N != number
 #      - dynamic programming!!
 
+# 문제 핵심
+#   모든 콤비네이션 찾기
+
 def solution(N, number):
     answer = 0
     dp = {}
