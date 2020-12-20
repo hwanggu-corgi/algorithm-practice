@@ -259,32 +259,61 @@ def solution(N, number):
                 continue
             for a in dp[j]:
                 for b in dp[k]:
-                    print("{} {}".format(a,b))
-                    for operand in ["+", "-", "*", "/"]:
-                        new_value = 0
-                        if operand == "+":
-                            new_value = a + b
-                        elif operand == "-":
-                            new_value = a - b
-                        elif operand == "*":
-                            new_value = a * b
-                        else:
-                            if b == 0:
-                                continue
+                    dp[number_counts].add(a + b)
+                    dp[number_counts].add(a - b)
+                    dp[number_counts].add(a * b)
+                    if b != 0:
+                        dp[number_counts].add(a // b)
 
-                            new_value = a // b
-
-                        if new_value in dp[number_counts]:
-                            continue
-
-                        if new_value == number:
-                            return number_counts
-
-                        dp[number_counts].add(new_value)
+                    if number in dp[number_counts]:
+                        return number_counts
 
             j -= 1
 
     return -1
+
+
+# def solution(N, number):
+#     answer = 0
+#     dp = {}
+
+#     if N == number:
+#         return 1
+
+#     for i in range(1,9):
+#         dp[i] = set()
+
+#     for i in range(1,9):
+#         dp[i].add(int(str(N) * i))
+#         i += 1
+
+#     for number_counts in range(1,9):
+#         j = number_counts
+#         while j >= 1:
+#             k = number_counts - j
+#             if k not in dp:
+#                 j -= 1
+#                 continue
+#             for a in dp[j]:
+#                 for b in dp[k]:
+#                     new_value = a + b
+#                     new_value = a - b
+#                     new_value = a * b
+#                     if b != 0:
+#                         new_value = a // b
+
+#                     if new_value in dp[number_counts]:
+#                         continue
+
+#                     if new_value == number:
+#                         return number_counts
+
+#                     dp[number_counts].add(new_value)
+
+#             j -= 1
+
+#     return -1
+
 
 
 
