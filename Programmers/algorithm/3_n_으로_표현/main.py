@@ -182,34 +182,50 @@
 #           add to memoization
 
 
-# Pseudocode (Top to bottom)
+# Pseudocode (bottom to top)
+#   1. initialize dp = []
 #   1. for number_of_5s starting from 1,
 #   2. initialize dp_temp = []
-#   3. if value == number, then return number_of_5s
 #   4. for each number in dp, perform different combinations of computation of 5's and add to queue
-#       4.1 if number is in memo, then continue
 #       2.1 dp_temp.append(dp[i] + 5)
+#           if number is in memo, then continue
+#           if dp[i] + 5 == number, then return number_of_5s
 #           add dp[i] + 5 to memo
+#           append to dp_temp
 #       2.2 dp_temp.append((dp[i] - 5)
+#           if number is in memo, then continue
+#           if dp[i] - 5 == number, then return number_of_5s
 #           add dp[i] - 5 to memo
+#           append to dp_temp
 #       2.3 dp_temp.append((dp[i] * 5)
+#           if number is in memo, then continue
+#           if dp[i] * 5 == number, then return number_of_5s
 #           add dp[i] * 5 to memo
+#           append to dp_temp
 #       2.4 dp_temp.append((dp[i] // 5)
+#           if number is in memo, then continue
+#           if dp[i] // 5 == number, then return number_of_5s
 #           add dp[i] // 5 to memo
+#           append to dp_temp
 
-#   6. for a staring with number of 5's,
-#   7. calculate number of b (i.e. b = number of 5's - a)
-#   8. if b > a, then break
-#   9. if b == 0, then return recursive function of a (e.g. recursive_function(a))
-#   10. if b != 0, and a + b == number of 5s, then return recursive function of a and b (e.g. recursive_function(a))
-#       10.1 recursive_formula(a many 5's + b many 5's)
-#           add to memoization
-#       10.2 recursive_formula(a many 5's - b many 5's)
-#           add to memoization
-#       10.3 recursive_formula(a many 5's * b many 5's)
-#           add to memoization
-#       10.4 recursive_formula(a many 5's // b many 5's)
-#           add to memoization
+#   5. for a staring with number of 5's,
+#   6. calculate number of b (i.e. b = number of 5's - a)
+#   7. if b > a, then break
+#   8. if b == 0, then dp_temp.append(a many 5's)
+#   9. if b != 0, then
+#       9.1 dp_temp.append(a many 5's + b many 5's)
+#            if number is in memo, then skip
+#            add to memoization
+#       9.2 dp_temp.append(a many 5's - b many 5's)
+#            if number is in memo, then skip
+#            add to memoization
+#       9.3 dp_temp.append(a many 5's * b many 5's)
+#            if number is in memo, then skip
+#            add to memoization
+#       9.4 dp_temp.append(a many 5's // b many 5's)
+#            if number is in memo, then skip
+#            add to memoization
+#   10. set dp = dp_temp
 
 # Detailed Example
 
@@ -223,6 +239,56 @@
 def solution(N, number):
     answer = 0
 
+    #   1. initialize dp = []
+    #   1. for number_of_5s starting from 1,
+    #   2. initialize dp_temp = []
+    #   4. for each number in dp, perform different combinations of computation of 5's and add to queue
+    #       2.1 dp_temp.append(dp[i] + 5)
+    #           if number is in memo, then continue
+    #           if dp[i] + 5 == number, then return number_of_5s
+    #           add dp[i] + 5 to memo
+    #           append to dp_temp
+    #       2.2 dp_temp.append((dp[i] - 5)
+    #           if number is in memo, then continue
+    #           if dp[i] - 5 == number, then return number_of_5s
+    #           add dp[i] - 5 to memo
+    #           append to dp_temp
+    #       2.3 dp_temp.append((dp[i] * 5)
+    #           if number is in memo, then continue
+    #           if dp[i] * 5 == number, then return number_of_5s
+    #           add dp[i] * 5 to memo
+    #           append to dp_temp
+    #       2.4 dp_temp.append((dp[i] // 5)
+    #           if number is in memo, then continue
+    #           if dp[i] // 5 == number, then return number_of_5s
+    #           add dp[i] // 5 to memo
+    #           append to dp_temp
 
+    #   5. for a staring with number of 5's,
+    #   6. calculate number of b (i.e. b = number of 5's - a)
+    #   7. if b > a, then break
+    #   8. if b == 0, then dp_temp.append(a many 5's)
+    #   9. if b != 0, then
+    #       9.1 dp_temp.append(a many 5's + b many 5's)
+    #            if number is in memo, then skip
+    #            if a many 5's + b many 5's == number, then return number_of_5s
+    #            add to memoization
+    #            append to dp_temp
+    #       9.2 dp_temp.append(a many 5's - b many 5's)
+    #            if number is in memo, then skip
+    #            if a many 5's - b many 5's == number, then return number_of_5s
+    #            add to memoization
+    #            append to dp_temp
+    #       9.3 dp_temp.append(a many 5's * b many 5's)
+    #            if number is in memo, then skip
+    #            if a many 5's * b many 5's == number, then return number_of_5s
+    #            add to memoization
+    #            append to dp_temp
+    #       9.4 dp_temp.append(a many 5's // b many 5's)
+    #            if number is in memo, then skip
+    #            if a many 5's / b many 5's == number, then return number_of_5s
+    #            add to memoization
+    #            append to dp_temp
+    #   10. set dp = dp_temp
 
     return answer
