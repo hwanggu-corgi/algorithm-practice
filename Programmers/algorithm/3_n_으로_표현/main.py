@@ -259,6 +259,7 @@ def solution(N, number):
                 continue
             for a in dp[j]:
                 for b in dp[k]:
+                    print("{} {}".format(a,b))
                     for operand in ["+", "-", "*", "/"]:
                         new_value = 0
                         if operand == "+":
