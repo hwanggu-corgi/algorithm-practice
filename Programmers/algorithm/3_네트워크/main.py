@@ -15,6 +15,16 @@
 #           - computer 2 (alone)
 
 #   2) n: 3     computers:[[1, 1, 0], [1, 1, 1], [0, 1, 1]]
+#       - has 1 network
+#           - the connection between computer 0, 1 and 2
+
+# Pseudocode
+#   for each computer (starting from 0)
+#   if computer in set, continue
+#   if computer not in set, find all computers in a single network
+#   add found computers to set
+#   increment network count by 1
+#   return network count
 
 def solution(n, computers):
     answer = 0
