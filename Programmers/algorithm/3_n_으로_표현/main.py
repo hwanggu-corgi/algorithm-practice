@@ -239,7 +239,10 @@
 def solution(N, number):
     answer = 0
     dp = {}
-    #   1. initialize dp = []
+
+    if N == number:
+        return 1
+
     for i in range(1,9):
         dp[i] = set()
 
@@ -251,28 +254,34 @@ def solution(N, number):
         j = number_counts
         while j >= 1:
             k = number_counts - j
-            if j not in dp or k not in dp:
+            if k not in dp:
+                j -= 1
                 continue
             for a in dp[j]:
                 for b in dp[k]:
                     for operand in ["+", "-", "*", "/"]:
                         new_value = 0
                         if operand == "+":
-                            new_value = dp_value + N
+                            new_value = a + b
                         elif operand == "-":
-                            new_value = dp_value - N
+                            new_value = a - b
                         elif operand == "*":
-                            new_value = dp_value * N
+                            new_value = a * b
                         else:
-                            new_value = dp_value // N
+                            if b == 0:
+                                continue
 
-                        if new_value in memo:
+                            new_value = a // b
+
+                        if new_value in dp[number_counts]:
                             continue
 
                         if new_value == number:
                             return number_counts
 
                         dp[number_counts].add(new_value)
+
+            j -= 1
 
     return -1
 
@@ -405,3 +414,4 @@ if __name__ == "__main__":
     print(solution(5, 12)) # 4
     print(solution(2, 11)) # 3
     print(solution(5, 5)) # 1
+    print(solution(1, 111)) # 1
