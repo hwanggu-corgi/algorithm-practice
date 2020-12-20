@@ -155,16 +155,31 @@
 
 # Pseudocode
 #   1. Start with 1 many 5
-#       1.1 if array is empty
 #   2. if value == number, then return number of 5's used
-#   3. else add different combinations of computation of 5's
-#       2.1 existing + 5
-#       2.2 existing - 5
-#       2.3 existing * 5
-#       2.4 existing / 5
-#   4. Repeat each above but using recursion until answer emerges
-#   5. for a staring with number of 5's,
-#   6. for b staring with 0 number of 5's,
+#   3. if number exists in memoization, then return
+#   4. else add different combinations of computation of 5's
+#       2.1 recursive_formula(existing + 5)
+#           add to memoization
+#       2.2 recursive_formula(existing - 5)
+#           add to memoization
+#       2.3 recursive_formula(existing * 5)
+#           add to memoization
+#       2.4 recursive_formula(existing // 5)
+#           add to memoization
+#   5. Repeat each above but using recursion until answer emerges
+#   6. for a staring with number of 5's,
+#   7. calculate number of b (i.e. b = number of 5's - a)
+#   8. if b > a, then break
+#   9. if b == 0, then return recursive function of a (e.g. recursive_function(a))
+#   10. if b != 0, and a + b == number of 5s, then return recursive function of a and b (e.g. recursive_function(a))
+#       10.1 recursive_formula(a many 5's + b many 5's)
+#           add to memoization
+#       10.2 recursive_formula(a many 5's - b many 5's)
+#           add to memoization
+#       10.3 recursive_formula(a many 5's * b many 5's)
+#           add to memoization
+#       10.4 recursive_formula(a many 5's // b many 5's)
+#           add to memoization
 
 # Detailed Example
 
