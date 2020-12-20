@@ -247,27 +247,42 @@ def solution(N, number):
         #   2. initialize dp_temp = []
         dp_temp = []
         #   3. for each number in dp, perform different combinations of computation of 5's and add to queue
-        for value in dp:
-        #       3.1 dp_temp.append(dp[i] + 5)
-        #           if number is in memo, then continue
-        #           if dp[i] + 5 == number, then return number_counts
-        #           add dp[i] + 5 to memo
-        #           append to dp_temp
-        #       3.2 dp_temp.append((dp[i] - 5)
-        #           if number is in memo, then continue
-        #           if dp[i] - 5 == number, then return number_counts
-        #           add dp[i] - 5 to memo
-        #           append to dp_temp
-        #       3.3 dp_temp.append((dp[i] * 5)
-        #           if number is in memo, then continue
-        #           if dp[i] * 5 == number, then return number_counts
-        #           add dp[i] * 5 to memo
-        #           append to dp_temp
-        #       3.4 dp_temp.append((dp[i] // 5)
-        #           if number is in memo, then continue
-        #           if dp[i] // 5 == number, then return number_counts
-        #           add dp[i] // 5 to memo
-        #           append to dp_temp
+        for dp_value in dp:
+            for operand in ["+", "-", "*", "/"]:
+                new_value = 0
+                if operand == "+":
+                    new_value = dp_value + N
+                elif operand == "-":
+                    new_value = dp_value - N
+                elif operand == "*":
+                    new_value = dp_value * N
+                else:
+                    new_value = dp_value / N
+
+                if new_value in memo:
+                    continue
+
+                memo.add(new_value)
+            #       3.1 dp_temp.append(dp[i] + 5)
+            #           if number is in memo, then continue
+            #           if dp[i] + 5 == number, then return number_counts
+            #           add dp[i] + 5 to memo
+            #           append to dp_temp
+            #       3.2 dp_temp.append((dp[i] - 5)
+            #           if number is in memo, then continue
+            #           if dp[i] - 5 == number, then return number_counts
+            #           add dp[i] - 5 to memo
+            #           append to dp_temp
+            #       3.3 dp_temp.append((dp[i] * 5)
+            #           if number is in memo, then continue
+            #           if dp[i] * 5 == number, then return number_counts
+            #           add dp[i] * 5 to memo
+            #           append to dp_temp
+            #       3.4 dp_temp.append((dp[i] // 5)
+            #           if number is in memo, then continue
+            #           if dp[i] // 5 == number, then return number_counts
+            #           add dp[i] // 5 to memo
+            #           append to dp_temp
 
         #   4. for a staring with number of 5's,
         #   5. calculate number of b (i.e. b = number of 5's - a)
