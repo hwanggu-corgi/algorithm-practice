@@ -153,7 +153,7 @@
 
 #  using 55 and 5
 
-# Pseudocode
+# Pseudocode (Top to bottom)
 #   1. Start with 1 many 5
 #   2. if value == number, then return number of 5's used
 #   3. if number exists in memoization, then return
@@ -181,6 +181,36 @@
 #       10.4 recursive_formula(a many 5's // b many 5's)
 #           add to memoization
 
+
+# Pseudocode (Top to bottom)
+#   1. for number_of_5s starting from 1,
+#   2. initialize dp_temp = []
+#   3. if value == number, then return number_of_5s
+#   4. for each number in dp, perform different combinations of computation of 5's and add to queue
+#       4.1 if number is in memo, then continue
+#       2.1 dp_temp.append(dp[i] + 5)
+#           add dp[i] + 5 to memo
+#       2.2 dp_temp.append((dp[i] - 5)
+#           add dp[i] - 5 to memo
+#       2.3 dp_temp.append((dp[i] * 5)
+#           add dp[i] * 5 to memo
+#       2.4 dp_temp.append((dp[i] // 5)
+#           add dp[i] // 5 to memo
+
+#   6. for a staring with number of 5's,
+#   7. calculate number of b (i.e. b = number of 5's - a)
+#   8. if b > a, then break
+#   9. if b == 0, then return recursive function of a (e.g. recursive_function(a))
+#   10. if b != 0, and a + b == number of 5s, then return recursive function of a and b (e.g. recursive_function(a))
+#       10.1 recursive_formula(a many 5's + b many 5's)
+#           add to memoization
+#       10.2 recursive_formula(a many 5's - b many 5's)
+#           add to memoization
+#       10.3 recursive_formula(a many 5's * b many 5's)
+#           add to memoization
+#       10.4 recursive_formula(a many 5's // b many 5's)
+#           add to memoization
+
 # Detailed Example
 
 # Cases
@@ -192,4 +222,7 @@
 
 def solution(N, number):
     answer = 0
+
+
+
     return answer
