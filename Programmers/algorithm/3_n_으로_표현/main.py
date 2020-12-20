@@ -241,6 +241,7 @@ def solution(N, number):
 
     #   1. initialize dp = []
     dp = []
+    memo = set()
     number_counts = 1
     #   1. for number_counts starting from 1,
     while number_counts <= 8:
@@ -293,8 +294,6 @@ def solution(N, number):
             #   5. calculate number of b (i.e. b = number_counts - a)
             b = number_counts - a
 
-            print(str(N) * a)
-            print(b)
             a_number_of_N = int(str(N) * a)
             b_number_of_N = int(str(N) * b) if b > 0 else 0
             #   6. if b > a, then break
@@ -302,7 +301,15 @@ def solution(N, number):
                 break
             #   7. if b == 0, then dp_temp.append(a many 5's)
             elif b == 0:
-                dp_temp.append(a_number_of_N)
+                new_value = a_number_of_N
+                if new_value in memo:
+                    continue
+
+                if new_value == number:
+                    return number_counts
+
+                memo.add(new_value)
+                dp_temp.append(new_value)
             #   8. if b != 0, then
             else:
                 #       8.1 dp_temp.append(a many 5's + b many 5's)
@@ -344,6 +351,7 @@ def solution(N, number):
 
                     memo.add(new_value)
                     dp_temp.append(new_value)
+            a -= 1
         #   9. set dp = dp_temp
         dp = dp_temp
         #   10. increment number_counts
@@ -353,3 +361,5 @@ def solution(N, number):
 
 if __name__ == "__main__":
     print(solution(5, 12)) # 4
+    print(solution(2, 11)) # 3
+    print(solution(5, 5)) # 1
