@@ -22,6 +22,8 @@
 #   for each computer (starting from 0)
 #   if computer in set, continue
 #   if computer not in set, find all computers in a single network
+#       for each row indicated by computer,
+#       find index of all computers other than itself
 #   add found computers to set
 #   increment network count by 1
 #   return network count
