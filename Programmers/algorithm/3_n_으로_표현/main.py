@@ -244,7 +244,7 @@ def solution(N, number):
     memo = set()
     number_counts = 1
     #   1. for number_counts starting from 1,
-    while number_counts <= 8:
+    while number_counts < 9:
         dp_temp = []
         #   3. for each number in dp, perform different combinations of computation of 5's and add to queue
         for dp_value in dp:
