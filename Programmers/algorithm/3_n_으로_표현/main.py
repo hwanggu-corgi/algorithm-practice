@@ -240,10 +240,14 @@ def solution(N, number):
     answer = 0
 
     #   1. initialize dp = []
-    dp = []
-    memo = set()
-    number_counts = 1
+    dp = [set() for _ in range(8)]
 
+    i = 1
+    while i < 9:
+        dp[i-1] int(str(N) * i)
+        i += 1
+
+    number_counts = 1
     while number_counts < 9:
         for dp_value in dp:
             for operand in ["+", "-", "*", "/"]:
