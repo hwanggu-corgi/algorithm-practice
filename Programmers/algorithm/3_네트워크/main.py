@@ -33,4 +33,25 @@
 
 def solution(n, computers):
     answer = 0
-    return answer
+
+    #   for each computer (starting from 0)
+    for computer in computers:
+        #   if computer in set continue
+        if computer in already_searched:
+            continue
+
+        _solution(...)
+
+        #   increment network count by 1
+        network_count += 1
+    #   return network count
+    return network_count
+
+def _solution(...):
+    #   find all computers in a single network
+    #       if computer in set, return
+    #       find index of all computers other than itself and not in set, and add to queue
+    #       if length of queue is 0, then return
+    #       for each computer in queue,
+    #       add computer to set
+    #       perform recursion on value
