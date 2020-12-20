@@ -235,7 +235,6 @@
 #  2. when N != number
 #      - dynamic programming!!
 
-
 def solution(N, number):
     answer = 0
     dp = {}
@@ -273,6 +272,7 @@ def solution(N, number):
     return -1
 
 
+
 # def solution(N, number):
 #     answer = 0
 #     dp = {}
@@ -296,24 +296,32 @@ def solution(N, number):
 #                 continue
 #             for a in dp[j]:
 #                 for b in dp[k]:
-#                     new_value = a + b
-#                     new_value = a - b
-#                     new_value = a * b
-#                     if b != 0:
-#                         new_value = a // b
+#                     print("{} {}".format(a,b))
+#                     for operand in ["+", "-", "*", "/"]:
+#                         new_value = 0
+#                         if operand == "+":
+#                             new_value = a + b
+#                         elif operand == "-":
+#                             new_value = a - b
+#                         elif operand == "*":
+#                             new_value = a * b
+#                         else:
+#                             if b == 0:
+#                                 continue
 
-#                     if new_value in dp[number_counts]:
-#                         continue
+#                             new_value = a // b
 
-#                     if new_value == number:
-#                         return number_counts
+#                         if new_value in dp[number_counts]:
+#                             continue
 
-#                     dp[number_counts].add(new_value)
+#                         if new_value == number:
+#                             return number_counts
+
+#                         dp[number_counts].add(new_value)
 
 #             j -= 1
 
 #     return -1
-
 
 
 
