@@ -238,39 +238,41 @@
 
 def solution(N, number):
     answer = 0
-
+    dp = {}
     #   1. initialize dp = []
-    dp = [set() for _ in range(8)]
+    for i in range(1,9):
+        dp[i] = set()
 
-    i = 1
-    while i < 9:
-        dp[i-1] int(str(N) * i)
+    for i in range(1,9):
+        dp[i].add(int(str(N) * i))
         i += 1
 
-    number_counts = 1
-    while number_counts < 9:
-        for dp_value in dp:
-            for operand in ["+", "-", "*", "/"]:
-                new_value = 0
-                if operand == "+":
-                    new_value = dp_value + N
-                elif operand == "-":
-                    new_value = dp_value - N
-                elif operand == "*":
-                    new_value = dp_value * N
-                else:
-                    new_value = dp_value // N
+    for number_counts in range(1,9):
+        j = number_counts
+        while j >= 1:
+            k = number_counts - j
+            if j not in dp or k not in dp:
+                continue
+            for a in dp[j]:
+                for b in dp[k]:
+                    for operand in ["+", "-", "*", "/"]:
+                        new_value = 0
+                        if operand == "+":
+                            new_value = dp_value + N
+                        elif operand == "-":
+                            new_value = dp_value - N
+                        elif operand == "*":
+                            new_value = dp_value * N
+                        else:
+                            new_value = dp_value // N
 
-                if new_value in memo:
-                    continue
+                        if new_value in memo:
+                            continue
 
-                if new_value == number:
-                    return number_counts
+                        if new_value == number:
+                            return number_counts
 
-                memo.add(new_value)
-                dp_temp.append(new_value)
-
-        number_counts += 1
+                        dp[number_counts].add(new_value)
 
     return -1
 
