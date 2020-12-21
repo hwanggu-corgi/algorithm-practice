@@ -50,7 +50,11 @@ def solution(n, computers):
 def _solution(...):
     #   find all computers in a single network
     #       if computer in set, return
+    if computer in searched:
+        return
+
     #       find index of all computers other than itself and not in set, and add to queue
+    neighbouring_computers = find_neighbouring_computers(...)
     #       if length of queue is 0, then return
     #       for each computer in queue,
     #       add computer to set
