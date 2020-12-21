@@ -33,29 +33,39 @@
 
 def solution(n, computers):
     answer = 0
-
+    searched = set()
+    N_rows = len(computers)
     #   for each computer (starting from 0)
-    for computer in computers:
+    for computer in range(N_rows):
         #   if computer in set continue
         if computer in already_searched:
             continue
 
-        _solution(...)
+        _solution(computer, searched)
 
         #   increment network count by 1
         network_count += 1
     #   return network count
     return network_count
 
-def _solution(...):
+def _solution(computer, searched):
     #   find all computers in a single network
     #       if computer in set, return
     if computer in searched:
         return
 
     #       find index of all computers other than itself and not in set, and add to queue
-    neighbouring_computers = find_neighbouring_computers(...)
+    queue = find_neighbouring_computers(computer)
     #       if length of queue is 0, then return
+    if len(queue) == 0:
+        return
+
     #       for each computer in queue,
-    #       add computer to set
-    #       perform recursion on value
+    for neighbouring_computer in queue:
+        #       add computer to set
+        searched.add(neighbouring_computer)
+        #       perform recursion on value
+        _solution(neighbouring_computer, searched)
+
+
+def find_neighbouring_computers(computer):
