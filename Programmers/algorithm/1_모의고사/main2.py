@@ -16,11 +16,13 @@ def solution(answers):
         if pattern_1[index % N_p1] == answer:
             correct_count[0][1] += 1
 
-        if pattern_2[index % N_p2] == answer:
+        if pattern_2[index % N_p2s] == answer:
             correct_count[1][1] += 1
 
         if pattern_3[index % N_p3] == answer:
             correct_count[2][1] += 1
 
     # return person in increasing order if correct count is the same
+    correct_count = sorted(correct_count, key= lambda e: e[1])
+    answer = [x[0] for x in correct_count]
     return answer
