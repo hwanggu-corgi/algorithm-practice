@@ -37,7 +37,7 @@
 
 # Pseudocode
 #   for each jobs store time starts in a dictionary by time taken
-#   {3: [0], 6:[2] 9:[1]}
+#   {3: [0], 7:[2] 17:[1]}
 
 #   store time taken to heap
 
