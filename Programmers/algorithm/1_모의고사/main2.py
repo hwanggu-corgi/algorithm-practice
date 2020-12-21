@@ -1,6 +1,3 @@
-# goal: 1번 문제부터 마지막 문제까지의 정답이 순서대로 들은 배열 answers가 주어졌을 때, 가장 많은
-# 문제를 맞힌 사람이 누구인지 배열에 담아 return 하도록 solution 함수를 작성해주세요.
-
 def solution(answers):
     pattern_1 = [1, 2, 3, 4, 5]
     N_p1 = len(pattern_1)
@@ -9,20 +6,23 @@ def solution(answers):
     pattern_3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
     N_p3 = len(pattern_3)
 
-    correct_count = [[1,0] [2,0], [3,0]]
+    correct_count = [[1,0], [2,0], [3,0]]
 
-    # add counts
     for index, answer in enumerate(answers):
         if pattern_1[index % N_p1] == answer:
             correct_count[0][1] += 1
 
-        if pattern_2[index % N_p2s] == answer:
+        if pattern_2[index % N_p2] == answer:
             correct_count[1][1] += 1
 
         if pattern_3[index % N_p3] == answer:
             correct_count[2][1] += 1
 
-    # return person in increasing order if correct count is the same
+    max_count = max(correct_count, key=lambda e: e[1])[1]
     correct_count = sorted(correct_count, key= lambda e: e[1])
-    answer = [x[0] for x in correct_count]
+    answer = [x[0] for x in correct_count if x[1] == max_count]
     return answer
+
+if __name__ == "__main__":
+    print(solution([1, 2, 3, 4, 5]))
+    print(solution([[1, 3, 2, 4, 2]]))
