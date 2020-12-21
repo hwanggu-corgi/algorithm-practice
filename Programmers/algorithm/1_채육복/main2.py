@@ -4,8 +4,12 @@
 
 def solution(n, lost, reserve):
     answer = 0
+    lost_set = set(lost)
+    reserve_set = set(reseve)
 
     # filter who has spare but lost
+    lost_set = lost_set - reserve_set
+    reserve_set = reserve_set - lost_set
 
     # give spares
 
