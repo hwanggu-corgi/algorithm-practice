@@ -8,5 +8,16 @@
 from itertools import combinations
 
 def solution(numbers):
-    answer = []
+    temp = set()
+    # get all combinations of numbers in 2
+    combs = combinations(numbers, 2)
+
+    # add sum of each combination and add its result to set
+    for combination in combs:
+        temp.add(sum(combination))
+
+    # convert to list and sort in increasing order
+    answer = sorted(list(temp))
+
+    # return answer
     return answer
