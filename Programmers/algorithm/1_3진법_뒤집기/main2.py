@@ -13,18 +13,19 @@ def get_ternary(n):
 
     while n != 0:
         r = n % 3
-        res += str(r) + res
+        res = str(r) + res
         n = n // 3
 
     return res
 
 def get_decimal(ternary):
     res = 0
+    i = 0
     n = len(ternary) - 1
 
-    while n >= 0:
-        res += 3**n
-        n -= 1
+    while i <= n:
+        res += int(ternary[i]) * 3**(n-i)
+        i += 1
 
     return res
 
