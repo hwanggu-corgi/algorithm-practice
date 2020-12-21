@@ -12,9 +12,12 @@
 # Example
 #   1) [[0, 3], [1, 9], [2, 6]]
 #       - use shorttest job first
-#       (0,3) -> 3 (shortest)
-#       (1,9) -> 9 (last)
-#       (2,6) -> 6 (second shortest)
+#       (0,3)
+#           - Time taken from beginning 3   --> shortest
+#       (1,9)
+#           - Time taken from beginning 10  --> longest
+#       (2,6)
+#           - Time taken from beginning 8   --> second shortest
 
 #       (0,3) starts first
 #           - time starts 0
