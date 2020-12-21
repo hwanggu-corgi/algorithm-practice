@@ -42,7 +42,7 @@ def solution(n, computers):
             continue
 
         _solution(computer_id, searched, computers)
-        print(searched)
+
         #   increment network count by 1
         network_count += 1
     #   return network count
@@ -55,6 +55,7 @@ def _solution(computer_id, searched, computers):
         return
 
     #       find index of all computers other than itself and not in set, and add to queue
+    searched.add(computer_id)
     queue = find_neighbouring_computers(computer_id, searched, computers)
     #       if length of queue is 0, then return
     if len(queue) == 0:
@@ -62,8 +63,6 @@ def _solution(computer_id, searched, computers):
 
     #       for each computer in queue,
     for neighbouring_computer_id in queue:
-        #       add computer to set
-        searched.add(neighbouring_computer_id)
         #       perform recursion on value
         _solution(neighbouring_computer_id, searched, computers)
 
@@ -74,6 +73,7 @@ def find_neighbouring_computers(computer_id, searched, computers):
     for neighbouring_computer_id, connected in enumerate(computers[computer_id]):
         if neighbouring_computer_id == computer_id:
             continue
+
         if neighbouring_computer_id in searched:
             continue
 
