@@ -9,4 +9,6 @@ from datetime import datetime
 
 def solution(a, b):
     answer = ''
+    day = datetime.strptime("{}-{}-2016".format(a,b), "%m-%d-%Y").strftime("%a")
+    answer = day.upper()
     return answer
