@@ -10,8 +10,10 @@ def solution(n, lost, reserve):
     # filter who has spare but lost
     lost_set = lost_set - reserve_set
     reserve_set = reserve_set - lost_set
-
+    reserve = sorted(list(reserve_set))
     # give spares
+    for reserve_clothe in reserve:
+
 
     # calculate total who takes lessons
     return answer
