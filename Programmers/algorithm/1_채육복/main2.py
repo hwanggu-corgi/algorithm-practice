@@ -3,17 +3,28 @@
 # return 하도록 solution 함수를 작성해주세요.
 
 def solution(n, lost, reserve):
-    answer = 0
+    lent_count = 0
     lost_set = set(lost)
-    reserve_set = set(reseve)
+    reserve_set = set(reserve)
 
     # filter who has spare but lost
-    lost_set = lost_set - reserve_set
-    reserve_set = reserve_set - lost_set
-    reserve = sorted(list(reserve_set))
+    lost_set = set(lost) - set(reserve)
+    lost = sorted(list(lost_set))
+    reserve_set = set(reserve) - set(lost)
     # give spares
-    for reserve_clothe in reserve:
-
+    for student_number in lost:
+        if (student_number - 1) in reserve_set:
+            reserve_set.remove(student_number - 1)
+            lent_count += 1
+        elif (student_number + 1) in reserve_set:
+            reserve_set.remove(student_number + 1)
+            lent_count += 1
 
     # calculate total who takes lessons
+    answer = n - (len(lost) - lent_count)
     return answer
+
+if __name__ == "__main__":
+    print(solution(5, [2, 4], [1, 3, 5])) # 5
+    print(solution(5, [2, 4], [3])) # 4
+    print(solution(3, [3], [1])) # 2
