@@ -39,15 +39,16 @@
 # average time =  (3 + 7 + 17) / 3 = 9
 
 # Pseudocode
-#   for each jobs store time starts in a dictionary by time taken
-#   {3: [0], 7:[2] 17:[1]}
+#   create heap based on time taken from the start
+#       [3, 10, 8] --> heap
+#   for each time time taken from start, store its [starting time, time taken] to dictionary
+#       {3: [[0,3]], 8:[[2,6]] 10:[[1,9]]}
 
-#   store time taken to heap
-
-#   until heap queue is empty
 #   pop an element from heap
 #   popleft dictionary by the value of heap
-#
+#   compute its turnaround time
+#   add to turnaround time to sum
+#   compute average
 
 def solution(jobs):
     answer = 0
