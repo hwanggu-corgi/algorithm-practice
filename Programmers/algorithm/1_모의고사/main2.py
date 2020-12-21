@@ -16,5 +16,11 @@ def solution(answers):
         if pattern_1[index % N_p1] == answer:
             correct_count[0][1] += 1
 
+        if pattern_2[index % N_p2] == answer:
+            correct_count[1][1] += 1
+
+        if pattern_3[index % N_p3] == answer:
+            correct_count[2][1] += 1
+
     # return person in increasing order if correct count is the same
     return answer
