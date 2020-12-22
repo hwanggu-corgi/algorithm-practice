@@ -2,19 +2,23 @@
 
 def solution(s, n):
     s = [x for x in s]
-    n = len(s)
 
     i = 0
-    while i < n:
+    while i < len(s):
 
-        if s[i] = s[i].lower():
-            new_char = ((ord(s[i]) - ord('a')) + n) % 26
-            s[i] = chr(ord('a') + new_char)
+        if not s[i].isalpha():
+            i += 1
+            continue
+
+        if s[i] == s[i].lower():
+            new_ord = ((ord(s[i]) - ord('a')) + n) % 26
+            s[i] = chr(ord('a') + new_ord)
         else:
-            new_char = ((ord(s[i]) - ord('A')) + n) % 26
-            s[i] = chr(ord('A') + new_char)
+            new_ord = ((ord(s[i]) - ord('A')) + n) % 26
+            s[i] = chr(ord('A') + new_ord)
         i+=1
 
     answer = "".join(s)
 
     return answer
+
