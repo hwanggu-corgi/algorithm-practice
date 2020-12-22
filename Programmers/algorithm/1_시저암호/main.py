@@ -2,10 +2,14 @@
 
 def solution(s, n):
     s = [x for x in s]
+    n = len(s)
 
-    for i in s:
+    i = 0
+    while i < n:
+        new_char = ((ord(s[i]) - ord('a')) + n) % 26
+        s[i] = chr(ord('a') + new_char)
+        i+=1
 
-
-    answer = "".join()
+    answer = "".join(s)
 
     return answer
