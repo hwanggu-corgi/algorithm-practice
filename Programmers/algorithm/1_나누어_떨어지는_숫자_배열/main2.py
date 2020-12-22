@@ -16,4 +16,4 @@ def solution(arr, divisor):
         if number % divisor == 0:
             answer.append(number)
 
-    return answer if len(answer) != 0 else [-1]
+    return sorted(answer) if len(answer) != 0 else [-1]
