@@ -3,5 +3,4 @@
 # 경우는 없습니다.
 
 def solution(seoul):
-    answer = ''
-    return answer
+    return "김서방은 {}에 있다".format(seoul.index("Kim"))
