@@ -5,5 +5,4 @@
 # n은 10,000,000,000이하인 자연수입니다.
 
 def solution(n):
-    answer = []
-    return answer
+    return [int(x) for x in str(n)[::-1]]
