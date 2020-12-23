@@ -66,13 +66,25 @@ def get_flags_amount(peaks_total, A):
     while flags >= 1:
 
         # check if flags is possible
+        # if can be fit, return number
         if is_possible(flags, A):
             break
         # if not decrease the flag amount
-
         # repeat
-
-        # if can be fit, return number
         flags -= 1
 
     return flags
+
+
+def is_possible(flags, A):
+    n = len(A)
+    distance_amt = flags
+    i = 0
+    while i < n and flags > 0:
+        if not A[i] == True:
+            i += 1
+        else:
+            flags -= 1
+            i += distance_amt
+
+    return True if flags == 0 else False
