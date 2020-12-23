@@ -58,7 +58,6 @@ def get_flags_amount(peaks_total, peaks):
 
     return flags
 
-
 def is_possible(flags, peaks):
     n = len(peaks)
     distance_amt = flags
@@ -67,10 +66,65 @@ def is_possible(flags, peaks):
         try:
             flags -= 1
             i = peaks[i+distance_amt]
+
+            if i == -1:
+                break
+
         except IndexError:
             break
 
     return True if flags == 0 else False
+
+
+# def solution(A):
+#     peaks_total, A = get_peaks(A)
+#     flags_amount = get_flags_amount(peaks_total, A)
+
+#     return flags_amount
+
+# def get_peaks(A):
+#     peaks_count = 0
+#     n = len(A)
+#     res = [False] * n
+
+#     if n == 1:
+#         res[0] = True
+#         peaks_count += 1
+#         return peaks_count, res
+
+#     i = n- 1
+#     while i < (n-1):
+#         if (A[i-1] < A[i]) and (A[i] > A[i+1]):
+#             res[i] = True
+#             peaks_count += 1
+#         i += 1
+
+#     return peaks_count, res
+
+# def get_flags_amount(peaks_total, A):
+#     flags = peaks_total
+
+#     while flags >= 1:
+
+#         if is_possible(flags, A):
+#             break
+#         flags -= 1
+
+#     return flags
+
+
+# def is_possible(flags, A):
+#     n = len(A)
+#     distance_amt = flags
+#     i = 0
+#     while i < n and flags > 0:
+#         if not A[i] == True:
+#             i += 1
+#         else:
+#             flags -= 1
+#             i += distance_amt
+
+#     return True if flags == 0 else False
 
 if __name__ == "__main__":
     print(solution([1, 5, 3, 4, 3, 4, 1, 2, 3, 4, 6, 2])) #3
