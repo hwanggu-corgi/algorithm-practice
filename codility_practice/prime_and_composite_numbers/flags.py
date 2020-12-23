@@ -46,8 +46,15 @@ def get_peaks(A):
         res.append(len(A) - 1)
 
     # return list of indicies
-    pass
+    i = 1
+    while i < (n-1):
+        if (A[i-1] < A[i]) and (A[i] > A[i+1]):
+            res.append(i)
+        i += 1
 
+    return res
 
 def get_flags_amount(A):
+
+
     pass
