@@ -12,13 +12,14 @@ def solution(N):
     min_perimeter = sys.maxsize
     a = 1
     while a * a <= N:
-        b = N / a
-        perimeter = (a + b) * 2
-        min_perimeter = min(int(perimeter), min_perimeter)
+        if N % a == 0:
+            b = N // a
+            perimeter = (a + b) * 2
+            min_perimeter = min(perimeter, min_perimeter)
         a += 1
 
     return min_perimeter
 
 if __name__ == "__main__":
     print(solution(30)) # 22
-    print(solution(1)) # 1
+    print(solution(1)) # 4
