@@ -63,15 +63,16 @@ def get_flags_amount(peaks_total, A):
     flags = peaks_total
 
     # start with maximum possible number of flags
-    while peaks_total >= 1:
+    while flags >= 1:
 
         # check if flags is possible
-
+        if is_possible(flags, A):
+            break
         # if not decrease the flag amount
 
         # repeat
 
         # if can be fit, return number
-        peaks_total -= 1
+        flags -= 1
 
-    pass
+    return flags
