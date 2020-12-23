@@ -15,6 +15,11 @@
 #       A[10] = 6   <- peak 4
 #       A[11] = 2
 
+# pesudocode
+#   find peaks
+#   find K that works on most peaks
+#   find number of flags
+
 def solution(A):
     # write your code in Python 3.6
 
