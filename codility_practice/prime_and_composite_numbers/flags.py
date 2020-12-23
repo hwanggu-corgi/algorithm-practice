@@ -55,6 +55,7 @@ def get_peaks(A):
     return res
 
 def get_flags_amount(A):
-
+    # use combinations of 2
+    # for each comb, determine distance between
 
     pass
