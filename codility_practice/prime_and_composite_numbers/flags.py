@@ -21,11 +21,7 @@
 #   find number of flags
 
 def solution(A):
-    # write your code in Python 3.6
-    # find peaks
     peaks_total, A = get_peaks(A)
-    # find K that works on most peaks
-    # find number of flags
     flags_amount = get_flags_amount(peaks_total, A)
 
     return flags_amount
@@ -34,17 +30,11 @@ def get_peaks(A):
     peaks_count = 0
     n = len(A)
     res = [False] * n
-    # cases
-    #   - when peak exists in edges A[0] or A[-1]
-    #       - A[0] > A[1]
-    #       - A[-1] > A[-2]
-    #   - When peak exsists between A[0] and A[-1]
-    #       - A[i-1] < A[i] > A[i+1]
 
     if n == 1:
         res[0] = True
         peaks_count += 1
-        return peaks_count, A
+        return peaks_count, res
 
     # return list of indicies
     i = 1
@@ -59,15 +49,10 @@ def get_peaks(A):
 def get_flags_amount(peaks_total, A):
     flags = peaks_total
 
-    # start with maximum possible number of flags
     while flags >= 1:
 
-        # check if flags is possible
-        # if can be fit, return number
         if is_possible(flags, A):
             break
-        # if not decrease the flag amount
-        # repeat
         flags -= 1
 
     return flags
