@@ -31,12 +31,19 @@ def solution(A):
     return flags_amount
 
 def get_peaks(A):
+    res = []
     # cases
     #   - when peak exists in edges A[0] or A[-1]
     #       - A[0] > A[1]
     #       - A[-1] > A[-2]
     #   - When peak exsists between A[0] and A[-1]
     #       - A[i-1] < A[i] > A[i+1]
+
+    if A[0] > A[1]:
+        res.append[0]
+
+    if (len(A) > 1) and (A[-1] > A[-2]):
+        res.append(len(A) - 1)
 
     # return list of indicies
     pass
