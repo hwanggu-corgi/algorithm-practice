@@ -21,13 +21,15 @@
 #   find number of flags
 
 def solution(A):
-    peaks_total, A = get_peaks(A)
-    flags_amount = get_flags_amount(peaks_total, A)
+    peaks_total, peaks = get_peaks(A)
+    print(peaks)
+    flags_amount = get_flags_amount(peaks_total, peaks)
 
     return flags_amount
 
 def get_peaks(A):
     peaks_count = 0
+    next_peak_location = -1
     n = len(A)
     res = [-1] * n
 
@@ -40,6 +42,7 @@ def get_peaks(A):
     while i >= 0:
         if (A[i-1] < A[i]) and (A[i] > A[i+1]):
             res[i] = i
+            next_peak_location = i
             peaks_count += 1
         else:
             res[i] = next_peak_location
@@ -47,27 +50,30 @@ def get_peaks(A):
 
     return peaks_count, res
 
-def get_flags_amount(peaks_total, A):
+def get_flags_amount(peaks_total, peaks):
     flags = peaks_total
 
     while flags >= 1:
 
-        if is_possible(flags, A):
+        if is_possible(flags, peaks):
             break
         flags -= 1
 
     return flags
 
 
-def is_possible(flags, A):
-    n = len(A)
+def is_possible(flags, peaks):
+    n = len(peaks)
     distance_amt = flags
-    i = 0
+    i = peaks[0]
     while i < n and flags > 0:
-        if not A[i] == True:
-            i += 1
-        else:
+        try:
             flags -= 1
-            i += distance_amt
+            i = peaks[i+distance_amt]
+        except IndexError:
+            break
 
     return True if flags == 0 else False
+
+if __name__ == "__main__":
+    print(solution([1, 5, 3, 4, 3, 4, 1, 2, 3, 4, 6, 2])) #3
