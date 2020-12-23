@@ -4,14 +4,15 @@
 # cases
 
 def solution(N):
-    # write your code in Python 3.6
     count = 0
 
-    i = 2
-    while i * i <= n:
-
-
+    i = 1
+    while i * i <= N:
+        if N % i == 0:
+            count += 1
         i += 1
 
+    return count * 2
 
-    return count
+if __name__ == "__main__":
+    print(solution(24)) # 8
