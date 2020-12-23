@@ -23,15 +23,15 @@
 def solution(A):
     # write your code in Python 3.6
     # find peaks
-    get_peaks(A)
+    peaks_total, A = get_peaks(A)
     # find K that works on most peaks
     # find number of flags
-    flags_amount = get_flags_amount(A)
+    flags_amount = get_flags_amount(peaks_total, A)
 
     return flags_amount
 
 def get_peaks(A):
-    res = []
+    peaks_count = 0
     # cases
     #   - when peak exists in edges A[0] or A[-1]
     #       - A[0] > A[1]
@@ -41,31 +41,37 @@ def get_peaks(A):
 
     if A[0] > A[1]:
         A[0] = True
+        peaks_count += 1
 
     if (len(A) > 1) and (A[-1] > A[-2]):
         A[-1] = True
+        peaks_count += 1
 
     # return list of indicies
     i = 1
     while i < (n-1):
         if (A[i-1] < A[i]) and (A[i] > A[i+1]):
             A[i] = True
+            peaks_count += 1
         else:
             A[i] = False
         i += 1
 
-    return res
+    return peaks_count, A
 
-def get_flags_amount(A):
+def get_flags_amount(peaks_total, A):
+    flags = peaks_total
 
     # start with maximum possible number of flags
+    while peaks_total >= 1:
 
-    # check if flags is possible
+        # check if flags is possible
 
-    # if not decrease the flag amount
+        # if not decrease the flag amount
 
-    # repeat
+        # repeat
 
-    # if can be fit, return number
+        # if can be fit, return number
+        peaks_total -= 1
 
     pass
