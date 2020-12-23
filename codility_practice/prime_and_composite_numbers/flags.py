@@ -45,6 +45,8 @@ def get_peaks(A):
             res[i] = next_peak_location
         i -= 1
 
+    res[0] = res[1]
+
     return peaks_count, res
 
 def get_flags_amount(peaks_total, peaks):
@@ -62,14 +64,14 @@ def is_possible(flags, peaks):
     n = len(peaks)
     distance_amt = flags
     i = peaks[0]
+
     while i < n and flags > 0:
         try:
-            flags -= 1
-            i = peaks[i+distance_amt]
-
             if i == -1:
                 break
 
+            flags -= 1
+            i = peaks[i+distance_amt]
         except IndexError:
             break
 
