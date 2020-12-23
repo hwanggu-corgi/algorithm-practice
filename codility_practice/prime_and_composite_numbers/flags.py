@@ -23,7 +23,7 @@
 def solution(A):
     # write your code in Python 3.6
     # find peaks
-    peaks = get_peaks(A)
+    get_peaks(A)
     # find K that works on most peaks
     # find number of flags
     flags_amount = get_flags_amount(A)
@@ -40,22 +40,22 @@ def get_peaks(A):
     #       - A[i-1] < A[i] > A[i+1]
 
     if A[0] > A[1]:
-        res.append[0]
+        A[0] = True
 
     if (len(A) > 1) and (A[-1] > A[-2]):
-        res.append(len(A) - 1)
+        A[-1] = True
 
     # return list of indicies
     i = 1
     while i < (n-1):
         if (A[i-1] < A[i]) and (A[i] > A[i+1]):
-            res.append(i)
+            A[i] = True
+        else:
+            A[i] = False
         i += 1
 
     return res
 
 def get_flags_amount(A):
-    # use combinations of 2
-    # for each comb, determine distance between
 
     pass
