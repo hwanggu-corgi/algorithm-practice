@@ -22,5 +22,25 @@
 
 def solution(A):
     # write your code in Python 3.6
+    # find peaks
+    peaks = get_peaks(A)
+    # find K that works on most peaks
+    # find number of flags
+    flags_amount = get_flags_amount(A)
 
+    return flags_amount
+
+def get_peaks(A):
+    # cases
+    #   - when peak exists in edges A[0] or A[-1]
+    #       - A[0] > A[1]
+    #       - A[-1] > A[-2]
+    #   - When peak exsists between A[0] and A[-1]
+    #       - A[i-1] < A[i] > A[i+1]
+
+    # return list of indicies
+    pass
+
+
+def get_flags_amount(A):
     pass
