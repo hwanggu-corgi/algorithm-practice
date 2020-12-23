@@ -58,4 +58,14 @@ def get_peaks(A):
 
 def get_flags_amount(A):
 
+    # start with maximum possible number of flags
+
+    # check if flags is possible
+
+    # if not decrease the flag amount
+
+    # repeat
+
+    # if can be fit, return number
+
     pass
