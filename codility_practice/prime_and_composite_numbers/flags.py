@@ -22,7 +22,6 @@
 
 def solution(A):
     peaks_total, peaks = get_peaks(A)
-    print(peaks)
     flags_amount = get_flags_amount(peaks_total, peaks)
 
     return flags_amount
@@ -34,12 +33,10 @@ def get_peaks(A):
     res = [-1] * n
 
     if n == 1:
-        res[0] = 0
-        peaks_count += 1
         return peaks_count, res
 
     i = n - 2
-    while i >= 0:
+    while i > 0:
         if (A[i-1] < A[i]) and (A[i] > A[i+1]):
             res[i] = i
             next_peak_location = i
@@ -77,3 +74,7 @@ def is_possible(flags, peaks):
 
 if __name__ == "__main__":
     print(solution([1, 5, 3, 4, 3, 4, 1, 2, 3, 4, 6, 2])) #3
+    print(solution([1,2,3])) #0
+    print(solution([1,4,2])) #1
+    print(solution([1,1,1])) #0
+    print(solution([3,2,1])) #0
