@@ -32,12 +32,18 @@ def solution(A):
 
 def get_peaks(A):
     peaks_count = 0
+    n = len(A)
     # cases
     #   - when peak exists in edges A[0] or A[-1]
     #       - A[0] > A[1]
     #       - A[-1] > A[-2]
     #   - When peak exsists between A[0] and A[-1]
     #       - A[i-1] < A[i] > A[i+1]
+
+    if n == 1:
+        A[0] = True
+        peaks_count += 1
+        return peaks_count, A
 
     if A[0] > A[1]:
         A[0] = True
