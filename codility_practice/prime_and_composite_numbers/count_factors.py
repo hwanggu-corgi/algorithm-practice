@@ -5,9 +5,13 @@
 
 def solution(N):
     # write your code in Python 3.6
-    factors = 0
+    count = 0
 
     i = 2
     while i * i <= n:
 
-    pass
+
+        i += 1
+
+
+    return count
