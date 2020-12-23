@@ -46,14 +46,6 @@ def get_peaks(A):
         peaks_count += 1
         return peaks_count, A
 
-    if A[0] > A[1]:
-        res[0] = True
-        peaks_count += 1
-
-    if (n > 1) and (A[-1] > A[-2]):
-        res[-1] = True
-        peaks_count += 1
-
     # return list of indicies
     i = 1
     while i < (n-1):
