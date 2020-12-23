@@ -2,7 +2,7 @@
 
 # Example
 #   1)
-#       A[0] = 1                -1
+#       A[0] = 1                1
 #       A[1] = 5    <- peak 1   1
 #       A[2] = 3                3
 #       A[3] = 4    <- peak 2   3
@@ -29,19 +29,21 @@ def solution(A):
 def get_peaks(A):
     peaks_count = 0
     n = len(A)
-    res = [False] * n
+    res = [-1] * n
 
     if n == 1:
-        res[0] = True
+        res[0] = 0
         peaks_count += 1
         return peaks_count, res
 
-    i = 1
-    while i < (n-1):
+    i = n - 2
+    while i >= 0:
         if (A[i-1] < A[i]) and (A[i] > A[i+1]):
-            res[i] = True
+            res[i] = i
             peaks_count += 1
-        i += 1
+        else:
+            res[i] = next_peak_location
+        i -= 1
 
     return peaks_count, res
 
