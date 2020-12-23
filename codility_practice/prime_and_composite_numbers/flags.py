@@ -33,6 +33,7 @@ def solution(A):
 def get_peaks(A):
     peaks_count = 0
     n = len(A)
+    res = [False] * n
     # cases
     #   - when peak exists in edges A[0] or A[-1]
     #       - A[0] > A[1]
@@ -41,29 +42,27 @@ def get_peaks(A):
     #       - A[i-1] < A[i] > A[i+1]
 
     if n == 1:
-        A[0] = True
+        res[0] = True
         peaks_count += 1
         return peaks_count, A
 
     if A[0] > A[1]:
-        A[0] = True
+        res[0] = True
         peaks_count += 1
 
-    if (len(A) > 1) and (A[-1] > A[-2]):
-        A[-1] = True
+    if (n > 1) and (A[-1] > A[-2]):
+        res[-1] = True
         peaks_count += 1
 
     # return list of indicies
     i = 1
     while i < (n-1):
         if (A[i-1] < A[i]) and (A[i] > A[i+1]):
-            A[i] = True
+            res[i] = True
             peaks_count += 1
-        else:
-            A[i] = False
         i += 1
 
-    return peaks_count, A
+    return peaks_count, res
 
 def get_flags_amount(peaks_total, A):
     flags = peaks_total
