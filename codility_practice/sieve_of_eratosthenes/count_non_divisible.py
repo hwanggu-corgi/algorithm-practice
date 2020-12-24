@@ -3,28 +3,52 @@
 
 # count elements in A store in dictionary count
 
+
 def solution(A):
-    n = len(A)
-    answer = [0] * n
+    answer = []
+    e_count = {}
 
-    A = [x for x in zip(range(n), A)]
-    A.sort(key= lambda e: e[1])
+    for e in A:
+        if e not in e_count:
+            e_count[e] = 1
+        else:
+            e_count[e] += 1
 
-    for index_a, a in enumerate(A):
+
+    for a in A:
         non_divisors_count = 0
-        for index_b, b in enumerate(A):
-            if index_a == index_b:
+        for key in e_count:
+            if a % key == 0:
                 continue
 
-            if b[1] > a[1]:
-                non_divisors_count += n - index_b
-                break
+            non_divisors_count += e_count[key]
 
-            if a[1] % b[1] != 0:
-                non_divisors_count += 1
-
-        answer[a[0]] = non_divisors_count
+        answer.append(non_divisors_count)
     return answer
+
+
+# def solution(A):
+#     n = len(A)
+#     answer = [0] * n
+
+#     A = [x for x in zip(range(n), A)]
+#     A.sort(key= lambda e: e[1])
+
+#     for index_a, a in enumerate(A):
+#         non_divisors_count = 0
+#         for index_b, b in enumerate(A):
+#             if index_a == index_b:
+#                 continue
+
+#             if b[1] > a[1]:
+#                 non_divisors_count += n - index_b
+#                 break
+
+#             if a[1] % b[1] != 0:
+#                 non_divisors_count += 1
+
+#         answer[a[0]] = non_divisors_count
+#     return answer
 
 
 # for each element in A,
