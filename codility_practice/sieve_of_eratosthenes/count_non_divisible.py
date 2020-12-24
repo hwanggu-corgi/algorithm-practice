@@ -5,23 +5,32 @@
 
 
 def solution(A):
-    answer = []
     n = len(A)
+    a_count = {}
+    b_count = {}
+    for a in A:
+        if a not in a_count:
+            a_count[a] = 1
+        else:
+            a_count[a] += 1
 
-    for index_a, a in enumerate(A):
-        non_divisors_count = 0
-        index_b = 0
-        b = A[0]
+    for a in a_count:
+        divisors_count = 0
+        b = 1
+        while b * b <= a:
+            # put count of a // b in dictionary by b
+            if a % b == 0:
+                print("{} {}".format(a,b))
+                print(a_count)
+                c = a // b
+                if b in a_count:
+                    b_count[b] = b_count[b] + a_count[a] if b in b_count else a_count[a]
 
-        while b * b <= n:
-            if index_a == index_b:
-                continue
-
-            if a % b != 0:
-                non_divisors_count += 1
-
+                if c in a_count:
+                    b_count[c] = b_count[c] + a_count[a] if c in b_count else a_count[a]
+                print(b_count)
             b += 1
-        answer.append(non_divisors_count)
+    answer = [b_count[x] for x in A]
     return answer
 
 
