@@ -18,4 +18,14 @@
 def solution(N, M):
     # write your code in Python 3.6
 
-    pass
+    chocolates_eaten_set = set()
+    current_chocolate = 0
+    # while chocolate to eat is not in set
+    while not current_chocolate in chocolates_eaten_set:
+
+        # add chocolate to set
+        chocolates_eaten_set.add(current_chocolate)
+        # shift chocolate by M
+        current_chocolate = (current_chocolate + M) % N
+
+    return len(chocolates_eaten_set)
