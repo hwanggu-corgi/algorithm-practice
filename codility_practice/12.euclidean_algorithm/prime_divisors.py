@@ -31,32 +31,41 @@ def solution(A, B):
 
 
 def check(a, b):
-    while True:
-        smaller = min(a, b)
-        bigger = max(a, b)
-        prime = get_prime(bigger, smaller)
+    # Factorize a and b
+    bigger = max(a,b)
 
-        # divide A[i] and B[i] by gcd until can't be divided anymore
-        a = remove_factor(a, prime)
-        b = remove_factor(b, prime)
-        print("{} {}".format(a,b))
+    prime_factors = arrayF(bigger)
 
-    # find if prime divisor exists in A[i], if so return False
-    if a != 1 or b != 1:
+    a_factors = factorize(a, prime_factors)
+    b_factors = factorize(b, prime_factors)
+
+    # check if primes are the same
+    if b_factors == a_factors:
+        return True
+    else:
         return False
-    # if all is well, return True
-    return True
 
-def gcd(a,b):
-    if a % b == 0:
-        return b
+def arrayF(n):
+    F = [0] * (n+1)
+    i = 2
+    while (i * i <= n):
+        if (F[i] == 0):
+            k = i * i
+            while k <= n:
+                if F[k] == 0:
+                    F[k] = i
+                k += i
+        i += 1
 
-    return gcd(b, a % b)
+    return F
+def factorize(x,F):
+    prime_factors = set()
+    while (F[x] > 0):
+        prime_factors.add(F[x])
+        x //= F[x]
+    prime_factors.add(x)
+    return prime_factors
 
-def remove_factor(a,b):
-    while a % b == 0:
-        a //= b
-    return a
 
 if __name__ == "__main__":
-    print(solution([15, 10, 9], [75, 30, 5]))
+    print(solution([15, 10, 9], [75, 30, 5])) #1
