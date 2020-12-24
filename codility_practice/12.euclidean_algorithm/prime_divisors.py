@@ -44,10 +44,17 @@ def check(a, b):
         b /= gcd_ab
 
     # find if prime divisor exists in A[i], if so return False
-    i = 2
-    while i * i <= a:
-        if a % i == 0:
-            return False
-        i += 1
+    if a != 1:
+        i = 2
+        while i * i <= a:
+            if a % i == 0:
+                return False
+            i += 1
     # find if prime divisor exists in B[i], if so return False
+    if b != 1:
+        i = 2
+        while i * i <= a:
+            if a % i == 0:
+                return False
+            i += 1
     # if all is well, return True
