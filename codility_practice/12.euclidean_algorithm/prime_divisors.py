@@ -39,22 +39,12 @@ def check(a, b):
 
         if gcd_ab == 1:
             break
-        # divide A[i] and B[i] by gcd
-        a /= gcd_ab
-        b /= gcd_ab
+        # divide A[i] and B[i] by gcd until can't be divided anymore
+        a = factorize(a, gcd_ab)
+        b = factorize(b, gcd_ab)
 
     # find if prime divisor exists in A[i], if so return False
-    if a != 1:
-        i = 2
-        while i * i <= a:
-            if a % i == 0:
-                return False
-            i += 1
-    # find if prime divisor exists in B[i], if so return False
-    if b != 1:
-        i = 2
-        while i * i <= a:
-            if a % i == 0:
-                return False
-            i += 1
+    if a != 1 or b != 1:
+        return False
     # if all is well, return True
+    return True
