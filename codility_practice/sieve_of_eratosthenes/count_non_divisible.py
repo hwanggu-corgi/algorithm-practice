@@ -6,31 +6,27 @@
 
 def solution(A):
     n = len(A)
-    a_count = {}
-    b_count = {}
-    for a in A:
-        if a not in a_count:
-            a_count[a] = 1
+    e_count = {}
+    divisors_count = {}
+    for e in A:
+        if e not in e_count:
+            e_count[e] = 1
         else:
-            a_count[a] += 1
+            e_count[e] += 1
 
-    for a in a_count:
-        divisors_count = 0
+    for a in e_count:
         b = 1
         while b * b <= a:
             # put count of a // b in dictionary by b
             if a % b == 0:
-                print("{} {}".format(a,b))
-                print(a_count)
                 c = a // b
-                if b in a_count:
-                    b_count[b] = b_count[b] + a_count[a] if b in b_count else a_count[a]
+                if b in e_count:
+                    divisors_count[a] = divisors_count[a] + e_count[b] if a in divisors_count else e_count[b]
 
-                if c in a_count:
-                    b_count[c] = b_count[c] + a_count[a] if c in b_count else a_count[a]
-                print(b_count)
+                if c in e_count and (b != c):
+                    divisors_count[a] = divisors_count[a] + e_count[c] if a in divisors_count else e_count[c]
             b += 1
-    answer = [b_count[x] for x in A]
+    answer = [n - divisors_count[x] for x in A]
     return answer
 
 
