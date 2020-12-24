@@ -32,10 +32,22 @@ def solution(A, B):
 
 def check(a, b):
     # get gcd of A[i] and B[i]
-    smaller = mib(A[i], B[i])
-    bigger = max(A[i], B[i])
-    gcd_ab = gcd(bigger, smaller)
-    # divide A[i] and B[i] by gcd
-    # find if prime divisor exists in A[i], if so skip i
-    # find if prime divisor exists in B[i], if so skip i
-    # if all is well, return i
+    while True:
+        smaller = min(a, b)
+        bigger = max(a, b)
+        gcd_ab = gcd(bigger, smaller)
+
+        if gcd_ab == 1:
+            break
+        # divide A[i] and B[i] by gcd
+        a /= gcd_ab
+        b /= gcd_ab
+
+    # find if prime divisor exists in A[i], if so return False
+    i = 2
+    while i * i <= a:
+        if a % i == 0:
+            return False
+        i += 1
+    # find if prime divisor exists in B[i], if so return False
+    # if all is well, return True
