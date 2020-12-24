@@ -31,20 +31,32 @@ def solution(A, B):
 
 
 def check(a, b):
-    # get gcd of A[i] and B[i]
     while True:
         smaller = min(a, b)
         bigger = max(a, b)
-        gcd_ab = gcd(bigger, smaller)
+        prime = get_prime(bigger, smaller)
 
-        if gcd_ab == 1:
-            break
         # divide A[i] and B[i] by gcd until can't be divided anymore
-        a = factorize(a, gcd_ab)
-        b = factorize(b, gcd_ab)
+        a = remove_factor(a, prime)
+        b = remove_factor(b, prime)
+        print("{} {}".format(a,b))
 
     # find if prime divisor exists in A[i], if so return False
     if a != 1 or b != 1:
         return False
     # if all is well, return True
     return True
+
+def gcd(a,b):
+    if a % b == 0:
+        return b
+
+    return gcd(b, a % b)
+
+def remove_factor(a,b):
+    while a % b == 0:
+        a //= b
+    return a
+
+if __name__ == "__main__":
+    print(solution([15, 10, 9], [75, 30, 5]))
