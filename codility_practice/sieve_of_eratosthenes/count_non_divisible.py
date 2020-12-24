@@ -6,6 +6,7 @@
 
 def solution(A):
     answer = []
+    n = len(A)
     e_count = {}
 
     for e in A:
@@ -15,15 +16,18 @@ def solution(A):
             e_count[e] += 1
 
 
-    for a in A:
-        non_divisors_count = 0
-        for key in e_count:
-            if a % key == 0:
-                continue
+    for b in A:
+        divisors_count = 0
+        a = 1
+        while b * b <= a:
+            if a % b == 0:
+                print("{} {}".format(a,b))
+                c = a // b
+                divisors_count += e_count[b] if b in e_count else 0
+                divisors_count += e_count[c] if c in e_count else 0
+            b += 1
 
-            non_divisors_count += e_count[key]
-
-        answer.append(non_divisors_count)
+        answer.append(n - divisors_count)
     return answer
 
 
