@@ -7,27 +7,21 @@
 def solution(A):
     answer = []
     n = len(A)
-    e_count = {}
 
-    for e in A:
-        if e not in e_count:
-            e_count[e] = 1
-        else:
-            e_count[e] += 1
+    for index_a, a in enumerate(A):
+        non_divisors_count = 0
+        index_b = 0
+        b = A[0]
 
+        while b * b <= n:
+            if index_a == index_b:
+                continue
 
-    for b in A:
-        divisors_count = 0
-        a = 1
-        while b * b <= a:
-            if a % b == 0:
-                print("{} {}".format(a,b))
-                c = a // b
-                divisors_count += e_count[b] if b in e_count else 0
-                divisors_count += e_count[c] if c in e_count else 0
+            if a % b != 0:
+                non_divisors_count += 1
+
             b += 1
-
-        answer.append(n - divisors_count)
+        answer.append(non_divisors_count)
     return answer
 
 
