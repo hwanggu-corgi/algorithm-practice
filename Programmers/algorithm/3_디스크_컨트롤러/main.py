@@ -67,7 +67,10 @@ def solution(jobs):
         while (len(jobs) > 0) and (jobs[0][0] <= current_time):
             print(jobs[0][0])
             processing_jobs.append(jobs.popleft())
-        print(processing_jobs)
+
+        if len(processing_jobs) == 0:
+            processing_jobs.append(jobs.popleft())
+
         # order by processing time
         processing_jobs = sorted(processing_jobs, key = lambda e: e[1], reverse=True)
 
