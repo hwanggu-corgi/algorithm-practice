@@ -58,32 +58,32 @@ def solution(jobs):
     total = 0
     current_time = 0
     n = len(jobs)
-    queue = {}
+    processing_jobs = []
 
     jobs = deque(jobs)
-    jobs = sorted(jobs, key = lambda e: e[2], reverse=True)
 
     while len(jobs) > 0:
-        job = jobs.pop()
-        #   compute its turnaround time
-        delayed_time = 0 if (current_time - job[0]) < 0 else current_time - job[0]
+        while (len(jobs) > 0) and (jobs[0][0] <= current_time):
+            processing_jobs.append(jobs.popleft())
 
-        turnaround_time = delayed_time + job[1]
+        # order by processing time
+        processing_jobs = sorted(processing_jobs, key = lambda e: e[1], reverse=True)
 
-        current_time = current_time + job[1]
+        while len(processing_jobs) > 0:
+            job = processing_jobs.pop()
 
-        #   add to turnaround time to sum
-        total += turnaround_time
+            #   compute its turnaround time
+            delayed_time = 0 if (current_time - job[0]) < 0 else current_time - job[0]
 
-        # find next shortest job
-        for job in jobs:
-            time_gap = 0 if (job[0] - current_time) < 0 else (job[0] - current_time)
-            new_processing_time = time_gap + job[1]
-            job[2] = new_processing_time
+            turnaround_time = delayed_time + job[1]
 
-        jobs = sorted(jobs, key = lambda e: e[2], reverse=True)
+            current_time = current_time + job[1]
+
+            #   add to turnaround time to sum
+            total += turnaround_time
+
     #   compute average
-    avg = math.ceil(total / n)
+    avg = total // n
     return avg
 
 if __name__ == "__main__":
