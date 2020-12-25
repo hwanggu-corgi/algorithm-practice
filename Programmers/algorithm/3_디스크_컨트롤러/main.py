@@ -72,10 +72,13 @@ def solution(jobs):
 
     while len(heap_jobs_time_taken_from_start) > 0:
         #   pop an element from heap
+        time = heapq.heappop(heap_jobs_time_taken_from_start)
         #   popleft dictionary by the value of heap
+        job = jobs_dict_by_time_taken_from_start[time].popleft()
         #   compute its turnaround time
+        turnaround_time =
         #   add to turnaround time to sum
-    total += turnaround_time
+        total += turnaround_time
     #   compute average
     avg = total // n
     return answer
