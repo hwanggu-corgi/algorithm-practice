@@ -60,7 +60,6 @@ def solution(jobs):
     n = len(jobs)
     processing_jobs = []
 
-    jobs = sorted(jobs, key= lambda e: e[1])
     jobs = sorted(jobs, key= lambda e: e[0])
 
     while len(jobs) > 0:
@@ -80,6 +79,9 @@ def solution(jobs):
     #   compute average
     avg = total // n
     return avg
+
+def get_processing_jobs(...):
+
 
 if __name__ == "__main__":
     print(solution([[0, 3], [1, 9], [2, 6]]))
