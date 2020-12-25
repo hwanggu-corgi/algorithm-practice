@@ -60,29 +60,21 @@ def solution(jobs):
     n = len(jobs)
     processing_jobs = []
 
-    jobs = deque(jobs)
+    jobs = sorted(jobs, key= lambda e: e[1])
+    jobs = sorted(jobs, key= lambda e: e[0])
 
     while len(jobs) > 0:
-        while (len(jobs) > 0) and (jobs[0][0] <= current_time):
-            processing_jobs.append(jobs.popleft())
-
-        if len(processing_jobs) == 0:
-            processing_jobs.append(jobs.popleft())
-
-        # order by processing time
-        processing_jobs = sorted(processing_jobs, key = lambda e: e[1], reverse=True)
+        processing_jobs = get_processing_jobs(...)
 
         while len(processing_jobs) > 0:
             job = processing_jobs.pop()
 
-            #   compute its turnaround time
             delayed_time = 0 if (current_time - job[0]) < 0 else current_time - job[0]
 
             turnaround_time = delayed_time + job[1]
 
             current_time += job[1]
 
-            #   add to turnaround time to sum
             total += turnaround_time
 
     #   compute average
