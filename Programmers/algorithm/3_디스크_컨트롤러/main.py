@@ -28,8 +28,8 @@
 #       (2,6) comes next
 #           - time starts 3
 #           - calculate time deplayed (3 - 2) = 1
-#           - calculate total time taken 1 + 8  = 9
-#           - time ends 9
+#           - calculate total time taken 1 + 6  = 7
+#           - time ends 7
 #
 #       (1,9) comes next
 #           - time starts 9
@@ -61,7 +61,6 @@ def solution(jobs):
     #   create heap based on time taken from the start
     #       [3, 10, 8] --> heap
     job_time_from_start = [sum(x) for x in jobs]
-    heap = heapq.heapify(job_time_from_start)
     #   for each time time taken from start, store its [starting time, time taken] to dictionary called queue
     #       {3: [[0,3]], 8:[[2,6]] 10:[[1,9]]}
     for index, time in enumerate(job_time_from_start):
@@ -71,17 +70,27 @@ def solution(jobs):
         else:
             queue[time].append(jobs[index])
 
+    heapq.heapify(job_time_from_start)
+
     while len(job_time_from_start) > 0:
         #   pop an element from heap
         time = heapq.heappop(job_time_from_start)
+        print(time)
         #   popleft dictionary by the value of heap
         job = queue[time].popleft()
+        print(job)
         #   compute its turnaround time
         delayed_time = 0 if (current_time - job[0]) < 0 else current_time - job[0]
+        print("delayed_time {}".format(delayed_time))
         turnaround_time = delayed_time + job[1]
-        current_time = job[1]
+        print("turnaround time {}".format(turnaround_time))
+        current_time = turnaround_time
+        print("current time {}".format(current_time))
         #   add to turnaround time to sum
         total += turnaround_time
     #   compute average
     avg = total // n
-    return answer
+    return avg
+
+if __name__ == "__main__":
+    print(solution([[0, 3], [1, 9], [2, 6]]))
