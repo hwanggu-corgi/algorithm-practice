@@ -56,16 +56,18 @@ import math
 
 def solution(jobs):
     total = 0
-    current_time = 0
+    current_time = jobs[0][0]
     n = len(jobs)
     processing_jobs = []
 
     jobs = deque(jobs)
 
     while len(jobs) > 0:
+        print(current_time)
         while (len(jobs) > 0) and (jobs[0][0] <= current_time):
+            print(jobs[0][0])
             processing_jobs.append(jobs.popleft())
-
+        print(processing_jobs)
         # order by processing time
         processing_jobs = sorted(processing_jobs, key = lambda e: e[1], reverse=True)
 
@@ -81,6 +83,7 @@ def solution(jobs):
 
             #   add to turnaround time to sum
             total += turnaround_time
+        print(jobs)
 
     #   compute average
     avg = total // n
