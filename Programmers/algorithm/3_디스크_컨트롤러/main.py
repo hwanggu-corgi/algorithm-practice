@@ -50,19 +50,31 @@
 #   add to turnaround time to sum
 #   compute average
 
+import heapq
+from collections import deque
+
 def solution(jobs):
     total = 0
     n = len(jobs)
+    jobs_dict_by_time_taken_from_start = {}
     #   create heap based on time taken from the start
     #       [3, 10, 8] --> heap
-    time_taken_from_start = [sum(x) for x in jobs]
-    #   for each time time taken from start, store its [starting time, time taken] to dictionary
+    jobs_time_taken_from_start = [sum(x) for x in jobs]
+    heap_jobs_time_taken_from_start = heapq.heapify(jobs_time_taken_from_start)
+    #   for each time time taken from start, store its [starting time, time taken] to dictionary called queue
     #       {3: [[0,3]], 8:[[2,6]] 10:[[1,9]]}
+    for index, time in enumerate(jobs_time_taken_from_start):
+        if time not in jobs_dict_by_time_taken_from_start:
+            jobs_dict_by_time_taken_from_start[time] = deque()
+            jobs_dict_by_time_taken_from_start[time].append(jobs[index])
+        else:
+            jobs_dict_by_time_taken_from_start[time].append(jobs[index])
 
-    #   pop an element from heap
-    #   popleft dictionary by the value of heap
-    #   compute its turnaround time
-    #   add to turnaround time to sum
+    while len(heap_jobs_time_taken_from_start) > 0:
+        #   pop an element from heap
+        #   popleft dictionary by the value of heap
+        #   compute its turnaround time
+        #   add to turnaround time to sum
     total += turnaround_time
     #   compute average
     avg = total // n
