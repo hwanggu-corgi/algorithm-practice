@@ -74,6 +74,9 @@ def solution(jobs):
         # print("current time {}".format(current_time))
         #   add to turnaround time to sum
         total += turnaround_time
+
+        # find next shortest job
+        jobs = sorted(jobs, key = lambda e: e[2], reverse=True)
     #   compute average
     avg = total // n
     return avg
