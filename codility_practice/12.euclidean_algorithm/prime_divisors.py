@@ -14,11 +14,30 @@ def solution(A, B):
 
 
 def check(a, b):
+    # get gcd
+    bigger = max(a,b)
+    smaller = min(a,b)
+    gcd_ab = gcd(bigger, smaller)
+
     # if a / gcd > 1 and b / gcd > 1, return False
+    if (a / gcd_ab > 1) and (b / gcd_ab > 1):
+        return False
+
+    # if a / gcd == 1 and b / gcd == 1, return True
+    if (a / gcd_ab == 1) and (b / gcd_ab == 1):
+        return True
 
     # if a/gcd == 1 and b / gcd > 1 and gcd % b == 0, return True
+    if (a / gcd_ab == 1) and (b / gcd_ab > 1) and (gcd_ab % (b/gcd_ab) == 0):
+        return True
+    else:
+        return False
 
     # if b/gcd == 1 and a/ gcd > 1 and gcd % a == 0, return True
+    if (b / gcd_ab == 1) and (a / gcd_ab > 1) and (gcd_ab % (a/gcd_ab) == 0):
+        return True
+    else:
+        return False
 
 def gcd(a,b):
     if a % b == 0:
