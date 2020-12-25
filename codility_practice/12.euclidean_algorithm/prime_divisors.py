@@ -19,25 +19,32 @@ def check(a, b):
     smaller = min(a,b)
     gcd_ab = gcd(bigger, smaller)
 
+    new_a = a / gcd_ab
+    new_b = b / gcd_ab
+
     # if a / gcd > 1 and b / gcd > 1, return False
-    if (a / gcd_ab > 1) and (b / gcd_ab > 1):
+    if new_a > 1 and new_b > 1:
         return False
 
     # if a / gcd == 1 and b / gcd == 1, return True
-    if (a / gcd_ab == 1) and (b / gcd_ab == 1):
+    if (new_a == 1) and (new_b == 1):
         return True
 
-    # if a/gcd == 1 and b / gcd > 1 and gcd % b == 0, return True
-    if (a / gcd_ab == 1) and (b / gcd_ab > 1) and (gcd_ab % (b/gcd_ab) == 0):
-        return True
-    else:
-        return False
+    new_gcd_a = gcd_ab
+    while new_gcd_a != 1:
+        bigger = max(new_gcd_a, new_a)
+        smaller = min(new_gcd_a, new_a)
 
-    # if b/gcd == 1 and a/ gcd > 1 and gcd % a == 0, return True
-    if (b / gcd_ab == 1) and (a / gcd_ab > 1) and (gcd_ab % (a/gcd_ab) == 0):
-        return True
-    else:
-        return False
+        new_gcd_a = gcd(bigger, smaller)
+        new_a = new_a / gcd_ab
+
+    new_gcd_b = gcd_ab
+    while new_gcd_b != 1:
+        bigger = max(new_gcd_b, new_a)
+        smaller = min(new_gcd_b, new_a)
+
+        new_gcd_b = gcd(bigger, smaller)
+        new_b = new_b / gcd_ab
 
 def gcd(a,b):
     if a % b == 0:
