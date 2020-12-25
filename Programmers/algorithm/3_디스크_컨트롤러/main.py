@@ -60,25 +60,11 @@ def solution(jobs):
     queue = {}
     #   create heap based on time taken from the start
     #       [3, 10, 8] --> heap
-    job_time_from_start = [sum(x) for x in jobs]
-    #   for each time time taken from start, store its [starting time, time taken] to dictionary called queue
-    #       {3: [[0,3]], 8:[[2,6]] 10:[[1,9]]}
-    for index, time in enumerate(job_time_from_start):
-        if time not in queue:
-            queue[time] = deque()
-            queue[time].append(jobs[index])
-        else:
-            queue[time].append(jobs[index])
+    jobs = [[x[0],x[1],sum(x)] for x in jobs]
+    jobs = sorted(jobs, key = lambda e: e[2], reverse=True)
 
-    heapq.heapify(job_time_from_start)
-
-    while len(job_time_from_start) > 0:
-        #   pop an element from heap
-        time = heapq.heappop(job_time_from_start)
-        print(time)
-        #   popleft dictionary by the value of heap
-        job = queue[time].popleft()
-        print(job)
+    while len(jobs) > 0:
+        job = jobs.pop()
         #   compute its turnaround time
         delayed_time = 0 if (current_time - job[0]) < 0 else current_time - job[0]
         # print("delayed_time {}".format(delayed_time))
