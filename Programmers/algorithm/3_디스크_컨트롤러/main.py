@@ -63,9 +63,7 @@ def solution(jobs):
     jobs = deque(jobs)
 
     while len(jobs) > 0:
-        print(current_time)
         while (len(jobs) > 0) and (jobs[0][0] <= current_time):
-            print(jobs[0][0])
             processing_jobs.append(jobs.popleft())
 
         if len(processing_jobs) == 0:
@@ -82,11 +80,10 @@ def solution(jobs):
 
             turnaround_time = delayed_time + job[1]
 
-            current_time = current_time + job[1]
+            current_time += job[1]
 
             #   add to turnaround time to sum
             total += turnaround_time
-        print(jobs)
 
     #   compute average
     avg = total // n
