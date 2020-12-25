@@ -81,11 +81,11 @@ def solution(jobs):
         print(job)
         #   compute its turnaround time
         delayed_time = 0 if (current_time - job[0]) < 0 else current_time - job[0]
-        print("delayed_time {}".format(delayed_time))
+        # print("delayed_time {}".format(delayed_time))
         turnaround_time = delayed_time + job[1]
-        print("turnaround time {}".format(turnaround_time))
-        current_time = turnaround_time
-        print("current time {}".format(current_time))
+        # print("turnaround time {}".format(turnaround_time))
+        current_time = current_time + job[1]
+        # print("current time {}".format(current_time))
         #   add to turnaround time to sum
         total += turnaround_time
     #   compute average
