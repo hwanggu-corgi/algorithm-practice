@@ -51,10 +51,11 @@
 #   compute average
 
 def solution(jobs):
-    answer = 0
-
+    total = 0
+    n = len(jobs)
     #   create heap based on time taken from the start
     #       [3, 10, 8] --> heap
+    time_taken_from_start = [sum(x) for x in jobs]
     #   for each time time taken from start, store its [starting time, time taken] to dictionary
     #       {3: [[0,3]], 8:[[2,6]] 10:[[1,9]]}
 
@@ -62,6 +63,7 @@ def solution(jobs):
     #   popleft dictionary by the value of heap
     #   compute its turnaround time
     #   add to turnaround time to sum
+    total += turnaround_time
     #   compute average
-
+    avg = total // n
     return answer
