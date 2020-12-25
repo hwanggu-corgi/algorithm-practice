@@ -52,14 +52,14 @@
 
 import heapq
 from collections import deque
+import math
 
 def solution(jobs):
     total = 0
     current_time = 0
     n = len(jobs)
     queue = {}
-    #   create heap based on time taken from the start
-    #       [3, 10, 8] --> heap
+
     jobs = [[x[0],x[1],sum(x)] for x in jobs]
     jobs = sorted(jobs, key = lambda e: e[2], reverse=True)
 
@@ -67,11 +67,11 @@ def solution(jobs):
         job = jobs.pop()
         #   compute its turnaround time
         delayed_time = 0 if (current_time - job[0]) < 0 else current_time - job[0]
-        # print("delayed_time {}".format(delayed_time))
+
         turnaround_time = delayed_time + job[1]
-        # print("turnaround time {}".format(turnaround_time))
+
         current_time = current_time + job[1]
-        # print("current time {}".format(current_time))
+
         #   add to turnaround time to sum
         total += turnaround_time
 
@@ -82,9 +82,8 @@ def solution(jobs):
             job[2] = new_processing_time
 
         jobs = sorted(jobs, key = lambda e: e[2], reverse=True)
-        print(jobs)
     #   compute average
-    avg = total // n
+    avg = math.ceil(total / n)
     return avg
 
 if __name__ == "__main__":
