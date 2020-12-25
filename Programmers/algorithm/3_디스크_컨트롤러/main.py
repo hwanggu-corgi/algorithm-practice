@@ -60,26 +60,30 @@ def solution(jobs):
     n = len(jobs)
     processing_jobs = []
 
-    jobs = sorted(jobs, key= lambda e: e[1])
-    jobs = deque(sorted(jobs, key= lambda e: e[0]))
+    jobs = deque(jobs)
 
     while len(jobs) > 0:
-        processing_jobs = get_processing_jobs(jobs)
+        processing_jobs = sort_by_shortest_job_first(get_processing_jobs(jobs))
 
+        current_time = processing_jobs[-1][0]
         while len(processing_jobs) > 0:
             job = processing_jobs.pop()
 
-            delayed_time = 0 if (current_time - job[0]) < 0 else current_time - job[0]
+            delayed_time = current_time - job[0]
 
             turnaround_time = delayed_time + job[1]
 
             current_time += job[1]
-
             total += turnaround_time
 
     #   compute average
     avg = total // n
     return avg
+
+def sort_by_shortest_job_first(processing_jobs):
+    start = processing_jobs[0][0]
+
+    return sorted(processing_jobs, key = lambda e: (e[0] - start) + e[1], reverse=True)
 
 def get_processing_jobs(jobs):
     res = []
@@ -87,7 +91,7 @@ def get_processing_jobs(jobs):
     while (len(jobs) > 0) and (jobs[0][0] <= end):
         job = jobs.popleft()
         res.append(job)
-    print(res)
+
     return res
 
 if __name__ == "__main__":
