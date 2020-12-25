@@ -60,10 +60,11 @@ def solution(jobs):
     n = len(jobs)
     processing_jobs = []
 
-    jobs = sorted(jobs, key= lambda e: e[0])
+    jobs = sorted(jobs, key= lambda e: e[1])
+    jobs = deque(sorted(jobs, key= lambda e: e[0]))
 
     while len(jobs) > 0:
-        processing_jobs = get_processing_jobs(...)
+        processing_jobs = get_processing_jobs(jobs)
 
         while len(processing_jobs) > 0:
             job = processing_jobs.pop()
@@ -80,8 +81,14 @@ def solution(jobs):
     avg = total // n
     return avg
 
-def get_processing_jobs(...):
-
+def get_processing_jobs(jobs):
+    res = []
+    end = sum(jobs[0])
+    while (len(jobs) > 0) and (jobs[0][0] <= end):
+        job = jobs.popleft()
+        res.append(job)
+    print(res)
+    return res
 
 if __name__ == "__main__":
     print(solution([[0, 3], [1, 9], [2, 6]]))
