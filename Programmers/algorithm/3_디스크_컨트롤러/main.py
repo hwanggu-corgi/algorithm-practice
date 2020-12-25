@@ -76,6 +76,10 @@ def solution(jobs):
         total += turnaround_time
 
         # find next shortest job
+        for job in jobs:
+            time_gap = 0 if (job[0] - current_time) < 0 else (job[0] - current_time)
+            new_processing_time = time_gap + job[1]
+
         jobs = sorted(jobs, key = lambda e: e[2], reverse=True)
     #   compute average
     avg = total // n
