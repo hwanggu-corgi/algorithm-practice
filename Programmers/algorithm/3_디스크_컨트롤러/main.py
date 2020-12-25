@@ -79,11 +79,14 @@ def solution(jobs):
         for job in jobs:
             time_gap = 0 if (job[0] - current_time) < 0 else (job[0] - current_time)
             new_processing_time = time_gap + job[1]
+            job[2] = new_processing_time
 
         jobs = sorted(jobs, key = lambda e: e[2], reverse=True)
+        print(jobs)
     #   compute average
     avg = total // n
     return avg
 
 if __name__ == "__main__":
     print(solution([[0, 3], [1, 9], [2, 6]]))
+    print(solution([[0, 10], [4, 10], [5, 11], [15, 2]])) #15
