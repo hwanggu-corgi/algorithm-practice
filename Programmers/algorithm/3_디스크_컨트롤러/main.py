@@ -28,7 +28,7 @@
 #       (2,6) comes next
 #           - time starts 3
 #           - calculate time deplayed (3 - 2) = 1
-#           - calculate total time taken 1 + 6  = 7
+#           - calculate total time taken 1 + 8  = 9
 #           - time ends 9
 #
 #       (1,9) comes next
@@ -55,28 +55,31 @@ from collections import deque
 
 def solution(jobs):
     total = 0
+    current_time = 0
     n = len(jobs)
-    jobs_dict_by_time_taken_from_start = {}
+    queue = {}
     #   create heap based on time taken from the start
     #       [3, 10, 8] --> heap
-    jobs_time_taken_from_start = [sum(x) for x in jobs]
-    heap_jobs_time_taken_from_start = heapq.heapify(jobs_time_taken_from_start)
+    job_time_from_start = [sum(x) for x in jobs]
+    heap = heapq.heapify(job_time_from_start)
     #   for each time time taken from start, store its [starting time, time taken] to dictionary called queue
     #       {3: [[0,3]], 8:[[2,6]] 10:[[1,9]]}
-    for index, time in enumerate(jobs_time_taken_from_start):
-        if time not in jobs_dict_by_time_taken_from_start:
-            jobs_dict_by_time_taken_from_start[time] = deque()
-            jobs_dict_by_time_taken_from_start[time].append(jobs[index])
+    for index, time in enumerate(job_time_from_start):
+        if time not in queue:
+            queue[time] = deque()
+            queue[time].append(jobs[index])
         else:
-            jobs_dict_by_time_taken_from_start[time].append(jobs[index])
+            queue[time].append(jobs[index])
 
-    while len(heap_jobs_time_taken_from_start) > 0:
+    while len(job_time_from_start) > 0:
         #   pop an element from heap
-        time = heapq.heappop(heap_jobs_time_taken_from_start)
+        time = heapq.heappop(job_time_from_start)
         #   popleft dictionary by the value of heap
-        job = jobs_dict_by_time_taken_from_start[time].popleft()
+        job = queue[time].popleft()
         #   compute its turnaround time
-        turnaround_time =
+        delayed_time = 0 if (current_time - job[0]) < 0 else current_time - job[0]
+        turnaround_time = delayed_time + job[1]
+        current_time = job[1]
         #   add to turnaround time to sum
         total += turnaround_time
     #   compute average
