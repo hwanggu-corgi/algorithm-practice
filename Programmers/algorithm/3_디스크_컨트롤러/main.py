@@ -52,4 +52,16 @@
 
 def solution(jobs):
     answer = 0
+
+    #   create heap based on time taken from the start
+    #       [3, 10, 8] --> heap
+    #   for each time time taken from start, store its [starting time, time taken] to dictionary
+    #       {3: [[0,3]], 8:[[2,6]] 10:[[1,9]]}
+
+    #   pop an element from heap
+    #   popleft dictionary by the value of heap
+    #   compute its turnaround time
+    #   add to turnaround time to sum
+    #   compute average
+
     return answer
