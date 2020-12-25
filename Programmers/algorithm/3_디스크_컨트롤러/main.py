@@ -60,7 +60,7 @@ def solution(jobs):
     n = len(jobs)
     queue = {}
 
-    jobs = [[x[0],x[1],sum(x)] for x in jobs]
+    jobs = deque(jobs)
     jobs = sorted(jobs, key = lambda e: e[2], reverse=True)
 
     while len(jobs) > 0:
