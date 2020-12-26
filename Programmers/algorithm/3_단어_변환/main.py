@@ -17,6 +17,9 @@
 
 #   2) begin: hit	target: cog	   words: [hot, dot, dog, lot, log]
 
+# cases
+#   1)
+
 def solution(begin, target, words):
     answer = 0
     n = len(words)
