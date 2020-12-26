@@ -19,49 +19,44 @@
 
 def solution(begin, target, words):
     n = len(words)
+    answer = 0
     depth = 0
 
-    #   if target word reached, return current depth
     if begin == target:
         return depth
 
-    #   for each word in words,
     for next_word in words:
         if begin == next_word:
             continue
 
-        #   check if word is one apart from 'in_process'
         if is_one_char_apart(begin, next_word):
-            #   recursively use the function on the word
             words_used = set([begin, next_word])
             res = _solution(next_word, depth + 1, target, words, n, words_used)
-            #   compare depth and return the current best
+
             if res != 0:
-                current_best = res if current_best == 0 else min(res, current_best)
-    _solution(begin, depth, target, words, n)
+                answer = res if answer == 0 else min(res, answer)
 
     return answer
 
-def _solution(word, depth, target, words, n):
+def _solution(word, depth, target, words, n, words_used):
+    print(word)
     current_best = 0
-    #   if maximum depth reached, return -1
+
     if (depth == n) and (word != target):
         return 0
 
-    #   if target word reached, return current depth
     if word == target:
         return depth
 
-    #   for each word in words,
     for next_word in words:
-        if word == next_word:
+        if next_word in words_used:
             continue
 
-        #   check if word is one apart from 'in_process'
         if is_one_char_apart(word, next_word):
-            #   recursively use the function on the word
-            res = _solution(next_word, depth + 1, target, words, n)
-            #   compare depth and return the current best
+            words_used.add(next_word)
+
+            res = _solution(next_word, depth + 1, target, words, n, words_used)
+
             if res != 0:
                 current_best = res if current_best == 0 else min(res, current_best)
 
@@ -80,44 +75,44 @@ def is_one_char_apart(word, next_word):
 #   recursively use the function on the word
 #   compare depth and return the current best
 
-def solution(begin, target, words):
-    n = len(words)
-    depth = 0
-    memo = {}
+# def solution(begin, target, words):
+#     n = len(words)
+#     depth = 0
+#     memo = {}
 
-    answer = _solution(begin, depth, target, words, n)
+#     answer = _solution(begin, depth, target, words, n)
 
-    return answer
+#     return answer
 
-def _solution(word, depth, target, words, n):
-    current_best = 0
-    #   if maximum depth reached, return -1
-    if (depth == n) and (word != target):
-        return 0
+# def _solution(word, depth, target, words, n):
+#     current_best = 0
+#     #   if maximum depth reached, return -1
+#     if (depth == n) and (word != target):
+#         return 0
 
-    #   if target word reached, return current depth
-    if word == target:
-        return depth
+#     #   if target word reached, return current depth
+#     if word == target:
+#         return depth
 
-    #   for each word in words,
-    for next_word in words:
-        if word == next_word:
-            continue
+#     #   for each word in words,
+#     for next_word in words:
+#         if word == next_word:
+#             continue
 
-        #   check if word is one apart from 'in_process'
-        if is_one_char_apart(word, next_word):
-            #   recursively use the function on the word
-            res = _solution(next_word, depth + 1, target, words, n)
-            #   compare depth and return the current best
-            if res != 0:
-                current_best = res if current_best == 0 else min(res, current_best)
+#         #   check if word is one apart from 'in_process'
+#         if is_one_char_apart(word, next_word):
+#             #   recursively use the function on the word
+#             res = _solution(next_word, depth + 1, target, words, n)
+#             #   compare depth and return the current best
+#             if res != 0:
+#                 current_best = res if current_best == 0 else min(res, current_best)
 
-    return current_best
+#     return current_best
 
-def is_one_char_apart(word, next_word):
-    if len(set([x for x in word]) - set([x for x in next_word])) == 1:
-        return True
-    return False
+# def is_one_char_apart(word, next_word):
+#     if len(set([x for x in word]) - set([x for x in next_word])) == 1:
+#         return True
+#     return False
 
 if __name__ == "__main__":
     print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"])) #4
