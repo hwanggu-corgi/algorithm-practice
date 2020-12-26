@@ -18,12 +18,15 @@
 #   2) begin: hit	target: cog	   words: [hot, dot, dog, lot, log]
 
 # cases
-#   1) when words list is empty
-#       - when begin can not be transformed to target word
-#           - when transforming word doesn't exist
-#           - when transforming word does exist
-#       - when begin can be transformed to target word
+#   1) when words list is empty [not possible]
 #   2) when words list is not empty
+#       - when target not in words
+#       - when target == begin
+#       - when target != begin
+#           - when begin can not be transformed to target word
+#               - when transforming word doesn't exist
+#               - when transforming word does exist
+#           - when begin can be transformed to target word [ideal case]
 
 def solution(begin, target, words):
     answer = 0
@@ -48,17 +51,23 @@ def solution(begin, target, words):
 
 def _solution(word, depth, target, words, n, words_used):
     current_best = 0
-
+    print(word)
     if word == target:
         return depth
+
+    if len(words_used) == n:
+        return 0
 
     for next_word in words:
         if next_word in words_used:
             continue
 
         if is_one_char_apart(word, next_word):
+            print(word)
             words_used = words_used.copy()
             words_used.add(next_word)
+            print("words used")
+            print(words_used)
             res = _solution(next_word, depth + 1, target, words, n, words_used)
 
             if res != 0:
@@ -67,7 +76,16 @@ def _solution(word, depth, target, words, n, words_used):
     return current_best
 
 def is_one_char_apart(word, next_word):
-    if len(set([x for x in word]) - set([x for x in next_word])) == 1:
+    set_word = set([x for x in word])
+    set_next_word = set([x for x in next_word])
+
+    set_larger = set_word if len(set_word) > len(set_next_word) else set_next_word
+    print(set_larger)
+    set_smaller = set_word if len(set_word) <= len(set_next_word) else set_next_word
+    print("here")
+    print(set_larger - set_smaller)
+
+    if len(set_larger - set_smaller) == 1:
         return True
     return False
 
@@ -122,3 +140,4 @@ if __name__ == "__main__":
     print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"])) #4
     print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log"])) #0
     print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log"])) #0
+    print(solution("hit", "hhh", ["hhh", "hht"])) #2
