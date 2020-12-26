@@ -19,6 +19,10 @@
 
 # cases
 #   1) when words list is empty
+#       - when begin can not be transformed to target word
+#           - when transforming word doesn't exist
+#           - when transforming word does exist
+#       - when begin can be transformed to target word
 #   2) when words list is not empty
 
 def solution(begin, target, words):
