@@ -46,6 +46,9 @@ def _solution(word, depth, target, words, n):
 
     #   for each word in words,
     for next_word in words:
+        if word == next_word:
+            continue
+
         #   check if word is one apart from 'in_process'
         if is_one_char_apart(word, next_word):
             #   recursively use the function on the word
