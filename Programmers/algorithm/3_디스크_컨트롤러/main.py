@@ -64,14 +64,11 @@ def solution(jobs):
 
     while len(jobs) > 0:
         processing_jobs = sort_by_shortest_job_first(get_processing_jobs(jobs))
-        print(processing_jobs)
+
         current_time = processing_jobs[-1][0]
         while len(processing_jobs) > 0:
             job = processing_jobs.pop()
 
-            delayed_time = current_time - job[0]
-            turnaround_time = delayed_time + job[1]
-            current_time += job[1]
             total += turnaround_time
 
     #   compute average
