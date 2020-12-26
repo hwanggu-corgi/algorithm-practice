@@ -58,6 +58,7 @@ import math
 
 def solution(jobs):
     total = 0
+    last = -1
     completed_jobs = 0
     current_time = jobs[0][0]
     n = len(jobs)
@@ -66,14 +67,14 @@ def solution(jobs):
     jobs = deque(jobs)
 
     while completed_jobs < n:
-        processing_jobs = get_processing_jobs(jobs, processing_jobs, current_time)
-
+        processing_jobs = get_processing_jobs(jobs, processing_jobs, last, current_time)
         if len(processing_jobs) > 0:
-            job = processing_jobs()
+            job = heapq.heappop(processing_jobs)
 
-            delayed_time = current_time - job[0]
-            turnaround_time = delayed_time + job[1]
-            current_time += job[1]
+            delayed_time = current_time - job[1]
+            turnaround_time = delayed_time + job[0]
+            last = current_time
+            current_time += job[0]
             total += turnaround_time
             completed_jobs += 1
         else:
@@ -86,10 +87,11 @@ def solution(jobs):
 def sort_by_shortest_job_first(processing_jobs, current_time):
     return sorted(processing_jobs, key = lambda e: e[1], reverse=True)
 
-def get_processing_jobs(jobs, processing_jobs, current_time):
-    while (len(jobs) > 0) and (jobs[0][0] <= current_time):
-        job = jobs.popleft()
-        heapq.heappush(processing_jobs, (job[1], job[0]))
+def get_processing_jobs(jobs, processing_jobs, last, current_time):
+    for start_time, processing_time in jobs:
+
+        if last < start_time <= current_time:
+            heapq.heappush(processing_jobs, (processing_time, start_time))
 
     return processing_jobs
 
