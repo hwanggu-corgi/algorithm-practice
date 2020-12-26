@@ -49,5 +49,7 @@ def _solution(...):
             #   recursively use the function on the word
             res = _solution(...)
             #   compare depth and return the current best
+            if res != -1:
+                current_best = min(res, current_best)
 
     return current_best
