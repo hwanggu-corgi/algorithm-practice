@@ -17,43 +17,42 @@
 
 #   2) begin: hit	target: cog	   words: [hot, dot, dog, lot, log]
 
-# Pesudocode
-#   if maximum depth reached, return -1
-#   if target word reached, return current depth
-#   for each word in words,
-#   check if word is one apart from 'in_process'
-#   recursively use the function on the word
-#   compare depth and return the current best
-
 def solution(begin, target, words):
+    answer = 0
     n = len(words)
     depth = 0
-    memo = {}
 
-    answer = _solution(begin, depth, target, words, n)
+    if target not in words:
+        return depth
+
+    if begin == target:
+        return depth
+
+    for next_word in words:
+        if is_one_char_apart(begin, next_word):
+            words_used = set([begin, next_word])
+            res = _solution(next_word, depth + 1, target, words, n, words_used)
+
+            if res != 0:
+                answer = res if answer == 0 else min(res, answer)
 
     return answer
 
-def _solution(word, depth, target, words, n):
+def _solution(word, depth, target, words, n, words_used):
     current_best = 0
-    #   if maximum depth reached, return -1
-    if (depth == n) and (word != target):
-        return 0
 
-    #   if target word reached, return current depth
     if word == target:
         return depth
 
-    #   for each word in words,
     for next_word in words:
-        if word == next_word:
+        if next_word in words_used:
             continue
 
-        #   check if word is one apart from 'in_process'
         if is_one_char_apart(word, next_word):
-            #   recursively use the function on the word
-            res = _solution(next_word, depth + 1, target, words, n)
-            #   compare depth and return the current best
+            words_used = words_used.copy()
+            words_used.add(next_word)
+            res = _solution(next_word, depth + 1, target, words, n, words_used)
+
             if res != 0:
                 current_best = res if current_best == 0 else min(res, current_best)
 
@@ -64,6 +63,54 @@ def is_one_char_apart(word, next_word):
         return True
     return False
 
+# Pesudocode
+#   if maximum depth reached, return -1
+#   if target word reached, return current depth
+#   for each word in words,
+#   check if word is one apart from 'in_process'
+#   recursively use the function on the word
+#   compare depth and return the current best
+
+# def solution(begin, target, words):
+#     n = len(words)
+#     depth = 0
+#     memo = {}
+
+#     answer = _solution(begin, depth, target, words, n)
+
+#     return answer
+
+# def _solution(word, depth, target, words, n):
+#     current_best = 0
+#     #   if maximum depth reached, return -1
+#     if (depth == n) and (word != target):
+#         return 0
+
+#     #   if target word reached, return current depth
+#     if word == target:
+#         return depth
+
+#     #   for each word in words,
+#     for next_word in words:
+#         if word == next_word:
+#             continue
+
+#         #   check if word is one apart from 'in_process'
+#         if is_one_char_apart(word, next_word):
+#             #   recursively use the function on the word
+#             res = _solution(next_word, depth + 1, target, words, n)
+#             #   compare depth and return the current best
+#             if res != 0:
+#                 current_best = res if current_best == 0 else min(res, current_best)
+
+#     return current_best
+
+# def is_one_char_apart(word, next_word):
+#     if len(set([x for x in word]) - set([x for x in next_word])) == 1:
+#         return True
+#     return False
+
 if __name__ == "__main__":
     print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"])) #4
+    print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log"])) #0
     print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log"])) #0
