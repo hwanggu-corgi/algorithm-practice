@@ -18,12 +18,36 @@
 #   2) begin: hit	target: cog	   words: [hot, dot, dog, lot, log]
 
 # Pesudocode
-#   - if maximum depth reached, return
-#   - if target word reached, compare depth with the current best, and replace if less
-#   - for each word in words,
-#   - check if word is one apart from 'in_process'
-#   - recursively use the function on the word
+#   if maximum depth reached, return -1
+#   if target word reached, return current depth
+#   for each word in words,
+#   check if word is one apart from 'in_process'
+#   recursively use the function on the word
+#   compare depth and return the current best
 
 def solution(begin, target, words):
     answer = 0
+
+    answer = _solution(...)
+
     return answer
+
+def _solution(...):
+    current_best = -1
+    #   if maximum depth reached, return -1
+    if depth == n:
+        return -1
+
+    #   if target word reached, return current depth
+    if word == target:
+        return depth
+
+    #   for each word in words,
+    for next_word in words:
+        #   check if word is one apart from 'in_process'
+        if is_one_char_apart(word, next_word)
+            #   recursively use the function on the word
+            res = _solution(...)
+            #   compare depth and return the current best
+
+    return current_best
