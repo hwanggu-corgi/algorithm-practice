@@ -93,5 +93,6 @@ def get_processing_jobs(jobs):
     return res
 
 if __name__ == "__main__":
+    print(solution( [[0, 3], [1, 9], [2, 6], [4, 3]])) #9
     print(solution([[0, 3], [1, 9], [2, 6]]))
     print(solution([[0, 10], [4, 10], [5, 11], [15, 2]])) #15
