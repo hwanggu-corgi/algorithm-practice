@@ -26,13 +26,12 @@
 #   compare depth and return the current best
 
 def solution(begin, target, words):
-    answer = 0
-
-    answer = _solution(...)
+    n = len(words)
+    answer = _solution(word, depth, target, words, n)
 
     return answer
 
-def _solution(...):
+def _solution(word, depth, target, words, n):
     current_best = -1
     #   if maximum depth reached, return -1
     if depth == n:
@@ -45,11 +44,18 @@ def _solution(...):
     #   for each word in words,
     for next_word in words:
         #   check if word is one apart from 'in_process'
-        if is_one_char_apart(word, next_word)
+        if is_one_char_apart(word, next_word):
             #   recursively use the function on the word
-            res = _solution(...)
+            res = _solution(word, depth, target, words, n)
             #   compare depth and return the current best
             if res != -1:
                 current_best = min(res, current_best)
 
     return current_best
+
+def is_one_char_apart(word, next_word):
+    if len(set([x for x in word]) - set([x for x in next_word])) == 1:
+        return True
+    return False
+
+if __name__
