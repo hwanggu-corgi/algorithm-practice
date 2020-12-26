@@ -11,6 +11,19 @@
 #   begin과 target은 같지 않습니다.
 #   변환할 수 없는 경우에는 0를 return 합니다.
 
+# Example
+#   1) begin: hit	target: cog	   words: [hot, dot, dog, lot, log, cog]
+#       hit -> hot -> dot -> dog -> cog
+
+#   2) begin: hit	target: cog	   words: [hot, dot, dog, lot, log]
+
+# Pesudocode
+#   - if maximum depth reached, return
+#   - if target word reached, compare depth with the current best, and replace if less
+#   - for each word in words,
+#   - check if word is one apart from 'in_process'
+#   - recursively use the function on the word
+
 def solution(begin, target, words):
     answer = 0
     return answer
