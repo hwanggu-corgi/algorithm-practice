@@ -18,7 +18,8 @@
 #   2) begin: hit	target: cog	   words: [hot, dot, dog, lot, log]
 
 # cases
-#   1)
+#   1) when words list is empty
+#   2) when words list is not empty
 
 def solution(begin, target, words):
     answer = 0
