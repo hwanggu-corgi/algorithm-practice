@@ -34,10 +34,10 @@ def solution(begin, target, words):
     return answer
 
 def _solution(word, depth, target, words, n):
-    current_best = -1
+    current_best = 0
     #   if maximum depth reached, return -1
     if (depth == n) and (word != target):
-        return -1
+        return 0
 
     #   if target word reached, return current depth
     if word == target:
@@ -51,7 +51,7 @@ def _solution(word, depth, target, words, n):
             res = _solution(next_word, depth + 1, target, words, n)
             #   compare depth and return the current best
             if res != -1:
-                current_best = min(res, current_best)
+                current_best = res if current_best == 0 else min(res, current_best)
 
     return current_best
 
@@ -61,4 +61,5 @@ def is_one_char_apart(word, next_word):
     return False
 
 if __name__ == "__main__":
-    print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"]))
+    print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"])) #4
+    print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log"])) #0
