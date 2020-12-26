@@ -60,6 +60,7 @@ def solution(jobs):
     total = 0
     last = -1
     completed_jobs = 0
+    jobs = sorted(jobs, key = lambda e: e[0])
     current_time = jobs[0][0]
     n = len(jobs)
     processing_jobs = []
@@ -71,10 +72,9 @@ def solution(jobs):
         if len(processing_jobs) > 0:
             job = heapq.heappop(processing_jobs)
 
-            delayed_time = current_time - job[1]
-            turnaround_time = delayed_time + job[0]
             last = current_time
             current_time += job[0]
+            turnaround_time = current_time - job[1]
             total += turnaround_time
             completed_jobs += 1
         else:
@@ -84,13 +84,10 @@ def solution(jobs):
     avg = total // n
     return avg
 
-def sort_by_shortest_job_first(processing_jobs, current_time):
-    return sorted(processing_jobs, key = lambda e: e[1], reverse=True)
-
 def get_processing_jobs(jobs, processing_jobs, last, current_time):
     for start_time, processing_time in jobs:
 
-        if last < start_time <= current_time:
+        if last < start_time <= current_time: # i can do this Oo
             heapq.heappush(processing_jobs, (processing_time, start_time))
 
     return processing_jobs
