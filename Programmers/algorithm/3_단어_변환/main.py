@@ -41,7 +41,7 @@ def solution(begin, target, words):
 
     for next_word in words:
         if is_one_char_apart(begin, next_word):
-            words_used = set([begin, next_word])
+            words_used = set([next_word])
             res = _solution(next_word, depth + 1, target, words, n, words_used)
 
             if res != 0:
@@ -51,7 +51,7 @@ def solution(begin, target, words):
 
 def _solution(word, depth, target, words, n, words_used):
     current_best = 0
-    print(word)
+
     if word == target:
         return depth
 
@@ -63,11 +63,9 @@ def _solution(word, depth, target, words, n, words_used):
             continue
 
         if is_one_char_apart(word, next_word):
-            print(word)
             words_used = words_used.copy()
             words_used.add(next_word)
-            print("words used")
-            print(words_used)
+
             res = _solution(next_word, depth + 1, target, words, n, words_used)
 
             if res != 0:
@@ -76,18 +74,19 @@ def _solution(word, depth, target, words, n, words_used):
     return current_best
 
 def is_one_char_apart(word, next_word):
-    set_word = set([x for x in word])
-    set_next_word = set([x for x in next_word])
+    n = len(word)
+    diff_count = 0
 
-    set_larger = set_word if len(set_word) > len(set_next_word) else set_next_word
-    print(set_larger)
-    set_smaller = set_word if len(set_word) <= len(set_next_word) else set_next_word
-    print("here")
-    print(set_larger - set_smaller)
+    i = 0
+    while i < n:
+        if word[i] != next_word[i]:
+            diff_count += 1
+        i += 1
 
-    if len(set_larger - set_smaller) == 1:
+    if diff_count == 1:
         return True
     return False
+
 
 # Pesudocode
 #   if maximum depth reached, return -1
@@ -138,6 +137,5 @@ def is_one_char_apart(word, next_word):
 
 if __name__ == "__main__":
     print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"])) #4
-    print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log"])) #0
     print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log"])) #0
     print(solution("hit", "hhh", ["hhh", "hht"])) #2
