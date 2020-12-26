@@ -28,6 +28,7 @@
 def solution(begin, target, words):
     n = len(words)
     depth = 0
+    memo = {}
 
     answer = _solution(begin, depth, target, words, n)
 
