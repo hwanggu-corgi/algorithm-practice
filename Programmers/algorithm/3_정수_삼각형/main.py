@@ -29,16 +29,36 @@
 #
 
 # Pseudocode
-#   0) copy triangle, call it dp
-#   1) match column size for all rows (fill -inf to where necessary)
+#   1) match column size for all rows
 #   2) for each row i (starting from row 1)
 #   3) for each column j (starting from column 0 to i + 1)
 #   4) compute
 #       - (if j == 0) dp[i][j] = dp[i-1][j] + triangle[i][j]
 #       - (if j == i) dp[i][j] = dp[i-1][j-1] + triangle[i][j]
-#       - (if none of the above) dp[i][j] = max([dp[i-1][j] + triangle[i][j], dp[i-1][j+1] + triangle[i][j]])
+#       - (if none of the above) dp[i][j] = max([dp[i-1][j-1] + triangle[i][j], dp[i-1][j] + triangle[i][j]])
 #   5) return max value in last row
 
 def solution(triangle):
     answer = 0
+    n_rows = len(triangle)
+    # copy triangle, call it dp
+    dp = [triangle[i][:] for i in range(len(triangle))]
+
+    # for each row i (starting from row 1)
+    for i in range(n_rows):
+        # for each column j (starting from column 0 to i + 1)
+        for j in range(i+1):
+            # compute
+            # (if j == 0) dp[i][j] = dp[i-1][j] + triangle[i][j]
+            if j == 0:
+            # (if j == i) dp[i][j] = dp[i-1][j-1] + triangle[i][j]
+            elif j == 1:
+
+            # (if none of the above) dp[i][j] = max([dp[i-1][j-1] + triangle[i][j], dp[i-1][j] + triangle[i][j]])
+            else:
+    # return max value in last row
+    answer = max(triangle[-1])
     return answer
+
+if __name__ == "__main__":
+    print(solution([[7], [3, 8], [8, 1, 0], [2, 7, 4, 4], [4, 5, 2, 6, 5]])) #30
