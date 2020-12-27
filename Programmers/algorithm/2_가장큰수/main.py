@@ -12,10 +12,10 @@ def solution(numbers):
     return str(int(answer))
 
 if __name__ == "__main__":
-    print(solution([40,403])) #40403
-    print(solution([10,101])) #10110
-    print(solution([1,11, 111, 1111])) #1111111111
-    print(solution([0,0, 0, 0])) #0
+    print(solution([40,403]))
+    print(solution([10,101]))
+    print(solution([1,11, 111, 1111]))
+    print(solution([0,0, 0, 0]))
     print(solution([121, 12]))
     print(solution([0, 0, 1, 10, 1000]))
     print(solution([1, 10, 1000]))

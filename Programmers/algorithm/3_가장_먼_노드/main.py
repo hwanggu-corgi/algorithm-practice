@@ -30,11 +30,35 @@
 #       - create n x n matrix call it 'graph_matrix'
 #       - set graph_matrix[i][i] = 1
 #       - for each vertex of form [a,b], set graph_matrix[a-1][b-1] = 1 and graph_matrix[b-1][a-1] = 1
-#   starting with vertex 0, find all adjacent verticies, put to queue
-#   add vertex to traveled
-#   for each vertex in queue, find adjacent verticies
-#   if adjacent vertex not in traveled, then add to queue_temp
+#   find all adjacent verticies to vertex 0, and put to queue
+#   while queue is not empty [1,2]
+#       increase depth by 1
+#       for each vertex in queue,
+#           add vertex to traveled
+#           find adjacent vertices
+#           if adjacent vertex not in traveled, then add to queue_temp
+#       set queue = queue_temp
+#   return depth
+
+from collections import deque
 
 def solution(n, edge):
-    answer = 0
+    depth = 0
+    queue = []
+    traveled = set()
+    # write matrix representation of graph
+    #       - create n x n matrix call it 'graph_matrix'
+    #       - set graph_matrix[i][i] = 1
+    #       - for each vertex of form [a,b], set graph_matrix[a-1][b-1] = 1 and graph_matrix[b-1][a-1] = 1
+    graph_matrix = create_graph_matrix(n, edge)
+    # find all adjacent verticies to vertex 0, and put to queue
+    queue = [i for i in range(n) if (i != 0) and (graph_matrix[0][i] == 1)]
+    # while queue is not empty
+    while len(queue) > 0:
+    #       increase depth by 1
+    #       for each vertex in queue,
+    #           add vertex to traveled
+    #           find adjacent vertices
+    #           if adjacent vertex not in traveled, then add to queue_temp
+    #       set queue = queue_temp
     return answer

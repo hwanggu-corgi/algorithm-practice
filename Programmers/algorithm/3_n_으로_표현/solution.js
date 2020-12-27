@@ -1,7 +1,6 @@
 
 
 function solution(N, number) {
-    var answer = 0;
     let dp = {};
 
     if (N == number) {
@@ -16,8 +15,6 @@ function solution(N, number) {
         dp[i].add(parseInt(N.toString().repeat(i)));
     }
 
-    console.log(dp);
-
     for (let number_counts = 1; number_counts < 9; number_counts++) {
         for (let j = number_counts; j >= 1; j--) {
             let k = number_counts - j;
@@ -25,8 +22,8 @@ function solution(N, number) {
                 continue;
             }
 
-            for (a of dp[j.toString()]) {
-                for (b of dp[k.toString()]) {
+            for (let a of dp[j.toString()]) {
+                for (let b of dp[k.toString()]) {
                     dp[number_counts].add(a + b)
                     dp[number_counts].add(a - b)
                     dp[number_counts].add(a * b)
