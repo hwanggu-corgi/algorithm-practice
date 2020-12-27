@@ -16,6 +16,9 @@
 #   1) n: 6 vertex: [[3, 6], [4, 3], [3, 2], [1, 3], [1, 2], [2, 4], [5, 2]]
 
 #   write matrix representation of graph
+#       - create n x n matrix call it 'graph_matrix'
+#       - set graph_matrix[i][i] = 1
+#       - for each vertex of form [a,b], set graph_matrix[a-1][b-1] = 1 and graph_matrix[b-1][a-1] = 1
 #   [[1,1,1,0,0,0],
 #    [1,1,0,0,0,0],
 #    [1,0,1,0,0,0],
@@ -23,11 +26,14 @@
 #    [0,0,0,0,1,0],
 #    [0,0,0,0,0,1]]
 
+#   write matrix representation of graph
+#       - create n x n matrix call it 'graph_matrix'
+#       - set graph_matrix[i][i] = 1
+#       - for each vertex of form [a,b], set graph_matrix[a-1][b-1] = 1 and graph_matrix[b-1][a-1] = 1
 #   starting with vertex 0, find all adjacent verticies, put to queue
 #   add vertex to traveled
 #   for each vertex in queue, find adjacent verticies
 #   if adjacent vertex not in traveled, then add to queue_temp
-#
 
 def solution(n, edge):
     answer = 0
