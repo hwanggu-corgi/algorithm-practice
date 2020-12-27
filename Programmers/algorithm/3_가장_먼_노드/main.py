@@ -6,6 +6,9 @@
 # 간선은 양방향이며 총 1개 이상 50,000개 이하의 간선이 있습니다.
 # vertex 배열 각 행 [a, b]는 a번 노드와 b번 노드 사이에 간선이 있다는 의미입니다.
 
+# Example
+#   1) n: 6 vertex: [[3, 6], [4, 3], [3, 2], [1, 3], [1, 2], [2, 4], [5, 2]]
+
 def solution(n, edge):
     answer = 0
     return answer
