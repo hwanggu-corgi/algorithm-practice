@@ -32,12 +32,6 @@
 #   - https://www.youtube.com/watch?v=AMByrd53PHM&ab_channel=%EB%8F%99%EB%B9%88%EB%82%98
 #   - for each vertex use recursion to find the end vertex it points to
 
-def get_parent(cycle, x):
-    if cycle[x] == x:
-        return x
-
-    return get_parent(cycle, cycle[x])
-
 # pseudocode
 #   1. create cycle table {1:1, 2:2, 3:3, 4:4, 5:5, 6:6, 7:7}
 #   2. sort costs with weights in increasing order
@@ -52,6 +46,9 @@ def get_parent(cycle, x):
 def solution(n, costs):
     total = 0
 
+    if n == 1:
+        return 0
+
     # create cycle table {1:1, 2:2, 3:3, 4:4, 5:5, 6:6, 7:7}
     cycle = create_cycle_table(n)
 
@@ -65,7 +62,29 @@ def solution(n, costs):
         if cycle[x] == x:
             # set end vertex of cycle[y] to cycle[x]
             end_vertex = get_parent(cycle, y)
-
+            cycle[x] = end_vertex
             # add weight to total
+            total += cost
     # return total
     return total
+
+def create_cycle_table(n):
+    res = {}
+
+    for i in range(n):
+        res[i] = i
+
+    return res
+
+
+def get_parent(cycle, x):
+    if cycle[x] == x:
+        return x
+
+    return get_parent(cycle, cycle[x])
+
+
+if __name__ == "__main__":
+    print(solution(1,[[0,1,1]])) #0
+    print(solution(4,[[0,1,1],[0,2,2],[1,2,5],[1,3,1],[2,3,8]])) #4
+    print(solution(4,[[0,1,1],[0,2,2],[1,2,1],[1,2,5],[1,3,1],[2,3,8]])) #4
