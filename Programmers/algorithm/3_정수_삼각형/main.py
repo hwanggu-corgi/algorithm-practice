@@ -19,6 +19,15 @@
 # 20        25/18/23                15/20/19                19                      <- take max
 # 24        25/30/23/28             27/20/25/17/22/21       21/26/25/25       24    <- take max
 
+
+# 7
+# 10        15                                                                      max([triangle[0][0] + triangle[1][0], triangle[0][1] + triangle[1][0]]) max([triangle[0][0] + triangle[1][1], triangle[0][1] + triangle[1][1]])
+# 18        11/16                   15
+# 20        25/18/23                15/20/19                19                      <- take max
+# 24        25/30/23/28             27/20/25/17/22/21       21/26/25/25       24    <- take max
+
+#
+
 # Pseudocode
 #   1)
 
