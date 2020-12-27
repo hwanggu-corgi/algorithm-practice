@@ -40,6 +40,16 @@
 #       set queue = queue_temp
 #   return depth
 
+
+# Shortest path algorithm
+#   Dijkstra
+#       - finds shortest distance between one vertex and all other vertices
+#       - 음의 간선 포함할 수 없음
+#       -
+#   Floyd Warshall
+#       - finds shortest path between all verticies
+#       - 음의 간선 포함할 수 있음
+
 from collections import deque
 
 def solution(n, edge):
@@ -84,6 +94,51 @@ def create_graph_matrix(n, edges):
         res[vertex_b-1][vertex_a-1] = 1
 
     return res
+
+# from collections import deque
+
+# def solution(n, edge):
+#     max_depth = 0
+#     # write matrix representation of graph
+#     graph_matrix = create_graph_matrix(n, edge)
+
+#     i = 0
+#     while i < n:
+#         traveled = set([i])
+#         # find all adjacent verticies to vertex 0, and put to queue
+#         queue = [j for j in range(n) if (j != i) and (graph_matrix[i][j] == 1)]
+
+#         depth = 0
+#         # while queue is not empty
+#         while len(queue) > 0:
+#             queue_temp = []
+#             # increase depth by 1
+#             depth += 1
+#             # for each vertex in queue,
+#             for i in queue:
+#                 # add vertex to traveled
+#                 traveled.add(i)
+#                 # find adjacent vertices
+#                 # if adjacent vertex not in traveled, then add to queue_temp
+#                 adj_vertices = [j for j in range(n) if (j != i) and (not j in traveled) and (graph_matrix[i][j] == 1)]
+#                 queue_temp.extend(adj_vertices)
+#             # set queue = queue_temp
+#             queue = queue_temp
+#         max_depth = max(max_depth, depth)
+#         i += 1
+
+#     return max_depth
+# def create_graph_matrix(n, edges):
+#     res = [[0] * n for _ in range(n)]
+
+#     for i in range(n):
+#         res[i][i] = 1
+
+#     for vertex_a, vertex_b in edges:
+#         res[vertex_a-1][vertex_b-1] = 1
+#         res[vertex_b-1][vertex_a-1] = 1
+
+#     return res
 
 
 # from collections import deque
