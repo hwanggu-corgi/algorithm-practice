@@ -49,6 +49,17 @@
 #   Floyd Warshall
 #       - finds shortest path between all verticies
 #       - 음의 간선 포함할 수 있음
+#       - graph_matrix[a][a] = 0
+#       - infinity -> no immediate path from vertex a to b
+#
+
+#   n = no of vertices
+#   A = matrix of dimension n*n
+#   for k = 1 to n
+#       for i = 1 to n
+#           for j = 1 to n
+#               Ak[i, j] = min (Ak-1[i, j], Ak-1[i, k] + Ak-1[k, j])
+#   return A
 
 from collections import deque
 
