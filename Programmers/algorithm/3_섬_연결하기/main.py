@@ -59,7 +59,7 @@ def solution(n, costs):
     for y, x, cost in costs:
         # check if is valid (i.e cycle[x] == x)
         # check if it doesn't form a cycle (i.e. cycle[x] == y)
-        if cycle[x] == x:
+        if not form_a_cycle(...):
             # set end vertex of cycle[y] to cycle[x]
             end_vertex = get_parent(cycle, y)
             cycle[x] = end_vertex
@@ -86,5 +86,7 @@ def get_parent(cycle, x):
 
 if __name__ == "__main__":
     print(solution(1,[[0,1,1]])) #0
+    print(solution(5,[[0,1,5],[1,2,3],[2,3,3],[3,1,2],[3,0,4],[2,4,6],[4,0,7]])) #15
+    print(solution(5,[[0,1,1],[0,2,2],[1,2,5],[1,3,3],[2,3,8],[3,4,1]])) #4
     print(solution(4,[[0,1,1],[0,2,2],[1,2,5],[1,3,1],[2,3,8]])) #4
     print(solution(4,[[0,1,1],[0,2,2],[1,2,1],[1,2,5],[1,3,1],[2,3,8]])) #4
