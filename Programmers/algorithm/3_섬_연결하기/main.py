@@ -27,6 +27,9 @@
 #                           union(u,v)
 #             return A
 
+# Union Find algorithm
+#   -
+
 def solution(n, costs):
     answer = 0
     return answer
