@@ -79,30 +79,18 @@ def solution(n, costs):
         # check if it doesn't form a cycle (i.e. cycle[x] == y)
         if not form_a_cycle(cycle, x, y):
             # set end vertex of cycle[y] to cycle[x]
-            if (cycle[y] == y) and (cycle[x] == x):
-                smaller = min(x,y)
-                bigger = max(x,y)
-                end_vertex = get_parent(cycle, smaller)
-                cycle[bigger] = end_vertex
-            elif (cycle[y] != y) and (cycle[x] == x):
-                end_vertex = get_parent(cycle, y)
-                cycle[y] == end_vertex
-                cycle[x] == end_vertex
-            elif (cycle[y] == y) and (cycle[x] != x):
-                end_vertex = get_parent(cycle, x)
-                cycle[y] == end_vertex
-                cycle[x] == end_vertex
-
+            union_parent(cycle, x, y)
             # add weight to total
             total += cost
+            print(cycle)
     # return total
     return total
 
 def form_a_cycle(cycle, x, y):
-    if cycle[x] == cycle[y]:
-        return True
-    return False
+    y = get_parent(cycle, y)
+    x = get_parent(cycle, x)
 
+    return True if x == y else False
 
 def create_cycle_table(n):
     res = {}
@@ -119,6 +107,14 @@ def get_parent(cycle, x):
 
     return get_parent(cycle, cycle[x])
 
+def union_parent(cycle, x, y):
+    y = get_parent(cycle, y)
+    x = get_parent(cycle, x)
+
+    if x < y:
+        cycle[y] = x
+    else:
+        cycle[x] = y
 
 if __name__ == "__main__":
     print(solution(1,[[0,1,1]])) #0
