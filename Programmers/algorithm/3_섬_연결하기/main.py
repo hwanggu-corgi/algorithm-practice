@@ -33,7 +33,22 @@
 #   - for each vertex use recursion to find the end vertex it points to
 
 # Kruskal algorithm
-#   -
+#   - after 연결 --> union
+#   - find cycle --> find
+
+
+# cases
+#   -> if it forms a cycle
+#       - skip
+#   -> if it doesn't form a cycle
+
+#   - if cycle[x] == x and cycle[y] == y
+#       - bigger = max(x,y)
+#       - smaller = min(x,y)
+#       - cycle[bigger] = smaller
+#   - if cycle[x] == x and cycle[y] != y
+#       - cycle[x] = parent_of(y)
+#   - if cycle[x] != x and cycle[y] == y
 
 # pseudocode
 #   1. create cycle table {1:1, 2:2, 3:3, 4:4, 5:5, 6:6, 7:7}
@@ -64,8 +79,20 @@ def solution(n, costs):
         # check if it doesn't form a cycle (i.e. cycle[x] == y)
         if not form_a_cycle(cycle, x, y):
             # set end vertex of cycle[y] to cycle[x]
-            end_vertex = get_parent(cycle, x)
-            cycle[y] = end_vertex
+            if (cycle[y] == y) and (cycle[x] == x):
+                smaller = min(x,y)
+                bigger = max(x,y)
+                end_vertex = get_parent(cycle, smaller)
+                cycle[bigger] = end_vertex
+            elif (cycle[y] != y) and (cycle[x] == x):
+                end_vertex = get_parent(cycle, y)
+                cycle[y] == end_vertex
+                cycle[x] == end_vertex
+            elif (cycle[y] == y) and (cycle[x] != x):
+                end_vertex = get_parent(cycle, x)
+                cycle[y] == end_vertex
+                cycle[x] == end_vertex
+
             # add weight to total
             total += cost
     # return total
