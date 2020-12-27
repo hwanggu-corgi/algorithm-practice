@@ -16,6 +16,16 @@
 
 
 #   Minimal Spanning Tree Problem
+#       Pseudcode
+#           MST-kruskal(G,w):
+#               A = empty
+#               for each vertex v in G.V
+#                   Make-set(v)
+#                   for each edge (u,v) in G.E taken in non-decreasing order by weight
+#                       if FIND-SET(u) != FIND-SET(v):
+#                           A = A union of {(u,v)}
+#                           union(u,v)
+#             return A
 
 def solution(n, costs):
     answer = 0
