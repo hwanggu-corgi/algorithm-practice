@@ -45,19 +45,21 @@ def solution(triangle):
     dp = [triangle[i][:] for i in range(len(triangle))]
 
     # for each row i (starting from row 1)
-    for i in range(n_rows):
+    for i in range(1, n_rows):
         # for each column j (starting from column 0 to i + 1)
         for j in range(i+1):
             # compute
             # (if j == 0) dp[i][j] = dp[i-1][j] + triangle[i][j]
             if j == 0:
+                 dp[i][j] = dp[i-1][j] + triangle[i][j]
             # (if j == i) dp[i][j] = dp[i-1][j-1] + triangle[i][j]
-            elif j == 1:
-
+            elif j == i:
+                dp[i][j] = dp[i-1][j-1] + triangle[i][j]
             # (if none of the above) dp[i][j] = max([dp[i-1][j-1] + triangle[i][j], dp[i-1][j] + triangle[i][j]])
             else:
-    # return max value in last row
-    answer = max(triangle[-1])
+                dp[i][j] = max([dp[i-1][j-1] + triangle[i][j], dp[i-1][j] + triangle[i][j]])
+    # return max value in last row in dp
+    answer = max(dp[-1])
     return answer
 
 if __name__ == "__main__":
