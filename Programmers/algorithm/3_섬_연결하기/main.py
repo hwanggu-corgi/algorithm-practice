@@ -99,7 +99,6 @@ def create_cycle_table(n):
 
     return res
 
-
 def get_parent(cycle, x):
     if cycle[x] == x:
         return x
