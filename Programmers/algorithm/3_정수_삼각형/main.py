@@ -20,16 +20,18 @@
 # 24        25/30/23/28             27/20/25/17/22/21       21/26/25/25       24    <- take max
 
 
-# 7
-# 10        15                                                                      max([triangle[0][0] + triangle[1][0], triangle[0][1] + triangle[1][0]]) max([triangle[0][0] + triangle[1][1], triangle[0][1] + triangle[1][1]])
-# 18        11/16                   15
-# 20        25/18/23                15/20/19                19                      <- take max
-# 24        25/30/23/28             27/20/25/17/22/21       21/26/25/25       24    <- take max
+# 7         -inf                    -inf                    -inf              -inf
+# 10        15                      -inf                    -inf              -inf  triangle[i][j] = max([triangle[i-1][j] + triangle[i][j], triangle[i-1][j+1] + triangle[i][j]])
+# 18        11/16                   15                      -inf              -inf  triangle[i][j] = max([triangle[i-1][j] + triangle[i][j], triangle[i-1][j+1] + triangle[i][j]])
+# 20        25/18/23                15/20/19                19                -inf  triangle[i][j] = max([triangle[i-1][j] + triangle[i][j], triangle[i-1][j+1] + triangle[i][j]])
+# 24        25/30/23/28             27/20/25/17/22/21       21/26/25/25       24    triangle[i][j] = max([triangle[i-1][j] + triangle[i][j], triangle[i-1][j+1] + triangle[i][j]])
 
 #
 
 # Pseudocode
-#   1)
+#   1) match column size for all rows (fill -inf to where necessary)
+#   2) for each row i (starting from row 1)
+#   3) for each column j (starting from column 0 to i + 1)
 
 def solution(triangle):
     answer = 0
