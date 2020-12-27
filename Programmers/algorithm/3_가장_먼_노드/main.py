@@ -15,12 +15,19 @@
 # Detailed Example
 #   1) n: 6 vertex: [[3, 6], [4, 3], [3, 2], [1, 3], [1, 2], [2, 4], [5, 2]]
 
-#   [[0,0,0,0,0],
-#    [0,0,0,0,0],
-#    [0,0,0,0,0],
-#    [0,0,0,0,0],
-#    [0,0,0,0,0],
-#    [0,0,0,0,0]]
+#   write matrix representation of graph
+#   [[1,1,1,0,0,0],
+#    [1,1,0,0,0,0],
+#    [1,0,1,0,0,0],
+#    [0,0,0,1,0,0],
+#    [0,0,0,0,1,0],
+#    [0,0,0,0,0,1]]
+
+#   starting with vertex 0, find all adjacent verticies, put to queue
+#   add vertex to traveled
+#   for each vertex in queue, find adjacent verticies
+#   if adjacent vertex not in traveled, then add to queue_temp
+#
 
 def solution(n, edge):
     answer = 0
