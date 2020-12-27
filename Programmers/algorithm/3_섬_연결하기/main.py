@@ -16,6 +16,7 @@
 
 
 #   Minimal Spanning Tree Problem
+#   - https://www.youtube.com/watch?v=LQ3JHknGy8c&feature=emb_title&ab_channel=%EB%8F%99%EB%B9%88%EB%82%98
 #       Pseudcode
 #           MST-kruskal(G,w):
 #               A = empty
@@ -28,7 +29,16 @@
 #             return A
 
 # Union Find algorithm
-#   -
+#   - https://www.youtube.com/watch?v=AMByrd53PHM&ab_channel=%EB%8F%99%EB%B9%88%EB%82%98
+#   - for each vertex use recursion to find the end vertex it points to
+
+def get_parent(cycle, x):
+    if cycle[x] == x:
+        return x
+
+    return get_parent(cycle, cycle[x])
+
+
 
 def solution(n, costs):
     answer = 0
