@@ -38,6 +38,14 @@ def get_parent(cycle, x):
 
     return get_parent(cycle, cycle[x])
 
+# pseudocode
+#   1. create cycle table
+#   2. sort costs with weights in increasing order
+#   3. for each weight of vertex x connecting to y
+#       - check if is valid (i.e cycle[x] == x)
+#       - check if it doesn't form a cycle
+#       - set end vertex of cycle[y] to cycle[x]
+#       - add weight to total
 
 
 def solution(n, costs):
