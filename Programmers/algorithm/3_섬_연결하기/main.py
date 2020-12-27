@@ -82,7 +82,6 @@ def solution(n, costs):
             union_parent(cycle, x, y)
             # add weight to total
             total += cost
-            print(cycle)
     # return total
     return total
 
