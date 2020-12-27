@@ -1,8 +1,9 @@
 # goal: n개의 섬 사이에 다리를 건설하는 비용(costs)이 주어질 때, 최소의 비용으로 모든 섬이 서로 통행
 # 가능하도록 만들 때 필요한 최소 비용을 return 하도록 solution을 완성하세요.
 
-# 제한사항
 
+
+# 제한사항
 #   - 섬의 개수 n은 1 이상 100 이하입니다.
 #   - costs의 길이는 ((n-1) * n) / 2이하입니다.
 #   - 임의의 i에 대해, costs[i][0] 와 costs[i] [1]에는 다리가 연결되는 두 섬의 번호가 들어있고, costs[i] [2]에는 이 두 섬을 연결하는 다리를 건설할 때 드는 비용입니다.
@@ -12,7 +13,9 @@
 
 # Example
 #   1) n - 4 costs - [[0,1,1],[0,2,2],[1,2,5],[1,3,1],[2,3,8]]
-#       - choose minimum value for all incoming connections to node x
+
+
+#   Minimal Spanning Tree Problem
 
 def solution(n, costs):
     answer = 0
