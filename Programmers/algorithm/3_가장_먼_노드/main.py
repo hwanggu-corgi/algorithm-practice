@@ -78,15 +78,19 @@ def solution(n, edge):
 
     # find all adjacent verticies to vertex 0, and put to queue
     queue = [j for j in range(n) if (j != 0) and (graph_matrix[0][j] == 1)]
+    print(queue)
     # while queue is not empty
     while len(queue) > 0:
         queue_temp = []
         # increase depth by 1
         depth += 1
+
+        # add vertex to traveled
+        for i in queue:
+            traveled.add(i)
+
         # for each vertex in queue,
         for i in queue:
-            # add vertex to traveled
-            traveled.add(i)
             # find adjacent vertices
             # if adjacent vertex not in traveled, then add to queue_temp
             adj_vertices = [j for j in range(n) if (j != i) and (not j in traveled) and (graph_matrix[i][j] == 1)]
