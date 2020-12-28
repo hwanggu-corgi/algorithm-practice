@@ -73,14 +73,21 @@ from collections import deque
 def solution(n, edge):
     depth = 0
     number_of_nodes_at_depth = 0
-    traveled = set([0])
+    traveled = set([1])
     adj_vertices = {}
 
     for u,v in edge:
+        if u not in adj_vertices:
+            adj_vertices[u] = set()
 
+        if v not in adj_vertices:
+            adj_vertices[v] = set()
 
-    # find all adjacent verticies to vertex 0, and put to queue
-    queue = ...
+        adj_vertices[u].add(v)
+        adj_vertices[v].add(u)
+
+    # find all adjacent verticies to vertex 1, and put to queue
+    queue = adj_vertices[1]
 
     # while queue is not empty
     while len(queue) > 0:
@@ -96,12 +103,8 @@ def solution(n, edge):
         for i in queue:
             # find adjacent vertices
             # if adjacent vertex not in traveled, then add to queue_temp
-            for j in range(n):
-                if j == i:
-                    continue
+            for j in adj_vertices[i]:
                 if j in traveled:
-                    continue
-                if graph_matrix[i][j] == 0:
                     continue
 
                 queue_temp.add(j)
@@ -109,18 +112,6 @@ def solution(n, edge):
         queue = queue_temp
 
     return number_of_nodes_at_depth
-
-def create_graph_matrix(n, edges):
-    res = [[0] * n for _ in range(n)]
-
-    for i in range(n):
-        res[i][i] = 1
-
-    for vertex_a, vertex_b in edges:
-        res[vertex_a-1][vertex_b-1] = 1
-        res[vertex_b-1][vertex_a-1] = 1
-
-    return res
 
 # from collections import deque
 
