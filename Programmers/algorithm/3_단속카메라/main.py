@@ -40,14 +40,61 @@
 
 
 # Pseudocode
-#   create list variable called group (val [])
-#   create int variable called camera_count (val 1)
+#   create list variable called current_overlap = []
+#   create int variable called camera_count (val 0)
 #   sort routes
 #   turn routes to queue
 #   while len(routes) is not 0
 #   popleft route
-#   if len(group)
+#   if current_overlap is empty
+#       increment camera_count
+#       set current_overlap to route
+#   if not empty,
+#       check if route and current_overlap overlaps
+#       if overlaps,
+#           update current_overlap
+#       if doesn't overlap
+#           appendleft route
+#           empty current_overlap
+
+#   return camera_count
+
+from collections import deque
 
 def solution(routes):
     answer = 0
-    return answer
+    #   create list variable called current_overlap = []
+    current_overlap = []
+
+    #   create int variable called camera_count (val 0)
+    camera_count = 0
+
+    #   sort routes
+    routes = deque(sorted(routes, key = lambda e: e[0]))
+
+    #   turn routes to queue
+    #   while len(routes) is not 0
+    while len(routes) > 0:
+        #   popleft route
+        route = routes.popleft()
+
+        #   if current_overlap is empty
+        if not current_overlap:
+            #   increment camera_count
+            camera_count += 1
+            #   set current_overlap to route
+            current_overlap = route
+            #   continue
+            continue
+
+        #   check if route and current_overlap overlaps
+        if is_overlapping(current_overlap, route):
+        #   if overlaps,
+        #       update current_overlap
+        #   if doesn't overlap
+        else:
+        #   appendleft route
+        #   empty current_overlap
+
+    #   return camera_count
+    return camera_count
