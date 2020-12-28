@@ -79,7 +79,7 @@ def solution(n, edge):
     graph_matrix = create_graph_matrix(n, edge)
 
     # find all adjacent verticies to vertex 0, and put to queue
-    queue = [j for j in range(n) if (j != 0) and (graph_matrix[0][j] == 1)]
+    queue = set([j for j in range(n) if (j != 0) and (graph_matrix[0][j] == 1)])
 
     # while queue is not empty
     while len(queue) > 0:
@@ -95,10 +95,17 @@ def solution(n, edge):
         for i in queue:
             # find adjacent vertices
             # if adjacent vertex not in traveled, then add to queue_temp
-            adj_vertices = set([j for j in range(n) if (j != i) and (not j in traveled) and (graph_matrix[i][j] == 1)])
-            queue_temp.update(adj_vertices)
+            for j in range(n):
+                if j == i:
+                    continue
+                if j in traveled:
+                    continue
+                if graph_matrix[i][j] == 0:
+                    continue
+
+                queue_temp.add(j)
         # set queue = queue_temp
-        queue = list(queue_temp)
+        queue = queue_temp
 
     return number_of_nodes_at_depth
 
