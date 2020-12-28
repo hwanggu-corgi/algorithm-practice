@@ -60,8 +60,9 @@ def solution(m, n, puddles):
             dp[i][j] = (dp[i-1][j] + dp[i][j-1]) % 1000000007
 
     #   return dp[-1][-1] - 1
+    print(dp)
     return dp[-1][-1]
 
 if __name__ == "__main__":
     print(solution(4,3,[[2, 2]])) #4
-    print(solution(4,3,[[0, 2], [2, 0]])) #8
+    print(solution(4,3,[[1, 3], [3, 1]])) #7
