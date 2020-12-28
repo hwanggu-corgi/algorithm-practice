@@ -27,18 +27,48 @@
 #       - start from first value of ICN
 #         {ICN: [ATL, SFO], SFO: [ATL], ATL: [ICN, SFO]} []
 
-#       - add ICN to answer
-#         {ICN: [ATL, SFO], SFO: [ATL], ATL: [ICN, SFO]} ["ICN"]
+#       - add ICN to answer and current_airport
+#         {ICN: [ATL, SFO], SFO: [ATL], ATL: [ICN, SFO]} answer = ["ICN"] current_airport = "ICN"
 
 #       - pop left destination["ICN"] --> ATL
-#         "ATL" {ICN: [SFO], SFO: [ATL], ATL: [ICN, SFO]} ["ICN"]
+#         "ATL" {ICN: [SFO], SFO: [ATL], ATL: [ICN, SFO]} ["ICN"] answer = ["ICN"] current_airport = "ICN"
 
-#       - Add ATL to answer
-#         {ICN: [SFO], SFO: [ATL], ATL: [ICN, SFO]} ["ICN", "ATL"]
+#       - Add ATL to answer and current_airport
+#         {ICN: [SFO], SFO: [ATL], ATL: [ICN, SFO]} answer = ["ICN", "ATL"] current_airport = "ATL"
+
+#       - pop left destination["ATL"] --> ICN
+#         "ICN" {ICN: [SFO], SFO: [ATL], ATL: [SFO]} answer = ["ICN"] answer = ["ICN"] current_airport = "ICN"
+
+#       - Add ICN to answer and current_airport
+#         {ICN: [SFO], SFO: [ATL], ATL: [SFO]} answer = ["ICN", "ATL", "ICN"] current_airport = "ICN"
+
+#       - pop left destination["ICN"] --> SFO
+#         "SFO" {ICN: [], SFO: [ATL], ATL: [SFO]} answer = ["ICN", "ATL", "ICN"] current_airport = "ICN"
+
+#       - Add SFO to answer and current_airport
+#         {ICN: [], SFO: [ATL], ATL: [SFO]} answer = ["ICN", "ATL", "ICN", "SFO"] current_airport = "SFO"
+
+#       - pop left destination["SFO"] --> ATL
+#         "ATL" {ICN: [], SFO: [], ATL: [SFO]} answer = ["ICN", "ATL", "ICN", "SFO"] current_airport = "SFO"
+
+#       - Add SFO to answer and current_airport
+#         {ICN: [], SFO: [], ATL: [SFO]} answer = ["ICN", "ATL", "ICN", "SFO", "ATL"] current_airport = "ATL"
+
 
 #       ["ICN", "ATL", "ICN", "SFO", "ATL", "SFO"]
+
+# pseudocode
+
+# create a dictionary of queue called 'destinations' with items in queue sorted in alphabetical order
+# create a variable called answer (val [])
+# create a variable called current_airport (val "ICN")
+# while len(answer) is not n
+# popleft
 
 
 def solution(tickets):
     answer = []
     return answer
+
+if __name__ == "__main__":
+    print(solution())
