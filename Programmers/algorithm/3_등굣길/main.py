@@ -9,6 +9,10 @@
 # 물에 잠긴 지역은 0개 이상 10개 이하입니다.
 # 집과 학교가 물에 잠긴 경우는 입력으로 주어지지 않습니다.
 
+
+# example
+#   1)  m: 4	n: 3	puddles:[[2, 2]]	return:4
+
 def solution(m, n, puddles):
     answer = 0
     return answer
