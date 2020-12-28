@@ -17,9 +17,19 @@
 #    [0,0,0,0],
 #    [0,0,0,0]]
 
-#   [[0,1,0,0],
-#    [1,0,x,0],
-#    [0,0,0,0]]
+#   [[0,1,2,3],
+#    [1,x,3,4],
+#    [2,3,4,0]]
+
+# pseudocode
+#   generate dp of size n x m
+#   mark puddles in dp (of size positive infinity)
+#   mark dp[i][0] = i and dp[0][i] = i
+#   find shortest path
+#   for i (starting from 1)
+#   for j (starting from 1)
+#   if (i,j) of dp[i][j] is in puddle, then skip
+#   else, set dp[i][j] = max(dp[i-1][j], dp[i][j-1]) + 1
 
 
 
