@@ -60,10 +60,10 @@ def solution(m, n, puddles):
                 continue
 
             #   else, set dp[i][j] = max(dp[i-1][j], dp[i][j-1]) + 1
-            dp[i][j] = dp[i-1][j] + dp[i][j-1]
+            dp[i][j] = (dp[i-1][j] + dp[i][j-1]) % 1000000007
 
     #   return dp[-1][-1] - 1
-    return dp[-1][-1] % 1000000007
+    return dp[-1][-1]
 
 if __name__ == "__main__":
     print(solution(4,3,[[2, 2]])) #4
