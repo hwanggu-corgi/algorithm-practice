@@ -88,13 +88,31 @@ def solution(routes):
             continue
 
         #   check if route and current_overlap overlaps
-        if is_overlapping(current_overlap, route):
         #   if overlaps,
-        #       update current_overlap
+        is_overlapping, val = get_overlap(current_overlap, route)
+        if is_overlapping:
+            #  update current_overlap
+            current_overlap = val
         #   if doesn't overlap
         else:
-        #   appendleft route
-        #   empty current_overlap
+            #   appendleft route
+            routes.appendleft(route)
+            #   empty current_overlap
+            current_overlap = []
 
     #   return camera_count
     return camera_count
+
+def get_overlap(current_overlap, route):
+    res = [0,0]
+
+    res[0] = max(current_overlap[0], route[0])
+    res[1] = min(current_overlap[1], route[1])
+
+    if ...:
+        return True
+    return False
+
+if __name__ == "__main__":
+    print(solution([[-20,15]])) #1
+    print(solution([[-20,15], [-14,-5], [-18,-13], [-5,-3]])) #2
