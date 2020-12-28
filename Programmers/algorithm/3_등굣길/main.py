@@ -51,7 +51,7 @@ def solution(m, n, puddles):
             if (i,j) in puddles:
                 continue
 
-            #   mark dp[i][0] = i and dp[0][i] = i
+            #   mark dp[i][0] = 1 and dp[0][i] = 1
             if (j == 0) or (i == 0):
                 dp[i][j] = 1
                 continue
@@ -60,9 +60,9 @@ def solution(m, n, puddles):
             dp[i][j] = (dp[i-1][j] + dp[i][j-1]) % 1000000007
 
     #   return dp[-1][-1] - 1
-    print(dp)
     return dp[-1][-1]
 
 if __name__ == "__main__":
     print(solution(4,3,[[2, 2]])) #4
     print(solution(4,3,[[1, 3], [3, 1]])) #7
+    print(solution(4,3,[[1, 4], [3, 1]])) #8
