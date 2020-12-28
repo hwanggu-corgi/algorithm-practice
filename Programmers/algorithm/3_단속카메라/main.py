@@ -109,10 +109,14 @@ def get_overlap(current_overlap, route):
     res[0] = max(current_overlap[0], route[0])
     res[1] = min(current_overlap[1], route[1])
 
-    if ...:
-        return True
-    return False
+    if res[0] <= res[1]:
+        return True, res
+    return False, res
 
 if __name__ == "__main__":
     print(solution([[-20,15]])) #1
+    print(solution([[-20,10], [2, 5]])) #1
+    print(solution([[-20,-3], [-2, 5]])) #2
+    print(solution([[0,1], [2, 3]])) #2
+    print(solution([[0,1], [1, 3]])) #1
     print(solution([[-20,15], [-14,-5], [-18,-13], [-5,-3]])) #2
