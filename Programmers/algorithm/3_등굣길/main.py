@@ -36,27 +36,27 @@ def solution(m, n, puddles):
     answer = 0
 
     #   generate dp of size n x m
-    dp = [[0] * m for _ in range(n)]
+    dp = [[0] * (m+1) for _ in range(n+1)]
 
     #   mark puddles in dp (of size positive infinity)
-    puddles = set([(x[0] - 1, x[1] - 1) for x in puddles])
+    puddles = set([(x[1], x[0]) for x in puddles])
+
+    dp[1][1] = 1
 
     #   find shortest path
     #   for i (starting from 1)
-    for i in range(n):
+    for i in range(1,n+1):
         #   for j (starting from 1)
-        for j in range(m):
+        for j in range(1,m+1):
+
+            if (i == 1) and (j == 1):
+                continue
 
             #   if (i,j) of dp[i][j] is in puddle, then skip
             if (i,j) in puddles:
                 continue
 
-            #   mark dp[i][0] = 1 and dp[0][i] = 1
-            if (j == 0) or (i == 0):
-                dp[i][j] = 1
-                continue
-
-            #   else, set dp[i][j] = max(dp[i-1][j], dp[i][j-1]) + 1
+            #   else, set dp[i][j] = (dp[i-1][j] + dp[i][j-1]) % 1000000007
             dp[i][j] = (dp[i-1][j] + dp[i][j-1]) % 1000000007
 
     #   return dp[-1][-1] - 1
@@ -64,5 +64,4 @@ def solution(m, n, puddles):
 
 if __name__ == "__main__":
     print(solution(4,3,[[2, 2]])) #4
-    print(solution(4,3,[[1, 3], [3, 1]])) #7
-    print(solution(4,3,[[1, 4], [3, 1]])) #8
+    print(solution(4,3,[[1, 3], [3, 1]])) #6
