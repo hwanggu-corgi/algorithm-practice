@@ -40,12 +40,26 @@ def solution(m, n, puddles):
     #   generate dp of size n x m
     dp = [[0] * m for _ in range(n)]
 
-    #   mark puddles in dp (of size positive infinity)
     #   mark dp[i][0] = i and dp[0][i] = i
+    for i in range(n):
+        dp[i][0] = i
+
+    for j in range(m):
+        dp[0][j] = j
+
+    #   mark puddles in dp (of size positive infinity)
+    puddles = set([(x[0] - 1, x[1] - 1) for x in puddles])
+
     #   find shortest path
     #   for i (starting from 1)
-    #   for j (starting from 1)
-    #   if (i,j) of dp[i][j] is in puddle, then skip
-    #   else, set dp[i][j] = max(dp[i-1][j], dp[i][j-1]) + 1
+    for i in range(1, n):
+        #   for j (starting from 1)
+        for j in range(1, m):
+            #   if (i,j) of dp[i][j] is in puddle, then skip
+            if (i,j) in puddles:
+                continue
+
+            #   else, set dp[i][j] = max(dp[i-1][j], dp[i][j-1]) + 1
+
     #   return dp[-1][-1] - 1
-    return answer
+    return dp[-1][-1] - 1
