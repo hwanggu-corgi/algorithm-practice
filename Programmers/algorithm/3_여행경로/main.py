@@ -19,6 +19,25 @@
 #       - {ICN: {ATL, SFO}, SFO: {ATL}, ATL: {ICN, SFO}}
 #       ["ICN", "ATL", "ICN", "SFO", "ATL", "SFO"]
 
+# Detailed Example
+
+#   2) tickets: [[ICN, SFO], [ICN, ATL], [SFO, ATL], [ATL, ICN], [ATL,SFO]]
+
+#       - [[ICN, SFO], [ICN, ATL], [SFO, ATL], [ATL, ICN], [ATL,SFO]] --> generate queue of items in dictionary order --> {ICN: [ATL, SFO], SFO: [ATL], ATL: [ICN, SFO]}
+#       - start from first value of ICN
+#         {ICN: [ATL, SFO], SFO: [ATL], ATL: [ICN, SFO]} []
+
+#       - add ICN to answer
+#         {ICN: [ATL, SFO], SFO: [ATL], ATL: [ICN, SFO]} ["ICN"]
+
+#       - pop left destination["ICN"] --> ATL
+#         "ATL" {ICN: [SFO], SFO: [ATL], ATL: [ICN, SFO]} ["ICN"]
+
+#       - Add ATL to answer
+#         {ICN: [SFO], SFO: [ATL], ATL: [ICN, SFO]} ["ICN", "ATL"]
+
+#       ["ICN", "ATL", "ICN", "SFO", "ATL", "SFO"]
+
 
 def solution(tickets):
     answer = []
