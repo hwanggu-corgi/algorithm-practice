@@ -1,6 +1,8 @@
 # goal: 노드의 개수 n, 간선에 대한 정보가 담긴 2차원 배열 vertex가 매개변수로 주어질 때, 1번
 # 노드로부터 가장 멀리 떨어진 노드가 몇 개인지를 return 하도록 solution 함수를 작성해주세요.
 
+# 가장 멀리 떨어진 노드란 최단경로로 이동했을 때 간선의 개수가 가장 많은 노드들을 의미합니다.
+
 # 제한사항
 # 노드의 개수 n은 2 이상 20,000 이하입니다.
 # 간선은 양방향이며 총 1개 이상 50,000개 이하의 간선이 있습니다.
@@ -46,7 +48,7 @@
 #       https://www.youtube.com/watch?v=611B-9zk2o4&ab_channel=%EB%8F%99%EB%B9%88%EB%82%98
 #       - finds shortest distance between one vertex and all other vertices
 #       - 음의 간선 포함할 수 없음
-#       -
+
 #   Floyd Warshall
 #       https://www.youtube.com/watch?v=9574GHxCbKc&t=408s&ab_channel=%EB%8F%99%EB%B9%88%EB%82%98
 #       - finds shortest path between all verticies
@@ -65,44 +67,34 @@
 #               Ak[i, j] = min (Ak-1[i, j], Ak-1[i, k] + Ak-1[k, j])
 #   return A
 
-
-#  Bellman ford
-#       https://www.youtube.com/watch?v=Ppimbaxm8d8&ab_channel=%EB%8F%99%EB%B9%88%EB%82%98
-#       - works with finding longest path
-
 from collections import deque
 
 def solution(n, edge):
-    max_depth = 0
+    depth = 0
+    queue = []
+    traveled = set()
     # write matrix representation of graph
     graph_matrix = create_graph_matrix(n, edge)
 
-    i = 0
-    while i < n:
-        traveled = set([i])
-        # find all adjacent verticies to vertex 0, and put to queue
-        queue = [j for j in range(n) if (j != i) and (graph_matrix[i][j] == 1)]
+    # find all adjacent verticies to vertex 0, and put to queue
+    queue = [j for j in range(n) if (j != 0) and (graph_matrix[0][j] == 1)]
+    # while queue is not empty
+    while len(queue) > 0:
+        queue_temp = []
+        # increase depth by 1
+        depth += 1
+        # for each vertex in queue,
+        for i in queue:
+            # add vertex to traveled
+            traveled.add(i)
+            # find adjacent vertices
+            # if adjacent vertex not in traveled, then add to queue_temp
+            adj_vertices = [j for j in range(n) if (j != i) and (not j in traveled) and (graph_matrix[i][j] == 1)]
+            queue_temp.extend(adj_vertices)
+        # set queue = queue_temp
+        queue = queue_temp
+    return depth
 
-        depth = 0
-        # while queue is not empty
-        while len(queue) > 0:
-            queue_temp = []
-            # increase depth by 1
-            depth += 1
-            # for each vertex in queue,
-            for i in queue:
-                # add vertex to traveled
-                traveled.add(i)
-                # find adjacent vertices
-                # if adjacent vertex not in traveled, then add to queue_temp
-                adj_vertices = [j for j in range(n) if (j != i) and (not j in traveled) and (graph_matrix[i][j] == 1)]
-                queue_temp.extend(adj_vertices)
-            # set queue = queue_temp
-            queue = queue_temp
-        max_depth = max(max_depth, depth)
-        i += 1
-
-    return max_depth
 def create_graph_matrix(n, edges):
     res = [[0] * n for _ in range(n)]
 
