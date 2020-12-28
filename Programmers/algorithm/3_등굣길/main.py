@@ -46,17 +46,14 @@ def solution(m, n, puddles):
     for i in range(n):
         #   for j (starting from 1)
         for j in range(m):
-            #   mark dp[i][0] = i and dp[0][i] = i
-            if j == 0:
-                dp[i][0] = 1
-                continue
-
-            if i == 0:
-                dp[0][j] = 1
-                continue
 
             #   if (i,j) of dp[i][j] is in puddle, then skip
             if (i,j) in puddles:
+                continue
+
+            #   mark dp[i][0] = i and dp[0][i] = i
+            if (j == 0) or (i == 0):
+                dp[i][j] = 1
                 continue
 
             #   else, set dp[i][j] = max(dp[i-1][j], dp[i][j-1]) + 1
@@ -67,3 +64,4 @@ def solution(m, n, puddles):
 
 if __name__ == "__main__":
     print(solution(4,3,[[2, 2]])) #4
+    print(solution(4,3,[[0, 2], [2, 0]])) #8
