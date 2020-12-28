@@ -43,12 +43,16 @@
 
 # Shortest path algorithm
 #   Dijkstra
+#       https://www.youtube.com/watch?v=611B-9zk2o4&ab_channel=%EB%8F%99%EB%B9%88%EB%82%98
 #       - finds shortest distance between one vertex and all other vertices
 #       - 음의 간선 포함할 수 없음
 #       -
 #   Floyd Warshall
+#       https://www.youtube.com/watch?v=9574GHxCbKc&t=408s&ab_channel=%EB%8F%99%EB%B9%88%EB%82%98
 #       - finds shortest path between all verticies
+#       - Doesnt work with finiding longest path
 #       - 음의 간선 포함할 수 있음
+#       - 거쳐가는 값을 계산한다
 #       - graph_matrix[a][a] = 0
 #       - infinity -> no immediate path from vertex a to b
 #
@@ -60,6 +64,11 @@
 #           for j = 1 to n
 #               Ak[i, j] = min (Ak-1[i, j], Ak-1[i, k] + Ak-1[k, j])
 #   return A
+
+
+#  Bellman ford
+#       https://www.youtube.com/watch?v=Ppimbaxm8d8&ab_channel=%EB%8F%99%EB%B9%88%EB%82%98
+#       - works with finding longest path
 
 from collections import deque
 
