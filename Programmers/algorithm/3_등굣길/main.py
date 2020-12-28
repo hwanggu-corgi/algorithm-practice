@@ -30,9 +30,22 @@
 #   for j (starting from 1)
 #   if (i,j) of dp[i][j] is in puddle, then skip
 #   else, set dp[i][j] = max(dp[i-1][j], dp[i][j-1]) + 1
+#   return dp[-1][-1] - 1
 
 
 
 def solution(m, n, puddles):
     answer = 0
+
+    #   generate dp of size n x m
+    dp = [[0] * m for _ in range(n)]
+
+    #   mark puddles in dp (of size positive infinity)
+    #   mark dp[i][0] = i and dp[0][i] = i
+    #   find shortest path
+    #   for i (starting from 1)
+    #   for j (starting from 1)
+    #   if (i,j) of dp[i][j] is in puddle, then skip
+    #   else, set dp[i][j] = max(dp[i-1][j], dp[i][j-1]) + 1
+    #   return dp[-1][-1] - 1
     return answer
