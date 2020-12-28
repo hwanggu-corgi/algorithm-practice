@@ -67,19 +67,20 @@
 #               Ak[i, j] = min (Ak-1[i, j], Ak-1[i, k] + Ak-1[k, j])
 #   return A
 
+
 from collections import deque
 
 def solution(n, edge):
     depth = 0
     number_of_nodes_at_depth = 0
-
-    queue = []
     traveled = set([0])
-    # write matrix representation of graph
-    graph_matrix = create_graph_matrix(n, edge)
+    adj_vertices = {}
+
+    for u,v in edge:
+
 
     # find all adjacent verticies to vertex 0, and put to queue
-    queue = set([j for j in range(n) if (j != 0) and (graph_matrix[0][j] == 1)])
+    queue = ...
 
     # while queue is not empty
     while len(queue) > 0:
