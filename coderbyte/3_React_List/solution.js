@@ -7,8 +7,7 @@ function DataList(props) {
       <ul>
         {props.data.map(item => (
           <li>
-            <span>{item.name}</span>
-            <span>{item.age}</span>
+            <span>{item.name}</span> <span>{item.age}</span>
           </li>
         ))}
       </ul>
