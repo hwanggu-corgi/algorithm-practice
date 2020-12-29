@@ -73,7 +73,7 @@ class Board extends React.Component {
     super(props);
     this.state = {
       board: [['','',''],['','',''],['','','']],
-      turn: 1,
+      turn: 2,
       winner: -1
     }
   }
@@ -126,18 +126,28 @@ class Board extends React.Component {
     return false;
   }
 
-  render() {
+  checkWinner = () => {
     if (this.check(this.state.board)) {
       this.setState((state, props) => {
         state.winner = turn;
         return state;
       });
     }
+  }
 
+  updateTurn = () => {
     this.setState((state, props) => {
       state.turn = turn == 2 ? 1 : 2;
       return state;
     });
+  }
+
+  render() {
+    this.checkWinner();
+
+    if (this.state.winner < 0) {
+      this.updateTurn();
+    }
 
     return (
       <div style={containerStyle} className="gameBoard">
