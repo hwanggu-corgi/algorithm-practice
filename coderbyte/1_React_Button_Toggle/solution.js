@@ -1,32 +1,34 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
-class Toggle extends React.Component {
+class Counter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        toggled: false
+        count: 0
     }
-
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
-    this.setState( (state, props) => {
+    this.setState((state, props) => {
         return {
-          toggled: !state.toggled
+            count: state.count + 1
         }
     })
   }
 
   render() {
     return (
-      <button onClick={this.handleClick}>{this.state.toggled ? "OFF" : "ON"}</button>
+      <div id="mainArea">
+        <p>button count: <span>{this.state.count}</span></p>
+        <button onClick={this.handleClick} id="mainButton">Increase</button>
+      </div>
     );
   }
 }
 
 ReactDOM.render(
-  <Toggle />,
+  <Counter />,
   document.getElementById('root')
 );
