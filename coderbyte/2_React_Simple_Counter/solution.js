@@ -93,7 +93,8 @@ function InformationTable(props) {
 }
 
 class Application extends React.Component {
-  constructor() {
+  constructor(props) {
+    super(props);
     this.state = {
       phoneList: []
     }
@@ -109,7 +110,7 @@ class Application extends React.Component {
 
     this.setState((state, props) => {
         return {
-            phoneList: state.phoneList.push(entry)
+            phoneList: state.phoneList.push(item)
         }
     })
   }
