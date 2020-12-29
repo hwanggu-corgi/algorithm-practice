@@ -78,7 +78,11 @@ def solution(tickets):
     # create a variable called current_airport (val "ICN")
     current_airport = "ICN"
 
-    travel(answer, queue, current_airport)
+    final_ticket = travel(answer, queue, current_airport, False)
+    print(final_ticket)
+    print(queue)
+    answer.append(final_ticket[1])
+    travel(answer, queue, final_ticket[1], True)
 
     return answer
 
@@ -103,21 +107,23 @@ def create_queue(tickets):
 
     return res
 
-def travel(answer, queue, current_airport):
+def travel(answer, queue, current_airport, is_final):
+    final_ticket = []
     # while len(answer) is not n
     while len(queue[current_airport]) > 0:
         # popleft queue[current_airport]
         tmp = queue[current_airport].popleft()
 
         # if the end destination is empty, append tmp to queue[current_airport] and try again
-        if len(queue[tmp]) == 0:
-            queue[current_airport].append(tmp)
+        if len(queue[tmp]) == 0 and not is_final:
+            final_ticket = [current_airport, tmp]
             continue
 
         # Add popped value to answer and current_airport
         answer.append(tmp)
         current_airport = tmp
 
+    return final_ticket
 
 # from collections import deque
 
