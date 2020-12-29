@@ -62,6 +62,37 @@ class Square extends React.Component {
 }
 
 class Board extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      board: [['','',''],['','',''],['','','']],
+      turn: 1,
+      winner: -1
+    }
+  }
+
+  updateBoard = (turn, coord) => {
+    let i = coord[0];
+    let j = coord[1];
+
+    if (this.state.board[i][j] != '') {
+      return;
+    }
+
+    this.setState((state, props) => {
+      state.board[i][j] = turn == 1 ? 'X' : 'O';
+      return state;
+    });
+
+    if (this.check(this.state.board)) {
+      this.setState((state, props) => {
+        state.winner = turn;
+        return state;
+      });
+    }
+  }
+
   render() {
     return (
       <div style={containerStyle} className="gameBoard">
@@ -70,19 +101,19 @@ class Board extends React.Component {
         <button style={buttonStyle}>Reset</button>
         <div style={boardStyle}>
           <div className="board-row" style={rowStyle}>
-            <Square onClick={e => this.updateBoard(...)}/>
-            <Square onClick={e => this.updateBoard(...)}/>
-            <Square onClick={e => this.updateBoard(...)}/>
+            <Square onClick={e => this.updateBoard(this.state.turn, [0,0])}/>
+            <Square onClick={e => this.updateBoard(this.state.turn, [0,1])}/>
+            <Square onClick={e => this.updateBoard(this.state.turn, [0,2])}/>
           </div>
           <div className="board-row" style={rowStyle}>
-            <Square onClick={e => this.updateBoard(...)}/>
-            <Square onClick={e => this.updateBoard(...)}/>
-            <Square onClick={e => this.updateBoard(...)}/>
+            <Square onClick={e => this.updateBoard(this.state.turn, [1,0])}/>
+            <Square onClick={e => this.updateBoard(this.state.turn, [1,1])}/>
+            <Square onClick={e => this.updateBoard(this.state.turn, [1,2])}/>
           </div>
           <div className="board-row" style={rowStyle}>
-            <Square onClick={e => this.updateBoard(...)}/>
-            <Square onClick={e => this.updateBoard(...)}/>
-            <Square onClick={e => this.updateBoard(...)}/>
+            <Square onClick={e => this.updateBoard(this.state.turn, [2,0])}/>
+            <Square onClick={e => this.updateBoard(this.state.turn, [2,1])}/>
+            <Square onClick={e => this.updateBoard(this.state.turn, [2,2])}/>
           </div>
         </div>
       </div>
