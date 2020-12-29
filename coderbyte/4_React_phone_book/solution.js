@@ -42,6 +42,7 @@ function PhoneBookForm({ addEntryToPhoneBook }) {
       <input
         style={style.form.inputs}
         className='userFirstname'
+        value='Coder'
         name='userFirstname'
         type='text'
       />
@@ -51,6 +52,7 @@ function PhoneBookForm({ addEntryToPhoneBook }) {
       <input
         style={style.form.inputs}
         className='userLastname'
+        value='Byte'
         name='userLastname'
         type='text'
       />
@@ -60,6 +62,7 @@ function PhoneBookForm({ addEntryToPhoneBook }) {
       <input
         style={style.form.inputs}
         className='userPhone'
+        value='8885559999'
         name='userPhone'
         type='text'
       />
@@ -75,26 +78,38 @@ function PhoneBookForm({ addEntryToPhoneBook }) {
 }
 
 function InformationTable(props) {
+  let data = props.data.sort((a,b) => {
+    if (a.userLastname.toUpperCase() < b.userLastname.toUpperCase()) {
+        return -1;
+    }
+
+    if (a.userLastname.toUpperCase() > b.userLastname.toUpperCase()) {
+        return 1;
+    }
+
+    return 0
+  });
+
   return (
     <table style={style.table} className='informationTable'>
         <thead>
-            <tr>
-            <th style={style.tableCell}>First name</th>
-            <th style={style.tableCell}>Last name</th>
-            <th style={style.tableCell}>Phone</th>
-            </tr>
-        </thead>
-        <tbody>
-            {
-                props.data.map(item => (
-                    <tr>
-                        <th style={style.tableCell}>{item.userFirstname}</th>
-                        <th style={style.tableCell}>{item.userLastname}</th>
-                        <th style={style.tableCell}>{item.userPhone}</th>
-                    </tr>
-                ))
-            }
-        </tbody>
+        <tr>
+          <th style={style.tableCell}>First name</th>
+          <th style={style.tableCell}>Last name</th>
+          <th style={style.tableCell}>Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+            data.map((item,index) => (
+                <tr key={index}>
+                    <th style={style.tableCell}>{item.userFirstname}</th>
+                    <th style={style.tableCell}>{item.userLastname}</th>
+                    <th style={style.tableCell}>{item.userPhone}</th>
+                </tr>
+            ))
+        }
+      </tbody>
     </table>
   );
 }
@@ -130,8 +145,3 @@ class Application extends React.Component {
     );
   }
 }
-
-ReactDOM.render(
-  <Application />,
-  document.getElementById('root')
-);
