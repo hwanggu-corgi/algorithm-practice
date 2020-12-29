@@ -80,6 +80,11 @@ def solution(tickets):
 
     travel(answer, queue, current_airport)
 
+
+    for key in queue:
+        while len(queue[key]) > 0:
+            travel(answer, queue, key)
+
     return answer
 
 def create_queue(tickets):
@@ -156,6 +161,8 @@ def travel(answer, queue, current_airport):
 #     return res
 
 if __name__ == "__main__":
+    print(solution([["ICN","A"],["ICN","A"],["ICN","A"]])) # [ICN, ICN, ICN, ICN]
+    print(solution([["ICN","A"],["A","B"],["B","A"],["A","ICN"],["ICN","A"]])) # [ICN,A,B,A,ICN,A]
     print(solution([["ICN", "A"], ["ICN", "A"], ["ICN", "A"], ["A", "ICN"], ["A","ICN"]])) #[ICN, ATL, ICN, SFO, ATL, SFO]
     print(solution([["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL","SFO"]])) #[ICN, ATL, ICN, SFO, ATL, SFO]
     print(solution([["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]])) #[ICN, JFK, HND, IAD]
