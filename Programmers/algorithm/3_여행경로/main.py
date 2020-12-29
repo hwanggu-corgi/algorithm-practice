@@ -84,6 +84,7 @@ def solution(tickets):
         # Add popped value to answer and current_airport
         answer.append(tmp)
         current_airport = tmp
+    print(queue)
     return answer
 
 def create_queue(tickets):
@@ -108,4 +109,6 @@ def create_queue(tickets):
     return res
 
 if __name__ == "__main__":
+    print(solution([["ICN", "A"], ["ICN", "A"], ["ICN", "A"], ["A", "ICN"], ["A","ICN"]])) #[ICN, ATL, ICN, SFO, ATL, SFO]
+    print(solution([["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL","SFO"]])) #[ICN, ATL, ICN, SFO, ATL, SFO]
     print(solution([["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]])) #[ICN, JFK, HND, IAD]
