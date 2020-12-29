@@ -66,7 +66,7 @@ class Board extends React.Component {
     return (
       <div style={containerStyle} className="gameBoard">
         <div className="status" style={instructionsStyle}>Next player: X</div>
-        <div className="winner" style={instructionsStyle}>Winner: None</div>
+        <div className="winner" style={instructionsStyle}>{this.state.winner > 0 ? `Winner: Player ${this.state.winner}` : `Winner: None`}</div>
         <button style={buttonStyle}>Reset</button>
         <div style={boardStyle}>
           <div className="board-row" style={rowStyle}>
