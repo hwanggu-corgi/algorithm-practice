@@ -77,32 +77,35 @@ def solution(tickets):
     queue = create_queue(tickets)
     # create a variable called current_airport (val "ICN")
     current_airport = "ICN"
+    final_destination = ""
 
     # while len(answer) is not n
     while len(queue[current_airport]) > 0:
         # popleft queue[current_airport]
         tmp = queue[current_airport].popleft()
 
-        # if the end destination is empty, append tmp to queue[current_airport] and try again
-        if len(queue[tmp]) == 0 and not is_final:
-            final_ticket = [current_airport, tmp]
+        if len(queue[tmp]) == 0 and not final_destination:
+            final_destination = tmp
             continue
 
         # Add popped value to answer and current_airport
         answer.append(tmp)
         current_airport = tmp
 
-    print(final_ticket)
-    print(queue)
-    answer.append(final_ticket[1])
-    travel(answer, queue, final_ticket[1], True)
+    answer.append(final_destination)
+    current_airport = final_destination
+
+    while len(queue[current_airport]) > 0:
+        tmp = queue[current_airport].popleft()
+
+        answer.append(tmp)
+        current_airport = tmp
 
     return answer
 
 def create_queue(tickets):
     res = {}
 
-    # ticket 정보 dictionary 안에 집어 넣기
     for start, target in tickets:
         if start not in res:
             res[start] = [target]
@@ -112,8 +115,6 @@ def create_queue(tickets):
         if target not in res:
             res[target] = []
 
-    # dictionary 안에있는 list를 오름차순으로 정렬
-    # dictionary 안에있는 list를 큐로 변경
     for key in res:
         res[key].sort()
         res[key] = deque(res[key])
