@@ -73,24 +73,9 @@ class Board extends React.Component {
     super(props);
     this.state = {
       board: [['','',''],['','',''],['','','']],
-      turn: 2,
+      turn: 1,
       winner: -1
     }
-  }
-
-  updateBoard = (turn, coord) => {
-    console.log('I am here');
-    let i = coord[0];
-    let j = coord[1];
-
-    if (this.state.board[i][j] != '') {
-      return;
-    }
-
-    this.setState((state, props) => {
-      state.board[i][j] = turn == 1 ? 'X' : 'O';
-      return state;
-    });
   }
 
   check = (board) => {
@@ -126,7 +111,7 @@ class Board extends React.Component {
     return false;
   }
 
-  checkWinner = () => {
+  checkWinner = (turn) => {
     if (this.check(this.state.board)) {
       this.setState((state, props) => {
         state.winner = turn;
@@ -135,20 +120,35 @@ class Board extends React.Component {
     }
   }
 
-  updateTurn = () => {
+  updateTurn = (turn) => {
     this.setState((state, props) => {
       state.turn = turn == 2 ? 1 : 2;
       return state;
     });
   }
 
-  render() {
-    this.checkWinner();
+  updateBoard = (turn, coord) => {
+    console.log('I am here');
+    let i = coord[0];
+    let j = coord[1];
 
-    if (this.state.winner < 0) {
-      this.updateTurn();
+    if (this.state.board[i][j] != '') {
+      return;
     }
 
+    this.setState((state, props) => {
+      state.board[i][j] = turn == 1 ? 'X' : 'O';
+      return state;
+    });
+
+    this.checkWinner(turn);
+    if (this.state.winner < 0) {
+      this.updateTurn(turn);
+    }
+  }
+
+
+  render() {
     return (
       <div style={containerStyle} className="gameBoard">
         <div className="status" style={instructionsStyle}>Next player: {this.state.turn}</div>
