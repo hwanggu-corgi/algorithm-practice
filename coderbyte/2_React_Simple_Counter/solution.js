@@ -78,11 +78,15 @@ function InformationTable(props) {
   return (
     <table style={style.table} className='informationTable'>
       <thead>
-        <tr>
-          <th style={style.tableCell}>First name</th>
-          <th style={style.tableCell}>Last name</th>
-          <th style={style.tableCell}>Phone</th>
-        </tr>
+        {
+            props.data.map(item => (
+                <tr>
+                    <th style={style.tableCell}>{item.userFirstname}</th>
+                    <th style={style.tableCell}>{item.userLastname}</th>
+                    <th style={style.tableCell}>{item.userPhone}</th>
+                </tr>
+            ))
+        }
       </thead>
     </table>
   );
