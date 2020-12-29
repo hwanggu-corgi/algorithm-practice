@@ -7,10 +7,9 @@ class Counter extends React.Component {
     this.state = {
         count: 0
     }
-    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {
+  handleClick = () => {
     this.setState((state, props) => {
         return {
             count: state.count + 1
