@@ -1,12 +1,3 @@
-// Your goal is to create a
-//  - simple form at the top that allows the user to enter in a first name, last name, and phone number
-//  - there should be a submit button.
-
-//  - Once the submit button is pressed, the information should be displayed in
-//    a list below (automatically sorted by last name) along with all the previous
-//    information that was entered.
-
-
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
@@ -45,7 +36,7 @@ const style = {
 
 function PhoneBookForm({ addEntryToPhoneBook }) {
   return (
-    <form onSubmit={e => { e.preventDefault() }} style={style.form.container}>
+    <form onSubmit={e => {e.preventDefault(); addEntryToPhoneBook(e)}} style={style.form.container}>
       <label>First name:</label>
       <br />
       <input
@@ -86,24 +77,58 @@ function PhoneBookForm({ addEntryToPhoneBook }) {
 function InformationTable(props) {
   return (
     <table style={style.table} className='informationTable'>
-      <thead>
-        <tr>
-          <th style={style.tableCell}>First name</th>
-          <th style={style.tableCell}>Last name</th>
-          <th style={style.tableCell}>Phone</th>
-        </tr>
-      </thead>
+        <thead>
+            <tr>
+            <th style={style.tableCell}>First name</th>
+            <th style={style.tableCell}>Last name</th>
+            <th style={style.tableCell}>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            {
+                props.data.map(item => (
+                    <tr>
+                        <th style={style.tableCell}>{item.userFirstname}</th>
+                        <th style={style.tableCell}>{item.userLastname}</th>
+                        <th style={style.tableCell}>{item.userPhone}</th>
+                    </tr>
+                ))
+            }
+        </tbody>
     </table>
   );
 }
 
-function Application(props) {
-  return (
-    <section>
-      <PhoneBookForm />
-      <InformationTable />
-    </section>
-  );
+class Application extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      phoneList: []
+    }
+  }
+
+  addEntryToPhoneBook = (e) => {
+    const data = new FormData(e.target);
+    const item = {
+        userFirstname: data.get("userFirstname"),
+        userLastname: data.get("userLastname"),
+        userPhone: data.get("userPhone")
+    };
+
+    this.setState((state, props) => {
+        state.phoneList.push(item);
+        return state;
+    })
+  }
+
+  render() {
+    return (
+      <section>
+        <PhoneBookForm addEntryToPhoneBook={this.addEntryToPhoneBook} />
+        <InformationTable data={this.state.phoneList} />
+      </section>
+    );
+  }
 }
 
 ReactDOM.render(
