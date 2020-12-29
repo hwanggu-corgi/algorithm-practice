@@ -75,14 +75,14 @@ class Board extends React.Component {
             <Square onClick={e => this.updateBoard(...)}/>
           </div>
           <div className="board-row" style={rowStyle}>
-            <Square />
-            <Square />
-            <Square />
+            <Square onClick={e => this.updateBoard(...)}/>
+            <Square onClick={e => this.updateBoard(...)}/>
+            <Square onClick={e => this.updateBoard(...)}/>
           </div>
           <div className="board-row" style={rowStyle}>
-            <Square />
-            <Square />
-            <Square />
+            <Square onClick={e => this.updateBoard(...)}/>
+            <Square onClick={e => this.updateBoard(...)}/>
+            <Square onClick={e => this.updateBoard(...)}/>
           </div>
         </div>
       </div>
