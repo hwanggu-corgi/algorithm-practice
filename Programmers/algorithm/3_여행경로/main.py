@@ -66,6 +66,7 @@
 # popleft destination[current_airport]
 # Add popped value to answer and current_airport
 
+
 from collections import deque
 
 def solution(tickets):
@@ -77,14 +78,8 @@ def solution(tickets):
     # create a variable called current_airport (val "ICN")
     current_airport = "ICN"
 
-    # while len(answer) is not n
-    while len(queue[current_airport]) > 0:
-        # popleft queue[current_airport]
-        tmp = queue[current_airport].popleft()
-        # Add popped value to answer and current_airport
-        answer.append(tmp)
-        current_airport = tmp
-    print(queue)
+    travel(answer, queue, current_airport)
+
     return answer
 
 def create_queue(tickets):
@@ -107,6 +102,58 @@ def create_queue(tickets):
         res[key] = deque(res[key])
 
     return res
+
+def travel(answer, queue, current_airport):
+    # while len(answer) is not n
+    while len(queue[current_airport]) > 0:
+        # popleft queue[current_airport]
+        tmp = queue[current_airport].popleft()
+        # Add popped value to answer and current_airport
+        answer.append(tmp)
+        current_airport = tmp
+
+
+# from collections import deque
+
+# def solution(tickets):
+#     n = len(tickets)
+#     # create a variable called answer (val [])
+#     answer = ["ICN"]
+#     # create a dictionary of queue called 'queue' with items in queue sorted in alphabetical order
+#     queue = create_queue(tickets)
+#     # create a variable called current_airport (val "ICN")
+#     current_airport = "ICN"
+
+#     # while len(answer) is not n
+#     while len(queue[current_airport]) > 0:
+#         # popleft queue[current_airport]
+#         tmp = queue[current_airport].popleft()
+#         # Add popped value to answer and current_airport
+#         answer.append(tmp)
+#         current_airport = tmp
+
+#     return answer
+
+# def create_queue(tickets):
+#     res = {}
+
+#     # ticket 정보 dictionary 안에 집어 넣기
+#     for start, target in tickets:
+#         if start not in res:
+#             res[start] = [target]
+#         else:
+#             res[start].append(target)
+
+#         if target not in res:
+#             res[target] = []
+
+#     # dictionary 안에있는 list를 오름차순으로 정렬
+#     # dictionary 안에있는 list를 큐로 변경
+#     for key in res:
+#         res[key].sort()
+#         res[key] = deque(res[key])
+
+#     return res
 
 if __name__ == "__main__":
     print(solution([["ICN", "A"], ["ICN", "A"], ["ICN", "A"], ["A", "ICN"], ["A","ICN"]])) #[ICN, ATL, ICN, SFO, ATL, SFO]
