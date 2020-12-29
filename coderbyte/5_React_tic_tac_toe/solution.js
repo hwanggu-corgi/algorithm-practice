@@ -53,14 +53,15 @@ const buttonStyle = {
 class Square extends React.Component {
   constructor(props) {
     super(props);
-    this.data = props.data;
+    this.props = props;
   }
   render() {
     return (
       <div
         className="square"
-        style={squareStyle}>
-          {this.data}
+        style={squareStyle}
+        onClick={this.props.onClick}>
+          {this.props.data}
       </div>
     );
   }
@@ -78,6 +79,7 @@ class Board extends React.Component {
   }
 
   updateBoard = (turn, coord) => {
+    console.log('I am here');
     let i = coord[0];
     let j = coord[1];
 
@@ -107,14 +109,16 @@ class Board extends React.Component {
 
     // horizontal check
     for (let i = 0; i < 3; i++) {
-      if ((board[i][0] == board[i][1]) && (board[i][1] == board[i][2])) {
+      if (((board[i][0] == board[i][1]) && (board[i][1] == board[i][2])) &&
+          (board[i][0] != '')) {
         return true;
       }
     }
 
     // vertical check
     for (let j = 0; j < 3; j++) {
-      if ((board[0][j] == board[1][j]) && (board[1][j] == board[2][j])) {
+      if (((board[0][j] == board[1][j]) && (board[1][j] == board[2][j])) &&
+          (board[0][j] != '')) {
         return true;
       }
     }
@@ -124,6 +128,8 @@ class Board extends React.Component {
         ((board[0][2] == board[1][1]) && (board[1][1] == board[2][0]))) {
       return true;
     }
+
+    return false;
   }
 
   render() {
