@@ -63,7 +63,8 @@
 # create a variable called answer (val [])
 # create a variable called current_airport (val "ICN")
 # while len(answer) is not n
-# popleft
+# popleft destination[current_airport]
+# Add popped value to answer and current_airport
 
 
 def solution(tickets):
