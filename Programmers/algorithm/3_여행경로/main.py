@@ -80,11 +80,6 @@ def solution(tickets):
 
     travel(answer, queue, current_airport)
 
-
-    for key in queue:
-        while len(queue[key]) > 0:
-            travel(answer, queue, key)
-
     return answer
 
 def create_queue(tickets):
@@ -113,6 +108,12 @@ def travel(answer, queue, current_airport):
     while len(queue[current_airport]) > 0:
         # popleft queue[current_airport]
         tmp = queue[current_airport].popleft()
+
+        # if the end destination is empty, append tmp to queue[current_airport] and try again
+        if len(queue[tmp]) == 0:
+            queue[current_airport].append(tmp)
+            continue
+
         # Add popped value to answer and current_airport
         answer.append(tmp)
         current_airport = tmp
@@ -161,7 +162,7 @@ def travel(answer, queue, current_airport):
 #     return res
 
 if __name__ == "__main__":
-    print(solution([["ICN","A"],["ICN","A"],["ICN","A"]])) # [ICN, ICN, ICN, ICN]
+    print(solution([["ICN","BOO"],["ICN","COO"],["COO","ICN"]])) # [ICN, COO, ICN, BOO]
     print(solution([["ICN","A"],["A","B"],["B","A"],["A","ICN"],["ICN","A"]])) # [ICN,A,B,A,ICN,A]
     print(solution([["ICN", "A"], ["ICN", "A"], ["ICN", "A"], ["A", "ICN"], ["A","ICN"]])) #[ICN, ATL, ICN, SFO, ATL, SFO]
     print(solution([["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL","SFO"]])) #[ICN, ATL, ICN, SFO, ATL, SFO]
