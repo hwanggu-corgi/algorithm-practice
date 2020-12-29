@@ -36,7 +36,7 @@ const style = {
 
 function PhoneBookForm({ addEntryToPhoneBook }) {
   return (
-    <form onSubmit={e => { e.preventDefault() }} style={style.form.container}>
+    <form onSubmit={e => {e.preventDefault(); addEntryToPhoneBook(e)}} style={style.form.container}>
       <label>First name:</label>
       <br />
       <input
@@ -99,16 +99,25 @@ class Application extends React.Component {
     }
   }
 
-  handleSubmit = (entry) => {
+  addEntryToPhoneBook = (e) => {
+    const data = new FormData(e.target);
+    const item = {
+        userFirstname: data.get("userFirstname"),
+        userLastname: data.get("userLastname"),
+        userPhone: data.get("userPhone")
+    };
+
     this.setState((state, props) => {
-      phoneList: phoneList.push(entry)
+        return {
+            phoneList: state.phoneList.push(entry)
+        }
     })
   }
 
   render() {
     return (
       <section>
-        <PhoneBookForm onSubmit={entry => this.handleSubmit(entry)} />
+        <PhoneBookForm addEntryToPhoneBook={this.addEntryToPhoneBook} />
         <InformationTable data={this.state.phoneList} />
       </section>
     );
