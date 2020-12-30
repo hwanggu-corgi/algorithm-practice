@@ -111,23 +111,7 @@ class Board extends React.Component {
     return false;
   }
 
-  checkWinner = (turn) => {
-    if (this.check(this.state.board)) {
-      this.setState((state, props) => {
-        state.winner = turn;
-        return state;
-      });
-    }
-  }
-
-  updateTurn = (turn) => {
-    this.setState((state, props) => {
-      state.turn = turn == 2 ? 1 : 2;
-      return state;
-    });
-  }
-
-  updateBoard = (turn, coord) => {
+  updateBoard = (coord) => {
     console.log('I am here');
     let i = coord[0];
     let j = coord[1];
@@ -137,14 +121,21 @@ class Board extends React.Component {
     }
 
     this.setState((state, props) => {
-      state.board[i][j] = turn == 1 ? 'X' : 'O';
+      state.board[i][j] = state.turn == 1 ? 'X' : 'O';
+      state.winner = this.check(this.state.board) ? state.turn : -1;
+      state.turn = state.turn == 1 ? 2 : 1;
       return state;
     });
+  }
 
-    this.checkWinner(turn);
-    if (this.state.winner < 0) {
-      this.updateTurn(turn);
-    }
+  resetBoard = () => {
+    this.setState((state, props) => {
+      return {
+        board: [['','',''],['','',''],['','','']],
+        turn: 1,
+        winner: -1
+      }
+    });
   }
 
 
@@ -153,22 +144,22 @@ class Board extends React.Component {
       <div style={containerStyle} className="gameBoard">
         <div className="status" style={instructionsStyle}>Next player: {this.state.turn}</div>
         <div className="winner" style={instructionsStyle}>{this.state.winner > 0 ? `Winner: Player ${this.state.winner}` : `Winner: None`}</div>
-        <button style={buttonStyle}>Reset</button>
+        <button onClick={this.resetBoard} style={buttonStyle}>Reset</button>
         <div style={boardStyle}>
           <div className="board-row" style={rowStyle}>
-            <Square data={this.state.board[0][0]} onClick={e => this.updateBoard(this.state.turn, [0,0])}/>
-            <Square data={this.state.board[0][1]} onClick={e => this.updateBoard(this.state.turn, [0,1])}/>
-            <Square data={this.state.board[0][2]} onClick={e => this.updateBoard(this.state.turn, [0,2])}/>
+            <Square data={this.state.board[0][0]} onClick={e => this.updateBoard([0,0])}/>
+            <Square data={this.state.board[0][1]} onClick={e => this.updateBoard([0,1])}/>
+            <Square data={this.state.board[0][2]} onClick={e => this.updateBoard([0,2])}/>
           </div>
           <div className="board-row" style={rowStyle}>
-            <Square data={this.state.board[1][0]} onClick={e => this.updateBoard(this.state.turn, [1,0])}/>
-            <Square data={this.state.board[1][1]} onClick={e => this.updateBoard(this.state.turn, [1,1])}/>
-            <Square data={this.state.board[1][2]} onClick={e => this.updateBoard(this.state.turn, [1,2])}/>
+            <Square data={this.state.board[1][0]} onClick={e => this.updateBoard([1,0])}/>
+            <Square data={this.state.board[1][1]} onClick={e => this.updateBoard([1,1])}/>
+            <Square data={this.state.board[1][2]} onClick={e => this.updateBoard([1,2])}/>
           </div>
           <div className="board-row" style={rowStyle}>
-            <Square data={this.state.board[2][0]} onClick={e => this.updateBoard(this.state.turn, [2,0])}/>
-            <Square data={this.state.board[2][1]} onClick={e => this.updateBoard(this.state.turn, [2,1])}/>
-            <Square data={this.state.board[2][2]} onClick={e => this.updateBoard(this.state.turn, [2,2])}/>
+            <Square data={this.state.board[2][0]} onClick={e => this.updateBoard([2,0])}/>
+            <Square data={this.state.board[2][1]} onClick={e => this.updateBoard([2,1])}/>
+            <Square data={this.state.board[2][2]} onClick={e => this.updateBoard([2,2])}/>
           </div>
         </div>
       </div>
