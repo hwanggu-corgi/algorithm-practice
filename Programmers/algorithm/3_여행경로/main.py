@@ -38,8 +38,6 @@
 #   6. go to the first destination
 #   7. repeat step 2 to 6 until all has been traveled
 
-from collections import deque
-
 def solution(tickets):
     answer = ["ICN"]
     tickets_dict = {}
@@ -236,6 +234,7 @@ def travel(airport, tickets_dict, answer):
 #     return res
 
 if __name__ == "__main__":
+    print(solution([["ICN", "A"], ["A", "C"], ["A", "D"], ["D", "B"], ["B", "A"]])) # [ICN, A, D, B, A, C]
     print(solution([["ICN","BOO"],["ICN","COO"],["COO","ICN"]])) # [ICN, COO, ICN, BOO]
     print(solution([["ICN","A"],["A","B"],["B","A"],["A","ICN"],["ICN","A"]])) # [ICN,A,B,A,ICN,A]
     print(solution([["ICN", "A"], ["ICN", "A"], ["ICN", "A"], ["A", "ICN"], ["A","ICN"]])) #[ICN, ATL, ICN, SFO, ATL, SFO]
