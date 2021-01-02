@@ -67,59 +67,68 @@
 # Add popped value to answer and current_airport
 
 
+
 from collections import deque
 
 def solution(tickets):
-    n = len(tickets)
-    # create a variable called answer (val [])
-    answer = ["ICN"]
-    # create a dictionary of queue called 'queue' with items in queue sorted in alphabetical order
-    queue = create_queue(tickets)
-    # create a variable called current_airport (val "ICN")
-    current_airport = "ICN"
-    final_destination = ""
 
-    # while len(answer) is not n
-    while len(queue[current_airport]) > 0:
-        # popleft queue[current_airport]
-        tmp = queue[current_airport].popleft()
-
-        if len(queue[tmp]) == 0 and not final_destination:
-            final_destination = tmp
-            continue
-
-        # Add popped value to answer and current_airport
-        answer.append(tmp)
-        current_airport = tmp
-
-    answer.append(final_destination)
-    current_airport = final_destination
-
-    while len(queue[current_airport]) > 0:
-        tmp = queue[current_airport].popleft()
-
-        answer.append(tmp)
-        current_airport = tmp
 
     return answer
 
-def create_queue(tickets):
-    res = {}
 
-    for start, target in tickets:
-        if start not in res:
-            res[start] = [target]
-        else:
-            res[start].append(target)
+# from collections import deque
 
-        if target not in res:
-            res[target] = []
+# def solution(tickets):
+#     n = len(tickets)
+#     # create a variable called answer (val [])
+#     answer = ["ICN"]
+#     # create a dictionary of queue called 'queue' with items in queue sorted in alphabetical order
+#     queue = create_queue(tickets)
+#     # create a variable called current_airport (val "ICN")
+#     current_airport = "ICN"
+#     final_destination = ""
 
-    for key in res:
-        res[key].sort()
-        res[key] = deque(res[key])
+#     # while len(answer) is not n
+#     while len(queue[current_airport]) > 0:
+#         # popleft queue[current_airport]
+#         tmp = queue[current_airport].popleft()
 
-    return res
+#         if len(queue[tmp]) == 0 and not final_destination:
+#             final_destination = tmp
+#             continue
+
+#         # Add popped value to answer and current_airport
+#         answer.append(tmp)
+#         current_airport = tmp
+
+#     answer.append(final_destination)
+#     current_airport = final_destination
+
+#     while len(queue[current_airport]) > 0:
+#         tmp = queue[current_airport].popleft()
+
+#         answer.append(tmp)
+#         current_airport = tmp
+
+#     return answer
+
+# def create_queue(tickets):
+#     res = {}
+
+#     for start, target in tickets:
+#         if start not in res:
+#             res[start] = [target]
+#         else:
+#             res[start].append(target)
+
+#         if target not in res:
+#             res[target] = []
+
+#     for key in res:
+#         res[key].sort()
+#         res[key] = deque(res[key])
+
+#     return res
 
 
 # from collections import deque
