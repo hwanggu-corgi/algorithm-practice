@@ -49,7 +49,7 @@ def solution(tickets):
             tickets_dict[airport].append(destination)
         else:
             tickets_dict[airport] = [destination]
-
+        print(tickets_dict)
     for key in tickets_dict:
         tickets_dict[key].sort()
 
@@ -234,11 +234,11 @@ def travel(airport, tickets_dict, answer):
 #     return res
 
 if __name__ == "__main__":
-    print(solution([["ICN", "A "], ["A", "B"], ["A", "C"], ["C", "A"], ["B", "D"]])) # [ICN, A, ICN, A]
-    print(solution([["ICN", "A"], ["A", "ICN"], ["ICN", "A"]])) # [ICN, A, ICN, A]
-    print(solution([["ICN", "A"], ["A", "C"], ["A", "D"], ["D", "B"], ["B", "A"]])) # [ICN, A, D, B, A, C]
-    print(solution([["ICN","BOO"],["ICN","COO"],["COO","ICN"]])) # [ICN, COO, ICN, BOO]
-    print(solution([["ICN","A"],["A","B"],["B","A"],["A","ICN"],["ICN","A"]])) # [ICN,A,B,A,ICN,A]
-    print(solution([["ICN", "A"], ["ICN", "A"], ["ICN", "A"], ["A", "ICN"], ["A","ICN"]])) #[ICN, ATL, ICN, SFO, ATL, SFO]
-    print(solution([["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL","SFO"]])) #[ICN, ATL, ICN, SFO, ATL, SFO]
-    print(solution([["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]])) #[ICN, JFK, HND, IAD]
+    print(solution([["ICN", "A"], ["A", "B"], ["A", "C"], ["C", "A"], ["B", "D"]])) # [ICN, A, ICN, A]
+    # print(solution([["ICN", "A"], ["A", "ICN"], ["ICN", "A"]])) # [ICN, A, ICN, A]
+    # print(solution([["ICN", "A"], ["A", "C"], ["A", "D"], ["D", "B"], ["B", "A"]])) # [ICN, A, D, B, A, C]
+    # print(solution([["ICN","BOO"],["ICN","COO"],["COO","ICN"]])) # [ICN, COO, ICN, BOO]
+    # print(solution([["ICN","A"],["A","B"],["B","A"],["A","ICN"],["ICN","A"]])) # [ICN,A,B,A,ICN,A]
+    # print(solution([["ICN", "A"], ["ICN", "A"], ["ICN", "A"], ["A", "ICN"], ["A","ICN"]])) #[ICN, ATL, ICN, SFO, ATL, SFO]
+    # print(solution([["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL","SFO"]])) #[ICN, ATL, ICN, SFO, ATL, SFO]
+    # print(solution([["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]])) #[ICN, JFK, HND, IAD]
