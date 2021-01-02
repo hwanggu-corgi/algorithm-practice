@@ -9,6 +9,20 @@
 #   - 만일 가능한 경로가 2개 이상일 경우 알파벳 순서가 앞서는 경로를 return 합니다.
 #   - 모든 도시를 방문할 수 없는 경우는 주어지지 않습니다.
 
+# Example
+#
+#                   ICN
+#               ATL     SFO
+#            ICN   SFO
+#         SFO
+#      ATL
+#   SFO
+from collections import deque
+
+def solution(tickets):
+
+
+    return answer
 
 # Example
 #   1) tickets: [[ICN, JFK], [HND, IAD], [JFK, HND]]
@@ -66,14 +80,6 @@
 # popleft destination[current_airport]
 # Add popped value to answer and current_airport
 
-
-
-from collections import deque
-
-def solution(tickets):
-
-
-    return answer
 
 
 # from collections import deque
