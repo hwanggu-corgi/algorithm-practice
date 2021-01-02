@@ -46,9 +46,48 @@
 #   15. return array with greater length
 
 def solution(tickets):
+    # Separate tickets by {airport: [list of destinations]}
+    answer = ["ICN"]
+    tickets_dict = {}
+
+    for ticket in tickets:
+        airport = ticket[0]
+        destination = ticket[1]
+        if airport in tickets_dict:
+            tickets_dict[airport].append(destination)
+        else:
+            tickets_dict[airport] = [destination]
+        print(tickets_dict)
+    for key in tickets_dict:
+        tickets_dict[key].sort()
+
+    # find the length of expected output
+    n = get_expected_count(tickets_dict)
+
+    # Start with ICN, travel each destination
+    answer = _solution("ICN", tickets_dict, answer, n)
 
     return answer
 
+def _solution(airport, tickets_dict, answer, n):
+    current_n = len(answer)
+
+    # If path terminates(if doesn't exist, or tickets_dict[airport] == []), check and see if the count matches expected output
+    if (len(tickets_dict.get(airport, [])) == 0):
+        return answer
+
+    # copy tickets_dict
+    tickets_dict_copy = copy_tickets_dict(tickets_dict)
+    # copy answer
+    answer_copy = copy_answer(answer)
+
+    # for each element in tickets_dict[airport]
+    for index, destination in enumerate(tickets_dict[airport]):
+        # pop element from tickets_dict[airport]
+        new_airport = tickets_dict_copy[airport].pop(i)
+        # append element to array
+        # move to next destination (travel(new_airport, tickets_dict, answer))
+    # return array with greater length
 
 # Pesudocode
 #   1. Separate tickets by {airport: [list of destinations]}
