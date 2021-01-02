@@ -59,15 +59,15 @@ def solution(tickets):
 
 def travel(airport, tickets_dict, answer):
     new_airport = ""
-    n = len(tickets_dict[airport])
-    i = 0
 
-    while i < n:
-        new_airport = tickets_dict[airport][i]
-        if len(tickets_dict.get(new_airport, [])) != 0:
-            break
+    while len(tickets_dict[airport]) != 0:
+        i = 0
+        while i < len(tickets_dict[airport]):
+            new_airport = tickets_dict[airport][i]
+            if len(tickets_dict.get(new_airport, [])) != 0:
+                break
 
-        i += 1
+            i += 1
 
     if i == n:
         answer.append(new_airport)
