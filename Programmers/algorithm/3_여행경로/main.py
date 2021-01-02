@@ -17,6 +17,10 @@
 #         SFO
 #      ATL
 #   SFO
+
+
+# Example 2
+#   [["ICN","BOO"],["ICN","COO"],["COO","ICN"]]
 from collections import deque
 
 def solution(tickets):
