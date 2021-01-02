@@ -234,6 +234,7 @@ def travel(airport, tickets_dict, answer):
 #     return res
 
 if __name__ == "__main__":
+    print(solution([["ICN", "A"], ["A", "ICN"], ["ICN", "A"]])) #
     print(solution([["ICN", "A"], ["A", "C"], ["A", "D"], ["D", "B"], ["B", "A"]])) # [ICN, A, D, B, A, C]
     print(solution([["ICN","BOO"],["ICN","COO"],["COO","ICN"]])) # [ICN, COO, ICN, BOO]
     print(solution([["ICN","A"],["A","B"],["B","A"],["A","ICN"],["ICN","A"]])) # [ICN,A,B,A,ICN,A]
