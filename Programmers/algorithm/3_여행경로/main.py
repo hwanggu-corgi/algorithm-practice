@@ -52,20 +52,28 @@ def solution(tickets):
         else:
             tickets_dict[airport] = [destination]
 
-    result = travel(tickets_dict)
-
     #   2. Start with ICN, check first destination
+    result = travel("ICN", 0, tickets_dict)
+
+    return answer
+
+def travel(airport, tickets_dict):
+    res = []
+
+    i = 0
+    while i < len(tickets_dict[airport]):
+        new_airport = tickets_dict[airport][i]
+        if len(tickets_dict.get(new_airport, [])) == 0:
+            i += 1
+            continue
+
+
+
     #   3. if first destination doesn't exist, backtrack and move to next
     #   4. pop the destination and put to output array
     #   5. go to the airport
     #   6. go to the first destination
     #   7. repeat step 2 to 6 until all has been traveled
-
-    return answer
-
-def travel(tickets_dict):
-    res = []
-
 
     return res
 
