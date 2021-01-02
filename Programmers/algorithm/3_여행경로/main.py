@@ -57,24 +57,19 @@ def solution(tickets):
             tickets_dict[airport].append(destination)
         else:
             tickets_dict[airport] = [destination]
-        print(tickets_dict)
+
     for key in tickets_dict:
         tickets_dict[key].sort()
 
-    # find the length of expected output
-    n = get_expected_count(tickets_dict)
-
     # Start with ICN, travel each destination
-    answer = _solution("ICN", tickets_dict, traveled_list, n)
+    answer = _solution("ICN", tickets_dict, traveled_list)
 
     return answer
 
-def _solution(airport, tickets_dict, traveled_list, n):
+def _solution(airport, tickets_dict, traveled_list):
     answer = []
 
-    current_n = len(traveled_list)
-
-    # If path terminates(if doesn't exist, or tickets_dict[airport] == []), check and see if the count matches expected output
+    # If path terminates(if doesn't exist, or tickets_dict[airport] == []), return traveled_list
     if (len(tickets_dict.get(airport, [])) == 0):
         return traveled_list
 
@@ -83,10 +78,10 @@ def _solution(airport, tickets_dict, traveled_list, n):
         # copy tickets_dict
         tickets_dict_copy = copy_tickets_dict(tickets_dict)
         # copy traveled_list
-        traveled_list_copy = copy_answer(traveled_list)
+        traveled_list_copy = copy_traveled_list(traveled_list)
 
         # pop element from tickets_dict[airport]
-        new_airport = tickets_dict_copy[airport].pop(i)
+        new_airport = tickets_dict_copy[airport].pop(index)
         # append element to array
         traveled_list_copy.append(new_airport)
         # move to next destination (travel(new_airport, tickets_dict, traveled_list))
@@ -97,6 +92,16 @@ def _solution(airport, tickets_dict, traveled_list, n):
 
     # return array with greater length
     return answer
+
+def copy_traveled_list(traveled_list):
+    return [x for x in traveled_list]
+
+def copy_tickets_dict(tickets_dict):
+    res = {}
+
+    for key, value in tickets_dict.items():
+        res[key] = [x for x in value]
+    return res
 
 # Pesudocode
 #   1. Separate tickets by {airport: [list of destinations]}
@@ -303,11 +308,11 @@ def _solution(airport, tickets_dict, traveled_list, n):
 #     return res
 
 if __name__ == "__main__":
-    print(solution([["ICN", "A"], ["A", "B"], ["A", "C"], ["C", "A"], ["B", "D"]])) # [ICN, A, ICN, A]
-    # print(solution([["ICN", "A"], ["A", "ICN"], ["ICN", "A"]])) # [ICN, A, ICN, A]
-    # print(solution([["ICN", "A"], ["A", "C"], ["A", "D"], ["D", "B"], ["B", "A"]])) # [ICN, A, D, B, A, C]
-    # print(solution([["ICN","BOO"],["ICN","COO"],["COO","ICN"]])) # [ICN, COO, ICN, BOO]
-    # print(solution([["ICN","A"],["A","B"],["B","A"],["A","ICN"],["ICN","A"]])) # [ICN,A,B,A,ICN,A]
-    # print(solution([["ICN", "A"], ["ICN", "A"], ["ICN", "A"], ["A", "ICN"], ["A","ICN"]])) #[ICN, ATL, ICN, SFO, ATL, SFO]
-    # print(solution([["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL","SFO"]])) #[ICN, ATL, ICN, SFO, ATL, SFO]
-    # print(solution([["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]])) #[ICN, JFK, HND, IAD]
+    print(solution([["ICN", "A"], ["A", "B"], ["A", "C"], ["C", "A"], ["B", "D"]])) # ['ICN', 'A', 'C', 'A', 'B', 'D']
+    print(solution([["ICN", "A"], ["A", "ICN"], ["ICN", "A"]])) # [ICN, A, ICN, A]
+    print(solution([["ICN", "A"], ["A", "C"], ["A", "D"], ["D", "B"], ["B", "A"]])) # [ICN, A, D, B, A, C]
+    print(solution([["ICN","BOO"],["ICN","COO"],["COO","ICN"]])) # [ICN, COO, ICN, BOO]
+    print(solution([["ICN","A"],["A","B"],["B","A"],["A","ICN"],["ICN","A"]])) # [ICN,A,B,A,ICN,A]
+    print(solution([["ICN", "A"], ["ICN", "A"], ["ICN", "A"], ["A", "ICN"], ["A","ICN"]])) #[ICN, ATL, ICN, SFO, ATL, SFO]
+    print(solution([["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL","SFO"]])) #[ICN, ATL, ICN, SFO, ATL, SFO]
+    print(solution([["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]])) #[ICN, JFK, HND, IAD]
