@@ -21,6 +21,18 @@
 
 # Example 2
 #   [["ICN","BOO"],["ICN","COO"],["COO","ICN"]]
+#   {"ICN": ["BOO", "COO"], "COO": ["ICN"]}
+#
+#                   ICN
+#                BOO  COO
+#                       ICN
+#                         BOO
+#
+
+# Pesudocode
+#   - Separate tickets by {airport: [list of destinations]}
+#   - Start with ICN, check first destination
+#   - if first destination doesn't exist, backtrack and move to next
 from collections import deque
 
 def solution(tickets):
