@@ -33,10 +33,15 @@
 # Pesudocode
 #   1. Separate tickets by {airport: [list of destinations]}
 #   2. find the length of expected output
-#   3. Start with ICN, check first destination
+#   3. Start with ICN, travel each destination
 #   4. If path terminates, check and see if the count matches expected output
 #   5. If so, return answer
-#   6. otherwise, add destination to answer
+#   6. otherwise, return (back track)
+#   7. copy tickets_dict
+#   8. copy answer
+#   9. pop element from tickets_dict[airport]
+#   10. add popped element to answer
+#   11. move to next destination
 
 def solution(tickets):
 
