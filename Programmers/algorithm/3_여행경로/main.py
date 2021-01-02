@@ -29,6 +29,20 @@
 #                         BOO
 #
 
+
+# Pesudocode
+#   1. Separate tickets by {airport: [list of destinations]}
+#   2. find the length of expected output
+#   3. Start with ICN, check first destination
+#   4. If path terminates, check and see if the count matches expected output
+#   5. If so, return answer
+#   6. otherwise, add destination to answer
+
+def solution(tickets):
+
+    return answer
+
+
 # Pesudocode
 #   1. Separate tickets by {airport: [list of destinations]}
 #   2. Start with ICN, check first destination
@@ -54,7 +68,7 @@ def solution(tickets):
         tickets_dict[key].sort()
 
     travel("ICN", tickets_dict, answer)
-
+    print(tickets_dict)
     return answer
 
 def travel(airport, tickets_dict, answer):
@@ -69,13 +83,13 @@ def travel(airport, tickets_dict, answer):
 
             i += 1
 
-    if i == n:
-        answer.append(new_airport)
-        return
+        if i == len(tickets_dict[airport]):
+            answer.append(new_airport)
+            return
 
-    tickets_dict[airport].pop(i)
-    answer.append(new_airport)
-    travel(new_airport, tickets_dict, answer)
+        tickets_dict[airport].pop(i)
+        answer.append(new_airport)
+        travel(new_airport, tickets_dict, answer)
 
 
 # Example
