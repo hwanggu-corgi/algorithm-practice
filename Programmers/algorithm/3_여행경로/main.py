@@ -41,13 +41,18 @@
 from collections import deque
 
 def solution(tickets):
-    destinations = {}
+    tickets_dict = {}
 
     #   1. Separate tickets by {airport: [list of destinations]}
     for ticket in tickets:
         airport = ticket[0]
         destination = ticket[1]
         if airport in destination:
+            tickets_dict[airport].append(destination)
+        else:
+            tickets_dict[airport] = [destination]
+
+    result = travel(tickets_dict)
 
     #   2. Start with ICN, check first destination
     #   3. if first destination doesn't exist, backtrack and move to next
@@ -57,6 +62,12 @@ def solution(tickets):
     #   7. repeat step 2 to 6 until all has been traveled
 
     return answer
+
+def travel(tickets_dict):
+    res = []
+
+
+    return res
 
 # Example
 #   1) tickets: [[ICN, JFK], [HND, IAD], [JFK, HND]]
