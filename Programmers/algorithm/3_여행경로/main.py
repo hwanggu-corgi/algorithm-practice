@@ -47,7 +47,7 @@
 
 def solution(tickets):
     # Separate tickets by {airport: [list of destinations]}
-    answer = ["ICN"]
+    traveled_list = ["ICN"]
     tickets_dict = {}
 
     for ticket in tickets:
@@ -65,29 +65,38 @@ def solution(tickets):
     n = get_expected_count(tickets_dict)
 
     # Start with ICN, travel each destination
-    answer = _solution("ICN", tickets_dict, answer, n)
+    answer = _solution("ICN", tickets_dict, traveled_list, n)
 
     return answer
 
-def _solution(airport, tickets_dict, answer, n):
-    current_n = len(answer)
+def _solution(airport, tickets_dict, traveled_list, n):
+    answer = []
+
+    current_n = len(traveled_list)
 
     # If path terminates(if doesn't exist, or tickets_dict[airport] == []), check and see if the count matches expected output
     if (len(tickets_dict.get(airport, [])) == 0):
-        return answer
-
-    # copy tickets_dict
-    tickets_dict_copy = copy_tickets_dict(tickets_dict)
-    # copy answer
-    answer_copy = copy_answer(answer)
+        return traveled_list
 
     # for each element in tickets_dict[airport]
     for index, destination in enumerate(tickets_dict[airport]):
+        # copy tickets_dict
+        tickets_dict_copy = copy_tickets_dict(tickets_dict)
+        # copy traveled_list
+        traveled_list_copy = copy_answer(traveled_list)
+
         # pop element from tickets_dict[airport]
         new_airport = tickets_dict_copy[airport].pop(i)
         # append element to array
-        # move to next destination (travel(new_airport, tickets_dict, answer))
+        traveled_list_copy.append(new_airport)
+        # move to next destination (travel(new_airport, tickets_dict, traveled_list))
+        tmp_answer = _solution(new_airport, tickets_dict_copy, traveled_list_copy)
+
+        if len(tmp_answer) > len(answer):
+            answer = tmp_answer
+
     # return array with greater length
+    return answer
 
 # Pesudocode
 #   1. Separate tickets by {airport: [list of destinations]}
