@@ -44,16 +44,17 @@ def solution(tickets):
     answer = ["ICN"]
     tickets_dict = {}
 
-    #   1. Separate tickets by {airport: [list of destinations]}
     for ticket in tickets:
         airport = ticket[0]
         destination = ticket[1]
-        if airport in destination:
+        if airport in tickets_dict:
             tickets_dict[airport].append(destination)
         else:
             tickets_dict[airport] = [destination]
 
-    #   2. Start with ICN, check first destination
+    for key in tickets_dict:
+        tickets_dict[key].sort()
+
     travel("ICN", tickets_dict, answer)
 
     return answer
@@ -63,7 +64,6 @@ def travel(airport, tickets_dict, answer):
     n = len(tickets_dict[airport])
     i = 0
 
-    print(airport)
     while i < n:
         new_airport = tickets_dict[airport][i]
         if len(tickets_dict.get(new_airport, [])) != 0:
@@ -72,6 +72,7 @@ def travel(airport, tickets_dict, answer):
         i += 1
 
     if i == n:
+        answer.append(new_airport)
         return
 
     tickets_dict[airport].pop(i)
@@ -236,7 +237,7 @@ def travel(airport, tickets_dict, answer):
 
 if __name__ == "__main__":
     print(solution([["ICN","BOO"],["ICN","COO"],["COO","ICN"]])) # [ICN, COO, ICN, BOO]
-    # print(solution([["ICN","A"],["A","B"],["B","A"],["A","ICN"],["ICN","A"]])) # [ICN,A,B,A,ICN,A]
-    # print(solution([["ICN", "A"], ["ICN", "A"], ["ICN", "A"], ["A", "ICN"], ["A","ICN"]])) #[ICN, ATL, ICN, SFO, ATL, SFO]
-    # print(solution([["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL","SFO"]])) #[ICN, ATL, ICN, SFO, ATL, SFO]
-    # print(solution([["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]])) #[ICN, JFK, HND, IAD]
+    print(solution([["ICN","A"],["A","B"],["B","A"],["A","ICN"],["ICN","A"]])) # [ICN,A,B,A,ICN,A]
+    print(solution([["ICN", "A"], ["ICN", "A"], ["ICN", "A"], ["A", "ICN"], ["A","ICN"]])) #[ICN, ATL, ICN, SFO, ATL, SFO]
+    print(solution([["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL","SFO"]])) #[ICN, ATL, ICN, SFO, ATL, SFO]
+    print(solution([["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]])) #[ICN, JFK, HND, IAD]
