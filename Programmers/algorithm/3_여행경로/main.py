@@ -40,8 +40,11 @@
 #   7. copy tickets_dict
 #   8. copy answer
 #   9. pop element from tickets_dict[airport]
-#   10. add popped element to answer
-#   11. move to next destination
+#   10. append element to array
+#   11. for each element in tickets_dict[airport]
+#   12. pop element from tickets_dict[airport]
+#   13. add popped element to answer
+#   14. move to next destination
 
 def solution(tickets):
 
@@ -57,44 +60,44 @@ def solution(tickets):
 #   6. go to the first destination
 #   7. repeat step 2 to 6 until all has been traveled
 
-def solution(tickets):
-    answer = ["ICN"]
-    tickets_dict = {}
+# def solution(tickets):
+#     answer = ["ICN"]
+#     tickets_dict = {}
 
-    for ticket in tickets:
-        airport = ticket[0]
-        destination = ticket[1]
-        if airport in tickets_dict:
-            tickets_dict[airport].append(destination)
-        else:
-            tickets_dict[airport] = [destination]
-        print(tickets_dict)
-    for key in tickets_dict:
-        tickets_dict[key].sort()
+#     for ticket in tickets:
+#         airport = ticket[0]
+#         destination = ticket[1]
+#         if airport in tickets_dict:
+#             tickets_dict[airport].append(destination)
+#         else:
+#             tickets_dict[airport] = [destination]
+#         print(tickets_dict)
+#     for key in tickets_dict:
+#         tickets_dict[key].sort()
 
-    travel("ICN", tickets_dict, answer)
-    print(tickets_dict)
-    return answer
+#     travel("ICN", tickets_dict, answer)
+#     print(tickets_dict)
+#     return answer
 
-def travel(airport, tickets_dict, answer):
-    new_airport = ""
+# def travel(airport, tickets_dict, answer):
+#     new_airport = ""
 
-    while len(tickets_dict[airport]) != 0:
-        i = 0
-        while i < len(tickets_dict[airport]):
-            new_airport = tickets_dict[airport][i]
-            if len(tickets_dict.get(new_airport, [])) != 0:
-                break
+#     while len(tickets_dict[airport]) != 0:
+#         i = 0
+#         while i < len(tickets_dict[airport]):
+#             new_airport = tickets_dict[airport][i]
+#             if len(tickets_dict.get(new_airport, [])) != 0:
+#                 break
 
-            i += 1
+#             i += 1
 
-        if i == len(tickets_dict[airport]):
-            answer.append(new_airport)
-            return
+#         if i == len(tickets_dict[airport]):
+#             answer.append(new_airport)
+#             return
 
-        tickets_dict[airport].pop(i)
-        answer.append(new_airport)
-        travel(new_airport, tickets_dict, answer)
+#         tickets_dict[airport].pop(i)
+#         answer.append(new_airport)
+#         travel(new_airport, tickets_dict, answer)
 
 
 # Example
