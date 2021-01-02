@@ -30,13 +30,31 @@
 #
 
 # Pesudocode
-#   - Separate tickets by {airport: [list of destinations]}
-#   - Start with ICN, check first destination
-#   - if first destination doesn't exist, backtrack and move to next
+#   1. Separate tickets by {airport: [list of destinations]}
+#   2. Start with ICN, check first destination
+#   3. if first destination doesn't exist, backtrack and move to next
+#   4. pop the destination and put to output array
+#   5. go to the airport
+#   6. go to the first destination
+#   7. repeat step 2 to 6 until all has been traveled
+
 from collections import deque
 
 def solution(tickets):
+    destinations = {}
 
+    #   1. Separate tickets by {airport: [list of destinations]}
+    for ticket in tickets:
+        airport = ticket[0]
+        destination = ticket[1]
+        if airport in destination:
+
+    #   2. Start with ICN, check first destination
+    #   3. if first destination doesn't exist, backtrack and move to next
+    #   4. pop the destination and put to output array
+    #   5. go to the airport
+    #   6. go to the first destination
+    #   7. repeat step 2 to 6 until all has been traveled
 
     return answer
 
