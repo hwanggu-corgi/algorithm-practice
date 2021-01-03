@@ -14,7 +14,15 @@
 #       - [[1,-1,-1,-1,-1],
 #          [2,1,2,2,3],
 #          [-1,-1,1,-1,-1],
-#          [-1,-1,-1,1,-1]]
+#          [-1,2,-1,1,-1]]
+
+#          [0,4,0,0,0]
+
+# Pseudocode
+#   - create graph matrix (mark 2 as win and 3 as loss)
+#   - check if the graph matrix is full
+#   - using the information fill rank   [0,1,0,0,1]
+#   - return answer
 def solution(n, results):
     answer = 0
     return
