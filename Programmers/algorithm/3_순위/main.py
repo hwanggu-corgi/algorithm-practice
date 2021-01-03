@@ -34,7 +34,11 @@
 #   n: 3    results: [[1,2],[2,3]]
 #          [2,1,0] --> the first player is 1, 2nd is player 2 and last is player 3 --> the total is 3
 
-#       Starting from node with full info find node with smaller value
+
+# Example 4
+#   n: 3    results: [[1,2],[1,3]]
+#          []
+
 
 # Pseudocode
 #   - create graph matrix (mark 2 as win and 3 as loss)
