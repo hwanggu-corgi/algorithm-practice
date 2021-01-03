@@ -24,6 +24,15 @@
 #       - [[1,2],
 #          [0,1]]
 
+#       Check array for players with full info
+#          [1,0] --> the first is player 1 and 2nd is player 2 --> the total is 2
+
+
+# Example 3
+#   n: 3    results: []
+
+#       Starting from node with full info find node with smaller value
+
 # Pseudocode
 #   - create graph matrix (mark 2 as win and 3 as loss)
 #   - using the information fill rank   [0,1,0,0,1]
