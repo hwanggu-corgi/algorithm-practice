@@ -1,10 +1,14 @@
 -- 코드를 입력하세요
-WITH "0 to 24"(V) AS (
-    SELECT hour(DATETIME) AS "HOUR", COUNT(hour(DATETIME)) AS "COUNT"
-        FROM ANIMAL_OUTS
-        GROUP BY HOUR
-        ORDER BY HOUR;
+SET @startnum =0
+SET @endnum =24;
+
+WITH gen AS (
+    SELECT @startnum AS num
+    UNION ALL
+    SELECT num+1 FROM gen WHERE num+1<=@endnum
 );
+
+SELECT * FROM gen;
 -- SELECT hour(DATETIME) as "HOUR", COUNT(HOUR) as "COUNT"
 --     FROM ANIMAL_OUTS
 --     GROUP BY HOUR
