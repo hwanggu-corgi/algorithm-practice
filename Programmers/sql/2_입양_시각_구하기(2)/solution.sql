@@ -1,0 +1,6 @@
+-- 코드를 입력하세요
+SELECT hour(DATETIME) as "HOUR", COUNT(HOUR) as "COUNT"
+    FROM ANIMAL_OUTS
+    GROUP BY HOUR
+    HAVING HOUR <= 23
+    ORDER BY HOUR;
