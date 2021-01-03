@@ -23,7 +23,8 @@
 #   - create graph matrix (mark 2 as win and 3 as loss)
 #   - using the information fill rank   [0,1,0,0,1]
 #       - first fill array on player with full info
-#       - then fill array on player who lost against the player with full info
+#       - starting with array with full info check if a neighboring player is rankable
+#       - fill array if a player is rankable
 #       - repeat until can't be filled further
 #   - return answer
 def solution(n, results):
