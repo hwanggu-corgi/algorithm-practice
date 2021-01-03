@@ -46,8 +46,13 @@
 
 
 # Example 6
-#   n: 5    results: [[1,2],[1,3],[2,4]]
-#          [3,0,0] --> the first is player 1, and the ranks of player 2 and 3 are equal, can't be ranked --> the total is 1
+#   n: 5    results: [[4, 3], [4, 2], [3, 2], [1, 2], [2, 5]]
+#          [2,2,2,1,0] --> since there 3 2's we can't tell which comes first --> but we know 1 is after 0 --> so the answer is 2
+
+
+# Example 7
+#   n: 5    results: [[4, 3], [4, 2], [3, 2], [1, 2], [2, 5]]
+#          [2,2,2,1,0] --> since there 3 2's we can't tell which comes first --> but we know 1 is after 0 --> so the answer is 2
 
 
 # Pseudocode
