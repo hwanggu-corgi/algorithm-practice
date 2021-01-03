@@ -1,14 +1,13 @@
 -- 코드를 입력하세요
-SET @startnum =0
-SET @endnum =24;
+WITH temp AS
+(
+   SELECT 1 AS HOUR
+   UNION ALL
+   SELECT DATETIME FROM ANIMAL_OUTS
+   WHERE hour(DATETIME) < 24
+) -- return table with id from 0 to 24
 
-WITH gen AS (
-    SELECT @startnum AS num
-    UNION ALL
-    SELECT num+1 FROM gen WHERE num+1<=@endnum
-);
-
-SELECT * FROM gen;
+SELECT * FROM temp;
 -- SELECT hour(DATETIME) as "HOUR", COUNT(HOUR) as "COUNT"
 --     FROM ANIMAL_OUTS
 --     GROUP BY HOUR
