@@ -19,6 +19,11 @@
 
 #          [0,4,0,0,0]
 
+# Example 2
+#   n: 2    results: [[1,2]]
+#       - [[1,2],
+#          [0,1]]
+
 # Pseudocode
 #   - create graph matrix (mark 2 as win and 3 as loss)
 #   - using the information fill rank   [0,1,0,0,1]
