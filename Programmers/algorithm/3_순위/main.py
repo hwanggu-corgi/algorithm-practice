@@ -24,12 +24,15 @@
 #       - [[1,2],
 #          [0,1]]
 
-#       Check array for players with full info
 #          [1,0] --> the first is player 1 and 2nd is player 2 --> the total is 2
 
 
+#   n: 2    results: [[2,1]]
+#          [0,1] --> the first is player 2 and 2nd is player 1 --> the total is 2
+
 # Example 3
-#   n: 3    results: []
+#   n: 3    results: [[1,2],[2,3]]
+#          [2,1,0] --> the first player is 1, 2nd is player 2 and last is player 3 --> the total is 3
 
 #       Starting from node with full info find node with smaller value
 
