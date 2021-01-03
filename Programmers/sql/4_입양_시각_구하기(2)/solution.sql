@@ -1,10 +1,13 @@
 -- 코드를 입력하세요
-WITH temp AS
+SET @start=0;
+SET @end=24;
+
+WITH temp(v) AS
 (
-   SELECT 1 AS HOUR
+   SELECT @start AS HOUR, COUNT(hour(DATETIME))
    UNION ALL
    SELECT DATETIME FROM ANIMAL_OUTS
-   WHERE hour(DATETIME) < 24
+   WHERE v < @end
 ) -- return table with id from 0 to 24
 
 SELECT * FROM temp;
