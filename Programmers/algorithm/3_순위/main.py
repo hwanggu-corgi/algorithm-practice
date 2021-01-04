@@ -64,7 +64,9 @@
 #      v            v
 #      2 -  1 - >   3
 #
-#      2 를 중심으로 최단 거리를 구한다
+#      - 2 번 거쳐서 가는 비용 --> 6
+#      - 1 번에서 3번으로 direct --> 7
+#
 
 # Pseudocode
 #   - create graph matrix (mark 2 as win and 3 as loss)
