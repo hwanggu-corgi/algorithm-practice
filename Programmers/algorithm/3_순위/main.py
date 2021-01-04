@@ -71,13 +71,28 @@
 #
 
 # Pseudocode
-#   - create graph matrix (mark 2 as win and 3 as loss)
-#   - using the information fill rank   [0,1,0,0,1]
-#       - first fill array on player with full info
-#       - starting with array with full info check if a neighboring player is rankable
-#       - fill array if a player is rankable
-#       - repeat until can't be filled further
-#   - return answer
+#   - generate dp
+#   - for each node, update dp with shorter paths using floyd warshall algorithm
+import math
+
 def solution(n, results):
     answer = 0
-    return
+    dp = generate_dp(n, results)
+
+    for node in range(1, 1):
+        for i in range(1, n+1):
+            for j in range(1, n+1):
+                if i == j:
+                    continue
+                if i == node or j == node:
+                    continue
+
+                dp[i][j] = min(dp[i][j], dp[i][node] + dp[node][j])
+    print(dp)
+
+def generate_dp(n, results):
+    res = [[math.inf] * (n+1) for _ in range(n+1)]
+
+    return res
+if __name__ == "__main__":
+    print(solution(5, [[4, 3], [4, 2], [3, 2], [1, 2], [2, 5]])) # 2
