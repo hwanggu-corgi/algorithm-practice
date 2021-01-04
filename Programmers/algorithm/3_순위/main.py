@@ -55,6 +55,8 @@
 
 # 플로이드 와샬 알고리즘
 #   - 모든 정점에서 정점으로 최단 알고리즘을 구하는 것이다
+#   - 거쳐가는 정점을 기준으로 최단 거리를 구하는 것이다
+#   -
 
 # Pseudocode
 #   - create graph matrix (mark 2 as win and 3 as loss)
