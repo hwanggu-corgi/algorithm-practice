@@ -54,9 +54,17 @@
 
 
 # 플로이드 와샬 알고리즘
+#   - https://www.youtube.com/watch?v=9574GHxCbKc&t=202s&ab_channel=%EB%8F%99%EB%B9%88%EB%82%98
 #   - 모든 정점에서 정점으로 최단 알고리즘을 구하는 것이다
 #   - 거쳐가는 정점을 기준으로 최단 거리를 구하는 것이다
-#   -
+#           1
+#         /    \
+#        5      7
+#       /         \
+#      v            v
+#      2 -  1 - >   3
+#
+#      2 를 중심으로 최단 거리를 구한다
 
 # Pseudocode
 #   - create graph matrix (mark 2 as win and 3 as loss)
