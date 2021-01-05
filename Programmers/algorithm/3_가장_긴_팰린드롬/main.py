@@ -4,7 +4,10 @@
 #   문자열 s의 길이 : 2,500 이하의 자연수
 #   문자열 s는 알파벳 소문자로만 구성
 
-
+# Pseudocode
+# for each letter in string, check if is palindrome
+# if palindrome expand length by 1
+# if not
 
 def solution(s):
 
