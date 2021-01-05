@@ -14,29 +14,30 @@
 
 def solution(s):
     answer = 0
-    memo = {}
     palindrome_start = 0
     palindrome_end = len(s)-1
-    max_palindrome_length = _solution(palindrome_start, palindrome_end, s, memo)
+
+    if len(s) == 0:
+        return 0
+
+    max_palindrome_length = _solution(palindrome_start, palindrome_end, s)
 
     return max_palindrome_length
 
-def _solution(palindrome_start, palindrome_end, s, memo)  :
-
+def _solution(palindrome_start, palindrome_end, s)  :
     if is_palindrome(palindrome_start, palindrome_end, s):
-        memo[(palindrome_start, palindrome_end)] = len(s[palindrome_start: palindrome_end+1])
-        return memo[(palindrome_start, palindrome_end)]
+        return (palindrome_end-palindrome_start)+1
 
-    if (palindrome_start, palindrome_end) in memo:
-        return memo[(palindrome_start, palindrome_end)]
-
-    length_1 = _solution(palindrome_start+1, palindrome_end, s, memo)
-    length_2 = _solution(palindrome_start, palindrome_end, s-1, memo)
+    length_1 = _solution(palindrome_start+1, palindrome_end, s)
+    length_2 = _solution(palindrome_start, palindrome_end-1, s)
 
     max_length = max(length_1, length_2)
     return max_length
 
 def is_palindrome(palindrome_start, palindrome_end, s):
+
+    if palindrome_start < 0 or palindrome_end > (len(s)-1):
+        return False
 
     if palindrome_end == palindrome_start:
         return True
