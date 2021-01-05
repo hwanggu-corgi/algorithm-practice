@@ -77,10 +77,34 @@
 #   - count the one with correct number of total games
 #   - return count
 import math
+from functools import reduce
 
 def solution(n, results):
     answer = 0
-    dp = generate_dp(n, results)
+
+    # get win count for each player using floyd warshall
+    # get loss count for each player using floyd warshall
+    wins, losses = get_wins_and_losses(n, results)
+
+    # find total
+    totals = [sum(z) for z in zip(wins,losses)]
+    # count the one with correct number of total games
+    for item in totals:
+        if item == (n - 1):
+            count += 1
+
+    # return count
+    return count
+
+
+def get_wins_and_losses(n, results):
+    wins = [0] * n
+    losses = [0] * n
+
+    results_losses = [[j,i] for i,j in results]
+
+    dp_wins = generate_dp(n, results)
+    dp_losses = generate_dp(n, results_losses)
 
     for node in range(1, n+1):
         for i in range(1, n+1):
@@ -90,8 +114,25 @@ def solution(n, results):
                 if i == node or j == node:
                     continue
 
-                dp[i][j] = min(dp[i][j], dp[i][node] + dp[node][j])
-    print(dp)
+                dp_wins[i][j] = min(dp_wins[i][j], dp_wins[i][node] + dp_wins[node][j])
+                dp_losses[i][j] = min(dp_losses[i][j], dp_losses[i][node] + dp_losses[node][j])
+
+    for i in range (1, n+1):
+        count_wins = 0
+        count_losses = 0
+        for j in range(1, n+1):
+            if i == j:
+                continue
+            if dp_wins[i][j] != math.inf:
+                count_wins += 1
+            if dp_losses[i][j] != math.inf:
+                count_losses += 1
+
+        wins[i-1] = count_wins
+        losses[i-1] = count_losses
+
+
+    return wins, losses
 
 def generate_dp(n, results):
     res = [[math.inf] * (n+1) for _ in range(n+1)]
@@ -104,8 +145,9 @@ def generate_dp(n, results):
     for i, j in results:
         res[i][j] = 1
 
-    print(res)
+
     return res
+
 if __name__ == "__main__":
     print(solution(5, [[3, 4], [2, 4], [2, 3], [2, 1], [5, 2]])) # 2
     # print(solution(5, [[4, 3], [4, 2], [3, 2], [1, 2], [2, 5]])) # 2
