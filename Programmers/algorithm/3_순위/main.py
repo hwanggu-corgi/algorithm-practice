@@ -46,7 +46,7 @@
 
 
 # Example 6
-#   n: 5    results: [[4, 3], [4, 2], [3, 2], [1, 2], [2, 5]]
+#
 #          [2,2,2,1,0] --> since there 3 2's we can't tell which comes first --> but we know 1 is after 0 --> so the answer is 2
 
 
@@ -104,4 +104,5 @@ def generate_dp(n, results):
     print(res)
     return res
 if __name__ == "__main__":
-    print(solution(5, [[4, 3], [4, 2], [3, 2], [1, 2], [2, 5]])) # 2
+    print(solution(4, [[1,2],[1,3],[2,4]])) # 2
+    # print(solution(5, [[4, 3], [4, 2], [3, 2], [1, 2], [2, 5]])) # 2
