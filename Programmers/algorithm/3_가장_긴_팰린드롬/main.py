@@ -15,27 +15,44 @@
 def solution(s):
     answer = 0
     max_palindrome_length = 0
+    # [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
 
-    max_palindrome_length = _solution(palindrome_start, palindrome_end, s)
+    # get max paldrome_length with odd lengths
+    max_palindrome_length_odd = get_max_palindrome_length_odd(s)
 
+    # check
+        # for each letter, check if it's palindrome
+        # while it's palindrome, expand expand length of it's palindrome
+        while is_palindrome(palindrome_start, palindrome_end, s):
+            # repeat until it's not palindrome anymore
+            # update biggest length of palindrome
+            max_palindrome_length = max(max_palindrome_length, (palindrome_end - palindrome_start) + 1)
+
+            palindrome_start -= 1
+            palindrome_end += 1
+
+    # continue until the end of array
+    # return length
     return max_palindrome_length
 
-def _solution(palindrome_start, palindrome_end, s):
-
-    if palindrome_start < 0 or palindrome_end > (n-1):
-        return (palindrome_end - palindrome_start) + 1
+def get_max_palindrome_length_odd(s):
+    max_palindrome_length = 0
 
     # while it's not the end of array,
-    # for each letter, check if it's palindrome
-    # while it's palindrome, expand expand length of it's palindrome
-    # repeat until it's not palindrome anymore
-    # update biggest length of palindrome
-    curr_length = _solution(palindrome_start)
-        max_palindrome_length = max(max_palindrome_length, (palindrome_end - palindrome_start) + 1)
+    for index, letter in enumerate(s):
+        palindrome_start = index
+        palindrome_end =index
+        # for each letter, check if it's palindrome
+        # while it's palindrome, expand expand length of it's palindrome
+        while is_palindrome(palindrome_start, palindrome_end, s):
+            # repeat until it's not palindrome anymore
+            # update biggest length of palindrome
+            max_palindrome_length = max(max_palindrome_length, (palindrome_end - palindrome_start) + 1)
 
-        palindrome_start -= 1
-        palindrome_end += 1
+            palindrome_start -= 1
+            palindrome_end += 1
 
+    return max_palindrome_length
 
 def is_palindrome(palindrome_start, palindrome_end, s):
 
