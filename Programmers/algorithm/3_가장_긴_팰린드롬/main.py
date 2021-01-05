@@ -12,16 +12,19 @@
 
 def solution(s):
 
-    if len(s) == 0:
-        return 0
+    n = len(s) - 1
 
-    max_palindrome_length_even = get_max_palindromic_length_even(s)
+    while n > 0:
+        palindrome_start = 0
+        palindrome_end = palindrome_start + n
 
-    max_palindrome_length_odd = get_max_palindromic_length_odd(s)
+        while palindrome_end < n:
+            if palind
 
-    answer = max(max_palindrome_length_even, max_palindrome_length_odd)
 
-    return answer
+        n -= 1
+
+    return 0
 
 def get_max_palindromic_length_even(s):
     max_length = 0
