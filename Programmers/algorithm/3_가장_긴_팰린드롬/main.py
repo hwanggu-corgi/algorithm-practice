@@ -18,43 +18,19 @@ def solution(s):
         palindrome_start = 0
         palindrome_end = palindrome_start + n
 
+        print("{} {}".format(palindrome_start, palindrome_end))
         while palindrome_end < n:
-            if palind
+            print(palindrome_start)
+            print(palindrome_end)
+            if is_palindrome(palindrome_start, palindrome_end, s):
+                return n
 
+            palindrome_start += 1
+            palindrome_end = palindrome_start + n
 
         n -= 1
 
     return 0
-
-def get_max_palindromic_length_even(s):
-    max_length = 0
-
-    for i in range(1, len(s)):
-        palindrome_end = i
-        palindrome_start = i - 1
-
-        # if is palindrome increase length by 1 on either side
-        while is_palindrome(palindrome_start, palindrome_end, s):
-            max_length = max(max_length, (palindrome_end - palindrome_start) + 1)
-            palindrome_start -= 1
-            palindrome_end += 1
-
-    return max_length
-
-def get_max_palindromic_length_odd(s):
-    max_length = 0
-
-    for i in range(1, len(s)):
-        palindrome_end = i
-        palindrome_start = i
-
-        # if is palindrome increase length by 1 on either side
-        while is_palindrome(palindrome_start, palindrome_end, s):
-            max_length = max(max_length, (palindrome_end - palindrome_start) + 1)
-            palindrome_start -= 1
-            palindrome_end += 1
-
-    return max_length
 
 
 def is_palindrome(palindrome_start, palindrome_end, s):
@@ -309,6 +285,6 @@ def is_palindrome(palindrome_start, palindrome_end, s):
 #     return True
 
 if __name__ == "__main__":
-    print(solution("")) #0
+    # print(solution("")) #0
     print(solution("abcdcba")) #7
-    print(solution("abacde")) #3
+    # print(solution("abacde")) #3
