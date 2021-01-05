@@ -98,10 +98,10 @@ def generate_dp(n, results):
             if i == j:
                 res[i][j] = 0
 
-    print(res)
     for i, j in results:
         res[i][j] = 1
 
+    print(res)
     return res
 if __name__ == "__main__":
     print(solution(5, [[4, 3], [4, 2], [3, 2], [1, 2], [2, 5]])) # 2
