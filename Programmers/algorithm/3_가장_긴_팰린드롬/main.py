@@ -11,7 +11,13 @@
 
 def solution(s):
 
-    return max_palindrome_length
+    max_palindrome_length_even = get_max_palindromic_length_even(s)
+
+    max_palindrome_length_odd = get_max_palindromic_length_odd(s)
+
+    answer = max(max_palindrome_length_even, max_palindrome_length_odd)
+
+    return answer
 
 
 def is_palindrome(palindrome_start, palindrome_end, s):
