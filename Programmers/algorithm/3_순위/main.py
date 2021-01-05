@@ -71,8 +71,11 @@
 #
 
 # Pseudocode
-#   - generate dp
-#   - for each node, update dp with shorter paths using floyd warshall algorithm
+#   - get win count for each player using floyd warshall
+#   - get loss count for each player using floyd warshall
+#   - find total
+#   - count the one with correct number of total games
+#   - return count
 import math
 
 def solution(n, results):
