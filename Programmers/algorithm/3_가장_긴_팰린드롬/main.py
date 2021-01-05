@@ -11,6 +11,9 @@
 
 def solution(s):
 
+    if len(s) == 0:
+        return 0
+
     max_palindrome_length_even = get_max_palindromic_length_even(s)
 
     max_palindrome_length_odd = get_max_palindromic_length_odd(s)
@@ -19,10 +22,40 @@ def solution(s):
 
     return answer
 
+def get_max_palindromic_length_even(s):
+    max_length = 0
+
+    for i in range(1, len(s)):
+        palindrome_end = i
+        palindrome_start = i - 1
+
+        # if is palindrome increase length by 1 on either side
+        while is_palindrome(palindrome_start, palindrome_end, s):
+            max_length = max(max_length, (palindrome_end - palindrome_start) + 1)
+            palindrome_start -= 1
+            palindrome_end += 1
+
+    return max_length
+
+def get_max_palindromic_length_odd(s):
+    max_length = 0
+
+    for i in range(1, len(s)):
+        palindrome_end = i
+        palindrome_start = i
+
+        # if is palindrome increase length by 1 on either side
+        while is_palindrome(palindrome_start, palindrome_end, s):
+            max_length = max(max_length, (palindrome_end - palindrome_start) + 1)
+            palindrome_start -= 1
+            palindrome_end += 1
+
+    return max_length
+
 
 def is_palindrome(palindrome_start, palindrome_end, s):
 
-    if palindrome_start < 0 or palindrome_end > (len(s)-1):
+    if palindrome_start < 0:
         return False
 
     if palindrome_end == palindrome_start:
