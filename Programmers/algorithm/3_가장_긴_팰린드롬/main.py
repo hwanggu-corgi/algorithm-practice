@@ -4,41 +4,12 @@
 #   문자열 s의 길이 : 2,500 이하의 자연수
 #   문자열 s는 알파벳 소문자로만 구성
 
-# Pseudocode
-# start with palindrome_start = 0 and palindrome_end = n-1
-# check if s[palindrome_start:palindrome_end+1] is palindrome
-# if so, return length
-# if not, traverse in one of two directions (recursively)
-#   palindrome_start + 1
-#   palindrome_end - 1
 
 
 def solution(s):
-    answer = 0
-    memo = {}
-    palindrome_start = 0
-    palindrome_end = len(s)-1
-
-    if len(s) == 0:
-        return 0
-
-    max_palindrome_length = _solution(palindrome_start, palindrome_end, s, memo)
 
     return max_palindrome_length
 
-def _solution(palindrome_start, palindrome_end, s, memo)  :
-    if is_palindrome(palindrome_start, palindrome_end, s):
-        memo[(palindrome_start, palindrome_end)] = (palindrome_end-palindrome_start)+1
-        return (palindrome_end-palindrome_start)+1
-
-    if (palindrome_start, palindrome_end) in memo:
-        return memo[(palindrome_start, palindrome_end)]
-
-    length_1 = _solution(palindrome_start+1, palindrome_end, s, memo)
-    length_2 = _solution(palindrome_start, palindrome_end-1, s, memo)
-
-    max_length = max(length_1, length_2)
-    return max_length
 
 def is_palindrome(palindrome_start, palindrome_end, s):
 
@@ -59,6 +30,62 @@ def is_palindrome(palindrome_start, palindrome_end, s):
         return False
 
     return True
+
+# Pseudocode
+# start with palindrome_start = 0 and palindrome_end = n-1
+# check if s[palindrome_start:palindrome_end+1] is palindrome
+# if so, return length
+# if not, traverse in one of two directions (recursively)
+#   palindrome_start + 1
+#   palindrome_end - 1
+
+
+# def solution(s):
+#     answer = 0
+#     memo = {}
+#     palindrome_start = 0
+#     palindrome_end = len(s)-1
+
+#     if len(s) == 0:
+#         return 0
+
+#     max_palindrome_length = _solution(palindrome_start, palindrome_end, s, memo)
+
+#     return max_palindrome_length
+
+# def _solution(palindrome_start, palindrome_end, s, memo)  :
+#     if is_palindrome(palindrome_start, palindrome_end, s):
+#         memo[(palindrome_start, palindrome_end)] = (palindrome_end-palindrome_start)+1
+#         return (palindrome_end-palindrome_start)+1
+
+#     if (palindrome_start, palindrome_end) in memo:
+#         return memo[(palindrome_start, palindrome_end)]
+
+#     length_1 = _solution(palindrome_start+1, palindrome_end, s, memo)
+#     length_2 = _solution(palindrome_start, palindrome_end-1, s, memo)
+
+#     max_length = max(length_1, length_2)
+#     return max_length
+
+# def is_palindrome(palindrome_start, palindrome_end, s):
+
+#     if palindrome_start < 0 or palindrome_end > (len(s)-1):
+#         return False
+
+#     if palindrome_end == palindrome_start:
+#         return True
+#     try:
+#         while palindrome_start != palindrome_end:
+#             if s[palindrome_start] != s[palindrome_end]:
+#                 return False
+
+#             palindrome_end -= 1
+#             palindrome_start += 1
+
+#     except IndexError:
+#         return False
+
+#     return True
 
 # def solution(s):
 #     answer = 0
