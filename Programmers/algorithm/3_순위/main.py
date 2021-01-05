@@ -77,7 +77,6 @@
 #   - count the one with correct number of total games
 #   - return count
 import math
-from functools import reduce
 
 def solution(n, results):
     answer = 0
@@ -91,10 +90,10 @@ def solution(n, results):
     # count the one with correct number of total games
     for item in totals:
         if item == (n - 1):
-            count += 1
+            answer += 1
 
     # return count
-    return count
+    return answer
 
 
 def get_wins_and_losses(n, results):
@@ -149,5 +148,4 @@ def generate_dp(n, results):
     return res
 
 if __name__ == "__main__":
-    print(solution(5, [[3, 4], [2, 4], [2, 3], [2, 1], [5, 2]])) # 2
-    # print(solution(5, [[4, 3], [4, 2], [3, 2], [1, 2], [2, 5]])) # 2
+    print(solution(5, [[4, 3], [4, 2], [3, 2], [1, 2], [2, 5]])) # 2
