@@ -79,7 +79,7 @@ def solution(n, results):
     answer = 0
     dp = generate_dp(n, results)
 
-    for node in range(1, 1):
+    for node in range(1, n+1):
         for i in range(1, n+1):
             for j in range(1, n+1):
                 if i == j:
@@ -92,6 +92,15 @@ def solution(n, results):
 
 def generate_dp(n, results):
     res = [[math.inf] * (n+1) for _ in range(n+1)]
+
+    for i in range(1,n+1):
+        for j in range(1,n+1):
+            if i == j:
+                res[i][j] = 0
+
+    print(res)
+    for i, j in results:
+        res[i][j] = 1
 
     return res
 if __name__ == "__main__":
