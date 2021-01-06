@@ -44,12 +44,18 @@ def solution(operations):
     #   - for each instruction,
     for instruction in operations:
         # Parse instruction
+        parsed = instruction.split(" ")
         # if I -number, then add number to min heap array
+        if parsed[0] == "I" and int(parsed[1]) < 0:
         # if I number, then add -number to max heap array
+        elif parsed[0] == "I" and int(parsed[1]) >= 0:
         # if D -number, then remove number amount from min heap array
+        elif parsed[0] == "D" and int(parsed[1]) < 0:
         # if D number, then remove number amount from max heap array
-        # return max and min number
-        #   if min array is empty then return two numbers from max
-        #   if max array is empty, then return two highest numbers from min
-        #   otherwise, return max and min from max heap array and min heap array
+        else:
+
+    # return max and min number
+    #   if min array is empty then return two numbers from max
+    #   if max array is empty, then return two highest numbers from min
+    #   otherwise, return max and min from max heap array and min heap array
     return answer
