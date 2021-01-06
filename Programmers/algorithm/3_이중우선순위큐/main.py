@@ -41,6 +41,9 @@
 
 def solution(operations):
     #   - Create two heap array max and min
+    array_max = []
+    array_min = []
+
     #   - for each instruction,
     for instruction in operations:
         # Parse instruction
