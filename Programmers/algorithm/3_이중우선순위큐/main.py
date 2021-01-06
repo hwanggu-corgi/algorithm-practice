@@ -39,22 +39,27 @@
 #           - if max array is empty, then return two highest numbers from min
 #           - otherwise, return max and min from max heap array and min heap array
 
+import heapq
+
 def solution(operations):
     answer = [0,0]
     #   - Create two heap array max and min
-    array_max = []
-    array_min = []
+    heap_max = []
+    heap_min = []
 
     #   - for each instruction,
     for instruction in operations:
         # Parse instruction
         parsed = instruction.split(" ")
+        number = int(parsed[1])
         # if I -number, then add number to min heap array
-        if parsed[0] == "I" and int(parsed[1]) < 0:
+        if parsed[0] == "I" and number < 0:
+            heapq.heappush(heap_min, number)
         # if I number, then add -number to max heap array
-        elif parsed[0] == "I" and int(parsed[1]) >= 0:
+        elif parsed[0] == "I" and number >= 0:
+            heapq.heappush(heap_min, number)
         # if D -number, then remove number amount from min heap array
-        elif parsed[0] == "D" and int(parsed[1]) < 0:
+        elif parsed[0] == "D" and number < 0:
         # if D number, then remove number amount from max heap array
         else:
 
