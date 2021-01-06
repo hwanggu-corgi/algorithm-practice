@@ -70,19 +70,20 @@ def solution(operations):
 
     # return max and min number
     #   if min array is empty then return two numbers from max
-    number = sorted([math.abs(x) for x in heap_max].extend(heap_min))
+    if len(heap)
 
     if len(heap_min) == 0:
-        val_1 = pop(array_min)
-        val_2 = pop(array_min)
-        answer = [val_2, val_1]
+        val_1 = -pop(heap_max)
+        val_2 = -pop(heap_max)
+        answer = [val_1, val_2]
     #   if max array is empty, then return two highest numbers from min
     elif len(heap_max) == 0:
-
+        val_1 = pop(heap_min)
+        val_2 = max(heap_min)
     #   otherwise, return max and min from max heap array and min heap array
     else:
-        val_1 = pop(array_min)
-        val_2 = pop(array_max)
+        val_1 = pop(heap_min)
+        val_2 = pop(heap_max)
 
         answer = [val_2, val_1]
     return answer
