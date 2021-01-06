@@ -70,6 +70,8 @@ def solution(operations):
 
     # return max and min number
     #   if min array is empty then return two numbers from max
+    number = sorted([math.abs(x) for x in heap_max].extend(heap_min))
+
     if len(heap_min) == 0:
         val_1 = pop(array_min)
         val_2 = pop(array_min)
