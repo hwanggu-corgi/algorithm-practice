@@ -68,7 +68,7 @@ def solution(operations):
     answer = [val_1, val_2]
     return answer
 
-def get_max_val(heap_min, heap_max):
+def get_max_val(heap):
     # if heap_max is empty take two values from mean heap
 
     # if heap_max is not empty, pop a val from heap
@@ -76,6 +76,6 @@ def get_max_val(heap_min, heap_max):
 
     return val
 
-def get_min_val(heap_min, heap_max):
+def get_min_val(heap):
 
     return val
