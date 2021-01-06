@@ -68,10 +68,8 @@ def solution(operations):
                 heapq.heappop(heap_max)
 
     # return max and min number
-    #   if min array is empty then return two numbers from max
-    tmp = sorted([math.abs(x) for x in heap_max].extend(heap_min))
-    val_1 = tmp[-1] if len(tmp)
-    val_2 = tmp[0]
+    val_1 = get_max_val(heap_min, heap_max)
+    val_2 = get_min_val(heap_min, heap_max)
 
     answer = [val_1, val_2]
     return answer
@@ -80,6 +78,7 @@ def get_max_val(heap_min, heap_max):
     # if heap_max is empty take two values from mean heap
 
     # if heap_max is not empty, pop a val from heap
+
 
     return val
 
