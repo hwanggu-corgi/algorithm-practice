@@ -11,45 +11,35 @@
 # otherwise travel to the end of the list
 
 def solution(s):
+    n = len(s)
+    size = len(s)
 
-    n = len(s) - 1
-
-    while n > 0:
+    while size > 0:
         palindrome_start = 0
-        palindrome_end = palindrome_start + n
+        palindrome_end = palindrome_start + (size - 1)
 
-        print("{} {}".format(palindrome_start, palindrome_end))
         while palindrome_end < n:
-            print(palindrome_start)
-            print(palindrome_end)
             if is_palindrome(palindrome_start, palindrome_end, s):
-                return n
+                return size
 
             palindrome_start += 1
-            palindrome_end = palindrome_start + n
+            palindrome_end = palindrome_start + (size - 1)
 
-        n -= 1
+        size -= 1
 
     return 0
 
 
 def is_palindrome(palindrome_start, palindrome_end, s):
-
-    if palindrome_start < 0:
-        return False
-
     if palindrome_end == palindrome_start:
         return True
-    try:
-        while palindrome_start != palindrome_end:
-            if s[palindrome_start] != s[palindrome_end]:
-                return False
 
-            palindrome_end -= 1
-            palindrome_start += 1
+    while palindrome_start < palindrome_end:
+        if s[palindrome_start] != s[palindrome_end]:
+            return False
 
-    except IndexError:
-        return False
+        palindrome_end -= 1
+        palindrome_start += 1
 
     return True
 
@@ -285,6 +275,7 @@ def is_palindrome(palindrome_start, palindrome_end, s):
 #     return True
 
 if __name__ == "__main__":
-    # print(solution("")) #0
+    print(solution("")) #0
+    print(solution("abcdef")) #1
     print(solution("abcdcba")) #7
-    # print(solution("abacde")) #3
+    print(solution("abacde")) #3
