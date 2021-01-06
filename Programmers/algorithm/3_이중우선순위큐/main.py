@@ -10,7 +10,7 @@
 # Examples
 #   1) [I 16,D 1]
 #       I 16
-#       - 최대: [16]  최소: []
+#       - 최대: [-16]  최소: []
 #       D 1
 #       - 최대: []    최소: []
 #       - [0,0] since empty
@@ -26,6 +26,13 @@
 #       - 최대: [-7,-5]  최소: []
 #
 #       [7,5]
+
+# Pesudocode
+#   - Create two heap array max and min
+#   - for each instruction,
+#       - if I -number, then add number to min heap array
+#       - if I number, then add -number to max heap array
+#       -
 
 def solution(operations):
     answer = []
