@@ -32,7 +32,12 @@
 #   - for each instruction,
 #       - if I -number, then add number to min heap array
 #       - if I number, then add -number to max heap array
-#       -
+#       - if D -number, then remove number amount from min heap array
+#       - if D number, then remove number amount from max heap array
+#       - return max and min number
+#           - if min array is empty then return two numbers from max
+#           - if max array is empty, then return two highest numbers from min
+#           - otherwise, return max and min from max heap array and min heap array
 
 def solution(operations):
     answer = []
