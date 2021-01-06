@@ -40,6 +40,7 @@
 #           - otherwise, return max and min from max heap array and min heap array
 
 def solution(operations):
+    answer = [0,0]
     #   - Create two heap array max and min
     array_max = []
     array_min = []
@@ -59,6 +60,10 @@ def solution(operations):
 
     # return max and min number
     #   if min array is empty then return two numbers from max
+    if len(min_array) == 0:
+        val_1 = pop(array_min)
+        val_2 = pop(array_min)
+        answer = []
     #   if max array is empty, then return two highest numbers from min
     #   otherwise, return max and min from max heap array and min heap array
     return answer
