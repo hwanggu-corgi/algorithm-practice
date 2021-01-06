@@ -40,6 +40,7 @@
 #           - otherwise, return max and min from max heap array and min heap array
 
 import heapq
+import abs
 
 def solution(operations):
     answer = [0,0]
@@ -57,11 +58,15 @@ def solution(operations):
             heapq.heappush(heap_min, number)
         # if I number, then add -number to max heap array
         elif parsed[0] == "I" and number >= 0:
-            heapq.heappush(heap_min, number)
+            heapq.heapush(heap_max, -number)
         # if D -number, then remove number amount from min heap array
         elif parsed[0] == "D" and number < 0:
-        # if D number, then remove number amount from max heap array
+            # if D number, then remove number amount from min heap array
+            for _ in range(math.abs(number)):
+                heapq.heappop(heap_min)
         else:
+            for _ in range(number):
+                heapq.heappop(heap_max)
 
     # return max and min number
     #   if min array is empty then return two numbers from max
