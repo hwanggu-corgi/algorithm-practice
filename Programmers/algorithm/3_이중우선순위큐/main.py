@@ -70,10 +70,17 @@ def solution(operations):
 
     # return max and min number
     #   if min array is empty then return two numbers from max
-    if len(min_array) == 0:
+    if len(heap_min) == 0:
         val_1 = pop(array_min)
         val_2 = pop(array_min)
-        answer = []
+        answer = [val_2, val_1]
     #   if max array is empty, then return two highest numbers from min
+    elif len(heap_max) == 0:
+
     #   otherwise, return max and min from max heap array and min heap array
+    else:
+        val_1 = pop(array_min)
+        val_2 = pop(array_max)
+
+        answer = [val_2, val_1]
     return answer
