@@ -53,23 +53,17 @@ def solution(operations):
         parsed = instruction.split(" ")
         number = int(parsed[1])
         # if I -number, then add number to min heap array
-        if parsed[0] == "I" and number < 0:
-            heapq.heappush(heap_min, number)
-        # if I number, then add -number to max heap array
-        elif parsed[0] == "I" and number >= 0:
-            heapq.heapush(heap_max, -number)
+        if parsed[0] == "I":
+            heapq.heappush(heap, number)
         # if D -number, then remove number amount from min heap array
-        elif parsed[0] == "D" and number < 0:
+        else:
             # if D number, then remove number amount from min heap array
             for _ in range(math.abs(number)):
-                heapq.heappop(heap_min)
-        else:
-            for _ in range(number):
-                heapq.heappop(heap_max)
+                heapq.heappop(heap)
 
     # return max and min number
-    val_1 = get_max_val(heap_min, heap_max)
-    val_2 = get_min_val(heap_min, heap_max)
+    val_1 = get_max_val(heap)
+    val_2 = get_min_val(heap)
 
     answer = [val_1, val_2]
     return answer
@@ -78,7 +72,7 @@ def get_max_val(heap_min, heap_max):
     # if heap_max is empty take two values from mean heap
 
     # if heap_max is not empty, pop a val from heap
-
+    if len(heap_max)
 
     return val
 
