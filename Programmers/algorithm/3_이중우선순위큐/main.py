@@ -70,12 +70,17 @@ def solution(operations):
 
 def get_max_val(heap):
     # if heap_max is empty take two values from mean heap
+    if len(heap) == 0:
+        return 0
 
-    # if heap_max is not empty, pop a val from heap
-    if len(heap_max)
-
-    return val
+    return max(heap)
 
 def get_min_val(heap):
+    if len(heap) == 0:
+        return 0
 
-    return val
+    return heapq.heappop(heap)
+
+
+if __name__ == "__main__":
+    print(solution(["I 16","D 1"])) # [0,0]
