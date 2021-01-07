@@ -44,7 +44,8 @@ import heapq
 def solution(operations):
     answer = [0,0]
     #   - Create two heap array max and min
-    heap = []
+    heap_max = []
+    heap_min = []
 
     #   - for each instruction,
     for instruction in operations:
@@ -53,16 +54,17 @@ def solution(operations):
         number = int(parsed[1])
         # if I -number, then add number to min heap array
         if parsed[0] == "I":
-            heapq.heappush(heap, number)
+            heapq.heappush(heap_min, number)
+            heapq.heappush(heap_max, -number)
         # if D -number, then remove number amount from min heap array
         elif parsed[0] == "D" and number < 0:
             # if D number, then remove number amount from min heap array
             for _ in range(number):
-                heapq.heappop(heap)
+                heapq.heappop(heap_min)
         else:
             # if D number, then remove number amount from min heap array
             for _ in range(number):
-                heapq.heappop(heap)
+                heapq.heappop(heap_max)
 
     # return max and min number
     val_1 = get_max_val(heap)
