@@ -67,20 +67,20 @@ def solution(operations):
                 heapq.heappop(heap_max)
 
     # return max and min number
-    val_1 = get_max_val(heap_max)
-    val_2 = get_min_val(heap_min)
+    val_1 = get_max_val(heap_min, heap_max)
+    val_2 = get_min_val(heap_min, heap_max)
 
     answer = [val_1, val_2]
     return answer
 
-def get_max_val(heap_max):
+def get_max_val(heap_min, heap_max):
     # if heap_max is empty take two values from mean heap
     if len(heap_max) == 0:
         return 0
 
     return -heapq.heappop(heap_max)
 
-def get_min_val(heap_min):
+def get_min_val(heap_min, heap_max):
     if len(heap_min) == 0:
         return 0
 
