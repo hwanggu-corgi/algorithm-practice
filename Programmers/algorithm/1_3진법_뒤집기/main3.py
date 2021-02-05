@@ -8,10 +8,38 @@ def solution(n):
     answer = 0
 
     # convert to ternary
+    ternary = get_ternary(n)
 
     # flip number
-
     # convert reversed ternary to decimal
+    answer = get_decimal(ternary[::-1])
 
     # return answer
     return answer
+
+def get_ternary(n):
+    answer = ''
+
+    while n > 0:
+        remainder = n % 3
+        n = n // 3
+
+        answer = str(remainder) + answer
+
+    return answer
+
+def get_decimal(ternary):
+    answer = 0
+
+    n = len(ternary)
+    i = n - 1
+
+    while i >= 0:
+        answer += int(ternary[i]) * 3**((n - 1) - i)
+        i -= 1
+
+    return answer
+
+if __name__ == "__main__":
+    print(solution(45))
+    print(solution(125))
