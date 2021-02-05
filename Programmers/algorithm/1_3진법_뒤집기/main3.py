@@ -6,4 +6,12 @@
 
 def solution(n):
     answer = 0
+
+    # convert to ternary
+
+    # flip number
+
+    # convert reversed ternary to decimal
+
+    # return answer
     return answer
