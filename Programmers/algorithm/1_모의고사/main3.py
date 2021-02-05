@@ -16,13 +16,32 @@ def solution(answers):
     student3_solution = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
     n3 = len(student3_solution)
 
-    score_dict = {1: 0, 2:0, 3:0}
+    score = [0,0,0]
 
     # score test
-    for index, answer in enumerate(answers):
-        solution[] answer
+    for index, correct in enumerate(answers):
+        if student1_solution[index % n1] == correct:
+            score[0] += 1
+
+        if student2_solution[index % n2] == correct:
+            score[1] += 1
+
+        if student3_solution[index % n3] == correct:
+            score[2] += 1
 
     # find the highest score
+    max_score = max(score)
 
     # return person with highest score
+    if score[0] == max_score:
+        answer.append(1)
+    if score[1] == max_score:
+        answer.append(2)
+    if score[2] == max_score:
+        answer.append(3)
+
     return answer
+
+if __name__ == "__main__":
+    print(solution([1,2,3,4,5])) # [1]
+    print(solution([1,3,2,4,2])) # [1,2,3]
