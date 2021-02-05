@@ -12,4 +12,27 @@
 
 def solution(n, lost, reserve):
     answer = 0
+
+    # create sets
+    # clear who has reserve but lost
+    lost_set = set(lost) - set(reserve)
+    reserve_set = set(reserve) - set(lost)
+
+    # assign reserve to lost
+    for student_number in reserve_set:
+        if (student_number - 1) in lost_set:
+            lost_set.remove(student_number - 1)
+        elif (student_number + 1) in lost_set:
+            lost_set.remove(student_number + 1)
+
+    # return total participants
+    answer = n - len(lost_set)
+
     return answer
+
+if __name__ == "__main__":
+    print(solution(5, [2,4], [1,3,5])) #5
+    print(solution(5, [2,4], [3])) #4
+    print(solution(3, [3], [1])) #2
+    print(solution(5, [], [])) #5
+    print(solution(5, [1,2,3,4,5], [])) #0
