@@ -10,10 +10,26 @@
 
 def solution(participant, completion):
     answer = ''
+    count_dict = {}
 
     # store participants in dict
+    for person in participant:
+        if person not in count_dict:
+            count_dict[person] = 1
+        else:
+            count_dict[person] += 1
 
     # subtract completees from participants
+    for person in completion:
+        count_dict[person] -= 1
 
     # print non-zero value
+    for person in count_dict:
+        if count_dict[person] == 1:
+            answer = person
+            break
+
     return answer
+
+if __name__ == "__main__":
+    print(solution(["leo", "kiki", "eden"], ["eden", "kiki"])) #Leo
