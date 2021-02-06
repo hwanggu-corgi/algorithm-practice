@@ -13,10 +13,9 @@ def solution(priorities, location):
 
     while True:
         # find the max value in the list
+        max_value = max(queue, key= lambda e: e[1])
         # popleft and append until reaching the target
         # add count for each pop
-
-
 
         # if element is desired, then return count
 
