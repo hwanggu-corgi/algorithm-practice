@@ -12,11 +12,30 @@
 
 
 # Example
+# [[yellow_hat, headgear], [blue_sunglasses, eyewear], [green_turban, headgear]]
+# head-gear : yellow hat, green turban, none
+# eye-wear: blue sunglasses, none
 
+# 3 x 2 - 1 (having all none) = 5
 
 
 def solution(clothes):
-    answer = 0
+    answer = 1
+    count = {}
 
+    for clothe in clothes:
+        if clothe[1] not in count:
+            count[clothe[1]] = 2 #including none
+        else:
+            count[clothe[1]] += 1
+
+    for clothe_type in count:
+        answer *= count[clothe_type]
+
+    answer -= 1
 
     return answer
+
+if __name__ == "__main__":
+    print(solution([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]])) #5
+    print(solution([["crow_mask", "face"], ["blue_sunglasses", "face"], ["smoky_makeup", "face"]])) #3
