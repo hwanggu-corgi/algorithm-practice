@@ -17,7 +17,7 @@ def solution(people, limit):
     while len(people) != 0:
         weight = 0
         # pop person with the most weight
-        weight += people.pop()
+        weight += get_highest_weight(people)
 
         # pop person with least weight
         while weight + people[0] <= limit and len(people) != 0:
