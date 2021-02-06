@@ -19,16 +19,16 @@ def solution(people, limit):
     while running(index_start, index_end):
         weight = 0
         # pop person with the most weight
-        weight += get_highest_weight(people, index_end)
-        index_end -= 1
+        person_weight, index_end = get_highest_weight(people, index_end)
+        weight += person_weight
 
         # pop person with least weight
         while weight + peek_lowest_weight(people, index_start) <= limit and running(index_start, index_end):
             # repeat this process until full
-            weight += pop_lowest_weight(people, index_start)
-            index_start += 1
+            person_weight, index_start = pop_lowest_weight(people, index_start)
+            weight += person_weight
 
-        # if full, add count, and empty weight and startover
+        # if full, add count, and empty ewight and startover
         answer += 1
 
     return answer
@@ -36,23 +36,14 @@ def solution(people, limit):
 def running(index_start, index_end):
     return True if index_start <= index_end else False
 
-def get_highest_weight(people):
-    if len(people) == 0:
-        return 0
+def get_highest_weight(people, index):
+    return people[index], index - 1
 
-    return people.pop()
+def pop_lowest_weight(people, index):
+    return people[index], index + 1
 
-def pop_lowest_weight(people):
-    if len(people) == 0:
-        return 0
-
-    return people.pop(0)
-
-def peek_lowest_weight(people):
-    if len(people) == 0:
-        return 0
-
-    return people[0]
+def peek_lowest_weight(people, index):
+    return people[index]
 
 
 #=============
