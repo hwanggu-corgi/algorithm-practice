@@ -9,15 +9,29 @@ def solution(priorities, location):
 
     # zip location to priorities
     # convert list to deque
-    queue = zip(range(len(priorities), priorities))
-
+    queue = deque(zip(range(len(priorities)), priorities))
     while True:
         # find the max value in the list
-        max_value = max(queue, key= lambda e: e[1])
-        # popleft and append until reaching the target
-        # add count for each pop
+        to_be_removed = max(queue, key= lambda e: e[1])
+        while queue[0] != to_be_removed:
+            print(queue[0])
+            print(to_be_removed)
+            # popleft and append until reaching the target
+            queue.append(queue.popleft())
+            # add count for each pop
 
         # if element is desired, then return count
-
         # if element is not desired, then continue
+
+        count += 1
+
+        if queue[0][0] != location:
+            continue
+        else:
+            answer = count
+            break
     return answer
+
+if __name__ == "__main__":
+    print(solution([2, 1, 3, 2], 2)) #1
+    print(solution([1, 1, 9, 1, 1, 1], 0)) #5
