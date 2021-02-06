@@ -10,26 +10,94 @@
 
 def solution(people, limit):
     answer = 0
+    index_end = len(people) - 1
+    index_start = 0
 
     # sort people by the weight
     people.sort()
 
-    while len(people) != 0:
+    while running(index_start, index_end):
         weight = 0
         # pop person with the most weight
-        weight += get_highest_weight(people)
+        weight += get_highest_weight(people, index_end)
+        index_end -= 1
 
         # pop person with least weight
-        while weight + people[0] <= limit and len(people) != 0:
+        while weight + peek_lowest_weight(people, index_start) <= limit and running(index_start, index_end):
             # repeat this process until full
-            weight += people.pop(0)
+            weight += pop_lowest_weight(people, index_start)
+            index_start += 1
 
         # if full, add count, and empty weight and startover
-        print(weight)
         answer += 1
 
     return answer
 
+def running(index_start, index_end):
+    return True if index_start <= index_end else False
+
+def get_highest_weight(people):
+    if len(people) == 0:
+        return 0
+
+    return people.pop()
+
+def pop_lowest_weight(people):
+    if len(people) == 0:
+        return 0
+
+    return people.pop(0)
+
+def peek_lowest_weight(people):
+    if len(people) == 0:
+        return 0
+
+    return people[0]
+
+
+#=============
+
+# def solution(people, limit):
+#     answer = 0
+#     index_end = len(people) - 1
+#     index_start = 0
+
+#     # sort people by the weight
+#     people.sort()
+
+#     while len(people) != 0:
+#         weight = 0
+#         # pop person with the most weight
+#         weight += get_highest_weight(people)
+
+#         # pop person with least weight
+#         while weight + peek_lowest_weight(people) <= limit and len(people) != 0:
+#             # repeat this process until full
+#             weight += pop_lowest_weight(people)
+
+#         # if full, add count, and empty weight and startover
+#         answer += 1
+
+#     return answer
+
+
+# def get_highest_weight(people):
+#     if len(people) == 0:
+#         return 0
+
+#     return people.pop()
+
+# def pop_lowest_weight(people):
+#     if len(people) == 0:
+#         return 0
+
+#     return people.pop(0)
+
+# def peek_lowest_weight(people):
+#     if len(people) == 0:
+#         return 0
+
+#     return people[0]
 
 if __name__ == "__main__":
     print(solution([70, 50, 80, 50], 100)) #3
