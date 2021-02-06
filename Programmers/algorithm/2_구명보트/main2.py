@@ -12,11 +12,24 @@ def solution(people, limit):
     answer = 0
 
     # sort people by the weight
+    people.sort()
 
-    # pop person with the most weight
+    while len(people) != 0:
+        weight = 0
+        # pop person with the most weight
+        weight += people.pop()
 
-    # pop person with least weight
-    # repeat this process until full
+        # pop person with least weight
+        while weight + people[0] <= limit and len(people) != 0:
+            # repeat this process until full
+            weight += people.pop(0)
 
-    # if full, add count, and empty weight and startover
+        # if full, add count, and empty weight and startover
+        print(weight)
+        answer += 1
+
     return answer
+
+
+if __name__ == "__main__":
+    print(solution([70, 50, 80, 50], 100)) #3
