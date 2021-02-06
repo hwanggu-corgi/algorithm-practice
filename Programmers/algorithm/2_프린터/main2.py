@@ -14,18 +14,16 @@ def solution(priorities, location):
         # find the max value in the list
         to_be_removed = max(queue, key= lambda e: e[1])
         while queue[0] != to_be_removed:
-            print(queue[0])
-            print(to_be_removed)
             # popleft and append until reaching the target
             queue.append(queue.popleft())
             # add count for each pop
 
         # if element is desired, then return count
         # if element is not desired, then continue
-
         count += 1
 
         if queue[0][0] != location:
+            queue.popleft()
             continue
         else:
             answer = count
