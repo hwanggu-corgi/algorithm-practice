@@ -8,13 +8,14 @@
 
 def solution(phone_book):
     # for each number in phone_book
+    phone_book = sorted(phone_book)
     n = len(phone_book)
     i = 0
     while i < n:
         j = i + 1
         while j < n:
-            smaller = min(phone_book)
-            larger =  phone_book[j] if smaller == phone_book[i] else phone_book[i]
+            smaller = phone_book[i]
+            larger =  phone_book[j]
             if smaller in larger:
                 return False
             j += 1
