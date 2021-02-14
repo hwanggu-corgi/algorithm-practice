@@ -6,11 +6,18 @@ def solution(prices):
 
     i = 0
     while i < n:
-        count = 0
+        temp = []
         j = i + 1
         while j < n:
-            if prices[i] < price[j]:
+            temp.append(prices[j])
 
-            count += 1
+            if prices[i] > temp[-1]:
+                break
+            j += 1
+
+        answer.append(len(temp))
         i += 1
     return answer
+
+if __name__ == "__main__":
+    print(solution([1, 2, 3, 2, 3])) #[4, 3, 1, 1, 0]
