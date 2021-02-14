@@ -6,13 +6,26 @@ from collections import deque
 def solution(progresses, speeds):
     answer = []
     progresses = deque(progresses)
+    speeds = deque(speeds)
 
     while len(progresses) > 0:
         add_progress(progresses, speeds)
         count = 0
         while len(progresses) > 0 and progresses[0] >= 100:
             progresses.popleft()
+            speeds.popleft()
             count += 1
-        answer.append(count)
+
+        if count > 0:
+            answer.append(count)
 
     return answer
+
+def add_progress(progresses, speeds):
+    for i in range(len(progresses)):
+        progresses[i] += speeds[i]
+
+
+if __name__ == "__main__":
+    print(solution([93, 30, 55], [1, 30, 5])) #[2, 1]
+    print(solution([95, 90, 99, 99, 80, 99], [1, 1, 1, 1, 1, 1]	)) #[1, 3, 2]
