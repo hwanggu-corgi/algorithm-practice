@@ -4,4 +4,10 @@
 
 def solution(bridge_length, weight, truck_weights):
     answer = 0
+
+    # if truck at truck_weights meets condition, pop left and move to bridge
+    # if truck at front of bridge meets condtion, pop left
+    # count time
+
+    # return total time
     return answer
