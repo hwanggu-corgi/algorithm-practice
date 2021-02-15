@@ -6,18 +6,34 @@
 #   numbers는 0~9까지 숫자만으로 이루어져 있습니다.
 #   013은 0, 1, 3 숫자가 적힌 종이 조각이 흩어져있다는 의미입니다.
 
-from itertools import combinations
+from itertools import permutations
 
 def solution(numbers):
-    answer = 0
     n = len(numbers)
-    comb_set = set()
+    perm_set = set()
     i = 1
     while i <= n:
-        comb_list = combinations(numbers, i)
-        for e in comb_list:
-            comb_set.add(int(e))
+        perm_list = permutations(numbers, i)
+        for e in perm_list:
+            number = int("".join(e))
+            if is_prime(number):
+                perm_set.add(number)
         i += 1
 
-
+    answer = len(perm_set)
     return answer
+
+def is_prime(n):
+    if n == 1 or n == 0:
+        return False
+
+    i = 2
+    while i * i <= n:
+        if n % i == 0:
+            return False
+        i += 1
+    return True
+
+if __name__ == "__main__":
+    print(solution("17")) #3
+    print(solution("011")) #2
