@@ -15,6 +15,25 @@
 # dec - 8       21        [1*, 2*, 4]
 # dec - 9       24        [1, 2*, 4*]
 
+
+# 4 - 1 = 3 / 3 = 1 r 0
+# 5 - 1 = 4 / 3 = 1 r 1
+# 6 - 1 = 5 / 3 = 1 r 2
+
 def solution(n):
-    answer = ''
+    num  = ["1", "2", "4"]
+    answer = ""
+
+    while n > 0:
+        n -= 1
+        answer = num[n % 3] + answer
+        n = n // 3
+
     return answer
+
+if __name__ == "__main__":
+    print(solution(1)) # 1
+    print(solution(2)) # 2
+    print(solution(4)) # 4
+    print(solution(5)) # 11
+    print(solution(10)) # 41
