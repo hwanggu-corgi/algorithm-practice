@@ -6,6 +6,18 @@
 #   numbers는 0~9까지 숫자만으로 이루어져 있습니다.
 #   013은 0, 1, 3 숫자가 적힌 종이 조각이 흩어져있다는 의미입니다.
 
+from itertools import combinations
+
 def solution(numbers):
     answer = 0
+    n = len(numbers)
+    comb_set = set()
+    i = 1
+    while i <= n:
+        comb_list = combinations(numbers, i)
+        for e in comb_list:
+            comb_set.add(int(e))
+        i += 1
+
+
     return answer
