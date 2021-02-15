@@ -10,7 +10,6 @@ from collections import deque
 
 def solution(number, k):
     answer = []
-    comparator = []
     deleted = 0
 
     # split element
@@ -21,30 +20,27 @@ def solution(number, k):
         return number[0]
 
     # while length of number is not 0
-    while len(number) > 0 and deleted != k:
+    while len(number) > 0:
+        e = number.popleft()
+        while answer and answer[-1] < e and deleted != k:
+            answer.pop()
+            deleted += 1
 
-        # add elements to comparator
-        #   if element exists in answer, then pop the latest element and add to comparator, and leftmost element from number
-        if len(answer) != 0:
-            comparator.append(answer.pop())
-            comparator.append(number.popleft())
-        #   if element doesn't exist in answer, then pop two elements from number
-        else:
-            comparator.append(number.popleft())
-            comparator.append(number.popleft())
-        print(comparator)
+        answer.append(e)
 
-        answer.extend(comparator)
-        comparator = []
+        if deleted == k:
+            break
 
-        print(answer)
-        print("------")
 
     answer.extend(list(number))
-    answer = "".join(answer)
+    if k - deleted > 0:
+        answer = "".join(answer[:-(k-deleted)])
+    else:
+        answer = "".join(answer)
     return answer
 
 if __name__ == "__main__":
     print(solution("1924", 2)) #94
     print(solution("1231234", 3)) #3234
     print(solution("4177252841", 4)) #775841
+    print(solution("999", 2)) #9
