@@ -4,10 +4,23 @@
 
 def solution(bridge_length, weight, truck_weights):
     answer = 0
+    time = 0
+    bridge = deque([])
+    truck_weights = deque(truck_weights)
 
-    # if truck at truck_weights meets condition, pop left and move to bridge
-    # if truck at front of bridge meets condtion, pop left
-    # count time
+    while len(truck_weights) > 0:
+        # if truck at front of bridge meets condtion, pop left
+        if bridge_should_pop(bridge_length, bridge):
+            bridge.popleft()
+        # if truck at truck_weights meets condition, pop left and move to bridge
+        if bridge_is_available(weight, bridge):
+            truck_weight = truck_weights.popleft()
+            bridge.append([truck_weight, 0])
+
+        # count time
+        update_trucks_on_bridge(bridge)
+        time += 1
 
     # return total time
+    answer = time
     return answer
