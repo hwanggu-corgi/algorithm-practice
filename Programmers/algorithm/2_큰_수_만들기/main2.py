@@ -8,4 +8,12 @@
 
 def solution(number, k):
     answer = ''
+
+    # add elements to comparator
+    #   if element exists in answer, then pop the latest element and add to comparator, and leftmost element from number
+    #   if element doesn't exist in answer, then pop two elements from number
+
+    # if first element is larger than second element, discard second
+    # if first element is smaller than second element, discard first
+    # pop the resulting element from comparator and add to answer
     return answer
