@@ -6,14 +6,50 @@
 #   number는 1자리 이상, 1,000,000자리 이하인 숫자입니다.
 #   k는 1 이상 number의 자릿수 미만인 자연수입니다.
 
+from collections import deque
+
 def solution(number, k):
-    answer = ''
+    answer = []
+    comparator = []
+    deleted = 0
 
-    # add elements to comparator
-    #   if element exists in answer, then pop the latest element and add to comparator, and leftmost element from number
-    #   if element doesn't exist in answer, then pop two elements from number
+    # split element
+    number = deque([x for x in number])
 
-    # if first element is larger than second element, discard second
-    # if first element is smaller than second element, discard first
-    # pop the resulting element from comparator and add to answer
+    # if length of number is 1, then return number[0]
+    if len(number) == 1:
+        return number[0]
+
+    # while length of number is not 0
+    while len(number) > 0 and deleted != k:
+
+        # add elements to comparator
+        #   if element exists in answer, then pop the latest element and add to comparator, and leftmost element from number
+        if len(answer) != 0:
+            comparator.append(answer.pop())
+            comparator.append(number.popleft())
+        #   if element doesn't exist in answer, then pop two elements from number
+        else:
+            comparator.append(number.popleft())
+            comparator.append(number.popleft())
+
+        # if first element is larger than second element, discard second
+        if comparator[0] > comparator[1]:
+            comparator.pop()
+            deleted += 1
+        # if first element is smaller than second element, discard first
+        elif comparator[0] < comparator[1]:
+            comparator.pop(0)
+            deleted += 1
+        # if first element is same then keep both
+
+        # pop the resulting element from comparator and add to answer
+        answer.extend(comparator)
+        comparator = []
+
+    answer.extend(list(number))
+    answer = "".join(answer)
     return answer
+
+if __name__ == "__main__":
+    print(solution("1924", 2)) #94
