@@ -32,7 +32,7 @@ def solution(number, k):
         else:
             comparator.append(number.popleft())
             comparator.append(number.popleft())
-
+        print(comparator)
         # if first element is larger than second element, discard second
         if comparator[0] > comparator[1]:
             comparator.pop()
@@ -42,10 +42,12 @@ def solution(number, k):
             comparator.pop(0)
             deleted += 1
         # if first element is same then keep both
-
         # pop the resulting element from comparator and add to answer
         answer.extend(comparator)
         comparator = []
+
+        print(answer)
+        print("------")
 
     answer.extend(list(number))
     answer = "".join(answer)
@@ -53,3 +55,5 @@ def solution(number, k):
 
 if __name__ == "__main__":
     print(solution("1924", 2)) #94
+    print(solution("1231234", 3)) #3234
+    print(solution("4177252841", 4)) #775841
