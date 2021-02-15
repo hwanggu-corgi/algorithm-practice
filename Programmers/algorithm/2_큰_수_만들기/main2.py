@@ -33,16 +33,7 @@ def solution(number, k):
             comparator.append(number.popleft())
             comparator.append(number.popleft())
         print(comparator)
-        # if first element is larger than second element, discard second
-        if comparator[0] > comparator[1]:
-            comparator.pop()
-            deleted += 1
-        # if first element is smaller than second element, discard first
-        elif comparator[0] < comparator[1]:
-            comparator.pop(0)
-            deleted += 1
-        # if first element is same then keep both
-        # pop the resulting element from comparator and add to answer
+
         answer.extend(comparator)
         comparator = []
 
