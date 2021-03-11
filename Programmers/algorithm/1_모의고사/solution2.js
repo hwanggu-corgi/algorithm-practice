@@ -4,16 +4,33 @@ function solution(answers) {
     let student_2 = [2, 1, 2, 3, 2, 4, 2, 5];
     let student_3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5];
 
+    let scores = [0,0,0];
+
     // find number of correct answers for each student
     for (let i = 0; i < answers.length; i++) {
 
         // if correct, then raise score
         if (answer === student_1[i % student_1.length]) {
+            score[0] += 1;
+        }
 
+        if (answer === student_2[i % student_2.length]) {
+            score[1] += 1;
+        }
+
+        if (answer === student_3[i % student_3.length]) {
+            score[2] += 1;
         }
     }
 
     // write who has the biggest score of all
+    const max_score = Math.max(...scores);
+
+    for(let i = 0; i < scores.length; i++) {
+        if (scores[i] === max_score) {
+            answer.push(i+1)
+        }
+    }
 
     return answer;
 }
