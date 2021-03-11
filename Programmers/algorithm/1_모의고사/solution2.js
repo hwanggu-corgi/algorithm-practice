@@ -10,16 +10,16 @@ function solution(answers) {
     for (let i = 0; i < answers.length; i++) {
 
         // if correct, then raise score
-        if (answer === student_1[i % student_1.length]) {
-            score[0] += 1;
+        if (answers[i] === student_1[i % student_1.length]) {
+            scores[0] += 1;
         }
 
-        if (answer === student_2[i % student_2.length]) {
-            score[1] += 1;
+        if (answers[i] === student_2[i % student_2.length]) {
+            scores[1] += 1;
         }
 
-        if (answer === student_3[i % student_3.length]) {
-            score[2] += 1;
+        if (answers[i] === student_3[i % student_3.length]) {
+            scores[2] += 1;
         }
     }
 
@@ -34,3 +34,7 @@ function solution(answers) {
 
     return answer;
 }
+
+
+console.log(solution([1,2,3,4,5])) // [1]
+console.log(solution([1,3,2,4,2])) // [1,2,3]
